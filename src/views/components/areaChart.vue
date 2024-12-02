@@ -3,10 +3,18 @@
 </template>
 <script>
 import echarts from 'echarts'
-
 export default {
   name: 'AreaChart',
-  props: ['config', 'selectRangeDate'],
+  props: {
+    config: {
+      type: Object,
+      default: null
+    },
+    selectRangeDate: {
+      type: Array,
+      default: null
+    }
+  },
   data() {
     return {}
   },

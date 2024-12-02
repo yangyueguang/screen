@@ -108,7 +108,12 @@ export default {
     pieChart,
     doubleBars
   },
-  props: ['selectRangeDate'],
+  props: {
+    selectRangeDate: {
+      type: Array,
+      default: null
+    }
+  },
   data() {
     return {
       everyPer: 0,
