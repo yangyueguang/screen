@@ -2,28 +2,31 @@
   <div class="threeBarChart"></div>
 </template>
 <script>
-import echarts from "echarts";
+import echarts from 'echarts'
 
 export default {
   name: '',
   data() {
     return {}
   },
+  mounted() {
+    this.setChart()
+  },
   methods: {
     setChart() {
       let option = {
         grid: {
-          top: "20%",
-          bottom: "15%",
+          top: '20%',
+          bottom: '15%',
           left: 40,
-          right: 40,
+          right: 40
         },
         tooltip: {
           trigger: 'axis'
         },
         legend: {
-          left: "8%",
-          top: "10%",
+          left: '8%',
+          top: '10%',
           itemWidth: 7,
           itemHeight: 7,
           textStyle: {
@@ -70,7 +73,7 @@ export default {
               fontSize: 10
             },
             splitLine: {
-              show: false,
+              show: false
             },
             name: '(元)',
             nameGap: -10,
@@ -84,7 +87,7 @@ export default {
           {
             type: 'value',
             interval: 50,
-            position: "right",
+            position: 'right',
             offset: -35,
             min: 0,
             max: 400,
@@ -102,7 +105,7 @@ export default {
               fontSize: 10
             },
             splitLine: {
-              show: false,
+              show: false
             },
             name: '(人)',
             nameGap: -10,
@@ -115,7 +118,7 @@ export default {
           },
           {
             type: 'value',
-            position: "right",
+            position: 'right',
             interval: 50,
             min: 0,
             max: 400,
@@ -133,7 +136,7 @@ export default {
               fontSize: 10
             },
             splitLine: {
-              show: false,
+              show: false
             },
             name: '(次)',
             nameGap: -10,
@@ -168,7 +171,7 @@ export default {
                   }
                 ],
                 global: false // 缺省为 false
-              } //背景渐变色
+              } // 背景渐变色
             }
           },
           {
@@ -193,7 +196,7 @@ export default {
                   }
                 ],
                 global: false // 缺省为 false
-              } //背景渐变色
+              } // 背景渐变色
             }
           },
           {
@@ -218,20 +221,17 @@ export default {
                   }
                 ],
                 global: false // 缺省为 false
-              } //背景渐变色
+              } // 背景渐变色
             }
           }
         ]
-      };
-      let myChart = echarts.init(this.$el, null, {renderer: 'svg'});
-      myChart.clear();
+      }
+      let myChart = echarts.init(this.$el, null, {renderer: 'svg'})
+      myChart.clear()
       myChart.resize()
-      myChart.setOption(option);
+      myChart.setOption(option)
     }
-  },
-  mounted() {
-    this.setChart()
-  },
+  }
 }
 </script>
 <style lang="scss" scoped>

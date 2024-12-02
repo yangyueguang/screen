@@ -2,7 +2,7 @@
   <div class="ring"></div>
 </template>
 <script>
-import echarts from "echarts";
+import echarts from 'echarts'
 
 export default {
   name: '',
@@ -11,6 +11,9 @@ export default {
   },
   data() {
     return {}
+  },
+  mounted() {
+    this.setChart()
   },
   methods: {
     setChart() {
@@ -27,12 +30,12 @@ export default {
         },
         tooltip: {
           trigger: 'item',
-          formatter: "{b}: {c} ({d}%)",
+          formatter: '{b}: {c} ({d}%)',
           backgroundColor: '#11367a',
           textStyle: {
             color: '#6dd0e3',
-            fontSize: 10,
-          },
+            fontSize: 10
+          }
         },
         series: [
           {
@@ -47,7 +50,7 @@ export default {
                 position: 'outside',
                 fontSize: 10,
                 color: '#75deef'
-              },
+              }
             },
             labelLine: {
               normal: {
@@ -62,16 +65,13 @@ export default {
             data: this.data.data
           }
         ]
-      };
-      let myChart = echarts.init(this.$el, null, {renderer: 'svg'});
-      myChart.clear();
+      }
+      let myChart = echarts.init(this.$el, null, {renderer: 'svg'})
+      myChart.clear()
       myChart.resize()
-      myChart.setOption(option);
+      myChart.setOption(option)
     }
-  },
-  mounted() {
-    this.setChart()
-  },
+  }
 }
 </script>
 <style lang="scss" scoped>

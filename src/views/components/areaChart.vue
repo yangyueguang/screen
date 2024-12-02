@@ -2,41 +2,44 @@
   <div class="area"></div>
 </template>
 <script>
-import echarts from "echarts";
+import echarts from 'echarts'
 
 export default {
-  name: "areaChart",
+  name: 'AreaChart',
   props: ['config', 'selectRangeDate'],
   data() {
     return {}
   },
+  mounted() {
+    this.setChart()
+  },
   methods: {
     setData(type) {
-      let arr = [];
+      let arr = []
       switch (type) {
         case 'x':
           for (let i = 0; i < this.selectRangeDate.length; i++) {
-            arr.push(this.selectRangeDate[i][1] + "." + this.selectRangeDate[i][2])
+            arr.push(this.selectRangeDate[i][1] + '.' + this.selectRangeDate[i][2])
           }
-          break;
+          break
         case 's' :
           for (let i = 0; i < this.selectRangeDate.length; i++) {
             arr.push((Math.random() * 250).toFixed(0))
           }
-          break;
+          break
         default:
-          break;
+          break
       }
-      return arr;
+      return arr
     },
     setSeriesData() {
-      let arr = [];
+      let arr = []
       this.config.data.forEach(item => {
         let obj = {
           name: item.name,
           type: 'line',
           smooth: true,
-          symbol: "none",
+          symbol: 'none',
           areaStyle: {
             opacity: 1,
             color: {
@@ -48,11 +51,11 @@ export default {
               colorStops: [{
                 offset: 0, color: item.color[0] // 0% 处的颜色
               },
-                {
-                  offset: 0.4, color: item.color[0] // 40% 处的颜色
-                }, {
-                  offset: 1, color: item.color[1] // 100% 处的颜色
-                }],
+              {
+                offset: 0.4, color: item.color[0] // 40% 处的颜色
+              }, {
+                offset: 1, color: item.color[1] // 100% 处的颜色
+              }],
               global: false // 缺省为 false
             }
             // color: new this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [{
@@ -66,7 +69,7 @@ export default {
             // origin: 'start'
           },
           lineStyle: {
-            width: 0,
+            width: 0
           },
           itemStyle: {
             color: item.color[0]
@@ -75,7 +78,7 @@ export default {
         }
         arr.push(obj)
       })
-      return arr;
+      return arr
     },
     setChart() {
       let option = {
@@ -92,16 +95,16 @@ export default {
         },
         tooltip: {
           trigger: 'axis',
-          axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-            type: 'none'        // 默认为直线，可选为：'line' | 'shadow'
+          axisPointer: { // 坐标轴指示器，坐标轴触发有效
+            type: 'none' // 默认为直线，可选为：'line' | 'shadow'
           },
           backgroundColor: '#11367a',
           textStyle: {
             color: '#6dd0e3',
-            fontSize: 10,
+            fontSize: 10
           },
-          formatter: function (params) {
-            let str = params[0].name;
+          formatter: function(params) {
+            let str = params[0].name
             params.forEach(item => {
               str += `<br> ${item.seriesName}: ${item.value}`
             })
@@ -117,7 +120,7 @@ export default {
             textStyle: {
               color: this.config.color,
               fontSize: 12
-            },
+            }
           },
         grid:
           {
@@ -141,7 +144,7 @@ export default {
               show: true,
               lineStyle: {
                 color: '#1a3c58',
-                width: 2,
+                width: 2
               }
             },
             axisTick: {show: false},
@@ -161,7 +164,7 @@ export default {
             axisLabel: {
               color: this.config.color,
               fontSize: 9,
-              showMaxLabel: false,
+              showMaxLabel: false
             },
             axisTick: {
               length: 3
@@ -191,7 +194,7 @@ export default {
             axisLabel: {
               color: this.config.color,
               fontSize: 9,
-              showMaxLabel: false,
+              showMaxLabel: false
             },
             name: this.config.name[1],
             nameTextStyle: {
@@ -201,28 +204,25 @@ export default {
             },
             nameGap: -5,
             splitLine: {show: false}
-          },
+          }
         ],
         series: this.setSeriesData()
-      };
-      if (this.selectRangeDate.length > 7) {
-        option.xAxis.axisLabel.interval = 3;
-        option.xAxis.axisLabel.showMaxLabel = false;
-        option.xAxis.axisLabel.align = 'left';
       }
-      let myChart = echarts.init(this.$el, null, {renderer: 'svg'});
-      myChart.clear();
+      if (this.selectRangeDate.length > 7) {
+        option.xAxis.axisLabel.interval = 3
+        option.xAxis.axisLabel.showMaxLabel = false
+        option.xAxis.axisLabel.align = 'left'
+      }
+      let myChart = echarts.init(this.$el, null, {renderer: 'svg'})
+      myChart.clear()
       myChart.resize(
         {
           width: this.$el.offsetWidth,
           height: this.$el.offsetHeight
         }
       )
-      myChart.setOption(option);
+      myChart.setOption(option)
     }
-  },
-  mounted() {
-    this.setChart();
   }
 }
 </script>

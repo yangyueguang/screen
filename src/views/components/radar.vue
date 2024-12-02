@@ -8,7 +8,7 @@
 }
 </style>
 <script>
-import echarts from "echarts";
+import echarts from 'echarts'
 
 export default {
   name: '',
@@ -17,6 +17,9 @@ export default {
   },
   data() {
     return {}
+  },
+  mounted() {
+    this.setChart()
   },
   methods: {
     setChart() {
@@ -34,10 +37,10 @@ export default {
             lineStyle: {
               normal: {
                 color: item.color,
-                width: 1,
+                width: 1
               },
               emphasis: {
-                width: 2,
+                width: 2
               }
             }
           }
@@ -46,24 +49,24 @@ export default {
       let option = {
         tooltip: {
           trigger: 'item',
-          axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-            type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
-          },
+          axisPointer: { // 坐标轴指示器，坐标轴触发有效
+            type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+          }
         },
         title: {
           text: this.data.title,
-          top: "5%",
+          top: '5%',
           left: this.data.position[0],
           textStyle: {
             color: '#fff',
-            fontSize: 12,
+            fontSize: 12
           }
         },
         legend: {
           data: this.data.data.map(item => {
             return {name: item.name, icon: 'circle'}
           }),
-          left: "center",
+          left: 'center',
           top: this.data.position[1],
           itemWidth: 7,
           itemHeight: 7,
@@ -75,14 +78,14 @@ export default {
         radar: {
           indicator: this.data.indicator,
           center: this.data.center,
-          radius: "50%",
+          radius: '50%',
           startAngle: 90,
           splitNumber: 4,
           shape: 'circle',
           name: {
             textStyle: {
               color: '#0DECF0',
-              fontSize: 8,
+              fontSize: 8
             }
           },
           nameGap: 3,
@@ -90,7 +93,7 @@ export default {
             areaStyle: {
               color: ['#1166C4',
                 '#0C52A4', '#102F7D',
-                '#13216B'],
+                '#13216B']
             }
           },
           axisLine: {
@@ -118,23 +121,20 @@ export default {
           },
           data: seriesData
         }
-      };
-      if (this.id === 'bottom_1_2') {
-        option.legend.left = '5%';
       }
-      let myChart = echarts.init(this.$el, null, {renderer: 'svg'});
-      myChart.clear();
+      if (this.id === 'bottom_1_2') {
+        option.legend.left = '5%'
+      }
+      let myChart = echarts.init(this.$el, null, {renderer: 'svg'})
+      myChart.clear()
       myChart.resize(
         {
           width: this.$el.offsetWidth,
           height: this.$el.offsetHeight
         }
       )
-      myChart.setOption(option);
+      myChart.setOption(option)
     }
-  },
-  mounted() {
-    this.setChart();
-  },
+  }
 }
 </script>

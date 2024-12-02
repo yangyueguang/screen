@@ -2,12 +2,15 @@
   <div class="doubleLine"></div>
 </template>
 <script>
-import echarts from "echarts";
+import echarts from 'echarts'
 
 export default {
   name: '',
   data() {
     return {}
+  },
+  mounted() {
+    this.setChart()
   },
   methods: {
     setChart() {
@@ -16,8 +19,8 @@ export default {
           trigger: 'axis'
         },
         legend: {
-          left: "11%",
-          top: "10%",
+          left: '11%',
+          top: '10%',
           itemWidth: 7,
           itemHeight: 7,
           textStyle: {
@@ -48,7 +51,7 @@ export default {
             color: '#61B9C8',
             fontSize: 9
           },
-          data: ["2017", "4", "7", "10", "2018", "4", "7"]
+          data: ['2017', '4', '7', '10', '2018', '4', '7']
         },
         yAxis: [
           {
@@ -78,8 +81,8 @@ export default {
               padding: [0, 6, 0, 0]
             },
             splitLine: {
-              show: false,
-            },
+              show: false
+            }
           },
           {
             type: 'value',
@@ -108,8 +111,8 @@ export default {
             },
             interval: 50,
             splitLine: {
-              show: false,
-            },
+              show: false
+            }
           }
         ],
         series: [
@@ -119,7 +122,7 @@ export default {
             smooth: true,
             symbol: 'none',
             lineStyle: {
-              color: '#F39800',
+              color: '#F39800'
             },
             itemStyle: {
               color: '#F39800'
@@ -133,24 +136,21 @@ export default {
             smooth: true,
             symbol: 'none',
             lineStyle: {
-              color: '#BF232A',
+              color: '#BF232A'
             },
             itemStyle: {
               color: '#BF232A'
             },
             data: [330, 310, 132, 100, 300, 90, 230]
-          },
+          }
         ]
-      };
-      let myChart = echarts.init(this.$el, null, {renderer: 'svg'});
-      myChart.clear();
+      }
+      let myChart = echarts.init(this.$el, null, {renderer: 'svg'})
+      myChart.clear()
       myChart.resize()
-      myChart.setOption(option);
+      myChart.setOption(option)
     }
-  },
-  mounted() {
-    this.setChart()
-  },
+  }
 }
 </script>
 <style lang="scss" scoped>

@@ -2,7 +2,7 @@
   <div class="webBar"></div>
 </template>
 <script>
-import echarts from "echarts";
+import echarts from 'echarts'
 
 export default {
   name: '',
@@ -12,38 +12,41 @@ export default {
   data() {
     return {}
   },
+  mounted() {
+    this.setChart()
+  },
   methods: {
     setData() {
-      var max = Math.max.apply(null, this.data.value);
+      var max = Math.max.apply(null, this.data.value)
       var arr = []
       for (let i = 0; i < 6; i++) {
         arr.push(max / 10)
       }
-      return arr;
+      return arr
     },
     // 网站
     setChart() {
       let option = {
         tooltip: {
           trigger: 'axis',
-          axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-            type: 'none'        // 默认为直线，可选为：'line' | 'shadow'
+          axisPointer: { // 坐标轴指示器，坐标轴触发有效
+            type: 'none' // 默认为直线，可选为：'line' | 'shadow'
           },
           backgroundColor: '#11367a',
           textStyle: {
             color: '#6dd0e3',
-            fontSize: 10,
+            fontSize: 10
           },
           formatter: (params) => {
             params[1].number = this.data.number
-            return params[1].name + "<br>" + params[1].seriesName + ":" + params[1].number + "/" + params[1].value + "人"
+            return params[1].name + '<br>' + params[1].seriesName + ':' + params[1].number + '/' + params[1].value + '人'
           }
         },
         grid: {
           left: '4%',
           top: '5%',
           bottom: 10,
-          containLabel: true,
+          containLabel: true
         },
         yAxis:
           {
@@ -77,13 +80,12 @@ export default {
               show: false
             },
             axisLabel: {
-              show: false,
+              show: false
             },
             splitLine: {
-              show: false,
+              show: false
             }
-          }
-        ,
+          },
         series: [
           {
             name: '辅助',
@@ -94,7 +96,7 @@ export default {
             itemStyle: {
               normal: {
                 color: 'rgba(0,0,0,0)'
-              },
+              }
             },
             data: this.setData()
           },
@@ -119,22 +121,19 @@ export default {
                   }],
                   globalCoord: false // 缺省为 false
                 },
-                barBorderRadius: 5,
-              },
+                barBorderRadius: 5
+              }
             },
             data: this.data.value
-          },
+          }
         ]
-      };
-      let myChart = echarts.init(this.$el, null, {renderer: 'svg'});
-      myChart.clear();
-      myChart.resize();
-      myChart.setOption(option);
-    },
-  },
-  mounted() {
-    this.setChart()
-  },
+      }
+      let myChart = echarts.init(this.$el, null, {renderer: 'svg'})
+      myChart.clear()
+      myChart.resize()
+      myChart.setOption(option)
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>

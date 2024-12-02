@@ -2,48 +2,51 @@
   <div class="pieChart"></div>
 </template>
 <script>
-import echarts from "echarts";
+import echarts from 'echarts'
 
 export default {
   name: '',
   data() {
     return {}
   },
+  mounted() {
+    this.setChart()
+  },
   methods: {
     setChart() {
       let option = {
         title: [
           {
-            text: "【金额】",
+            text: '【金额】',
             left: '12%',
             bottom: '6%',
             textStyle: {
-              color: "#fff",
+              color: '#fff',
               fontSize: 12
             }
           },
           {
-            text: "【人数】",
+            text: '【人数】',
             left: '46%',
             bottom: '6%',
             textStyle: {
-              color: "#fff",
+              color: '#fff',
               fontSize: 12
             }
           },
           {
-            text: "【次数】",
+            text: '【次数】',
             right: '12%',
             bottom: '6%',
             textStyle: {
-              color: "#fff",
+              color: '#fff',
               fontSize: 12
             }
           }
         ],
         tooltip: {
           trigger: 'item',
-          formatter: "{a} <br/>{b} : {c} ({d}%)"
+          formatter: '{a} <br/>{b} : {c} ({d}%)'
         },
         legend: {
           data: [
@@ -51,10 +54,10 @@ export default {
             {name: '二部', icon: 'circle'},
             {name: '三部', icon: 'circle'},
             {name: '四部', icon: 'circle'},
-            {name: '五部', icon: 'circle'},
+            {name: '五部', icon: 'circle'}
           ],
-          left: "8%",
-          top: "10%",
+          left: '8%',
+          top: '10%',
           itemWidth: 7,
           itemHeight: 7,
           textStyle: {
@@ -87,9 +90,9 @@ export default {
               }
             },
             itemStyle: {
-              color: function (params) {
-                var colorList = ['#F74F64', '#00CCFF', '#315371', '#142AFE', '#9814FE'];
-                return colorList[params.dataIndex];
+              color: function(params) {
+                var colorList = ['#F74F64', '#00CCFF', '#315371', '#142AFE', '#9814FE']
+                return colorList[params.dataIndex]
               },
               emphasis: {
                 shadowBlur: 10,
@@ -122,9 +125,9 @@ export default {
               }
             },
             itemStyle: {
-              color: function (params) {
-                var colorList = ['#F74F64', '#00CCFF', '#315371', '#142AFE', '#9814FE'];
-                return colorList[params.dataIndex];
+              color: function(params) {
+                var colorList = ['#F74F64', '#00CCFF', '#315371', '#142AFE', '#9814FE']
+                return colorList[params.dataIndex]
               },
               emphasis: {
                 shadowBlur: 10,
@@ -157,9 +160,9 @@ export default {
               }
             },
             itemStyle: {
-              color: function (params) {
-                var colorList = ['#F74F64', '#00CCFF', '#315371', '#142AFE', '#9814FE'];
-                return colorList[params.dataIndex];
+              color: function(params) {
+                var colorList = ['#F74F64', '#00CCFF', '#315371', '#142AFE', '#9814FE']
+                return colorList[params.dataIndex]
               },
               emphasis: {
                 shadowBlur: 10,
@@ -167,18 +170,15 @@ export default {
                 shadowColor: 'rgba(0, 0, 0, 0.5)'
               }
             }
-          },
+          }
         ]
-      };
-      let myChart = echarts.init(this.$el, null, {renderer: 'svg'});
-      myChart.clear();
+      }
+      let myChart = echarts.init(this.$el, null, {renderer: 'svg'})
+      myChart.clear()
       myChart.resize()
-      myChart.setOption(option);
+      myChart.setOption(option)
     }
-  },
-  mounted() {
-    this.setChart()
-  },
+  }
 }
 </script>
 <style lang="scss" scoped>

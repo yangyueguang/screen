@@ -4,11 +4,11 @@
             <span class="subtitle"><span class="leftCircle" :style="{background:data.color}"></span>{{ data.title }}
               <span class="rightCircle" :style="{background:data.color}"></span></span>
     </div>
-    <div class="webPie-content" :id="id"></div>
+    <div :id="id" class="webPie-content"></div>
   </div>
 </template>
 <script>
-import echarts from "echarts";
+import echarts from 'echarts'
 
 export default {
   name: '',
@@ -18,6 +18,9 @@ export default {
   },
   data() {
     return {}
+  },
+  mounted() {
+    this.setChart()
   },
   methods: {
     setChart() {
@@ -29,7 +32,7 @@ export default {
             color: '#6dd0e3',
             fontSize: 10
           },
-          formatter: "{b}:{d}%"
+          formatter: '{b}:{d}%'
         },
         series: [
           {
@@ -39,8 +42,8 @@ export default {
             label: {
               color: '#75deef',
               fontSize: 8,
-              formatter: function (data) {
-                return data.data.name + ' ' + (data.percent).toFixed(0) + '%';
+              formatter: function(data) {
+                return data.data.name + ' ' + (data.percent).toFixed(0) + '%'
               }
             },
             labelLine: {
@@ -50,24 +53,21 @@ export default {
                 color: 'rgb(57,63,90)'
               }
             },
-            data: this.data.data,
+            data: this.data.data
           }
         ]
-      };
-      let myChart = echarts.init(document.getElementById(this.id), null, {renderer: 'svg'});
-      myChart.clear();
+      }
+      let myChart = echarts.init(document.getElementById(this.id), null, {renderer: 'svg'})
+      myChart.clear()
       myChart.resize(
         {
           width: document.getElementById(this.id).offsetWidth,
           height: document.getElementById(this.id).offsetHeight
         }
-      );
-      myChart.setOption(option);
+      )
+      myChart.setOption(option)
     }
-  },
-  mounted() {
-    this.setChart()
-  },
+  }
 }
 </script>
 <style lang="scss" scoped>

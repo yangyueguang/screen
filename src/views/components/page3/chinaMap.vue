@@ -2,13 +2,16 @@
   <div class="chinaMap"></div>
 </template>
 <script>
-import "echarts/map/js/china.js"
-import echarts from "echarts";
+import 'echarts/map/js/china.js'
+import echarts from 'echarts'
 
 export default {
   name: '',
   data() {
     return {}
+  },
+  mounted() {
+    this.setMap()
   },
   methods: {
     setMap() {
@@ -23,7 +26,7 @@ export default {
         {name: '菏泽', value: 194},
         {name: '合肥', value: 229},
         {name: '大庆', value: 279}
-      ];
+      ]
       var geoCoordMap = {
         '海门': [121.15, 31.89],
         '鄂尔多斯': [109.781327, 39.608266],
@@ -215,20 +218,20 @@ export default {
         '合肥': [117.27, 31.86],
         '武汉': [114.31, 30.52],
         '大庆': [125.03, 46.58]
-      };
-      var convertData = function (data) {
-        var res = [];
+      }
+      var convertData = function(data) {
+        var res = []
         for (var i = 0; i < data.length; i++) {
-          var geoCoord = geoCoordMap[data[i].name];
+          var geoCoord = geoCoordMap[data[i].name]
           if (geoCoord) {
             res.push({
               name: data[i].name,
               value: geoCoord.concat(data[i].value)
-            });
+            })
           }
         }
-        return res;
-      };
+        return res
+      }
       let option = {
         title: [
           {
@@ -238,7 +241,7 @@ export default {
             textStyle: {
               color: '#fff',
               fontSize: 12,
-              fontWeight: 'normal',
+              fontWeight: 'normal'
             }
           },
           {
@@ -248,7 +251,7 @@ export default {
             textStyle: {
               color: '#fff',
               fontSize: 12,
-              fontWeight: 'normal',
+              fontWeight: 'normal'
             }
           },
           {
@@ -258,7 +261,7 @@ export default {
             textStyle: {
               color: '#fff',
               fontSize: 12,
-              fontWeight: 'normal',
+              fontWeight: 'normal'
             }
           },
           {
@@ -268,7 +271,7 @@ export default {
             textStyle: {
               color: '#fff',
               fontSize: 12,
-              fontWeight: 'normal',
+              fontWeight: 'normal'
             }
           },
           {
@@ -278,7 +281,7 @@ export default {
             textStyle: {
               color: '#fff',
               fontSize: 12,
-              fontWeight: 'normal',
+              fontWeight: 'normal'
             }
           },
           {
@@ -288,7 +291,7 @@ export default {
             textStyle: {
               color: '#fff',
               fontSize: 12,
-              fontWeight: 'normal',
+              fontWeight: 'normal'
             }
           }
         ],
@@ -297,37 +300,37 @@ export default {
             top: '3%',
             left: '17.5%',
             height: '5%',
-            right: "67.5%"
+            right: '67.5%'
           },
           {
             top: '10%',
             height: '5%',
             left: '15.5%',
-            right: "67.5%"
+            right: '67.5%'
           },
           {
             top: '3%',
             left: '47.5%',
             height: '5%',
-            right: "37.5%"
+            right: '37.5%'
           },
           {
             top: '10%',
             height: '5%',
             left: '47.5%',
-            right: "37.5%"
+            right: '37.5%'
           },
           {
             top: '3%',
             left: '77.5%',
             height: '5%',
-            right: "7.5%"
+            right: '7.5%'
           },
           {
             top: '10%',
             height: '5%',
             left: '77.5%',
-            right: "7.5%"
+            right: '7.5%'
           }
         ],
         xAxis: [
@@ -407,13 +410,13 @@ export default {
             inverse: true,
             boundaryGap: false,
             data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-          },
+          }
         ],
         yAxis: [
           {
             type: 'value',
             axisLabel: {show: false},
-            position: "right",
+            position: 'right',
             axisLine: {
               show: false
             },
@@ -423,7 +426,7 @@ export default {
           {
             gridIndex: 1,
             axisLabel: {show: false},
-            position: "right",
+            position: 'right',
             axisLine: {
               show: false
             },
@@ -434,7 +437,7 @@ export default {
           {
             gridIndex: 2,
             axisLabel: {show: false},
-            position: "right",
+            position: 'right',
             axisLine: {
               show: false
             },
@@ -445,7 +448,7 @@ export default {
           {
             gridIndex: 3,
             axisLabel: {show: false},
-            position: "right",
+            position: 'right',
             axisLine: {
               show: false
             },
@@ -456,7 +459,7 @@ export default {
           {
             gridIndex: 4,
             axisLabel: {show: false},
-            position: "right",
+            position: 'right',
             axisLine: {
               show: false
             },
@@ -467,14 +470,14 @@ export default {
           {
             gridIndex: 5,
             axisLabel: {show: false},
-            position: "right",
+            position: 'right',
             axisLine: {
               show: false
             },
             axisTick: {show: false},
             splitLine: {show: false},
             type: 'value'
-          },
+          }
         ],
         geo: {
           map: 'china',
@@ -499,11 +502,11 @@ export default {
             name: 'pm2.5',
             type: 'effectScatter',
             coordinateSystem: 'geo',
-            data: convertData(data.sort(function (a, b) {
-              return b.value - a.value;
+            data: convertData(data.sort(function(a, b) {
+              return b.value - a.value
             }).slice(0, 10)),
-            symbolSize: function (val) {
-              return val[2] / 15;
+            symbolSize: function(val) {
+              return val[2] / 15
             },
             showEffectOn: 'render',
             // rippleEffect: { // 效果
@@ -519,7 +522,7 @@ export default {
             },
             itemStyle: {
               normal: {
-                color: function (params) {
+                color: function(params) {
                   var colorList = ['#FFA200', '#0006FF', '#D6FC01', '#00D8FF', '#FF00CC', '#FF1200']
                   if (params.dataIndex <= 6) {
                     return colorList[params.dataIndex]
@@ -527,7 +530,7 @@ export default {
                     return colorList[params.dataIndex % 6]
                   }
                 },
-                shadowBlur: 10,
+                shadowBlur: 10
               }
             },
             zlevel: 1
@@ -554,7 +557,7 @@ export default {
                 globalCoord: false // 缺省为 false
               }
             },
-            //4,5,3,9,2,4,8,3,4,5
+            // 4,5,3,9,2,4,8,3,4,5
             data: [
               {
                 value: 4, symbol: 'circle',
@@ -562,8 +565,8 @@ export default {
                 itemStyle: {
                   color: '#293880',
                   borderColor: 'rgba(161,23,128,1)',
-                  borderWidth: 1,
-                },
+                  borderWidth: 1
+                }
               },
               {value: 5, symbol: 'none'},
               {value: 3, symbol: 'none'},
@@ -573,12 +576,12 @@ export default {
               {value: 8, symbol: 'none'},
               {value: 3, symbol: 'none'},
               {value: 4, symbol: 'none'},
-              {value: 4, symbol: 'none'},
+              {value: 4, symbol: 'none'}
             ]
           },
           {
             type: 'line',
-            symbol: "none",
+            symbol: 'none',
             smooth: true,
             xAxisIndex: 1,
             yAxisIndex: 1,
@@ -608,8 +611,8 @@ export default {
                 itemStyle: {
                   color: '#293880',
                   borderColor: 'rgba(196,103,20,1)',
-                  borderWidth: 1,
-                },
+                  borderWidth: 1
+                }
               },
               {value: 5, symbol: 'none'},
               {value: 3, symbol: 'none'},
@@ -619,7 +622,7 @@ export default {
               {value: 8, symbol: 'none'},
               {value: 3, symbol: 'none'},
               {value: 4, symbol: 'none'},
-              {value: 4, symbol: 'none'},
+              {value: 4, symbol: 'none'}
             ]
           },
           {
@@ -646,7 +649,7 @@ export default {
                 globalCoord: false // 缺省为 false
               }
             },
-            //4,5,3,9,2,4,8,3,4,5
+            // 4,5,3,9,2,4,8,3,4,5
             data: [
               {
                 value: 4, symbol: 'circle',
@@ -654,8 +657,8 @@ export default {
                 itemStyle: {
                   color: '#293880',
                   borderColor: 'rgba(181,174,28,1)',
-                  borderWidth: 1,
-                },
+                  borderWidth: 1
+                }
               },
               {value: 5, symbol: 'none'},
               {value: 3, symbol: 'none'},
@@ -665,12 +668,12 @@ export default {
               {value: 8, symbol: 'none'},
               {value: 3, symbol: 'none'},
               {value: 4, symbol: 'none'},
-              {value: 4, symbol: 'none'},
+              {value: 4, symbol: 'none'}
             ]
           },
           {
             type: 'line',
-            symbol: "none",
+            symbol: 'none',
             smooth: true,
             xAxisIndex: 3,
             yAxisIndex: 3,
@@ -700,8 +703,8 @@ export default {
                 itemStyle: {
                   color: '#293880',
                   borderColor: 'rgba(165,15,71,1)',
-                  borderWidth: 1,
-                },
+                  borderWidth: 1
+                }
               },
               {value: 5, symbol: 'none'},
               {value: 3, symbol: 'none'},
@@ -711,7 +714,7 @@ export default {
               {value: 8, symbol: 'none'},
               {value: 3, symbol: 'none'},
               {value: 4, symbol: 'none'},
-              {value: 4, symbol: 'none'},
+              {value: 4, symbol: 'none'}
             ]
           },
           {
@@ -738,7 +741,7 @@ export default {
                 globalCoord: false // 缺省为 false
               }
             },
-            //4,5,3,9,2,4,8,3,4,5
+            // 4,5,3,9,2,4,8,3,4,5
             data: [
               {
                 value: 4, symbol: 'circle',
@@ -746,8 +749,8 @@ export default {
                 itemStyle: {
                   color: '#293880',
                   borderColor: 'rgba(16,182,165,1)',
-                  borderWidth: 1,
-                },
+                  borderWidth: 1
+                }
               },
               {value: 5, symbol: 'none'},
               {value: 3, symbol: 'none'},
@@ -757,12 +760,12 @@ export default {
               {value: 8, symbol: 'none'},
               {value: 3, symbol: 'none'},
               {value: 4, symbol: 'none'},
-              {value: 4, symbol: 'none'},
+              {value: 4, symbol: 'none'}
             ]
           },
           {
             type: 'line',
-            symbol: "none",
+            symbol: 'none',
             smooth: true,
             xAxisIndex: 5,
             yAxisIndex: 5,
@@ -792,8 +795,8 @@ export default {
                 itemStyle: {
                   color: '#293880',
                   borderColor: 'rgba(9,83,176,1)',
-                  borderWidth: 1,
-                },
+                  borderWidth: 1
+                }
               },
               {value: 5, symbol: 'none'},
               {value: 3, symbol: 'none'},
@@ -803,19 +806,16 @@ export default {
               {value: 8, symbol: 'none'},
               {value: 3, symbol: 'none'},
               {value: 4, symbol: 'none'},
-              {value: 4, symbol: 'none'},
+              {value: 4, symbol: 'none'}
             ]
           }
         ]
-      };
-      let myChart = echarts.init(this.$el, null, {renderer: 'svg'});
-      myChart.clear();
+      }
+      let myChart = echarts.init(this.$el, null, {renderer: 'svg'})
+      myChart.clear()
       myChart.resize()
-      myChart.setOption(option);
-    },
-  },
-  mounted() {
-    this.setMap();
+      myChart.setOption(option)
+    }
   }
 }
 </script>

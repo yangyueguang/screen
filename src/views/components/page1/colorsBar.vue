@@ -2,7 +2,7 @@
   <div class="behaviorBar"></div>
 </template>
 <script>
-import echarts from "echarts";
+import echarts from 'echarts'
 
 export default {
   name: '',
@@ -11,6 +11,9 @@ export default {
   },
   data() {
     return {}
+  },
+  mounted() {
+    this.setChart()
   },
   methods: {
     setChart() {
@@ -27,15 +30,15 @@ export default {
         },
         tooltip: {
           trigger: 'axis',
-          axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-            type: 'none'        // 默认为直线，可选为：'line' | 'shadow'
+          axisPointer: { // 坐标轴指示器，坐标轴触发有效
+            type: 'none' // 默认为直线，可选为：'line' | 'shadow'
           },
           backgroundColor: '#11367a',
-          formatter: "{b}:{c1}",
+          formatter: '{b}:{c1}',
           textStyle: {
             color: '#6dd0e3',
-            fontSize: 10,
-          },
+            fontSize: 10
+          }
         },
         grid:
           {
@@ -43,7 +46,7 @@ export default {
             left: '1%',
             right: '4%',
             bottom: '4%',
-            containLabel: true,
+            containLabel: true
           },
         xAxis:
           {
@@ -71,7 +74,7 @@ export default {
             axisLabel: {
               color: '#75deef',
               fontSize: 9,
-              showMaxLabel: false,
+              showMaxLabel: false
             },
             name: '(个)',
             nameGap: -5,
@@ -90,7 +93,7 @@ export default {
               }
             },
             splitLine: {show: false}
-          },
+          }
         ],
         series: [
           {
@@ -98,7 +101,7 @@ export default {
             type: 'bar',
             barWidth: 12,
             itemStyle: {
-              color: "#252448",
+              color: '#252448'
             },
             data: [300, 300, 300, 300, 300, 300, 300, 300]
           },
@@ -108,17 +111,14 @@ export default {
             barWidth: 12,
             barGap: '-100%',
             data: this.data
-          },
+          }
         ]
-      };
-      let myChart = echarts.init(this.$el, null, {renderer: 'svg'});
-      myChart.clear();
+      }
+      let myChart = echarts.init(this.$el, null, {renderer: 'svg'})
+      myChart.clear()
       myChart.resize()
-      myChart.setOption(option);
+      myChart.setOption(option)
     }
-  },
-  mounted() {
-    this.setChart()
   }
 }
 </script>

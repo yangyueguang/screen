@@ -2,26 +2,29 @@
   <div class="doubleBarChart"></div>
 </template>
 <script>
-import echarts from "echarts";
+import echarts from 'echarts'
 
 export default {
   name: '',
   data() {
     return {}
   },
+  mounted() {
+    this.setChart()
+  },
   methods: {
     setChart() {
       let option = {
         tooltip: {
           trigger: 'axis',
-          axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-            type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+          axisPointer: { // 坐标轴指示器，坐标轴触发有效
+            type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
           },
           backgroundColor: '#11367a',
           textStyle: {
             color: '#6dd0e3',
-            fontSize: 10,
-          },
+            fontSize: 10
+          }
         },
         legend: [
           {
@@ -30,9 +33,9 @@ export default {
             itemWidth: 7,
             itemHeight: 7,
             textStyle: {
-              color: '#5CB1C1',
+              color: '#5CB1C1'
             }
-          },
+          }
         ],
         grid:
           {
@@ -40,7 +43,7 @@ export default {
             left: '3%',
             right: '5%',
             bottom: '8%',
-            containLabel: true,
+            containLabel: true
           },
         xAxis: [
           {
@@ -60,7 +63,7 @@ export default {
             },
             axisTick: {show: false},
             data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月']
-          },
+          }
         ],
         yAxis:
           {
@@ -70,7 +73,7 @@ export default {
             axisLabel: {
               color: '#61B9C8',
               fontSize: 9,
-              showMaxLabel: false,
+              showMaxLabel: false
             },
             axisLine: {
               symbol: ['none', 'arrow'],
@@ -109,14 +112,14 @@ export default {
                 colorStops: [{
                   offset: 0, color: '#FC9386' // 0% 处的颜色
                 },
-                  {
-                    offset: 0.4, color: '#F87B86' // 40% 处的颜色
-                  }, {
-                    offset: 1, color: '#F36087' // 100% 处的颜色
-                  }],
+                {
+                  offset: 0.4, color: '#F87B86' // 40% 处的颜色
+                }, {
+                  offset: 1, color: '#F36087' // 100% 处的颜色
+                }],
                 global: false // 缺省为 false
-              }, //背景渐变色
-              barBorderRadius: [3.5, 3.5, 0, 0],
+              }, // 背景渐变色
+              barBorderRadius: [3.5, 3.5, 0, 0]
             },
             data: [120, 102, 101, 134, 190, 130, 120, 190, 130, 120]
           },
@@ -127,21 +130,18 @@ export default {
             stack: '总数',
             itemStyle: {
               color: '#8C14EA',
-              barBorderRadius: [3.5, 3.5, 0, 0,],
+              barBorderRadius: [3.5, 3.5, 0, 0]
             },
             data: [120, 132, 101, 134, 90, 130, 110, 90, 130, 120]
-          },
+          }
         ]
-      };
-      let myChart = echarts.init(this.$el, null, {renderer: 'svg'});
-      myChart.clear();
+      }
+      let myChart = echarts.init(this.$el, null, {renderer: 'svg'})
+      myChart.clear()
       myChart.resize()
-      myChart.setOption(option);
+      myChart.setOption(option)
     }
-  },
-  mounted() {
-    this.setChart()
-  },
+  }
 }
 </script>
 <style lang="scss" scoped>

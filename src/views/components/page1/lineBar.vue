@@ -2,12 +2,15 @@
   <div style="height:100%;"></div>
 </template>
 <script>
-import echarts from "echarts";
+import echarts from 'echarts'
 
 export default {
   name: '',
   data() {
     return {}
+  },
+  mounted() {
+    this.setChart()
   },
   methods: {
     setOptionData() {
@@ -20,12 +23,12 @@ export default {
         {name: '购物', value: 100, data: [6600, 8200, 5800, 4000, 2200, 3800, 7400, 3600]},
         {name: '办公学习', value: 100, data: [7600, 1200, 3800, 7000, 1200, 3800, 5400, 2600]},
         {name: '其他', value: 50, data: [6600, 1200, 2800, 3000, 6200, 5800, 4400, 1600]}
-      ];
-      let colorList = ['#2c7bfe', '#c2232a', '#feed2c', '#a262f2', '#62d5f2', '#fe672c', '#2c7bfe', '#69f262'];
-      let arr = [];
+      ]
+      let colorList = ['#2c7bfe', '#c2232a', '#feed2c', '#a262f2', '#62d5f2', '#fe672c', '#2c7bfe', '#69f262']
+      let arr = []
       for (let i = 0; i < data.length; i++) {
-        let values = [0, 0, 0, 0, 0, 0, 0, 0];
-        values.splice(i, 1, data[i].value);
+        let values = [0, 0, 0, 0, 0, 0, 0, 0]
+        values.splice(i, 1, data[i].value)
         let obj = {
           name: data[i].name,
           type: 'bar',
@@ -37,7 +40,7 @@ export default {
           },
           data: values
         }
-        arr.push(obj);
+        arr.push(obj)
       }
       for (let i = 0; i < data.length; i++) {
         let obj = {
@@ -55,7 +58,7 @@ export default {
           itemStyle: {
             color: colorList[i]
           }
-        };
+        }
         let obj1 = {
           type: 'line',
           name: data[i].name,
@@ -71,9 +74,9 @@ export default {
           itemStyle: {
             color: colorList[i]
           }
-        };
-        arr.push(obj);
-        arr.push(obj1);
+        }
+        arr.push(obj)
+        arr.push(obj1)
       }
       let arr1 = [
         {
@@ -108,10 +111,10 @@ export default {
             color: '#2c7bfe'
           },
           data: [390, 330, 280, 220, 160, 100, 40]
-        },
+        }
       ]
-      arr = arr.concat(arr1);
-      return arr;
+      arr = arr.concat(arr1)
+      return arr
     },
     /**
      * 时间秒数格式化
@@ -119,39 +122,39 @@ export default {
      * @returns {*} 格式化后的时分秒
      */
     formateData(s) {
-      var t;
+      var t
       if (s > -1) {
-        var hour = Math.floor(s / 3600);
-        var min = Math.floor(s / 60) % 60;
-        var sec = s % 60;
+        var hour = Math.floor(s / 3600)
+        var min = Math.floor(s / 60) % 60
+        var sec = s % 60
         if (hour !== 0) {
-          t = hour + "时";
+          t = hour + '时'
         } else {
-          t = "";
+          t = ''
         }
-        t += min + "分";
-        t += sec + "秒";
+        t += min + '分'
+        t += sec + '秒'
       }
-      return t;
+      return t
     },
     // 应用使用行为
     setChart() {
       let option = {
         tooltip: {
           trigger: 'item',
-          axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-            type: 'none'        // 默认为直线，可选为：'line' | 'shadow'
+          axisPointer: { // 坐标轴指示器，坐标轴触发有效
+            type: 'none' // 默认为直线，可选为：'line' | 'shadow'
           },
           backgroundColor: '#11367a',
           textStyle: {
             color: '#6dd0e3',
-            fontSize: 10,
+            fontSize: 10
           },
           formatter: (data) => {
             if (data.componentSubType === 'bar' && data.seriesName !== '辅助') {
-              return data.name + ":" + data.value
+              return data.name + ':' + data.value
             } else if (data.componentSubType === 'line') {
-              return data.name + "<br>" + data.seriesName + ":" + this.formateData(data.value)
+              return data.name + '<br>' + data.seriesName + ':' + this.formateData(data.value)
             }
           }
         },
@@ -205,7 +208,7 @@ export default {
             itemHeight: 7,
             textStyle: {
               color: '#75deef',
-              fontSize: 12,
+              fontSize: 12
             },
             z: 2,
             data: [
@@ -216,7 +219,7 @@ export default {
               {name: '生活', icon: 'circle'},
               {name: '购物', icon: 'circle'},
               {name: '办公学习', icon: 'circle'},
-              {name: '其他', icon: 'circle'},
+              {name: '其他', icon: 'circle'}
             ]
           }
         ],
@@ -230,9 +233,9 @@ export default {
           },
           {
             left: '52%',
-            top: "20%",
+            top: '20%',
             right: '3%',
-            bottom: "53%",
+            bottom: '53%',
             containLabel: false
           },
           {
@@ -244,11 +247,11 @@ export default {
           },
           {
             left: '55%',
-            top: "62%",
+            top: '62%',
             right: '5%',
-            bottom: "8%",
+            bottom: '8%',
             containLabel: false
-          },
+          }
         ],
         xAxis: [
           {
@@ -317,7 +320,7 @@ export default {
             axisTick: {
               show: true
             }
-          },
+          }
         ],
         yAxis: [
           {
@@ -399,7 +402,7 @@ export default {
             min: 0,
             max: 6,
             splitLine: {
-              show: false,
+              show: false
             },
             axisLine: {
               show: true,
@@ -420,19 +423,16 @@ export default {
             axisTick: {
               show: false
             }
-          },
+          }
         ],
         series: this.setOptionData()
-      };
-      let myChart = echarts.init(this.$el, null, {renderer: 'svg'});
-      myChart.clear();
+      }
+      let myChart = echarts.init(this.$el, null, {renderer: 'svg'})
+      myChart.clear()
       myChart.resize()
-      myChart.setOption(option);
+      myChart.setOption(option)
     }
-  },
-  mounted() {
-    this.setChart();
-  },
+  }
 }
 </script>
 <style lang="scss" scoped>

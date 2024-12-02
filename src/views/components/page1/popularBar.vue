@@ -2,19 +2,22 @@
   <div class="popularBar"></div>
 </template>
 <script>
-import echarts from "echarts";
+import echarts from 'echarts'
 
 export default {
-  name: 'popularBar',
+  name: 'PopularBar',
   data() {
     return {}
   },
+  mounted() {
+    this.setChart()
+  },
   methods: {
     setOptionData() {
-      let nameData = ['数据1', '数据2', '数据3', '数据4', '数据5', '数据6', '其他'];
-      let data = [45, 33, 13, 25, 30, 35, 45];
-      let colorList = ['#2871ea', '#fbe831', '#2ea5fe', '#fc662f', '#9f56f0', '#bf232c', '#64cef2'];
-      let arr = [];
+      let nameData = ['数据1', '数据2', '数据3', '数据4', '数据5', '数据6', '其他']
+      let data = [45, 33, 13, 25, 30, 35, 45]
+      let colorList = ['#2871ea', '#fbe831', '#2ea5fe', '#fc662f', '#9f56f0', '#bf232c', '#64cef2']
+      let arr = []
       for (let i = 0; i < data.length; i++) {
         let obj = {
           name: nameData[i],
@@ -37,7 +40,7 @@ export default {
         }
         arr.push(obj)
       }
-      return arr;
+      return arr
     },
     setChart() {
       let option = {
@@ -47,22 +50,22 @@ export default {
           right: '5%',
           left: '55.5%'
         },
-          {
-            top: '10%',
-            bottom: '15%',
-            right: '52.5%',
-            left: '8%'
-          }
+        {
+          top: '10%',
+          bottom: '15%',
+          right: '52.5%',
+          left: '8%'
+        }
         ],
         tooltip: {
           trigger: 'axis',
-          axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-            type: 'none'        // 默认为直线，可选为：'line' | 'shadow'
+          axisPointer: { // 坐标轴指示器，坐标轴触发有效
+            type: 'none' // 默认为直线，可选为：'line' | 'shadow'
           },
           backgroundColor: '#11367a',
           textStyle: {
             color: '#6dd0e3',
-            fontSize: 10,
+            fontSize: 10
           },
           formatter: (params) => {
             if (params[5].seriesName === '人数') {
@@ -77,7 +80,7 @@ export default {
             data: ['数据1', '数据2', '数据3', '数据4', '数据5', '数据6', '其他'],
             axisTick: {
               show: true,
-              inside: true,
+              inside: true
             },
             axisLine: {
               show: true,
@@ -100,7 +103,7 @@ export default {
             position: 'right',
             axisTick: {
               show: true,
-              inside: true,
+              inside: true
             },
             axisLine: {
               show: true,
@@ -116,7 +119,7 @@ export default {
               inside: true,
               color: 'rgb(113,227,247)'
             }
-          },
+          }
         ],
         xAxis: [{
           type: 'value',
@@ -126,7 +129,7 @@ export default {
             show: true,
             color: '#75deef',
             fontSize: 9,
-            showMaxLabel: false,
+            showMaxLabel: false
           },
           name: '(人)',
           nameGap: -5,
@@ -145,39 +148,39 @@ export default {
             lineStyle: {
               color: '#1a3c58'
             }
-          },
+          }
         },
-          {
-            type: 'value',
-            inverse: true,
-            splitLine: {show: false},
-            axisTick: {show: true},
-            gridIndex: 1,
-            axisLabel: {
-              show: true,
-              color: '#75deef',
-              fontSize: 9,
-              showMaxLabel: false,
-            },
-            name: '(次)',
-            nameGap: -10,
-            nameTextStyle: {
-              color: '#75deef',
-              fontSize: 9,
-              align: 'right',
-              padding: [0, 0, -24, 0]
-            },
-            max: 60,
-            splitNumber: 7,
-            min: 10,
-            scale: true,
-            axisLine: {
-              show: true,
-              lineStyle: {
-                color: '#1a3c58'
-              }
-            },
+        {
+          type: 'value',
+          inverse: true,
+          splitLine: {show: false},
+          axisTick: {show: true},
+          gridIndex: 1,
+          axisLabel: {
+            show: true,
+            color: '#75deef',
+            fontSize: 9,
+            showMaxLabel: false
           },
+          name: '(次)',
+          nameGap: -10,
+          nameTextStyle: {
+            color: '#75deef',
+            fontSize: 9,
+            align: 'right',
+            padding: [0, 0, -24, 0]
+          },
+          max: 60,
+          splitNumber: 7,
+          min: 10,
+          scale: true,
+          axisLine: {
+            show: true,
+            lineStyle: {
+              color: '#1a3c58'
+            }
+          }
+        }
         ],
         series: [
           {
@@ -188,7 +191,7 @@ export default {
             itemStyle: {
               normal: {
                 color: 'rgba(0,0,0,0)'
-              },
+              }
             },
             data: [15, 15, 15, 15, 15, 15, 15]
           },
@@ -200,7 +203,7 @@ export default {
             itemStyle: {
               normal: {
                 color: 'rgba(0,0,0,0)'
-              },
+              }
             },
             data: [13, 13, 13, 13, 13, 13, 13]
           },
@@ -223,7 +226,7 @@ export default {
             itemStyle: {
               normal: {
                 color: 'rgba(0,0,0,0)'
-              },
+              }
             },
             data: [15, 15, 15, 15, 15, 15, 15]
           },
@@ -235,7 +238,7 @@ export default {
             itemStyle: {
               normal: {
                 color: '#c0232a'
-              },
+              }
             },
             data: [13, 13, 13, 13, 13, 13, 13]
           },
@@ -254,7 +257,7 @@ export default {
               fontSize: 12,
               color: '#75deef'
             },
-            data: this.setOptionData(),
+            data: this.setOptionData()
           },
           {
             name: '辅助',
@@ -266,7 +269,7 @@ export default {
             itemStyle: {
               normal: {
                 color: 'rgba(0,0,0,0)'
-              },
+              }
             },
             data: [15, 15, 15, 15, 15, 15, 15]
           },
@@ -280,7 +283,7 @@ export default {
             itemStyle: {
               normal: {
                 color: 'rgba(0,0,0,0)'
-              },
+              }
             },
             data: [13, 13, 13, 13, 13, 13, 13]
           },
@@ -307,7 +310,7 @@ export default {
             itemStyle: {
               normal: {
                 color: 'rgba(0,0,0,0)'
-              },
+              }
             },
             data: [15, 15, 15, 15, 15, 15, 15]
           },
@@ -321,7 +324,7 @@ export default {
             itemStyle: {
               normal: {
                 color: '#c0232a'
-              },
+              }
             },
             data: [13, 13, 13, 13, 13, 13, 13]
           },
@@ -342,19 +345,16 @@ export default {
               fontSize: 12,
               color: '#75deef'
             },
-            data: this.setOptionData(),
+            data: this.setOptionData()
           }
         ]
-      };
-      let myChart = echarts.init(this.$el, null, {renderer: 'svg'});
-      myChart.clear();
+      }
+      let myChart = echarts.init(this.$el, null, {renderer: 'svg'})
+      myChart.clear()
       myChart.resize()
-      myChart.setOption(option);
+      myChart.setOption(option)
     }
-  },
-  mounted() {
-    this.setChart()
-  },
+  }
 }
 </script>
 <style lang="scss" scoped>

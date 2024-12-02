@@ -2,12 +2,15 @@
   <div class="webcastsRisk"></div>
 </template>
 <script>
-import echarts from "echarts";
+import echarts from 'echarts'
 
 export default {
-  name: 'webcastsRisk',
+  name: 'WebcastsRisk',
   data() {
     return {}
+  },
+  mounted() {
+    this.setWebcasts()
   },
   methods: {
     // 网播风险分析
@@ -16,7 +19,7 @@ export default {
         title: {
           text: '重点用户关注排行',
           textStyle: {
-            color: "#fff",
+            color: '#fff',
             fontSize: 12
           },
           top: '4%',
@@ -24,8 +27,8 @@ export default {
         },
         tooltip: {
           trigger: 'axis',
-          axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-            type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+          axisPointer: { // 坐标轴指示器，坐标轴触发有效
+            type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
           }
         },
         legend: {
@@ -33,11 +36,11 @@ export default {
             {name: '抖音', icon: 'circle'},
             {name: '快手', icon: 'circle'},
             {name: '花椒', icon: 'circle'},
-            {name: '其他', icon: 'circle'},
+            {name: '其他', icon: 'circle'}
           ],
           gridIndex: 3,
-          right: "5%",
-          top: "6%",
+          right: '5%',
+          top: '6%',
           itemWidth: 7,
           itemHeight: 7,
           textStyle: {
@@ -180,12 +183,12 @@ export default {
               show: true,
               length2: 30,
               lineStyle: {
-                //color:["#408BE8",'#FE405C',"#3E3E7F","#FFC740"]
-              },
+                // color:["#408BE8",'#FE405C',"#3E3E7F","#FFC740"]
+              }
             },
             itemStyle: {
-              color: function (params) {
-                let corList = ["#142AFE", '#3FA0FF', "#00CCFF", "#1456FE"];
+              color: function(params) {
+                let corList = ['#142AFE', '#3FA0FF', '#00CCFF', '#1456FE']
                 return corList[params.dataIndex]
               }
             },
@@ -193,20 +196,17 @@ export default {
               {value: 535, name: '抖音'},
               {value: 310, name: '快手'},
               {value: 135, name: '花椒'},
-              {value: 254, name: '其他'},
+              {value: 254, name: '其他'}
             ]
           }
         ]
-      };
-      let myChart = echarts.init(this.$el, null, {renderer: 'svg'});
-      myChart.clear();
-      myChart.resize();
-      myChart.setOption(option);
-    },
-  },
-  mounted() {
-    this.setWebcasts()
-  },
+      }
+      let myChart = echarts.init(this.$el, null, {renderer: 'svg'})
+      myChart.clear()
+      myChart.resize()
+      myChart.setOption(option)
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>

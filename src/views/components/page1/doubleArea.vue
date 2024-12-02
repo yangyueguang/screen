@@ -2,7 +2,7 @@
   <div class="doubleArea"></div>
 </template>
 <script>
-import echarts from "echarts";
+import echarts from 'echarts'
 
 export default {
   name: '',
@@ -12,29 +12,37 @@ export default {
   data() {
     return {}
   },
+  watch: {
+    selectRangeDate: function() { // 检测selectRangeDate 数据变化
+      this.setChart()
+    }
+  },
+  mounted() {
+    this.setChart()
+  },
   methods: {
     setData(type) { // 数据模拟
-      let arr = [];
+      let arr = []
       switch (type) {
         case 'x': // 设置横坐标 时间数据
           for (let i = 0; i < this.selectRangeDate.length; i++) {
             arr.push(this.selectRangeDate[i][0] + '.' + this.selectRangeDate[i][1] + '.' + this.selectRangeDate[i][2])
           }
-          break;
+          break
         case 's':// 访问次数数据模拟
           for (let i = 0; i < this.selectRangeDate.length; i++) {
             arr.push((Math.random() * 6).toFixed(0))
           }
-          break;
+          break
         case 'n': // 访问人数数据
           for (let i = 0; i < this.selectRangeDate.length; i++) {
             arr.push((Math.random() * 600).toFixed(0))
           }
-          break;
+          break
         default:
-          break;
+          break
       }
-      return arr;
+      return arr
     },
     // 上网行为分析
     setChart() {
@@ -44,26 +52,26 @@ export default {
           itemHeight: 7,
           textStyle: {
             color: '#75deef',
-            fontSize: 12,
+            fontSize: 12
           },
           right: '5%',
-          top: '5%',
+          top: '5%'
         },
         grid: [
           { // 上区域图
             top: '20%',
             bottom: '45%',
-            left: "8%",
+            left: '8%',
             right: '5%',
             containLabel: false
           },
           { // 下区域图
             top: '55%',
             bottom: '10%',
-            left: "8%",
+            left: '8%',
             right: '5%',
             containLabel: false
-          },
+          }
         ],
         yAxis: [{ // 上区域图 y轴
           type: 'value',
@@ -75,9 +83,9 @@ export default {
               color: '#1a3c58'
             }
           },
-          name: "(次)",
+          name: '(次)',
           nameTextStyle: {
-            color: "#75deef",
+            color: '#75deef',
             fontSize: 10,
             padding: [0, 15, -10, 0]
           },
@@ -93,47 +101,47 @@ export default {
             }
           },
           splitLine: {
-            show: false,
+            show: false
           }
         },
-          { // 下区域图 y轴
-            gridIndex: 1,
-            splitNumber: 3,
-            inverse: true,
-            type: 'value',
-            name: "(人)",
-            nameLocation: 'end',
-            nameTextStyle: {
-              color: "#75deef",
-              fontSize: 10,
-              padding: [-10, 25, 0, 0]
+        { // 下区域图 y轴
+          gridIndex: 1,
+          splitNumber: 3,
+          inverse: true,
+          type: 'value',
+          name: '(人)',
+          nameLocation: 'end',
+          nameTextStyle: {
+            color: '#75deef',
+            fontSize: 10,
+            padding: [-10, 25, 0, 0]
+          },
+          axisLine: {
+            show: true,
+            lineStyle: {
+              color: '#1a3c58'
+            }
+          },
+          axisTick: {
+            show: true
+          },
+          position: 'bottom',
+          axisLabel: {
+            show: true,
+            textStyle: {
+              color: '#75deef',
+              fontSize: 9,
+              fontWeight: 'normal'
             },
-            axisLine: {
-              show: true,
-              lineStyle: {
-                color: '#1a3c58'
-              }
-            },
-            axisTick: {
-              show: true
-            },
-            position: 'bottom',
-            axisLabel: {
-              show: true,
-              textStyle: {
-                color: '#75deef',
-                fontSize: 9,
-                fontWeight: 'normal'
-              },
-              showMaxLabel: true,
-            },
-            splitLine: {
-              show: false,
-              lineStyle: {
-                width: 0
-              }
+            showMaxLabel: true
+          },
+          splitLine: {
+            show: false,
+            lineStyle: {
+              width: 0
             }
           }
+        }
         ],
         xAxis: [
           { // 上图x轴
@@ -184,10 +192,10 @@ export default {
             gridIndex: 1,
             position: 'bottom',
             type: 'category',
-            name: "日",
+            name: '日',
             nameLocation: 'end',
             nameTextStyle: {
-              color: "#75deef",
+              color: '#75deef',
               fontSize: 9,
               padding: [25, 0, 0, -25]
             },
@@ -213,11 +221,11 @@ export default {
               interval: 0,
               showMaxLabel: false,
               textStyle: {
-                align: "left",
+                align: 'left',
                 color: '#75deef',
                 fontSize: 9,
-                fontWeight: 'normal',
-              },
+                fontWeight: 'normal'
+              }
             },
             data: this.setData('x')
           }
@@ -230,13 +238,13 @@ export default {
           backgroundColor: '#11367a',
           textStyle: {
             color: '#6dd0e3',
-            fontSize: 10,
+            fontSize: 10
           },
           formatter: (data) => {
             if (data[0].componentIndex === 0) { // hover 到上图的时候
-              return data[0].name + '<br>' + data[0].seriesName + ":" + data[0].value + "次" + '<br>' + data[1].seriesName + ":" + data[1].value + "次"
+              return data[0].name + '<br>' + data[0].seriesName + ':' + data[0].value + '次' + '<br>' + data[1].seriesName + ':' + data[1].value + '次'
             } else {
-              return data[0].name + '<br>' + data[0].seriesName + ":" + data[0].value + "人" + '<br>' + data[1].seriesName + ":" + data[1].value + "人"
+              return data[0].name + '<br>' + data[0].seriesName + ':' + data[0].value + '人' + '<br>' + data[1].seriesName + ':' + data[1].value + '人'
             }
           }
         },
@@ -267,9 +275,9 @@ export default {
             },
             areaStyle: {
               normal: {
-                opacity: .18,
+                opacity: 0.18,
                 color: 'rgba(243, 121, 46, 1)'
-              },
+              }
             },
             itemStyle: {
               normal: {
@@ -289,7 +297,7 @@ export default {
                   ],
                   globalCoord: false // 缺省为 false
                 }
-              },
+              }
             },
             data: this.setData('s')
           },
@@ -319,9 +327,9 @@ export default {
             },
             areaStyle: {
               normal: {
-                opacity: .5,
+                opacity: 0.5,
                 color: 'rgba(19, 34, 96, 1)'
-              },
+              }
             },
             itemStyle: {
               normal: {
@@ -341,7 +349,7 @@ export default {
                   ],
                   globalCoord: false // 缺省为 false
                 }
-              },
+              }
             },
             data: this.setData('s')
           },
@@ -373,9 +381,9 @@ export default {
             },
             areaStyle: {
               normal: {
-                opacity: .18,
+                opacity: 0.18,
                 color: 'rgba(243, 121, 46, 1)'
-              },
+              }
             },
             itemStyle: {
               normal: {
@@ -395,7 +403,7 @@ export default {
                   ],
                   globalCoord: false // 缺省为 false
                 }
-              },
+              }
             },
             data: this.setData('n')
           },
@@ -427,9 +435,9 @@ export default {
             },
             areaStyle: {
               normal: {
-                opacity: .5,
+                opacity: 0.5,
                 color: 'rgba(19, 34, 96, 1)'
-              },
+              }
             },
             itemStyle: {
               normal: {
@@ -449,30 +457,22 @@ export default {
                   ],
                   globalCoord: false // 缺省为 false
                 }
-              },
+              }
             },
             data: this.setData('n')
-          },
+          }
         ]
-      };
-      if (this.selectRangeDate.length > 7) { // 当x轴数据超过7个的时候 x轴刻度显示
-        option.xAxis[2].axisLabel.interval = 3; // x轴刻度隔3个显示
-        option.xAxis[2].axisLabel.showMaxLabel = false;
       }
-      let myChart = echarts.init(this.$el, null, {renderer: 'svg'});
-      myChart.clear();
+      if (this.selectRangeDate.length > 7) { // 当x轴数据超过7个的时候 x轴刻度显示
+        option.xAxis[2].axisLabel.interval = 3 // x轴刻度隔3个显示
+        option.xAxis[2].axisLabel.showMaxLabel = false
+      }
+      let myChart = echarts.init(this.$el, null, {renderer: 'svg'})
+      myChart.clear()
       myChart.resize()
-      myChart.setOption(option);
-    },
-  },
-  watch: {
-    selectRangeDate: function () { // 检测selectRangeDate 数据变化
-      this.setChart()
+      myChart.setOption(option)
     }
-  },
-  mounted() {
-    this.setChart()
-  },
+  }
 }
 </script>
 <style lang="scss" scoped>

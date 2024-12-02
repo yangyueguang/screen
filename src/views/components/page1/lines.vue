@@ -8,7 +8,7 @@
   </div>
 </template>
 <script>
-import echarts from "echarts";
+import echarts from 'echarts'
 
 export default {
   name: '',
@@ -21,23 +21,27 @@ export default {
       legendData: []
     }
   },
+  mounted() {
+    this.handleSelect(this.value)
+    // this.setChart ();
+  },
   methods: {
     handleSelect(val) {
-      this.xAxisData = [];
-      this.seriesData = [];
-      this.legendData = [];
-      this.selected = {};
-      this.value = val;
-      let curYear = new Date().getFullYear();
-      let curMonth = new Date().getMonth();
-      let colorList = ['#bf232a', '#feed2c', '#2c7bfe', '#feac2c', '#ff7b7e', '#2cd9fe', '#a262f2', '#2ca8fe'];
+      this.xAxisData = []
+      this.seriesData = []
+      this.legendData = []
+      this.selected = {}
+      this.value = val
+      let curYear = new Date().getFullYear()
+      let curMonth = new Date().getMonth()
+      let colorList = ['#bf232a', '#feed2c', '#2c7bfe', '#feac2c', '#ff7b7e', '#2cd9fe', '#a262f2', '#2ca8fe']
       if (val === 1) {
-        let year = [curYear - 1, curYear];
+        let year = [curYear - 1, curYear]
         for (let i = 0; i < 12; i++) {
-          this.xAxisData.push((i + 1) + '月');
+          this.xAxisData.push((i + 1) + '月')
         }
         for (let i = 0; i < year.length; i++) {
-          this.legendData.push(year[i] + '年');
+          this.legendData.push(year[i] + '年')
           let obj = {
             name: year[i] + '年',
             type: 'line',
@@ -48,12 +52,12 @@ export default {
             },
             lineStyle: {
               width: 1,
-              color: colorList[i % 8],
+              color: colorList[i % 8]
             },
             data: []
           }
           for (let j = 0; j < 12; j++) {
-            obj.data.push((Math.random() * 300).toFixed(0));
+            obj.data.push((Math.random() * 300).toFixed(0))
           }
           let obj1 = {
             name: year[i] + '年',
@@ -67,24 +71,24 @@ export default {
             },
             lineStyle: {
               width: 1,
-              color: colorList[i % 8],
+              color: colorList[i % 8]
             },
             data: []
           }
           for (let j = 0; j < 12; j++) {
-            obj1.data.push((Math.random() * 300).toFixed(0));
+            obj1.data.push((Math.random() * 300).toFixed(0))
           }
-          this.seriesData.push(obj);
-          this.seriesData.push(obj1);
+          this.seriesData.push(obj)
+          this.seriesData.push(obj1)
         }
       } else {
-        let dateLength = new Date(curYear, curMonth, 0).getDate();
+        let dateLength = new Date(curYear, curMonth, 0).getDate()
         for (let i = 0; i < dateLength; i++) {
-          this.xAxisData.push((i + 1) + '号');
+          this.xAxisData.push((i + 1) + '号')
         }
         for (let i = 0; i < 12; i++) {
-          this.legendData.push((i + 1) + '月');
-          this.selected[(i + 1) + '月'] = false;
+          this.legendData.push((i + 1) + '月')
+          this.selected[(i + 1) + '月'] = false
           let obj = {
             name: (i + 1) + '月',
             type: 'line',
@@ -95,12 +99,12 @@ export default {
             },
             lineStyle: {
               width: 1,
-              color: colorList[i % 8],
+              color: colorList[i % 8]
             },
             data: []
           }
           for (let j = 0; j < dateLength; j++) {
-            obj.data.push((Math.random() * 300).toFixed(0));
+            obj.data.push((Math.random() * 300).toFixed(0))
           }
           let obj1 = {
             name: (i + 1) + '月',
@@ -114,15 +118,15 @@ export default {
             },
             lineStyle: {
               width: 1,
-              color: colorList[i % 8],
+              color: colorList[i % 8]
             },
             data: []
           }
           for (let j = 0; j < dateLength; j++) {
-            obj1.data.push((Math.random() * 300).toFixed(0));
+            obj1.data.push((Math.random() * 300).toFixed(0))
           }
-          this.seriesData.push(obj);
-          this.seriesData.push(obj1);
+          this.seriesData.push(obj)
+          this.seriesData.push(obj1)
         }
       }
       this.setChart()
@@ -150,7 +154,7 @@ export default {
             },
             top: '24%',
             right: '12%'
-          },
+          }
         ],
         grid: [
           {
@@ -159,35 +163,35 @@ export default {
             top: '38%',
             right: '51%',
             bottom: 0,
-            containLabel: true,
+            containLabel: true
           },
           {
             show: false,
             left: '51%',
-            top: "38%",
+            top: '38%',
             bottom: 0,
             right: '2%',
-            containLabel: true,
-          },
+            containLabel: true
+          }
         ],
         tooltip: {
           trigger: 'item',
           axisPointer: {
-            type: 'none',
+            type: 'none'
           },
           backgroundColor: '#11367a',
           formatter: (params) => {
             let seriesId = params.seriesId.substr(params.seriesId.length - 1, 1)
             if (seriesId === 0) {
-              return params.seriesName + "/" + params.name + "<br>" + "交易笔数:" + params.value + '笔'
+              return params.seriesName + '/' + params.name + '<br>' + '交易笔数:' + params.value + '笔'
             } else {
-              return params.seriesName + "/" + params.name + "<br>" + "交易金额:" + params.value + '元'
+              return params.seriesName + '/' + params.name + '<br>' + '交易金额:' + params.value + '元'
             }
           },
           textStyle: {
             color: '#6dd0e3',
-            fontSize: 10,
-          },
+            fontSize: 10
+          }
         },
         legend: {
           type: 'scroll',
@@ -204,7 +208,7 @@ export default {
           pageIconColor: '#75deef',
           itemWidth: 12,
           itemHeight: 7,
-          right: "15%",
+          right: '15%',
           left: '15%',
           selected: this.selected,
           data: this.legendData
@@ -241,7 +245,7 @@ export default {
               }
             },
             splitLine: {
-              show: false,
+              show: false
             },
             axisTick: {
               show: true,
@@ -279,19 +283,19 @@ export default {
               }
             },
             splitLine: {
-              show: false,
+              show: false
             },
             axisTick: {
               show: true,
               inside: true
             }
-          },
+          }
         ],
         yAxis: [
           {
             type: 'value',
             splitLine: {
-              show: false,
+              show: false
             },
             min: 0,
             max: 300,
@@ -315,7 +319,7 @@ export default {
               }
             },
             axisTick: {
-              length: 3,
+              length: 3
             }
           },
           {
@@ -325,7 +329,7 @@ export default {
             max: 300,
             interval: 50,
             splitLine: {
-              show: false,
+              show: false
             },
             axisLabel: {
               showMaxLabel: false,
@@ -346,18 +350,18 @@ export default {
               }
             },
             axisTick: {
-              length: 3,
+              length: 3
             }
-          },
+          }
         ],
         series: this.seriesData
-      };
-      let myChart = echarts.init(document.getElementById('bottom_1'), null, {renderer: 'svg'});
-      myChart.clear();
+      }
+      let myChart = echarts.init(document.getElementById('bottom_1'), null, {renderer: 'svg'})
+      myChart.clear()
       myChart.resize()
-      myChart.setOption(option);
+      myChart.setOption(option)
       myChart.on('legendselectchanged', (params) => {
-        let arr = [];
+        let arr = []
         for (let i in params.selected) {
           if (params.selected[i] === true) {
             arr.push(params.selected[i])
@@ -365,21 +369,17 @@ export default {
         }
         if (arr.length > 4) {
           this.$Modal.error({
-            content: "<p>当前最多显示4个图例</p>"
-          });
+            content: '<p>当前最多显示4个图例</p>'
+          })
           myChart.dispatchAction({
             type: 'legendUnSelect',
             // 图例名称
             name: params.name
           })
         }
-      });
-    },
-  },
-  mounted() {
-    this.handleSelect(this.value);
-    // this.setChart ();
-  },
+      })
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>

@@ -1,98 +1,98 @@
 <template>
   <div class="page3">
     <div class="left">
-      <span class='title'><span class="title-text">网赌网炒风险分析</span></span>
+      <span class="title"><span class="title-text">网赌网炒风险分析</span></span>
       <div class="left1" style="height:50%;">
         <div style="height:65%;">
-          <channel-bar id="left_1" title="网赌网炒渠道分析" :data="data1" ref="channelBar1"></channel-bar>
-          <distribution-solider id="left_2" :data="data2" ref="distributionSolider1"></distribution-solider>
+          <channel-bar id="left_1" ref="channelBar1" title="网赌网炒渠道分析" :data="data1" />
+          <distribution-solider id="left_2" ref="distributionSolider1" :data="data2" />
         </div>
         <div style="height: 35%;display: flex">
           <div style="height: 100%; width: 33.33%;">
-            <pie ref="chart3" id="pie_1" :data="pieData1"></pie>
+            <pie id="pie_1" ref="chart3" :data="pieData1" />
           </div>
           <div style="height: 100%; width: 33.33%;">
-            <pie ref="chart3" id="pie_3" :data="pieData2"></pie>
+            <pie id="pie_3" ref="chart3" :data="pieData2" />
           </div>
           <div style="height: 100%; width: 33.33%;">
-            <pie ref="chart3" id="pie_2" :data="pieData3"></pie>
+            <pie id="pie_2" ref="chart3" :data="pieData3" />
           </div>
         </div>
       </div>
       <div class="left1" style="height:28%;">
-        <red-pocket ref="redPocket"></red-pocket>
+        <red-pocket ref="redPocket" />
       </div>
       <div style="height:22%;">
         <div style="height:100%;">
-          <channel-bar id="left_5" title="炒股借贷渠道分析" :data="data3" ref="channelBar2"></channel-bar>
-          <distribution-solider id="left_6" :data="data4" ref="distributionSolider2"></distribution-solider>
+          <channel-bar id="left_5" ref="channelBar2" title="炒股借贷渠道分析" :data="data3" />
+          <distribution-solider id="left_6" ref="distributionSolider2" :data="data4" />
         </div>
       </div>
     </div>
     <div class="middle">
       <div class="center-top">
-        <china-map ref="chinaMap"></china-map>
+        <china-map ref="chinaMap" />
       </div>
       <div class="center-bottom">
-        <span class='title'><span class="title-text">社会泄密风险分析</span></span>
+        <span class="title"><span class="title-text">社会泄密风险分析</span></span>
         <div class="bottom-radars">
-          <radar id='bottom_1_1' :data=data5 ref="chart1"></radar>
-          <radar id='bottom_1_2' :data=data6 ref="chart2"></radar>
-          <radar id='bottom_1_3' :data=data7 ref="chart3"></radar>
-          <radar id='bottom_1_4' :data=data8 ref="chart4"></radar>
+          <radar id="bottom_1_1" ref="chart1" :data="data5" />
+          <radar id="bottom_1_2" ref="chart2" :data="data6" />
+          <radar id="bottom_1_3" ref="chart3" :data="data7" />
+          <radar id="bottom_1_4" ref="chart4" :data="data8" />
         </div>
         <div class="bottom-bars">
-          <double-bar id="bottom_2_1" :data="data9" ref="chart5"></double-bar>
-          <double-bar id="bottom_2_2" :data="data10" ref="chart6"></double-bar>
-          <double-bar id="bottom_2_3" :data="data11" ref="chart7"></double-bar>
-          <double-bar id="bottom_2_4" :data="data12" ref="chart8"></double-bar>
+          <double-bar id="bottom_2_1" ref="chart5" :data="data9" />
+          <double-bar id="bottom_2_2" ref="chart6" :data="data10" />
+          <double-bar id="bottom_2_3" ref="chart7" :data="data11" />
+          <double-bar id="bottom_2_4" ref="chart8" :data="data12" />
         </div>
       </div>
     </div>
     <div class="right">
       <div class="right-1">
         <div class="right1-1">
-          <span class='title'><span class="title-text">网播风险分析</span></span>
-          <webcasts-risk ref='webcastsRisk'></webcasts-risk>
+          <span class="title"><span class="title-text">网播风险分析</span></span>
+          <webcasts-risk ref="webcastsRisk" />
         </div>
       </div>
       <div class="right-1">
         <div class="right1-1">
-          <span class='title'><span class="title-text">设备安全性风险分析</span></span>
-          <device-safe-risk ref='deviceSafeRisk'></device-safe-risk>
+          <span class="title"><span class="title-text">设备安全性风险分析</span></span>
+          <device-safe-risk ref="deviceSafeRisk" />
         </div>
       </div>
       <div class="right-2">
-        <span class='title'><span class="title-text">舆论/心理风险分析</span></span>
+        <span class="title"><span class="title-text">舆论/心理风险分析</span></span>
         <div class="circular">
           <div class="canvas">
             <div class="subtitle">话题分布</div>
             <div class="canvasList">
-              <double-ring id='canvas_1' title="自杀抑郁" color='#00CCFF' ref="ring1"></double-ring>
-              <double-ring id='canvas_2' title="药品枪支" color='#EDCE43' ref="ring2"></double-ring>
-              <double-ring id='canvas_3' title="色情同性恋" color='#F83552' ref="ring3"></double-ring>
+              <double-ring id="canvas_1" ref="ring1" title="自杀抑郁" color="#00CCFF" />
+              <double-ring id="canvas_2" ref="ring2" title="药品枪支" color="#EDCE43" />
+              <double-ring id="canvas_3" ref="ring3" title="色情同性恋" color="#F83552" />
             </div>
           </div>
-          <hot-words ref="hotWords"></hot-words>
+          <hot-words ref="hotWords" />
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
-const chinaMap = () => import('./components/page3/chinaMap');
-const channelBar = () => import('./components/page3/channelBar');
-const distributionSolider = () => import('./components/page3/distributionSolider');
-const pie = () => import('./components/pie');
-const redPocket = () => import('./components/page3/redPocket');
-const radar = () => import('./components/radar');
-const doubleBar = () => import('./components/page3/doubleBar');
-const webcastsRisk = () => import('./components/page3/webcastsRisk');
-const deviceSafeRisk = () => import('./components/page3/deviceSafeRisk');
-const doubleRing = () => import('./components/page3/doubleRing');
-const hotWords = () => import('./components/page3/hotWords');
+const chinaMap = () => import('./components/page3/chinaMap')
+const channelBar = () => import('./components/page3/channelBar')
+const distributionSolider = () => import('./components/page3/distributionSolider')
+const pie = () => import('./components/pie')
+const redPocket = () => import('./components/page3/redPocket')
+const radar = () => import('./components/radar')
+const doubleBar = () => import('./components/page3/doubleBar')
+const webcastsRisk = () => import('./components/page3/webcastsRisk')
+const deviceSafeRisk = () => import('./components/page3/deviceSafeRisk')
+const doubleRing = () => import('./components/page3/doubleRing')
+const hotWords = () => import('./components/page3/hotWords')
 export default {
-  name: 'page3',
+  name: 'Page3',
   components: {
     chinaMap,
     channelBar,
@@ -112,45 +112,45 @@ export default {
         {
           subtitle: '675人（2345次/4533元）',
           top: '20%',
-          data: {name: "红包转账", value: 45, color: '#0E4CFF'},
+          data: {name: '红包转账', value: 45, color: '#0E4CFF'}
         },
         {
           subtitle: '675人（2345次/4533元）',
           top: '36%',
-          data: {name: "访问涉赌网络", value: 60, color: '#B405FD'},
+          data: {name: '访问涉赌网络', value: 60, color: '#B405FD'}
         },
         {
           subtitle: '675人（2345次/4533元）',
           top: '53%',
-          data: {name: "使用涉赌应用", value: 12, color: '#FE9900'},
+          data: {name: '使用涉赌应用', value: 12, color: '#FE9900'}
         },
         {
           subtitle: '675人（2345次/4533元）',
           top: '69%',
-          data: {name: "访问炒股网络", value: 24, color: '#FF6600'},
+          data: {name: '访问炒股网络', value: 24, color: '#FF6600'}
         },
         {
           subtitle: '675人（2345次/4533元）',
           top: '85%',
-          data: {name: "使用炒股应用", value: 21, color: '#7F05FD'}
+          data: {name: '使用炒股应用', value: 21, color: '#7F05FD'}
         }
       ],
       data3: [
         {
           subtitle: '675人（2345次/4533元）',
           top: '29%',
-          data: {name: "红包转账", value: 45, color: '#0E4CFF'},
+          data: {name: '红包转账', value: 45, color: '#0E4CFF'}
         },
         {
           subtitle: '675人（2345次/4533元）',
           top: '54%',
-          data: {name: "访问涉赌应用", value: 60, color: '#FE9900'},
+          data: {name: '访问涉赌应用', value: 60, color: '#FE9900'}
         },
         {
           subtitle: '675人（2345次/4533元）',
           top: '78%',
-          data: {name: "使用炒股应用", value: 12, color: '#7F05FD'},
-        },
+          data: {name: '使用炒股应用', value: 12, color: '#7F05FD'}
+        }
       ],
       data2: [ // 网赌用户排名数据
         {
@@ -166,8 +166,8 @@ export default {
             {name: '刘禹锡', value: 4},
             {name: '苏东坡', value: 3},
             {name: '杜牧', value: 2},
-            {name: '李白', value: 1},
-          ],
+            {name: '李白', value: 1}
+          ]
         },
         {
           top: '34%',
@@ -182,8 +182,8 @@ export default {
             {name: '刘禹锡', value: 4},
             {name: '苏东坡', value: 3},
             {name: '杜牧', value: 2},
-            {name: '李白', value: 1},
-          ],
+            {name: '李白', value: 1}
+          ]
         },
         {
           top: '50%',
@@ -198,8 +198,8 @@ export default {
             {name: '刘禹锡', value: 4},
             {name: '苏东坡', value: 3},
             {name: '杜牧', value: 2},
-            {name: '李白', value: 1},
-          ],
+            {name: '李白', value: 1}
+          ]
         },
         {
           top: '68%',
@@ -214,8 +214,8 @@ export default {
             {name: '刘禹锡', value: 4},
             {name: '苏东坡', value: 3},
             {name: '杜牧', value: 2},
-            {name: '李白', value: 1},
-          ],
+            {name: '李白', value: 1}
+          ]
         },
         {
           top: '85%',
@@ -230,9 +230,9 @@ export default {
             {name: '刘禹锡', value: 4},
             {name: '苏东坡', value: 3},
             {name: '杜牧', value: 2},
-            {name: '李白', value: 1},
-          ],
-        },
+            {name: '李白', value: 1}
+          ]
+        }
       ],
       data4: [
         {
@@ -248,8 +248,8 @@ export default {
             {name: '刘禹锡', value: 4},
             {name: '苏东坡', value: 3},
             {name: '杜牧', value: 2},
-            {name: '李白', value: 1},
-          ],
+            {name: '李白', value: 1}
+          ]
         },
         {
           top: '57%',
@@ -264,8 +264,8 @@ export default {
             {name: '刘禹锡', value: 4},
             {name: '苏东坡', value: 3},
             {name: '杜牧', value: 2},
-            {name: '李白', value: 1},
-          ],
+            {name: '李白', value: 1}
+          ]
         },
         {
           top: '83%',
@@ -280,9 +280,9 @@ export default {
             {name: '刘禹锡', value: 4},
             {name: '苏东坡', value: 3},
             {name: '杜牧', value: 2},
-            {name: '李白', value: 1},
-          ],
-        },
+            {name: '李白', value: 1}
+          ]
+        }
       ],
       data5: {
         title: '社会应用分析',
@@ -321,7 +321,7 @@ export default {
           {text: '陌陌'},
           {text: '摇一摇'},
           {text: 'INS'},
-          {text: '抖音'},
+          {text: '抖音'}
         ],
         data: [
           {
@@ -352,7 +352,7 @@ export default {
           {text: 'INS'},
           {text: '扫一扫'},
           {text: '附近的人'},
-          {text: '漂流瓶'},
+          {text: '漂流瓶'}
         ],
         data: [
           {
@@ -363,7 +363,7 @@ export default {
           {
             name: '被动',
             color: '#9EEAFF',
-            value: [60, 5, 0.30, -100, 1500, 232, 78, 32, 567, 43, 765, 432,]
+            value: [60, 5, 0.30, -100, 1500, 232, 78, 32, 567, 43, 765, 432]
           }
         ]
       },
@@ -377,13 +377,13 @@ export default {
           {text: '营销群'},
           {text: '其他'},
           {text: '相亲群'},
-          {text: '涉黄群'},
+          {text: '涉黄群'}
         ],
         data: [
           {
             name: '微信',
             color: '#FD9800',
-            value: [100, 8, 0.40, -80, 2000, 345],
+            value: [100, 8, 0.40, -80, 2000, 345]
           },
           {
             name: 'QQ',
@@ -398,7 +398,7 @@ export default {
           {
             name: '个数',
             color: '#00CCFF',
-            value: ['112', '212', '42', '232', '123', '67'],
+            value: ['112', '212', '42', '232', '123', '67']
           },
           {
             name: '使用时长',
@@ -413,7 +413,7 @@ export default {
           {
             name: '个人信息涉军应用个数',
             color: '#6514FF',
-            value: ['112', '212', '42', '232', '123', '67'],
+            value: ['112', '212', '42', '232', '123', '67']
           },
           {
             name: '涉军内容条数',
@@ -428,7 +428,7 @@ export default {
           {
             name: '主动',
             color: '#05467D',
-            value: ['112', '212', '42', '232', '123', '67'],
+            value: ['112', '212', '42', '232', '123', '67']
           },
           {
             name: '被动',
@@ -443,7 +443,7 @@ export default {
           {
             name: '个数',
             color: '#FD9800',
-            value: ['112', '212', '42', '232', '123', '67'],
+            value: ['112', '212', '42', '232', '123', '67']
           },
           {
             name: '使用时长',
@@ -453,7 +453,7 @@ export default {
         ]
       },
       pieData1: {// 饼图数据1
-        title: "TOP数据1",
+        title: 'TOP数据1',
         color: '#2C7BFE',
         data: [
           {
@@ -491,10 +491,10 @@ export default {
               color: '#252448'
             }
           }
-        ],
+        ]
       },
       pieData2: {// 饼图数据1
-        title: "TOP数据2",
+        title: 'TOP数据2',
         color: '#2C7BFE',
         data: [
           {
@@ -532,10 +532,10 @@ export default {
               color: '#1456FE'
             }
           }
-        ],
+        ]
       },
       pieData3: {// 饼图数据1
-        title: "TOP数据3",
+        title: 'TOP数据3',
         color: '#2C7BFE',
         data: [
           {
@@ -573,29 +573,29 @@ export default {
               color: '#252448'
             }
           }
-        ],
+        ]
       }
     }
   },
   mounted() {
     setTimeout(() => {
       // 通过捕获系统的onresize事件触发我们需要执行的事件
-      this.$refs.channelBar1.setChart();
-      this.$refs.distributionSolider1.setChart();
-      this.$refs.channelBar2.setChart();
-      this.$refs.distributionSolider2.setChart();
-      //this.$refs.pies.setPies();
-      this.$refs.redPocket.setPocket();
-      this.$refs.webcastsRisk.setWebcasts();
-      this.$refs.deviceSafeRisk.setDeviceSafe();
-      this.$refs.ring1.drawRing();
-      this.$refs.ring2.drawRing();
-      this.$refs.ring3.drawRing();
+      this.$refs.channelBar1.setChart()
+      this.$refs.distributionSolider1.setChart()
+      this.$refs.channelBar2.setChart()
+      this.$refs.distributionSolider2.setChart()
+      // this.$refs.pies.setPies();
+      this.$refs.redPocket.setPocket()
+      this.$refs.webcastsRisk.setWebcasts()
+      this.$refs.deviceSafeRisk.setDeviceSafe()
+      this.$refs.ring1.drawRing()
+      this.$refs.ring2.drawRing()
+      this.$refs.ring3.drawRing()
       for (let i = 1; i < 9; i++) {
         this.$refs['chart' + i].setChart()
       }
-      this.$refs.chinaMap.setMap();
-      this.$refs.hotWords.setChart();
+      this.$refs.chinaMap.setMap()
+      this.$refs.hotWords.setChart()
     }, 500)
   }
 }

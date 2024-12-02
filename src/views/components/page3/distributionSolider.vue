@@ -2,7 +2,7 @@
   <div class="rightBar"></div>
 </template>
 <script>
-import echarts from "echarts";
+import echarts from 'echarts'
 
 export default {
   name: '',
@@ -12,10 +12,13 @@ export default {
   data() {
     return {}
   },
+  mounted() {
+    this.setChart()
+  },
   methods: {
     setSoliderData(type) {
-      let arr = [];
-      let obj = {};
+      let arr = []
+      let obj = {}
       for (let i = 0; i < this.data.length; i++) {
         switch (type) {
           case 'g':
@@ -23,9 +26,9 @@ export default {
               top: this.data[i].top,
               left: 8,
               right: 30,
-              height: "13.5%"
-            };
-            break;
+              height: '13.5%'
+            }
+            break
           case 'x':
             obj = {
               axisLine: {show: false},
@@ -38,26 +41,26 @@ export default {
                 show: false
               },
               data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-            };
-            break;
+            }
+            break
           case 'y':
             obj = {
-              type: "value",
+              type: 'value',
               axisLine: {show: false},
               gridIndex: i,
               axisTick: {show: false},
               splitLine: {show: false},
               axisLabel: {show: false}
-            };
-            break;
+            }
+            break
           case 's':
             obj = {
-              type: "bar",
+              type: 'bar',
               barWidth: 2,
               data: this.data[i].data,
               label: {
                 show: true,
-                position: "insideBottomLeft",
+                position: 'insideBottomLeft',
                 offset: [3, 0],
                 distance: 2,
                 color: '#88B6C7',
@@ -68,13 +71,13 @@ export default {
                     // 没有设置 `verticalAlign`，则 `verticalAlign` 为 bottom
                   }
                 },
-                formatter: function (data) {
+                formatter: function(data) {
                   if (data.data.name.length === 2) {
-                    return data.data.name.split("").join("\n\n");
+                    return data.data.name.split('').join('\n\n')
                   } else {
-                    return data.data.name.split("").join("\n");
+                    return data.data.name.split('').join('\n')
                   }
-                },
+                }
               },
               itemStyle: {
                 color: { // 颜色线性渐变
@@ -92,25 +95,25 @@ export default {
                 }
               },
               xAxisIndex: i,
-              yAxisIndex: i,
-            };
-            break;
+              yAxisIndex: i
+            }
+            break
           default:
-            break;
+            break
         }
         arr.push(obj)
       }
-      return arr;
+      return arr
     },
     // 用户排名
     setChart() {
       let option = {
         tooltip: {
           trigger: 'axis',
-          axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-            type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+          axisPointer: { // 坐标轴指示器，坐标轴触发有效
+            type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
           },
-          formatter: "{b}:{c}"
+          formatter: '{b}:{c}'
         },
         title: {
           text: '重点关注用户排名',
@@ -118,23 +121,20 @@ export default {
           top: 10,
           textStyle: {
             fontSize: 12,
-            color: "#FFF"
+            color: '#FFF'
           }
         },
         grid: this.setSoliderData('g'),
         xAxis: this.setSoliderData('x'),
         yAxis: this.setSoliderData('y'),
         series: this.setSoliderData('s')
-      };
-      let myChart = echarts.init(this.$el, null, {renderer: 'svg'});
-      myChart.clear();
+      }
+      let myChart = echarts.init(this.$el, null, {renderer: 'svg'})
+      myChart.clear()
       myChart.resize()
-      myChart.setOption(option);
-    },
-  },
-  mounted() {
-    this.setChart();
-  },
+      myChart.setOption(option)
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>

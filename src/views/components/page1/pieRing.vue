@@ -2,7 +2,7 @@
   <div class="pieMain"></div>
 </template>
 <script>
-import echarts from "echarts";
+import echarts from 'echarts'
 
 export default {
   name: '',
@@ -11,6 +11,9 @@ export default {
   },
   data() {
     return {}
+  },
+  mounted() {
+    this.setChart()
   },
   methods: {
     // 交易支出 饼图
@@ -28,12 +31,12 @@ export default {
         },
         tooltip: {
           trigger: 'item',
-          formatter: "{b} : {c} ({d}%)",
+          formatter: '{b} : {c} ({d}%)',
           backgroundColor: '#11367a',
           textStyle: {
             color: '#6dd0e3',
-            fontSize: 10,
-          },
+            fontSize: 10
+          }
         },
         series: [
           {
@@ -43,10 +46,10 @@ export default {
             label: {
               show: true,
               position: 'inside',
-              fontSize: 10,
+              fontSize: 10
             },
             center: ['50%', '60%'],
-            data: this.data.data,
+            data: this.data.data
           },
           {
             type: 'pie',
@@ -54,15 +57,15 @@ export default {
             radius: ['52%', '72%'],
             labelLine: {
               lineStyle: {
-                color: '#444b62',
+                color: '#444b62'
               },
               length: 5,
-              length2: 5,
+              length2: 5
             },
             emphasis: {
               label: {
                 color: '#fff',
-                show: true,
+                show: true
               }
             },
             label: {
@@ -72,7 +75,7 @@ export default {
               fontSize: 10,
               padding: 0,
               backgroundColor: '#183566',
-              formatter: "{b}{c}笔/{d}%"
+              formatter: '{b}{c}笔/{d}%'
             },
             center: ['50%', '60%'],
             data: this.data.data1,
@@ -85,27 +88,24 @@ export default {
             }
           }
         ]
-      };
-      let myChart = echarts.init(this.$el, null, {renderer: 'svg'});
-      myChart.clear();
+      }
+      let myChart = echarts.init(this.$el, null, {renderer: 'svg'})
+      myChart.clear()
       myChart.resize()
-      myChart.setOption(option);
+      myChart.setOption(option)
       let obj = {
         type: 'highlight',
         name: []
-      };
+      }
       for (let i = 0; i < this.data.data.length - 1; i++) {
         obj.name.push(this.data.data[i].name)
       }
-      myChart.dispatchAction(obj);
-      myChart.on('mouseout', function () {
-        myChart.dispatchAction(obj);
-      });
-    },
-  },
-  mounted() {
-    this.setChart();
-  },
+      myChart.dispatchAction(obj)
+      myChart.on('mouseout', function() {
+        myChart.dispatchAction(obj)
+      })
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>

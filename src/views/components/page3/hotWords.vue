@@ -2,12 +2,15 @@
   <div class="hotWords"></div>
 </template>
 <script>
-import echarts from "echarts";
+import echarts from 'echarts'
 
 export default {
-  name: 'hotWords',
+  name: 'HotWords',
   data() {
     return {}
+  },
+  mounted() {
+    this.setChart()
   },
   methods: {
     // 舆论、心里风险分析
@@ -15,18 +18,18 @@ export default {
       let option = {
         tooltip: {
           trigger: 'item',
-          axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-            type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
-          },
+          axisPointer: { // 坐标轴指示器，坐标轴触发有效
+            type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+          }
         },
         legend: {
           data: [
             {name: '热词排行', icon: 'circle'},
-            {name: '用户传播排行', icon: 'circle'},
+            {name: '用户传播排行', icon: 'circle'}
           ],
           gridIndex: 3,
-          left: "28.5%",
-          top: "4%",
+          left: '28.5%',
+          top: '4%',
           itemWidth: 7,
           itemHeight: 7,
           textStyle: {
@@ -36,123 +39,123 @@ export default {
         },
         grid: [
           {
-            left: "10%",
+            left: '10%',
             top: '12%',
-            bottom: "64%",
+            bottom: '64%',
             width: '35%'
           },
           {
-            left: "48%",
+            left: '48%',
             top: '12%',
-            bottom: "64%",
+            bottom: '64%',
             width: 1
           },
           {
-            right: "15%",
+            right: '15%',
             top: '12%',
-            bottom: "64%",
+            bottom: '64%',
             width: '35%'
           },
           {
-            left: "10%",
+            left: '10%',
             top: '41.5%',
-            bottom: "35%",
+            bottom: '35%',
             width: '35%'
           },
           {
-            left: "48%",
+            left: '48%',
             top: '41.5%',
-            bottom: "35%",
+            bottom: '35%',
             width: 1
           },
           {
-            right: "15%",
+            right: '15%',
             top: '41.5%',
-            bottom: "35%",
+            bottom: '35%',
             width: '35%'
           },
           {
-            left: "10%",
+            left: '10%',
             top: '70%',
-            bottom: "5%",
+            bottom: '5%',
             width: '35%'
           },
           {
-            left: "48%",
+            left: '48%',
             top: '70%',
-            bottom: "5%",
+            bottom: '5%',
             width: 1
           },
           {
-            right: "15%",
+            right: '15%',
             top: '70%',
-            bottom: "5%",
+            bottom: '5%',
             width: '35%'
-          },
+          }
         ],
         xAxis: [
           {
-            type: "value",
+            type: 'value',
             inverse: true,
             splitLine: {show: false},
             axisLine: {show: false},
             axisLabel: {show: false},
-            axisTick: {show: false},
+            axisTick: {show: false}
           },
           {
-            type: "value",
-            gridIndex: 1,
+            type: 'value',
+            gridIndex: 1
           },
           {
-            type: "value",
+            type: 'value',
             gridIndex: 2,
             splitLine: {show: false},
             axisLine: {show: false},
             axisLabel: {show: false},
-            axisTick: {show: false},
+            axisTick: {show: false}
           },
           {
-            type: "value",
+            type: 'value',
             gridIndex: 3,
             inverse: true,
             splitLine: {show: false},
             axisLine: {show: false},
             axisLabel: {show: false},
-            axisTick: {show: false},
+            axisTick: {show: false}
           },
           {
-            type: "value",
-            gridIndex: 4,
+            type: 'value',
+            gridIndex: 4
           },
           {
-            type: "value",
+            type: 'value',
             gridIndex: 5,
             splitLine: {show: false},
             axisLine: {show: false},
             axisLabel: {show: false},
-            axisTick: {show: false},
+            axisTick: {show: false}
           },
           {
-            type: "value",
+            type: 'value',
             gridIndex: 6,
             inverse: true,
             splitLine: {show: false},
             axisLine: {show: false},
             axisLabel: {show: false},
-            axisTick: {show: false},
+            axisTick: {show: false}
           },
           {
-            type: "value",
-            gridIndex: 7,
+            type: 'value',
+            gridIndex: 7
           },
           {
-            type: "value",
+            type: 'value',
             gridIndex: 8,
             splitLine: {show: false},
             axisLine: {show: false},
             axisLabel: {show: false},
-            axisTick: {show: false},
-          },
+            axisTick: {show: false}
+          }
         ],
         yAxis: [
           {
@@ -300,7 +303,7 @@ export default {
             axisLabel: {show: false},
             axisTick: {show: false},
             axisLine: {show: false}
-          },
+          }
         ],
         series: [
           {
@@ -310,7 +313,7 @@ export default {
             label: {
               show: true,
               position: 'left',
-              formatter: "{b}",
+              formatter: '{b}',
               color: '#6EDDF2'
             },
             itemStyle: {
@@ -327,7 +330,7 @@ export default {
                 }],
                 globalCoord: false // 缺省为 false
               },
-              barBorderRadius: 5,
+              barBorderRadius: 5
             },
             data: [
               {
@@ -349,7 +352,7 @@ export default {
               {
                 value: 144,
                 name: '自杀'
-              },
+              }
             ]
           },
           {
@@ -361,7 +364,7 @@ export default {
             label: {
               show: true,
               position: 'right',
-              formatter: "{b}",
+              formatter: '{b}',
               color: '#6EDDF2'
             },
             itemStyle: {
@@ -378,7 +381,7 @@ export default {
                 }],
                 globalCoord: false // 缺省为 false
               },
-              barBorderRadius: 5,
+              barBorderRadius: 5
             },
             data: [
               {
@@ -400,7 +403,7 @@ export default {
               {
                 value: 144,
                 name: '周华健'
-              },
+              }
             ]
           },
           {
@@ -412,7 +415,7 @@ export default {
             label: {
               show: true,
               position: 'left',
-              formatter: "{b}",
+              formatter: '{b}',
               color: '#6EDDF2'
             },
             itemStyle: {
@@ -429,7 +432,7 @@ export default {
                 }],
                 globalCoord: false // 缺省为 false
               },
-              barBorderRadius: 5,
+              barBorderRadius: 5
             },
             data: [
               {
@@ -451,7 +454,7 @@ export default {
               {
                 value: 144,
                 name: '自杀'
-              },
+              }
             ]
           },
           {
@@ -463,7 +466,7 @@ export default {
             label: {
               show: true,
               position: 'right',
-              formatter: "{b}",
+              formatter: '{b}',
               color: '#6EDDF2'
             },
             itemStyle: {
@@ -480,7 +483,7 @@ export default {
                 }],
                 globalCoord: false // 缺省为 false
               },
-              barBorderRadius: 5,
+              barBorderRadius: 5
             },
             data: [
               {
@@ -502,7 +505,7 @@ export default {
               {
                 value: 144,
                 name: '周华健'
-              },
+              }
             ]
           },
           {
@@ -514,7 +517,7 @@ export default {
             label: {
               show: true,
               position: 'left',
-              formatter: "{b}",
+              formatter: '{b}',
               color: '#6EDDF2'
             },
             itemStyle: {
@@ -531,7 +534,7 @@ export default {
                 }],
                 globalCoord: false // 缺省为 false
               },
-              barBorderRadius: 5,
+              barBorderRadius: 5
             },
             data: [
               {
@@ -553,7 +556,7 @@ export default {
               {
                 value: 144,
                 name: '自杀'
-              },
+              }
             ]
           },
           {
@@ -565,7 +568,7 @@ export default {
             label: {
               show: true,
               position: 'right',
-              formatter: "{b}",
+              formatter: '{b}',
               color: '#6EDDF2'
             },
             itemStyle: {
@@ -582,7 +585,7 @@ export default {
                 }],
                 globalCoord: false // 缺省为 false
               },
-              barBorderRadius: 5,
+              barBorderRadius: 5
             },
             data: [
               {
@@ -604,20 +607,17 @@ export default {
               {
                 value: 144,
                 name: '周华健'
-              },
+              }
             ]
           }
         ]
-      };
-      let myChart = echarts.init(this.$el, null, {renderer: 'svg'});
-      myChart.clear();
-      myChart.resize();
-      myChart.setOption(option);
-    },
-  },
-  mounted() {
-    this.setChart()
-  },
+      }
+      let myChart = echarts.init(this.$el, null, {renderer: 'svg'})
+      myChart.clear()
+      myChart.resize()
+      myChart.setOption(option)
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>

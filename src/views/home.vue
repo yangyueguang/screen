@@ -4,7 +4,7 @@
       <div v-for="i in [1,2,3]" :key="i" @click="$router.push(`page${i}`)"><span>页面{{ i }}</span></div>
     </div>
     <div class="page">
-      <router-view :selectRangeDate='selectRangeDate'></router-view>
+      <router-view :select-range-date="selectRangeDate" />
     </div>
   </div>
 </template>
@@ -17,16 +17,16 @@ export default {
     }
   },
   mounted() {
-    let arr = [];
+    let arr = []
     for (let i = -30; i < 0; i++) { // 循环添加天数
-      let today = new Date();// 获取今天
-      let targetday_milliseconds = today.getTime() + 1000 * 60 * 60 * 24 * i;
-      today.setTime(targetday_milliseconds); //设置i天前的时间
-      let tYear = today.getFullYear();
-      let tMonth = today.getMonth();
-      let tDate = today.getDate();
-      let date = [tYear, tMonth + 1, tDate];
-      arr.push(date);
+      let today = new Date()// 获取今天
+      let targetday_milliseconds = today.getTime() + 1000 * 60 * 60 * 24 * i
+      today.setTime(targetday_milliseconds) // 设置i天前的时间
+      let tYear = today.getFullYear()
+      let tMonth = today.getMonth()
+      let tDate = today.getDate()
+      let date = [tYear, tMonth + 1, tDate]
+      arr.push(date)
     }
     this.selectRangeDate = arr
   }

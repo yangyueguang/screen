@@ -9,21 +9,24 @@
 }
 </style>
 <script>
-import echarts from "echarts";
+import echarts from 'echarts'
 
 export default {
+  name: '',
   props: {
     title: String,
-    data: Array,
+    data: Array
   },
-  name: '',
   data() {
     return {}
   },
+  mounted() {
+    this.setChart()
+  },
   methods: {
     setTrenchData(type) { // 数据
-      let arr = [];
-      let obj = {};
+      let arr = []
+      let obj = {}
       for (let i = 0; i < this.data.length; i++) {
         switch (type) {
           case 't':
@@ -36,17 +39,17 @@ export default {
                 fontSize: 9
               }
             }
-            break;
+            break
           case 'd':
             obj = this.data[i].data
-            break;
+            break
           case 'b':
-            obj = 100;
-            break;
+            obj = 100
+            break
           default:
-            break;
+            break
         }
-        arr.push(obj);
+        arr.push(obj)
       }
       if (type === 't') {
         arr.unshift({
@@ -57,37 +60,37 @@ export default {
             color: '#fff',
             fontSize: 12
           }
-        });
+        })
       }
-      return arr;
+      return arr
     },
     // 渠道分析
     setChart() {
       let option = {
         tooltip: {
           trigger: 'item',
-          axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-            type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
-          },
+          axisPointer: { // 坐标轴指示器，坐标轴触发有效
+            type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+          }
         },
         title: this.setTrenchData('t'),
         grid: {
           top: '15%',
           bottom: '3%',
-          left: '5%',
+          left: '5%'
         },
         yAxis: {
           data: [],
           inverse: true,
           axisLabel: {show: false},
           axisLine: {show: false},
-          axisTick: {show: false},
+          axisTick: {show: false}
         },
         xAxis: {
           splitLine: {show: false},
           axisLabel: {show: false},
           axisLine: {show: false},
-          axisTick: {show: false},
+          axisTick: {show: false}
         },
         series: [{
           type: 'bar',
@@ -104,30 +107,27 @@ export default {
           z: 2,
           label: {
             show: true,
-            position: "insideLeft",
-            color: "#fff",
+            position: 'insideLeft',
+            color: '#fff',
             offset: [0, 1],
             fontSize: 9,
-            formatter: function (params) {
+            formatter: function(params) {
               return params.name
-            },
+            }
           },
           itemStyle: {
-            color: function (params) {
-              return params.data.color;
+            color: function(params) {
+              return params.data.color
             }
           },
           data: this.setTrenchData('d')
         }]
-      };
-      let myChart = echarts.init(this.$el, null, {renderer: 'svg'});
-      myChart.clear();
-      myChart.resize();
-      myChart.setOption(option);
-    },
-  },
-  mounted() {
-    this.setChart();
-  },
+      }
+      let myChart = echarts.init(this.$el, null, {renderer: 'svg'})
+      myChart.clear()
+      myChart.resize()
+      myChart.setOption(option)
+    }
+  }
 }
 </script>

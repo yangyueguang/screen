@@ -1,13 +1,16 @@
 <template>
-  <div class='deviceSafeRisk'></div>
+  <div class="deviceSafeRisk"></div>
 </template>
 <script>
-import echarts from "echarts";
+import echarts from 'echarts'
 
 export default {
-  name: 'deviceSafeRisk',
+  name: 'DeviceSafeRisk',
   data() {
     return {}
+  },
+  mounted() {
+    this.setDeviceSafe()
   },
   methods: {
     // 设备安全性风险
@@ -17,37 +20,37 @@ export default {
           {
             text: '重点用户关注排行',
             textStyle: {
-              color: "#fff",
+              color: '#fff',
               fontSize: 12
             },
             top: '4%',
             left: '4%'
           },
           {
-            text: "异常微信网购类型排名",
+            text: '异常微信网购类型排名',
             textStyle: {
-              color: "#fff",
+              color: '#fff',
               fontSize: 12
             },
             top: '4%',
             left: '55%'
-          },
+          }
         ],
         tooltip: {
           trigger: 'axis',
-          axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-            type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+          axisPointer: { // 坐标轴指示器，坐标轴触发有效
+            type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
           }
         },
         legend: {
           data: [
             {name: '人数', icon: 'circle'},
-            {name: '金额', icon: 'circle'},
+            {name: '金额', icon: 'circle'}
           ],
           gridIndex: 3,
           orient: 'vertical',
-          right: "44%",
-          bottom: "6%",
+          right: '44%',
+          bottom: '6%',
           itemWidth: 7,
           itemHeight: 7,
           textStyle: {
@@ -114,7 +117,7 @@ export default {
         },
         polar: {
           center: ['72%', '55%'],
-          radius: "65%",
+          radius: '65%'
         },
         series: [
           {
@@ -234,16 +237,13 @@ export default {
             stack: 'a'
           }
         ]
-      };
-      let myChart = echarts.init(this.$el, null, {renderer: 'svg'});
-      myChart.clear();
+      }
+      let myChart = echarts.init(this.$el, null, {renderer: 'svg'})
+      myChart.clear()
       myChart.resize()
-      myChart.setOption(option);
-    },
-  },
-  mounted() {
-    this.setDeviceSafe();
-  },
+      myChart.setOption(option)
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>

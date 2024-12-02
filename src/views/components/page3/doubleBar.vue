@@ -8,7 +8,7 @@
 }
 </style>
 <script>
-import echarts from "echarts";
+import echarts from 'echarts'
 
 export default {
   name: '',
@@ -18,33 +18,36 @@ export default {
   data() {
     return {}
   },
+  mounted() {
+    this.setChart()
+  },
   methods: {
     setChart() {
       let option = {
         tooltip: {
           trigger: 'axis',
-          axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-            type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
-          },
+          axisPointer: { // 坐标轴指示器，坐标轴触发有效
+            type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+          }
         },
         title:
           {
             text: this.data.title,
-            top: "5%",
+            top: '5%',
             left: '5%',
             textStyle: {
               color: '#fff',
-              fontSize: 12,
+              fontSize: 12
             }
           },
         legend:
           {
             data: [
               {name: this.data.data[0].name, icon: 'circle'},
-              {name: this.data.data[1].name, icon: 'circle'},
+              {name: this.data.data[1].name, icon: 'circle'}
             ],
-            left: "center",
-            top: "17%",
+            left: 'center',
+            top: '17%',
             orient: 'horizontal',
             itemWidth: 7,
             itemHeight: 7,
@@ -56,7 +59,7 @@ export default {
           },
         grid:
           {
-            left: "5%",
+            left: '5%',
             top: '35%',
             right: '5%',
             bottom: '15%'
@@ -71,7 +74,7 @@ export default {
             axisLabel: {
               color: '#0DF5F8',
               fontSize: 8,
-              interval: 0,
+              interval: 0
             },
             axisTick: {
               inside: true,
@@ -86,7 +89,7 @@ export default {
           {
             type: 'value',
             axisLine: {
-              show: false,
+              show: false
             },
             axisLabel: {show: false},
             axisTick: {show: false},
@@ -118,17 +121,14 @@ export default {
               color: this.data.data[1].color
             },
             data: this.data.data[1].value
-          },
+          }
         ]
-      };
-      let myChart = echarts.init(this.$el, null, {renderer: 'svg'});
-      myChart.clear();
+      }
+      let myChart = echarts.init(this.$el, null, {renderer: 'svg'})
+      myChart.clear()
       myChart.resize()
-      myChart.setOption(option);
+      myChart.setOption(option)
     }
-  },
-  mounted() {
-    this.setChart();
-  },
+  }
 }
 </script>

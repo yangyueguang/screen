@@ -2,12 +2,15 @@
   <div class="funnel"></div>
 </template>
 <script>
-import echarts from "echarts";
+import echarts from 'echarts'
 
 export default {
   name: '',
   data() {
     return {}
+  },
+  mounted() {
+    this.setChart()
   },
   methods: {
     // 手机安全分析
@@ -15,17 +18,17 @@ export default {
       let option = {
         tooltip: {
           trigger: 'item',
-          formatter: "{b} : {c}",
+          formatter: '{b} : {c}',
           backgroundColor: '#11367a',
           textStyle: {
             color: '#6dd0e3',
-            fontSize: 10,
-          },
+            fontSize: 10
+          }
         },
         legend: {
           top: '25%',
-          right: "7%",
-          orient: "vertical",
+          right: '7%',
+          orient: 'vertical',
           itemWidth: 0,
           itemGap: 27,
           textStyle: {
@@ -61,14 +64,14 @@ export default {
             itemStyle: {
               normal: {
                 borderWidth: 0,
-                opacity: .7,
-                color: function (params) {
+                opacity: 0.7,
+                color: function(params) {
                   var colorList = [
                     '#2c7afc', '#bd2229', '#a262f2', '#fe672c', '#27fcfe'
-                  ];
-                  return colorList[params.dataIndex];
+                  ]
+                  return colorList[params.dataIndex]
                 }
-              },
+              }
             },
             data: [
               {value: 100, name: '陌生手机'},
@@ -95,20 +98,20 @@ export default {
                 }
               },
               emphasis: {
-                position: 'inside',
+                position: 'inside'
               }
             },
             itemStyle: {
               normal: {
-                opacity: .5,
+                opacity: 0.5,
                 borderWidth: 0,
-                color: function (params) {
+                color: function(params) {
                   var colorList = [
                     'rgb(44,123,254)', 'rgb(194,35,42)', 'rgb(162,98,242)', 'rgb(254,103,44)', 'rgb(44,252,254)'
-                  ];
-                  return colorList[params.dataIndex];
+                  ]
+                  return colorList[params.dataIndex]
                 }
-              },
+              }
             },
             data: [
               {value: 80, name: '陌生手机'},
@@ -119,16 +122,13 @@ export default {
             ]
           }
         ]
-      };
-      let myChart = echarts.init(this.$el, null, {renderer: 'svg'});
-      myChart.clear();
+      }
+      let myChart = echarts.init(this.$el, null, {renderer: 'svg'})
+      myChart.clear()
       myChart.resize()
-      myChart.setOption(option);
-    },
-  },
-  mounted() {
-    this.setChart()
-  },
+      myChart.setOption(option)
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>

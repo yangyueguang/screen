@@ -2,19 +2,22 @@
   <div class="doubleBars"></div>
 </template>
 <script>
-import echarts from "echarts";
+import echarts from 'echarts'
 
 export default {
   name: '',
   data() {
     return {}
   },
+  mounted() {
+    this.setChart()
+  },
   methods: {
     setChart() {
       let option = {
         legend: {
-          left: "8%",
-          top: "10%",
+          left: '8%',
+          top: '10%',
           itemWidth: 7,
           itemHeight: 7,
           textStyle: {
@@ -28,21 +31,21 @@ export default {
           top: '17%',
           bottom: '3%',
           containLabel: true,
-          width: '40%',
+          width: '40%'
         }, {
           show: false,
           left: '53%',
           top: '17%',
           bottom: '3%',
-          width: '1%',
+          width: '1%'
         }, {
           show: false,
           right: '6%',
           top: '17%',
           bottom: '3%',
           containLabel: true,
-          width: '40%',
-        },],
+          width: '40%'
+        }],
         xAxis: [{
           splitNumber: 8,
           type: 'value',
@@ -67,16 +70,16 @@ export default {
         }
         ],
         yAxis: [
-          //左边的标尺
+          // 左边的标尺
           {
             type: 'category',
             inverse: true,
             position: 'left',
             axisLine: {show: false},
             axisTick: {show: false},
-            axisLabel: {show: false},
+            axisLabel: {show: false}
           },
-          //中间的标尺
+          // 中间的标尺
           {
             gridIndex: 1,
             type: 'category',
@@ -92,9 +95,9 @@ export default {
               showMaxLabel: true,
               interval: 0
             },
-            data: ["1部", "2部", "3部", "4部", "5部", "6部", "7部", "8部", "9部", '10部', "11部"]
+            data: ['1部', '2部', '3部', '4部', '5部', '6部', '7部', '8部', '9部', '10部', '11部']
           },
-          //右边的标尺
+          // 右边的标尺
           {
             gridIndex: 2,
             type: 'category',
@@ -110,7 +113,7 @@ export default {
           name: '违规次数',
           type: 'bar',
           barGap: 10,
-          barWidth: "40%",
+          barWidth: '40%',
           itemStyle: {
             normal: {
               color: {
@@ -125,7 +128,7 @@ export default {
                 ],
                 global: false // 缺省为 false
               },
-              barBorderRadius: 5,
+              barBorderRadius: 5
             },
             emphasis: {
               show: false
@@ -136,7 +139,7 @@ export default {
           name: '违规人数',
           type: 'bar',
           barGap: 10,
-          barWidth: "40%",
+          barWidth: '40%',
           xAxisIndex: 2,
           yAxisIndex: 2,
           itemStyle: {
@@ -153,7 +156,7 @@ export default {
                 ],
                 global: false // 缺省为 false
               },
-              barBorderRadius: 5,
+              barBorderRadius: 5
             },
             emphasis: {
               show: false
@@ -161,16 +164,13 @@ export default {
           },
           data: [320, 302, 341, 374, 390, 450, 420, 374, 390, 450, 420]
         }]
-      };
-      let myChart = echarts.init(this.$el, null, {renderer: 'svg'});
-      myChart.clear();
+      }
+      let myChart = echarts.init(this.$el, null, {renderer: 'svg'})
+      myChart.clear()
       myChart.resize()
-      myChart.setOption(option);
+      myChart.setOption(option)
     }
-  },
-  mounted() {
-    this.setChart()
-  },
+  }
 }
 </script>
 <style lang="scss" scoped>
