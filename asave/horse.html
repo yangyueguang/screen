@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>海马</title>
+	<style type="text/css">
+		html, body {
+			overflow: hidden;
+			touch-action: none;
+			content-zooming: none;
+			position: absolute;
+			margin: 0;
+			padding: 0;
+			width: 100%;
+			height: 100%;
+			background: #191919;
+		}
+		canvas {
+			position: absolute;
+			width: 100%; 
+			height: 100%; 
+			user-select: none;
+			cursor: pointer;
+			background: #fff;
+		}
+	</style>
+</head>
+<body>
+	<canvas></canvas>
+	<!-- Click to generate a new image -->
+
+	<script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+		// CFDG core functions
+		"use strict";
+		{
+			const canvas = document.querySelector("canvas");
+			const ctx = canvas.getContext("2d");
+			let width, height, scale, offsetX, offsetY, minSize, rect, seed, speed, iter;
+			const drawCalls = [];
+			const transforms = {
+				x(m, v) {
+					m[4] += v * m[0];
+					m[5] += v * m[1];
+				},
+				y(m, v) {
+					m[4] += v * m[2];
+					m[5] += v * m[3];
+				},
+				z(m, v) {
+					m[10] += v;
+				},
+				s(m, v) {
+					const a = Array.isArray(v);
+					const x = a ? v[0] : v;
+					const y = a ? v[1] : x;
+					m[0] *= x;
+					m[1] *= x;
+					m[2] *= y;
+					m[3] *= y;
+				},
+				r(m, v) {
+					const rad = Math.PI * v / 180;
+					const cos = Math.cos(rad);
+					const sin = Math.sin(rad);
+					const r00 = cos * m[0] + sin * m[2];
+					const r01 = cos * m[1] + sin * m[3];
+					m[2] = cos * m[2] - sin * m[0];
+					m[3] = cos * m[3] - sin * m[1];
+					m[0] = r00;
+					m[1] = r01;
+				},
+				f(m, v) {
+					const rad = Math.PI * v / 180;
+					const x = Math.cos(rad);
+					const y = Math.sin(rad);
+					const n = 1 / (x * x + y * y);
+					const b00 = (x * x - y * y) / n;
+					const b01 = 2 * x * y / n;
+					const b10 = 2 * x * y / n;
+					const b11 = (y * y - x * x) / n;
+					const r00 = b00 * m[0] + b01 * m[2];
+					const r01 = b00 * m[1] + b01 * m[3];
+					m[2] = b10 * m[0] + b11 * m[2];
+					m[3] = b10 * m[1] + b11 * m[3];
+					m[0] = r00;
+					m[1] = r01;
+				},
+				skew(m, v) {
+					const x = Math.tan(Math.PI * v[0] / 180);
+					const y = Math.tan(Math.PI * v[1] / 180);
+					const r00 = m[0] + y * m[2];
+					const r01 = m[1] + y * m[3];
+					m[2] = x * m[0] + m[2];
+					m[3] = x * m[1] + m[3];
+					m[0] = r00;
+					m[1] = r01;
+				},
+				hue(m, v) {
+					m[6] += v;
+					m[6] %= 360;
+				},
+				sat(m, v) {
+					this.col(m, v, 7);
+				},
+				b(m, v) {
+					this.col(m, v, 8);
+				},
+				a(m, v) {
+					this.col(m, v, 9);
+				},
+				col(m, v, p) {
+					if (v > 0) {
+						m[p] += v * (1 - m[p]);
+					} else {
+						m[p] += v * m[p];
+					}
+				}
+			};
+			const PRIMITIVES = [
+				// SQUARE
+				s => {
+					setTransform(s);
+					ctx.fillStyle = hsla(s);
+					ctx.fillRect(-0.5, -0.5, 1, 1);
+				},
+				// CIRCLE
+				s => {
+					setTransform(s);
+					ctx.fillStyle = hsla(s);
+					ctx.beginPath();
+					ctx.arc(0, 0, 0.5, 0, 2 * Math.PI);
+					ctx.fill();
+				}
+			];
+			const drawPush = (s, t, p) => {
+				s = transform(s, t);
+				bbox(s);
+				s[11] = p;
+				drawCalls.push(s);
+			};
+			const SQUARE = (s, t) => drawPush(s, t, 0);
+			const CIRCLE = (s, t) => drawPush(s, t, 1);
+			const copy = s => {
+				return [
+					s[0], // a00
+					s[1], // a10
+					s[2], // a01
+					s[3], // a11
+					s[4], // tx
+					s[5], // ty
+					s[6], // hue
+					s[7], // saturation
+					s[8], // brillance
+					s[9], // alpha
+					s[10], // zIndex
+					s[11] // primitive
+				];
+			};
+			const transform = (s, p) => {
+				let m = copy(s);
+				for (const c in p) {
+					transforms[c](m, p[c]);
+				}
+				return m;
+			};
+			const random = _ => {
+				seed = (seed * 16807) % 2147483647;
+				return (seed - 1) / 2147483646;
+			};
+			const randint = (s, e = 0) => {
+				if (e === 0) {
+					e = s;
+					s = 0;
+				}
+				return Math.floor(s + random() * (e - s + 1));
+			};
+			const loop = (n, s, t, f) => {
+				let ls = copy(s);
+				for (let i = 0; i < n; i++) {
+					f(ls, i);
+					ls = transform(ls, t);
+				}
+			};
+			const setTransform = s => {
+				ctx.setTransform(
+					-scale * s[0],
+					scale * s[1],
+					scale * s[2],
+					-scale * s[3],
+					scale * s[4] + offsetX,
+					-scale * s[5] + offsetY
+				);
+			};
+			const tooSmall = s => {
+				const x = (s[0] * s[0] + s[1] * s[1]) * scale;
+				const y = (s[2] * s[2] + s[3] * s[3]) * scale;
+				return x < minSize && y < minSize;
+			};
+			const hsla = m => {
+				let s = m[7];
+				const h = m[6];
+				const v = m[8];
+				const a = m[9];
+				// hsv to hsl
+				const l = (2 - s) * v / 2;
+				if (l != 0) {
+					if (l == 1) {
+						s = 0;
+					} else if (l < 0.5) {
+						s = s * v / (l * 2);
+					} else {
+						s = s * v / (2 - l * 2);
+					}
+				}
+				return `hsla(${Math.round(h)},${s * 100}%,${l * 100}%,${a})`;
+			};
+			const bbox = s => {
+				const x = s[4] * scale;
+				const y = s[5] * scale;
+				if (x < rect[0]) rect[0] = x;
+				else if (x > rect[1]) rect[1] = x;
+				if (y < rect[2]) rect[2] = y;
+				else if (y > rect[3]) rect[3] = y;
+			};
+			const autoScale = s => {
+				const ns =
+					Math.min(width / (rect[1] - rect[0]), height / (rect[3] - rect[2])) * s;
+				scale *= ns;
+				offsetX = width * 0.5 - (rect[0] + rect[1]) * 0.5 * ns;
+				offsetY = height * 0.5 + (rect[3] + rect[2]) * 0.5 * ns;
+			};
+			const init = (background, m) => {
+				width = canvas.width = canvas.offsetWidth * 2;
+				height = canvas.height = canvas.offsetHeight * 2;
+				ctx.fillStyle = background;
+				ctx.fillRect(0, 0, width, height);
+				scale = 100;
+				minSize = m;
+				rect = [0, 0, 0, 0];
+				drawCalls.length = 0;
+			};
+			const next = _ => {
+				requestAnimationFrame(_ => iter.next());
+			};
+			const run = function*() {
+				let n = 0;
+				for (const s of drawCalls) {
+					PRIMITIVES[s[11]](s);
+					if (n++ > speed) {
+						n = 0;
+						yield next();
+					}
+				}
+				yield next();
+			};
+			const render = s => {
+				for (let i = 0, len = drawCalls.length; i < len; i++) {
+					let j = i,
+						item = drawCalls[j];
+					for (; j > 0 && drawCalls[j - 1][10] < item[10]; j--) {
+						drawCalls[j] = drawCalls[j - 1];
+					}
+					drawCalls[j] = item;
+				}
+				speed = s;
+				iter && iter.return();
+				iter = run();
+				iter.next();
+			};
+			["click", "touchdown"].forEach(event => {
+				document.addEventListener(event, e => START(), false);
+			});
+			//////////////////////////////////////////////////////////////////
+			// Adapted from a CFDG program
+			// Seahorse by craftycurate, December 11th, 2005
+			// https://www.contextfreeart.org/gallery2/index.html#design/189
+			//////////////////////////////////////////////////////////////////
+			seed = Math.round(Math.random() * 1000000);
+			const START = _ => {
+				init("#000", 0.5);
+				scene([1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0]);
+				autoScale(1);
+				render(100);
+			};
+			const scene = s => {
+				TRAIL1(s, { b: 1, r: 45, hue: 15, sat: 0.7 });
+				TRAIL1(s, { r: 225, b: 1, hue: 15, sat: 0.7 });
+			};
+			const TRAIL1 = (s, t) => {
+				s = transform(s, t);
+				if (tooSmall(s)) return;
+				const r = Math.random() * 1.1;
+				let weight = 0;
+				switch (true) {
+					case r <= (weight += 0.1):
+						CIRCLE(s);
+						TRAIL1(s);
+						TRAIL2(s);
+						break;
+					default:
+						CIRCLE(s);
+						TRAIL1(s, { x: 2, r: 5, s: 0.96, hue: 10, b: 0.02 });
+				}
+			};
+			const TRAIL2 = (s, t) => {
+				s = transform(s, t);
+				if (tooSmall(s)) return;
+				const r = Math.random() * 1.04;
+				let weight = 0;
+				switch (true) {
+					case r <= (weight += 0.01):
+						CIRCLE(s);
+						TRAIL5(s, { hue: 2, b: 0.02 });
+						break;
+					case r <= (weight += 0.01):
+						CIRCLE(s);
+						TRAIL4(s, { hue: 2, b: 0.01 });
+						break;
+					case r <= (weight += 0.01):
+						CIRCLE(s);
+						TRAIL3(s, { b: 0.01 });
+						break;
+					case r <= (weight += 0.01):
+						CIRCLE(s);
+						TRAIL1(s, { hue: 1, b: 0.02 });
+						break;
+					default:
+						CIRCLE(s);
+						TRAIL2(s, { x: 2, r: -2, s: 0.99, b: 0.02 });
+				}
+			};
+			const TRAIL3 = (s, t) => {
+				s = transform(s, t);
+				if (tooSmall(s)) return;
+				const r = Math.random() * 1.01;
+				let weight = 0;
+				switch (true) {
+					case r <= (weight += 0.01):
+						CIRCLE(s);
+						TRAIL1(s);
+						TRAIL3(s, { hue: 2 });
+						break;
+					default:
+						CIRCLE(s);
+						TRAIL3(s, { x: 2, r: -6, s: 0.995, b: 0.02 });
+				}
+			};
+			const TRAIL4 = (s, t) => {
+				s = transform(s, t);
+				if (tooSmall(s)) return;
+				const r = Math.random() * 1.01;
+				let weight = 0;
+				switch (true) {
+					case r <= (weight += 0.02):
+						CIRCLE(s);
+						TRAIL1(s, { hue: 2, b: 0.02 });
+						break;
+					default:
+						CIRCLE(s);
+						TRAIL4(s, { x: 2, r: -5, s: 0.992, b: 0.02 });
+				}
+			};
+			const TRAIL5 = (s, t) => {
+				s = transform(s, t);
+				if (tooSmall(s)) return;
+				const r = Math.random() * 1.01;
+				let weight = 0;
+				switch (true) {
+					case r <= (weight += 0.01):
+						CIRCLE(s);
+						TRAIL2(s, { hue: 2, b: 0.02 });
+						break;
+					default:
+						CIRCLE(s);
+						TRAIL4(s, { x: 2, r: 1.7, s: 0.992, b: 0.02 });
+				}
+			};
+			START();
+		}
+    </script>
+</body>
+</html>
