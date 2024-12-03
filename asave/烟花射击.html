@@ -156,7 +156,7 @@
       canvasCtx.beginPath()
       canvasCtx.moveTo(lastCoordinate[0], lastCoordinate[1])
       canvasCtx.lineTo(this.x, this.y)
-      canvasCtx.strokeStyle = 'hsl(' + this.hue + ',100%,' + this.brightness + '%);'
+      canvasCtx.strokeStyle = 'hsl(' + this.hue + ',100%,' + this.brightness + '%)'
       canvasCtx.stroke()
       // Draw the target (pulsing circle)
       if (options.showTargets) {
@@ -260,13 +260,13 @@
       canvasCtx.fillRect(0, 0, canvasWidth, canvasHeight)
       canvasCtx.globalCompositeOperation = 'lighter'
       // Loop over all existing fireworks (they should be updated & drawn)
-      let i = fireworks.length;
+      var i = fireworks.length;
       while (i--) {
         fireworks[i].draw()
         fireworks[i].update(i)
       }
       // Loop over all existing particles (they should be updated & drawn)
-      let i = particles.length;
+      var i = particles.length;
       while (i--) {
         particles[i].draw()
         particles[i].update(i)

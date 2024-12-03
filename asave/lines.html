@@ -20,10 +20,10 @@
     <style>
         *, body, html {
             margin: 0;
-            padding: 0
+            padding: 0;
         }
         a, body, html {
-            color: #00b7c3
+            color: #00b7c3;
         }
         h1, h2 {
             text-shadow: 0 0 25px rgba(254,254,255,.85);
@@ -34,23 +34,23 @@
         }
         #canvas, #container {
             width: 100%;
-            height: 100%
+            height: 100%;
         }
         #canvas, #stats {
             position: absolute;
-            z-index: 10
+            z-index: 10;
         }
         * {
             -webkit-box-sizing: border-box;
             -moz-box-sizing: border-box;
             -ms-box-sizing: border-box;
             -o-box-sizing: border-box;
-            box-sizing: border-box
+            box-sizing: border-box;
         }
         body, html {
             font: 16px/1.4 Lato, sans-serif;
             -webkit-font-smoothing: antialiased;
-            font-smoothing: antialiased
+            font-smoothing: antialiased;
         }
         body {
             overflow: hidden;
@@ -59,77 +59,77 @@
             -khtml-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
-            user-select: none
+            user-select: none;
         }
         h1 {
             font: 2.75em Cinzel, serif;
             font-weight: 400;
-            letter-spacing: .35em
+            letter-spacing: .35em;
         }
         h2 {
             font: 1.45em Cinzel, serif;
             font-weight: 400;
             letter-spacing: .5em;
-            text-transform: lowercase
+            text-transform: lowercase;
         }
         [class^=letter] {
             -webkit-transition:opacity 3s ease;
             -moz-transition:opacity 3s ease;
-            transition:opacity 3s ease
+            transition:opacity 3s ease;
         }
         .letter-0 {
-            transition-delay: .2s
+            transition-delay: .2s;
         }
         .letter-1 {
-            transition-delay: .4s
+            transition-delay: .4s;
         }
         .letter-2 {
-            transition-delay: .6s
+            transition-delay: .6s;
         }
         .letter-3 {
-            transition-delay: .8s
+            transition-delay: .8s;
         }
         .letter-4 {
-            transition-delay: 1s
+            transition-delay: 1s;
         }
         .letter-5 {
-            transition-delay: 1.2s
+            transition-delay: 1.2s;
         }
         .letter-6 {
-            transition-delay: 1.4s
+            transition-delay: 1.4s;
         }
         .letter-7 {
-            transition-delay: 1.6s
+            transition-delay: 1.6s;
         }
         .letter-8 {
-            transition-delay: 1.8s
+            transition-delay: 1.8s;
         }
         .letter-9 {
-            transition-delay: 2s
+            transition-delay: 2s;
         }
         .letter-10 {
-            transition-delay: 2.2s
+            transition-delay: 2.2s;
         }
         .letter-11 {
-            transition-delay: 2.4s
+            transition-delay: 2.4s;
         }
         .letter-12 {
-            transition-delay: 2.6s
+            transition-delay: 2.6s;
         }
         .letter-13 {
-            transition-delay: 2.8s
+            transition-delay: 2.8s;
         }
         .letter-14 {
-            transition-delay: 3s
+            transition-delay: 3s;
         }
         h1.transition-in, h2.transition-in {
-            visibility: visible
+            visibility: visible;
         }
         h1 [class^=letter], h2 [class^=letter] {
-            opacity: 0
+            opacity: 0;
         }
         h1.transition-in [class^=letter], h2.transition-in [class^=letter] {
-            opacity: 1
+            opacity: 1;
         }
         #container {
             display: table;
@@ -140,7 +140,7 @@
         }
         #container>div {
             display: table-cell;
-            vertical-align: middle
+            vertical-align: middle;
         }
         #container p {
             position: absolute;
@@ -152,37 +152,37 @@
             font-weight: 300;
             color: #76747a;
             -webkit-font-smoothing: subpixel-antialiased;
-            font-smoothing: subpixel-antialiased
+            font-smoothing: subpixel-antialiased;
         }
         #container p strong {
             color: #b3abc5;
-            font-size: 5em
+            font-size: 5em;
         }
         #container p span {
             font-size: .75em;
-            padding: 0 2px
+            padding: 0 2px;
         }
         #canvas {
             top: 0;
             left: 0;
-            cursor: none
+            cursor: none;
         }
         #stats {
             left: 10px;
-            top: 10px
+            top: 10px;
         }
         .dg.ac {
-            z-index: 100!important
+            z-index: 100!important;
         }
         #container div p strong a {
             color: #999;
-            font-size: 15px
+            font-size: 15px;
         }
         body, td, th {
-            font-family: Lato, sans-serif
+            font-family: Lato, sans-serif;
         }
         a:active, a:hover, a:link, a:visited {
-            text-decoration: none
+            text-decoration: none;
         }
     </style>
 </head>
@@ -224,7 +224,7 @@
         h.innerHTML = "FPS",
         p.appendChild(h)
     let f = document.createElement("div")
-    for (f.id = "fpsGraph", f.style.cssText = "position:relative;width:74px;height:30px;background-color:#0ff", p.appendChild(f) 74 > f.children.length;)(v = document.createElement("span")).style.cssText = "width:1px;height:30px;float:left;background-color:#113",
+    for (f.id = "fpsGraph", f.style.cssText = "position:relative;width:74px;height:30px;background-color:#0ff", p.appendChild(f); 74 > f.children.length;)(v = document.createElement("span")).style.cssText = "width:1px;height:30px;float:left;background-color:#113",
         f.appendChild(v)
     let x = document.createElement("div")
     x.id = "ms",
@@ -236,7 +236,7 @@
         m.innerHTML = "MS",
         x.appendChild(m)
     let u = document.createElement("div")
-    for (u.id = "msGraph", u.style.cssText = "position:relative;width:74px;height:30px;background-color:#0f0", x.appendChild(u) 74 > u.children.length;) {
+    for (u.id = "msGraph", u.style.cssText = "position:relative;width:74px;height:30px;background-color:#0f0", x.appendChild(u); 74 > u.children.length;) {
         let v = document.createElement("span")
         v.style.cssText = "width:1px;height:30px;float:left;background-color:#131",
             u.appendChild(v)
@@ -311,7 +311,7 @@
                     // f.globalCompositeOperation = "lighter",
                     f.strokeStyle = "hsla(" + Math.round(l.update()) + ",90%,50%,0.25)",
                     f.lineWidth = 1,
-                f.frame % 60 == 0 && console.log(l.update(), Math.round(l.update()), l.phase, l.offset, l.frequency, l.amplitude)
+                f.frame % 60 === 0 && console.log(l.update(), Math.round(l.update()), l.phase, l.offset, l.frequency, l.amplitude)
                 for (let t, e = 0; e < E.trails; e++)(t = w[e]).update(),
                     t.draw()
                 f.frame++,
@@ -343,7 +343,7 @@
             }
         }
         function m(t) {
-            for (let e, n = document.getElementById(t), i = n.innerHTML.replace("&amp;", "&").split(""), a = "", o = 0, s = i.length; o < s; o++) a += (e = i[o].replace("&", "&amp")).trim() ? '<span class="letter-' + o + '">' + e + "</span>": "&nbsp;"
+            for (let e, n = document.getElementById(t), i = n.innerHTML.replace("&amp", "&").split(""), a = "", o = 0, s = i.length; o < s; o++) a += (e = i[o].replace("&", "&amp")).trim() ? '<span class="letter-' + o + '">' + e + "</span>": "&nbsp"
             n.innerHTML = a,
                 setTimeout(function() {
                         n.className = "transition-in"
@@ -398,7 +398,7 @@
                         this.spring = e.spring + .1 * Math.random() - .05,
                             this.friction = E.friction + .01 * Math.random() - .005,
                             this.nodes = []
-                        for (let n, i = 0 i < E.size; i++)(n = new t).x = x.x,
+                        for (let n, i = 0 ;i < E.size; i++)(n = new t).x = x.x,
                             n.y = x.y,
                             this.nodes.push(n)
                     },

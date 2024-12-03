@@ -33,8 +33,8 @@
   let counter = 0
   // 初始化 Canvas
   function onLoad() {
-    [c1, c2, c3] = document.querySelectorAll('canvas')
-      [ctx1, ctx2, ctx3] = [c1, c2, c3].map(c => c.getContext('2d'))
+    [c1, c2, c3] = document.querySelectorAll('canvas');
+    [ctx1, ctx2, ctx3] = [c1, c2, c3].map(c => c.getContext('2d'))
     resizeCanvas()
     layoutText()
     computeImgTarget()
@@ -121,7 +121,7 @@
       ctx1.save()
       ctx1.translate(this.x, this.y)
       ctx1.rotate(Math.atan2(this.vy, this.vx) + Math.PI / 2)
-      ctx1.fillStyle = `hsl(${this.hue}, 100%, 50%);` // 原生矩形非path绘制，fillReact要在选颜色之后，否则会用默认黑色绘制
+      ctx1.fillStyle = `hsl(${this.hue}, 100%, 50%)` // 原生矩形非path绘制，fillReact要在选颜色之后，否则会用默认黑色绘制
       ctx1.fillRect(0, 0, 5, 10) // 长方形火箭块
       ctx1.restore()
     },
@@ -173,7 +173,7 @@
       ctx1.save()
       ctx1.beginPath()
       ctx1.arc(this.x, this.y, this.r, 0, Math.PI * 2) // 圆形颗粒
-      ctx1.fillStyle = `hsl(${this.hue}, 100%, ${this.lightness}%);` // 填充颜色 hsl：色调、饱和度、亮度
+      ctx1.fillStyle = `hsl(${this.hue}, 100%, ${this.lightness}%)` // 填充颜色 hsl：色调、饱和度、亮度
       // ctx1.globalAlpha = this.alpha;                         //透明度
       ctx1.closePath()
       ctx1.fill()

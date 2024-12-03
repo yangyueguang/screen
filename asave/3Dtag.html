@@ -17,7 +17,7 @@
 			color: #000;
 			text-decoration: none;
 			font-size: 15px;
-			font-family: "微软雅黑"
+			font-family: "微软雅黑";
 			font-weight: bold;
 		}
 		.tag:hover{border:1px solid #666;}
@@ -62,17 +62,17 @@
 		<a class="tag" href="#">3D标签云</a>
 	</div>
 	<script>
-		let tagEle = "querySelectorAll" in document ? document.querySelectorAll(".tag") : getClass("tag"),
+		let tagEle = "querySelectorAll" in document ? document.querySelectorAll(".tag") : getClass("tag")
 			paper = "querySelectorAll" in document ? document.querySelector(".tagBall") : getClass("tagBall")[0]
-			RADIUS =220,
-			fallLength = 500,
-			tags=[],
-			angleX = Math.PI/500,
-		    angleY = Math.PI/500,
-			CX = paper.offsetWidth/2,
-			CY = paper.offsetHeight/2,
-			EX = paper.offsetLeft + document.body.scrollLeft + document.documentElement.scrollLeft,
-			EY = paper.offsetTop + document.body.scrollTop + document.documentElement.scrollTop;
+			RADIUS =220
+			fallLength = 500
+			tags=[]
+			angleX = Math.PI/500
+		    angleY = Math.PI/500
+			CX = paper.offsetWidth/2
+			CY = paper.offsetHeight/2
+			EX = paper.offsetLeft + document.body.scrollLeft + document.documentElement.scrollLeft
+			EY = paper.offsetTop + document.body.scrollTop + document.documentElement.scrollTop
 		function getClass(className){
 			let ele = document.getElementsByTagName("*")
 			let classEle = []
@@ -86,7 +86,6 @@
 		}
 		function innit(){
 			for(let i=0;i<tagEle.length;i++){
-				let a , b;
 				let k = -1+(2*(i+1)-1)/tagEle.length;
 				let a = Math.acos(k)
 				let b = a*Math.sqrt(tagEle.length*Math.PI)

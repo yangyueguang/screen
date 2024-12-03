@@ -68,7 +68,7 @@
       width: 100%;
       padding: 10px 10px;
       box-sizing: border-box;
-      background-color: rgba(0, 0, 0, 0.8)
+      background-color: rgba(0, 0, 0, 0.8);
       color: #fff;
       font-size: 12px;
     }
@@ -231,9 +231,9 @@
 		let phiLength = Math.PI * 2;
 		let thetaStart = 0
 		let thetaLength = Math.PI;
-		for (y = 0 y <= segY; y++) {
+		for (y = 0; y <= segY; y++) {
 			verticesRow = []
-			for (x = 0 x <= segX; x++) {
+			for (x = 0; x <= segX; x++) {
 				let u = x / segX;
 				let v = 0.05 + y / segY * (1 - 0.1)
 				let vertex = {
@@ -247,8 +247,8 @@
 			}
 			vertices.push(verticesRow)
 		}
-		for (y = 0 y < segY; ++y) {
-			for (x = 0 x < segX; ++x) {
+		for (y = 0; y < segY; ++y) {
+			for (x = 0; x < segX; ++x) {
 				dom = document.createElement('div')
 				domStyle = dom.style;
 				domStyle.position = 'absolute'
@@ -309,14 +309,14 @@
 			cosRZ = Math.cos(rZ)
 			let segX = config.segX;
 			let segY = config.segY;
-			for (y = 0 y <= segY; y++) {
+			for (y = 0; y <= segY; y++) {
 				verticesRow = vertices[y]
-				for (x = 0 x <= segX; x++) {
+				for (x = 0; x <= segX; x++) {
 					rotate(vertex = verticesRow[x], vertex.x, vertex.y, vertex.z)
 				}
 			}
-			for (y = 0 y < segY; y++) {
-				for (x = 0 x < segX; x++) {
+			for (y = 0; y < segY; y++) {
+				for (x = 0; x < segX; x++) {
 					dom = globeDoms[x + segX * y]
 					v1 = dom.topLeft;
 					v2 = dom.topRight;

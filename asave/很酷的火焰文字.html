@@ -77,7 +77,7 @@
                 this.context.fillStyle = '#101030'
                 this.context.fillRect(0, 0, this.canvas.width, this.canvas.height )
                 this.contextImageData = this.context.getImageData(0, 0, this.canvas.width, this.canvas.height)
-                setInterval( bargs( function( _this ) { _this.update() return false; }, this ), 1000 )
+                setInterval( bargs( function( _this ) { _this.update(); return false; }, this ), 1000 )
               },
               getDisplayElement: function()
               {
@@ -111,7 +111,7 @@
     function bargs( _fn )
     {
       let args = []
-      for( let n = 1 n < arguments.length; n++ )
+      for( let n = 1; n < arguments.length; n++ )
         args.push( arguments[ n ] )
       return function () { return _fn.apply( this, args ) }
     }

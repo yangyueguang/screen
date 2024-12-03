@@ -76,7 +76,7 @@
 	function drawpoints() { //绘制粒子
 	    ctx.clearRect(0, 0, canvas.width, canvas.height) //清屏
 	    for (let i = 0; i < points.length; i++) { //遍历粒子
-	        point = points[i] //定义单个粒子
+	        let point = points[i] //定义单个粒子
 	        ctx.beginPath()
 	        // ctx.arc(point.sx, point.sy, point.size, 20, false) //根据粒子属性画圆
 			ctx.fillRect(point.sx, point.sy,7,7)

@@ -52,7 +52,7 @@
               window.addEventListener('resize', this.default.bind(this))
           }
           mouseListener(e) {
-              for (let i = 0;, len = this.pointObj.length; i < len; i++) {
+              for (let i = 0, len = this.pointObj.length; i < len; i++) {
                   let distance = Math.pow(this.pointObj[i].xByWindows - e.x, 2) + Math.pow(this.pointObj[i].yByWindows - e.y, 2)
                   if (distance < this.radiusPow) {
                       this.pointObj[i].distance = 1 - distance / this.radiusPow

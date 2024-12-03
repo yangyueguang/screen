@@ -149,8 +149,8 @@ function WaterRipple(element, settings) {
               _attenuation = attenuation,
               _maxAmplitude = maxAmplitude;
       // 渲染所有像素点
-      for (let y = 0 y < height; y++) {
-        for (let x = 0 x < _width; x++) {
+      for (let y = 0; y < height; y++) {
+        for (let x = 0; x < _width; x++) {
           let x_boundary = 0, judge = _map_index % _width;
           if (judge == 0) {
             x_boundary = 1 // 左边边界

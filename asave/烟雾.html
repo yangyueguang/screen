@@ -29,12 +29,12 @@
   <div></div>
   <div class="start">start</div>
   <script>
-  let camera, scene, renderer,
+  var camera, scene, renderer,
     geometry, material, mesh;
   init()
   animate()
   function init() {
-    clock = new Newthree.Clock()
+    var clock = new Newthree.Clock()
     renderer = new Newthree.WebGLRenderer()
     renderer.setSize(window.innerWidth, window.innerHeight)
     scene = new Newthree.Scene()

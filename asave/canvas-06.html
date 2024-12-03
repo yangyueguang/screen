@@ -46,7 +46,7 @@
 	for (let x = 0; x < width; x += step) {
 		for (let y = 0; y < height; y += step) {
 			let color = data32[y * width + x]
-			if (color != 0xFFFFFFFF) {
+			if (color !== 0xFFFFFFFF) {
 				particles.push({ x, y })
 			}
 		}
@@ -66,7 +66,7 @@
 			let c  = (60 * Math.sign(dY) + 250) % 360
 			ctx.beginPath()
 			ctx.arc(particle.x + dX, particle.y + dY - i/10, r * .7, 2 * Math.PI, 0)
-			ctx.fillStyle = `hsl(${c}, 100%, 50%);`
+			ctx.fillStyle = `hsl(${c}, 100%, 50%)`
 			ctx.fill()
 		})
 	}

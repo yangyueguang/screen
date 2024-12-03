@@ -66,7 +66,7 @@
         }
         //星星闪起来
         function playStars() {
-            for (let n = 0 n < starCount; n++) {
+            for (let n = 0; n < starCount; n++) {
                 arr[n].getColor()
                 arr[n].draw()
             }
@@ -170,7 +170,7 @@
         }
         //绘制流星
         function playRains() {
-            for (let n = 0 n < rainCount; n++) {
+            for (let n = 0; n < rainCount; n++) {
                 let rain = rains[n]
                 rain.move() //移动
                 if (rain.y > window.innerHeight) {

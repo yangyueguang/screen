@@ -197,7 +197,7 @@
                 bhCas.width = bhCas.height = 50;
                 bhCtx = bhCas.getContext("2d")
                 opacity = 0
-                for (i = k = 0 k < 20; i = ++k) {
+                for (i = k = 0; k < 20; i = ++k) {
                     opacity += 0.05;
                     bhCtx.beginPath()
                     bhCtx.fillStyle = "rgba(188,186,187," + opacity + ")"
@@ -247,7 +247,7 @@
             }
             execAnimate = function() {
                 let i, k;
-                for (i = k = 1 k < 1000; i = ++k) {
+                for (i = k = 1; k < 1000; i = ++k) {
                     particles.push(new Particle({
                         x: canvas.width * Math.random(),
                         y: canvas.height * Math.random(),

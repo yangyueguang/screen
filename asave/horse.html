@@ -253,10 +253,10 @@
 				yield next()
 			}
 			let render = s => {
-				for (let i = 0;, len = drawCalls.length; i < len; i++) {
+				for (let i = 0, len = drawCalls.length; i < len; i++) {
 					let j = i,
 						item = drawCalls[j]
-					for (; j > 0 && drawCalls[j - 1][10] < item[10] j--) {
+					for (; j > 0 && drawCalls[j - 1][10] < item[10]; j--) {
 						drawCalls[j] = drawCalls[j - 1]
 					}
 					drawCalls[j] = item;

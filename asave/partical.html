@@ -81,10 +81,10 @@
 			this.rotationY = (this.center.x - x) / this.center.x * this.MAX_ROTATION_ANGLE;
 		},
 		setupFigure: function() {
-			for (let i = 0;, length = this.particles.length; i < length; i++) {
+			for (let i = 0, length = this.particles.length; i < length; i++) {
 				this.particles[i].setAxis(this.strategies[this.strategyIndex]())
 			}
-			if (++this.strategyIndex == this.strategies.length) {
+			if (++this.strategyIndex === this.strategies.length) {
 				this.strategyIndex = 0
 			}
 			this.translationCount = 0
@@ -108,7 +108,7 @@
 			}
 			this.translationCount++;
 			this.translationCount %= this.TRANSLATION_COUNT;
-			if (this.translationCount == 0) {
+			if (this.translationCount === 0) {
 				this.setupFigure()
 			}
 		}
@@ -120,7 +120,7 @@
 		getStrategies: function() {
 			let strategies = []
 			for (let i in this) {
-				if (this[i] == arguments.callee || typeof this[i] != 'function') {
+				if (this[i] === arguments.callee || typeof this[i] != 'function') {
 					continue;
 				}
 				strategies.push(this[i].bind(this))
@@ -191,7 +191,7 @@
 		SPRING: 0.01,
 		FRICTION: 0.9,
 		FOCUS_POSITION: 300,
-		COLOR: 'hsl(%hue, 100%, 70%);',
+		COLOR: 'hsl(%hue, 100%, 70%)',
 		init: function() {
 			this.x = 0
 			this.y = 0

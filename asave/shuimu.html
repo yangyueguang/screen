@@ -102,15 +102,15 @@ let RENDERER = {
 			this.y = Math.max(this.y - this.ADJUST_DISTANCE, this.destinationY)
 		}
 		let gradient = this.context.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radius)
-		gradient.addColorStop(0, 'hsl(245, 100%, 50%);')
-		gradient.addColorStop(0.3, 'hsl(245, 100%, 30%);')
-		gradient.addColorStop(1, 'hsl(245, 100%, 10%);')
+		gradient.addColorStop(0, 'hsl(245, 100%, 50%)')
+		gradient.addColorStop(0.3, 'hsl(245, 100%, 30%)')
+		gradient.addColorStop(1, 'hsl(245, 100%, 10%)')
 		this.context.fillStyle = gradient;
 		this.context.fillRect(0, 0, this.width, this.height)
-		for(let i = 0;, length = this.dusts.length; i < length; i++){
+		for(let i = 0, length = this.dusts.length; i < length; i++){
 			this.dusts[i].render(this.context, this.x, this.y)
 		}
-		for(let i = 0;, length = this.jellyfishes.length; i < length; i++){
+		for(let i = 0, length = this.jellyfishes.length; i < length; i++){
 			this.jellyfishes[i].render(this.context, this.x, this.y)
 		}
 	}

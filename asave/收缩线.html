@@ -54,7 +54,9 @@ h2 {
     (function(global){
         let module = global.noise = {}
         function Grad(x, y, z) {
-            this.x = x this.y = y this.z = z;
+            this.x = x
+            this.y = y
+            this.z = z;
         }
         Grad.prototype.dot2 = function(x, y) {
             return this.x*x + this.y*y;
@@ -262,7 +264,8 @@ h2 {
             // Find unit grid cell containing point
             let X = Math.floor(x), Y = Math.floor(y)
             // Get relative xy coordinates of point within that cell
-            x = x - x y = y - y
+            x = x - X
+            y = y - Y
             // Wrap the integer cells at 255 (smaller integer period can be introduced here)
             X = X & 255; Y = Y & 255;
             // Calculate noise contributions from each of the four corners
@@ -283,8 +286,8 @@ h2 {
             // Find unit grid cell containing point
             let X = Math.floor(x), Y = Math.floor(y), Z = Math.floor(z)
             // Get relative xyz coordinates of point within that cell
-            x = x - x
-            y = y - y
+            x = x - X
+            y = y - Y
             z = z - Z
             // Wrap the integer cells at 255 (smaller integer period can be introduced here)
             X = X & 255; Y = Y & 255; Z = Z & 255;
@@ -345,7 +348,7 @@ function Spline() {
       new Newthree.Vector3(j / 180 * length * 2 - length, 0, 0)
     )
     this.geometry.colors[j] = new Newthree.Color(
-      "hsl(" + (j * 0.6 + this.color) + ",70%,70%);"
+      "hsl(" + (j * 0.6 + this.color) + ",70%,70%)"
     )
   }
   this.material = new Newthree.LineBasicMaterial({
@@ -396,7 +399,7 @@ function updateColor() {
     let color = Math.abs((splines[i].color - offset * 10) % 360)
     for (let j = 0; j < splines[i].geometry.vertices.length; j++) {
       splines[i].mesh.geometry.colors[j] = new Newthree.Color(
-        "hsl(" + (j * 0.6 + color) + ",70%,70%);"
+        "hsl(" + (j * 0.6 + color) + ",70%,70%)"
       )
     }
     splines[i].mesh.geometry.colorsNeedUpdate = true;

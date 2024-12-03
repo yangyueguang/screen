@@ -123,15 +123,15 @@ function splode(x,y,z){
 		spark.vz=Math.cos(p1)*Math.sin(p2)*v;
 		spark.vy=Math.cos(p2)*v;
 		switch(type){
-			case 0: spark.img=sparkPics[pic1] break;
+			case 0: spark.img=sparkPics[pic1]; break;
 			case 1:
 				spark.img=sparkPics[parseInt(Math.random()*2)?pic1:pic2]
 				break;
 			case 2:
 				switch(parseInt(Math.random()*3)){
-					case 0: spark.img=sparkPics[pic1] break;
-					case 1: spark.img=sparkPics[pic2] break;
-					case 2: spark.img=sparkPics[pic3] break;
+					case 0: spark.img=sparkPics[pic1]; break;
+					case 1: spark.img=sparkPics[pic2]; break;
+					case 2: spark.img=sparkPics[pic3]; break;
 				}
 				break;
 		}
@@ -141,10 +141,10 @@ function splode(x,y,z){
 		sparks.push(spark)
 	}
 	switch(parseInt(Math.random()*4)){
-		case 0:	pow=new Audio(s+"pow1.ogg") break;
-		case 1:	pow=new Audio(s+"pow2.ogg") break;
-		case 2:	pow=new Audio(s+"pow3.ogg") break;
-		case 3:	pow=new Audio(s+"pow4.ogg") break;
+		case 0:	pow=new Audio(s+"pow1.ogg"); break;
+		case 1:	pow=new Audio(s+"pow2.ogg"); break;
+		case 2:	pow=new Audio(s+"pow3.ogg"); break;
+		case 3:	pow=new Audio(s+"pow4.ogg"); break;
 	}
 	d=Math.sqrt((x-playerX)*(x-playerX)+(y-playerY)*(y-playerY)+(z-playerZ)*(z-playerZ))
 	pow.volume=1.5/(1+d/10)
@@ -246,16 +246,16 @@ function draw(){
 				point1.x=point.x
 				point1.y=point.y
 				switch(sparks[i].img){
-					case sparkPics[0]:ctx.strokeStyle="#f84"break;
-					case sparkPics[1]:ctx.strokeStyle="#84f"break;
-					case sparkPics[2]:ctx.strokeStyle="#8ff"break;
-					case sparkPics[3]:ctx.strokeStyle="#fff"break;
-					case sparkPics[4]:ctx.strokeStyle="#4f8"break;
-					case sparkPics[5]:ctx.strokeStyle="#f44"break;
-					case sparkPics[6]:ctx.strokeStyle="#f84"break;
-					case sparkPics[7]:ctx.strokeStyle="#84f"break;
-					case sparkPics[8]:ctx.strokeStyle="#fff"break;
-					case sparkPics[9]:ctx.strokeStyle="#44f"break;
+					case sparkPics[0]:ctx.strokeStyle="#f84";break;
+					case sparkPics[1]:ctx.strokeStyle="#84f";break;
+					case sparkPics[2]:ctx.strokeStyle="#8ff";break;
+					case sparkPics[3]:ctx.strokeStyle="#fff";break;
+					case sparkPics[4]:ctx.strokeStyle="#4f8";break;
+					case sparkPics[5]:ctx.strokeStyle="#f44";break;
+					case sparkPics[6]:ctx.strokeStyle="#f84";break;
+					case sparkPics[7]:ctx.strokeStyle="#84f";break;
+					case sparkPics[8]:ctx.strokeStyle="#fff";break;
+					case sparkPics[9]:ctx.strokeStyle="#44f";break;
 				}
 				for(j=sparks[i].trail.length-1;j>=0;--j){
 					point2=rasterizePoint(sparks[i].trail[j].x,sparks[i].trail[j].y,sparks[i].trail[j].z)
@@ -379,7 +379,7 @@ frame()
             sequence = [],
             cmd = '#'
         function formatTime(date) {
-            let h = date.getHours(),
+            var h = date.getHours(),
                 m = date.getMinutes(),
                 m = m < 10 ? '0' + m : m;
             return h + ':' + m;
@@ -412,7 +412,7 @@ frame()
             destroy && S.Shape.switchShape(S.ShapeBuilder.letter(''))
         }
         function performAction(value) {
-            let action,
+            var action,
                 value,
                 current;
             // overlay.classList.remove('overlay--visible')
@@ -562,7 +562,7 @@ frame()
                 let el = e.target,
                     index;
                 if (el.classList.contains('tabs-label')) {
-                    for (let t = 0 t < triggers.length; t++) {
+                    for (let t = 0; t < triggers.length; t++) {
                         triggers[t].classList.remove('tabs-label--active')
                         panels[t].classList.remove('tabs-panel--active')
                         if (el === triggers[t]) {
@@ -714,7 +714,7 @@ frame()
                 fy = shapeCanvas.height,
                 w = 0,
                 h = 0
-            for (let p = 0 p < pixels.length; p += (4 * gap)) {
+            for (let p = 0; p < pixels.length; p += (4 * gap)) {
                 if (pixels[p + 3] > 0) {
                     dots.push(new S.Point({
                         x: x,
@@ -784,8 +784,8 @@ frame()
                 let dots = [],
                     width = gap * w,
                     height = gap * h;
-                for (let y = 0 y < height; y += gap) {
-                    for (let x = 0 x < width; x += gap) {
+                for (let y = 0; y < height; y += gap) {
+                    for (let x = 0; x < width; x += gap) {
                         dots.push(new S.Point({
                             x: x,
                             y: y,
@@ -810,7 +810,7 @@ frame()
         return {
             shuffleIdle: function () {
                 let a = S.Drawing.getArea()
-                for (let d = 0 d < dots.length; d++) {
+                for (let d = 0; d < dots.length; d++) {
                     if (!dots[d].s) {
                         dots[d].move({
                             x: Math.random() * a.w,
@@ -827,7 +827,7 @@ frame()
                 compensate()
                 if (n.dots.length > dots.length) {
                     size = n.dots.length - dots.length;
-                    for (let d = 1 d <= size; d++) {
+                    for (let d = 1; d <= size; d++) {
                         dots.push(new S.Dot(a.w / 2, a.h / 2))
                     }
                 }
@@ -879,7 +879,7 @@ frame()
                 }
             },
             render: function () {
-                for (let d = 0 d < dots.length; d++) {
+                for (let d = 0; d < dots.length; d++) {
                     dots[d].render()
                 }
             }

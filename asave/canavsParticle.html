@@ -203,7 +203,7 @@
                    this.dotCtx.restore()
                },
                link: function () {
-                   if (this.id == 0) return;
+                   if (this.id === 0) return;
                    let previousDot1 = getPreviousDot(this.id, 1)
                    let previousDot2 = getPreviousDot(this.id, 2)
                    let previousDot3 = getPreviousDot(this.id, 3)
@@ -213,9 +213,9 @@
                    ctx.moveTo(previousDot1.x, previousDot1.y)
                    ctx.beginPath()
                    ctx.lineTo(this.x, this.y)
-                   if (previousDot2 != false) ctx.lineTo(previousDot2.x, previousDot2.y)
-                   if (previousDot3 != false) ctx.lineTo(previousDot3.x, previousDot3.y)
-                   if (previousDot4 != false) ctx.lineTo(previousDot4.x, previousDot4.y)
+                   if (previousDot2 !== false) ctx.lineTo(previousDot2.x, previousDot2.y)
+                   if (previousDot3 !== false) ctx.lineTo(previousDot3.x, previousDot3.y)
+                   if (previousDot4 !== false) ctx.lineTo(previousDot4.x, previousDot4.y)
                    ctx.stroke()
                    ctx.closePath()
                },
@@ -240,7 +240,7 @@
                }
            }
            window.onmousemove = function (e) {
-               let e = event || window.event;
+               var e = event || window.event;
                let scrollX = document.documentElement.scrollLeft || document.body.scrollLeft;
                let scrollY = document.documentElement.scrollTop || document.body.scrollTop;
                let x = e.pageX || e.clientX + scrollX;
@@ -255,7 +255,7 @@
            }
            function drawIfMouseMoving() {
                if (!mouseMoving) return;
-               if (dots.length == 0) {
+               if (dots.length === 0) {
                    dots[0] = new Dot(0, mouseX, mouseY, true)
                    dots[0].draw()
                    return;
@@ -275,7 +275,7 @@
                dots[dots.length - 1].link()
            }
            function getPreviousDot(id, stepback) {
-               if (id == 0 || id - stepback < 0) {
+               if (id === 0 || id - stepback < 0) {
                    return false
                }
                if (typeof dots[id - stepback] !== "undefined") {

@@ -133,7 +133,7 @@
 				left += engine.measureText(textStack.text).width;
 				let data     = engine.getImageData(0, 0, width, height)
 				let subStack = []
-				for (let i = 0;, max = data.width * data.height; i < max; i++) {
+				for (let i = 0, max = data.width * data.height; i < max; i++) {
 					if (data.data[i * 4 + 3]) {
 						subStack.push({
 							x : (i % data.width) / data.width,

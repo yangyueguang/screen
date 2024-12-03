@@ -169,7 +169,7 @@
 			x: width / 2,
 			y: height / 2 }
 		let radius = textureA.width / 2;
-		let particles = []
+		var particles = []
 		let positions = textures.map(function (texture) {
 			let result = []
 			for (let i = 0; i < texture.width / BLOCK_SIZE; i++) {
@@ -187,7 +187,7 @@
 		})
 		let currentPositionsIndex = 0
 		let MAX_PARTICLES = 300;
-		let particles = Array.from({ length: MAX_PARTICLES }, function (_value, index) {
+		var particles = Array.from({ length: MAX_PARTICLES }, function (_value, index) {
 			let currentPositions = positions[currentPositionsIndex]
 			let position = currentPositions[index % currentPositions.length]
 			return new Spring({

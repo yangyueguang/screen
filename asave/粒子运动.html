@@ -67,7 +67,7 @@
                 ctx.lineWidth = r
                 let tx = x
                 let ty = y
-                for (let i = 0; i < Math.min(this.history_max * this.loop2.cosNorm, this.history.length) i++) {
+                for (let i = 0; i < Math.min(this.history_max * this.loop2.cosNorm, this.history.length); i++) {
                     ctx.moveTo(tx, ty)
                     tx = this.history[i][0]
                     ty = this.history[i][1]

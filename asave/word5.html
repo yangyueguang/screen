@@ -122,11 +122,11 @@
         background: #fff;
         color: #79a8ae;
         opacity: .9;
-        -webkit-transition: opacity 0.1s cubic-bezier(0.694, 0.0482, 0.335, 1)
-        -moz-transition: opacity 0.1s cubic-bezier(0.694, 0.0482, 0.335, 1)
-        -ms-transition: opacity 0.1s cubic-bezier(0.694, 0.0482, 0.335, 1)
-        -o-transition: opacity 0.1s cubic-bezier(0.694, 0.0482, 0.335, 1)
-        transition: opacity 0.1s cubic-bezier(0.694, 0.0482, 0.335, 1)
+        -webkit-transition: opacity 0.1s cubic-bezier(0.694, 0.0482, 0.335, 1);
+        -moz-transition: opacity 0.1s cubic-bezier(0.694, 0.0482, 0.335, 1);
+        -ms-transition: opacity 0.1s cubic-bezier(0.694, 0.0482, 0.335, 1);
+        -o-transition: opacity 0.1s cubic-bezier(0.694, 0.0482, 0.335, 1);
+        transition: opacity 0.1s cubic-bezier(0.694, 0.0482, 0.335, 1);
     }
     .help:hover {
         opacity: 1;
@@ -139,19 +139,19 @@
         height: 490px;
         margin: -260px 0 0 -275px;
         opacity: 0;
-        -webkit-transform: rotateY(90deg)
-        -moz-transform: rotateY(90deg)
-        -ms-transform: rotateY(90deg)
-        -o-transform: rotateY(90deg)
-        transform: rotateY(90deg)
+        -webkit-transform: rotateY(90deg);
+        -moz-transform: rotateY(90deg);
+        -ms-transform: rotateY(90deg);
+        -o-transform: rotateY(90deg);
+        transform: rotateY(90deg);
     }
     .overlay--visible {
         opacity: 1;
-        -webkit-transform: rotateY(0)
-        -moz-transform: rotateY(0)
-        -ms-transform: rotateY(0)
-        -o-transform: rotateY(0)
-        transform: rotateY(0)
+        -webkit-transform: rotateY(0);
+        -moz-transform: rotateY(0);
+        -ms-transform: rotateY(0);
+        -o-transform: rotateY(0);
+        transform: rotateY(0);
     }
     .ui-share,
     .ui-details {
@@ -258,11 +258,11 @@
         opacity: .5;
         cursor: pointer;
         margin-right: 2px;
-        -webkit-transition: opacity 0.1s cubic-bezier(0.694, 0.0482, 0.335, 1)
-        -moz-transition: opacity 0.1s cubic-bezier(0.694, 0.0482, 0.335, 1)
-        -ms-transition: opacity 0.1s cubic-bezier(0.694, 0.0482, 0.335, 1)
-        -o-transition: opacity 0.1s cubic-bezier(0.694, 0.0482, 0.335, 1)
-        transition: opacity 0.1s cubic-bezier(0.694, 0.0482, 0.335, 1)
+        -webkit-transition: opacity 0.1s cubic-bezier(0.694, 0.0482, 0.335, 1);
+        -moz-transition: opacity 0.1s cubic-bezier(0.694, 0.0482, 0.335, 1);
+        -ms-transition: opacity 0.1s cubic-bezier(0.694, 0.0482, 0.335, 1);
+        -o-transition: opacity 0.1s cubic-bezier(0.694, 0.0482, 0.335, 1);
+        transition: opacity 0.1s cubic-bezier(0.694, 0.0482, 0.335, 1);
     }
     .tabs-label:hover {
         opacity: .9;
@@ -414,7 +414,7 @@
               sequence = [],
               cmd = '#'
           function formatTime(date) {
-              let h = date.getHours(),
+              var h = date.getHours(),
                   m = date.getMinutes(),
                   m = m < 10 ? '0' + m : m;
               return h + ':' + m;

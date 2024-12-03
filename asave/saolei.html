@@ -70,8 +70,8 @@
         let [x, y] = xy.split('-').map(n => n * 1)//转下数字
         let around = []
         //雷周围的三行三列
-        for (let i = -1; i <= 1 i++) {
-            for (let j = -1; j <= 1 j++) {
+        for (let i = -1; i <= 1; i++) {
+            for (let j = -1; j <= 1; j++) {
                 let id = `${x + j}-${y + i}`
                 if (g_arr.indexOf(id) > -1 && id !== xy) {
                     around.push(id)

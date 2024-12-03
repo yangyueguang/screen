@@ -22,7 +22,7 @@ let windowHalfY = window.innerHeight / 2;
 init()
 animate()
 function init() {
-	container = document.createElement( 'div' )
+	container = document.createElement('div')
 	document.body.appendChild( container )
 	camera = new Newthree.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 10000 )
 	camera.position.z = 1000;
@@ -38,8 +38,8 @@ function init() {
 		}
 	} )
 	let i = 0
-	for ( let ix = 0 ix < AMOUNTX; ix ++ ) {
-		for ( let iy = 0 iy < AMOUNTY; iy ++ ) {
+	for ( let ix = 0; ix < AMOUNTX; ix ++ ) {
+		for ( let iy = 0; iy < AMOUNTY; iy ++ ) {
 			particle = particles[ i ++ ] = new Newthree.Particle( material )
 			particle.position.x = ix * SEPARATION - ( ( AMOUNTX * SEPARATION ) / 2 )
 			particle.position.z = iy * SEPARATION - ( ( AMOUNTY * SEPARATION ) / 2 )
@@ -52,7 +52,6 @@ function init() {
 	document.addEventListener( 'mousemove', onDocumentMouseMove, false )
 	document.addEventListener( 'touchstart', onDocumentTouchStart, false )
 	document.addEventListener( 'touchmove', onDocumentTouchMove, false )
-	//
 	window.addEventListener( 'resize', onWindowResize, false )
 }
 function onWindowResize() {
@@ -91,8 +90,8 @@ function render() {
 	camera.position.y += ( - mouseY - camera.position.y ) * .05;
 	camera.lookAt( scene.position )
 	let i = 0
-	for ( let ix = 0 ix < AMOUNTX; ix ++ ) {
-		for ( let iy = 0 iy < AMOUNTY; iy ++ ) {
+	for ( let ix = 0; ix < AMOUNTX; ix ++ ) {
+		for ( let iy = 0; iy < AMOUNTY; iy ++ ) {
 			particle = particles[ i++ ]
 			particle.position.y = ( Math.sin( ( ix + count ) * 0.3 ) * 50 ) + ( Math.sin( ( iy + count ) * 0.5 ) * 50 )
 			particle.scale.x = particle.scale.y = ( Math.sin( ( ix + count ) * 0.3 ) + 1 ) * 2 + ( Math.sin( ( iy + count ) * 0.5 ) + 1 ) * 2;
@@ -102,9 +101,7 @@ function render() {
 	count += 0.1;
 }
 </script>
-<div style="text-align:center;margin:1px 0; font:normal 14px/24px 'MicroSoft YaHei'color:#ffffff">
-<p>适用浏览器：360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗. 不支持IE8及以下浏览器。</p>
-<p>来源：<a href="http://sc.chinaz.com/" target="_blank">站长素材</a></p>
+<div style="text-align:center;margin:1px 0; font:normal 14px/24px 'MicroSoft YaHei';color:#ffffff;">
 </div>
 </body>
 </html>

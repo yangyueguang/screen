@@ -169,7 +169,7 @@ function createBox(box, pos) {
 	} else {
 		bright = 10 + 40 / half * (maxParts - pos)
 	}
-	let color = 'hsl(' + huetStep * pos + ', 100%, ' + bright + '%);'
+	let color = 'hsl(' + huetStep * pos + ', 100%, ' + bright + '%)'
 	// 1. Add shape
 	let newShape = doc.createElement('div')
 	newShape.classList.add('shape')

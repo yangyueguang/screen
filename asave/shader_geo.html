@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Title</title>
   <script src="../js/lib/vue.min.js"></script>
-  <script src="../js/lib/three/build/three.min.js"></script>
+  <script src="js/three.min.js"></script>
   <script src="../js/lib/three/js/controls/OrbitControls.js"></script>
   <style>.container{width: 600px; height: 400px}</style>
 </head>
@@ -42,7 +42,7 @@
 		      varying vec2 vUv;
           void main(){
             vUv = uv;
-            vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 )
+            vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
             gl_Position = projectionMatrix * mvPosition;
           }
         `
@@ -54,8 +54,8 @@
             {
               vec2 position = - 10.0 + 20.0 * vUv;
               vec2 uv = position.xy / iResolution.xy;
-              float m = max(abs(uv.x), abs(uv.y))
-              // smoothstep(min, max, x)
+              float m = max(abs(uv.x), abs(uv.y));
+              // smoothstep(min, max, x);
               // 值 x 位于 min、max 区间中。如果 x=min，返回 0；
               // 如果 x=max，返回 1；
               // 如果 x 在两者之间，按照下列公式返回数据：
@@ -64,9 +64,9 @@
               // max−min                 max−min
               m = smoothstep(0.095,0.095,m)
               if (m==1.0){
-                gl_FragColor = vec4(0.,0.6,0.8,1.0)
+                gl_FragColor = vec4(0.,0.6,0.8,1.0);
               }else{
-                gl_FragColor = vec4(0,0,0,.0)
+                gl_FragColor = vec4(0,0,0,.0);
               }
             }
         `

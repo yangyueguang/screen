@@ -24,7 +24,7 @@ html,body {
 <script>
 let RENDERER = {
 	SNOW_COUNT: {INIT : 100, DELTA : 1},
-	BACKGROUND_COLOR : 'hsl(%h, 50%, %l%);',
+	BACKGROUND_COLOR : 'hsl(%h, 50%, %l%)',
 	INIT_HUE : 180,
 	DELTA_HUE : 0.1,
 	init : function(){
@@ -113,7 +113,7 @@ SNOW.prototype = {
 		this.deltaScale = 1 + this.SCALE.DELTA * 500 / Math.max(this.width, this.height)
 		this.rotate = 0
 		if(toRandomize){
-			for(let i = 0;, count = Math.random() * 1000; i < count; i++){
+			for(let i = 0, count = Math.random() * 1000; i < count; i++){
 				this.x += this.vx;
 		 		this.y += this.vy;
 		 		this.scale *= this.deltaScale;

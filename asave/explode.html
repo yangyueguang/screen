@@ -156,7 +156,7 @@
                 this.createMoveLine(point)
             }
             destroyPoint(id) {
-                for (let i = 0;, len = this.point.length; i < len; i++) {
+                for (let i = 0, len = this.point.length; i < len; i++) {
                     if (this.point[i].id === id) {
                         this.point[i].destroy = true
                         return
@@ -240,7 +240,7 @@
                     let cP1y = getRandNumber(y - this.explodeCRang, y + this.explodeCRang)
                     let cP2x = getRandNumber(x - this.explodeCRang, x + this.explodeCRang)
                     let cP2y = getRandNumber(y - this.explodeCRang, y + this.explodeCRang)
-                    for (let t = 0; t <= 1 t += 0.01) {
+                    for (let t = 0; t <= 1; t += 0.01) {
                         let point = this.getCubicBezierPoint(x, y, cP1x, cP1y, cP2x, cP2y, endX, endY, t)
                         e.path.push(point)
                     }
@@ -252,7 +252,7 @@
                 this.explode.push(...explode)
             }
             drawExplode() {
-                for (let i = 0;, len = this.explode.length; i < len; i++) {
+                for (let i = 0, len = this.explode.length; i < len; i++) {
                     let p = this.explode[i]
                     let ppLen = p.path.length
                     if (ppLen) {

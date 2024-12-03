@@ -16,7 +16,7 @@ canvas {
     position: absolute;
     top: 0;
     left: 50%;
-    -webkit-transform: translate(-50%, 0)
+    -webkit-transform: translate(-50%, 0);
     transform: translate(-50%, 0)
 }
 </style>
@@ -24,8 +24,22 @@ canvas {
 <body>
   <script src='js/three.min.js'></script>
 <script src='js/bas.min.js'></script>
-    <script>var _createClass = function () { function defineProperties(target, props) { for (let i = 0; i < props.length; i++) { let descriptor = props[i] descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor) } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps) if (staticProps) defineProperties(Constructor, staticProps) return Constructor; } }()
-    function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (let i = 0;, arr2 = Array(arr.length) i < arr.length; i++) { arr2[i] = arr[i] } return arr2; } else { return Array.from(arr) } }
+    <script>
+        var _createClass = function () {
+        function defineProperties(target, props) { for (let i = 0; i < props.length; i++) {
+            let descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true;
+            if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor) } }
+        return function (Constructor, protoProps, staticProps) {
+            if (protoProps) defineProperties(Constructor.prototype, protoProps)
+        if (staticProps) defineProperties(Constructor, staticProps)
+            return Constructor;
+        } }()
+    function _toConsumableArray(arr) { if (Array.isArray(arr)) {
+        for (let i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i] } return arr2;
+    } else {
+        return Array.from(arr)
+    }
+    }
     function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function") } }
     let TEXTURE_SRC_BEFORE = 'js/robot.png' // https://unsplash.com/photos/dcp4hnQY-z0
     let TEXTURE_SRC_AFTER = 'js/robot.png' // https://unsplash.com/photos/weuWmzv7xnU
@@ -52,8 +66,8 @@ canvas {
         let geometry = new BAS.PrefabBufferGeometry(prefab, intervalX * intervalY)
         let aPosition = geometry.createAttribute('aPosition', 4)
         let i = 0
-        for (let x = 0 x < intervalX; x++) {
-            for (let y = 0 y < intervalY; y++) {
+        for (let x = 0; x < intervalX; x++) {
+            for (let y = 0; y < intervalY; y++) {
                 geometry.setPrefabData(aPosition, i++, [x * PREFAB.WIDTH - width / 2, y * PREFAB.HEIGHT - height / 2, 0, Math.random() // random coefficient
                 ])
             }

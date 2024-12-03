@@ -43,7 +43,7 @@
         quotes: none;
     }
     q:before, q:after, blockquote:before, blockquote:after {
-        content: ""
+        content: "";
         content: none;
     }
     a img {
@@ -68,7 +68,7 @@
 				  precision highp float;
 				  #endif
     		void main(void) {
-    		 gl_FragColor = vec4(0.2, 0.3, 0.4, 1.0)
+    		 gl_FragColor = vec4(0.2, 0.3, 0.4, 1.0);
     		}
 		</script>
   <script id="shader-vs" type="x-shader/x-vertex">
@@ -76,7 +76,7 @@
   	uniform mat4 modelViewMatrix;
   	uniform mat4 perspectiveMatrix;
    	void main(void) {
-  		gl_Position = perspectiveMatrix * modelViewMatrix * vec4(  vertexPosition, 1.0)
+  		gl_Position = perspectiveMatrix * modelViewMatrix * vec4(  vertexPosition, 1.0);
   	}
   </script>
     <script>
@@ -374,7 +374,7 @@
             let rad;
             let num;
             let targetX, targetY;
-            for (i = 0 i < numLines * 2; i += 2) {
+            for (i = 0; i < numLines * 2; i += 2) {
                 count += .3;
                 bp = i * 3;
                 vertices[bp] = vertices[bp + 3]
@@ -383,7 +383,7 @@
                 targetX = randomTargetXArr[num]
                 targetY = randomTargetYArr[num]
                 px = vertices[bp + 3]
-                px += (targetX - px); * (Math.random() * .04 + .06)
+                px += (targetX - px) * (Math.random() * .04 + .06)
                 vertices[bp + 3] = px;
                 //py = (Math.sin(cn) + 1) * .2 * (Math.random() * .5 - .25)
                 py = vertices[bp + 4]

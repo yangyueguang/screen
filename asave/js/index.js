@@ -74,7 +74,7 @@
       ctx.save()
       ctx.translate(this.x, this.y)
       ctx.rotate(Math.atan2(this.vy, this.vx) + Math.PI / 2)
-      ctx.fillStyle = `hsl(${this.hue}, 100%, 50%);` // 原生矩形非path绘制，fillReact要在选颜色之后，否则会用默认黑色绘制
+      ctx.fillStyle = `hsl(${this.hue}, 100%, 50%)` // 原生矩形非path绘制，fillReact要在选颜色之后，否则会用默认黑色绘制
       ctx.fillRect(0, 0, 5, 10) // 长方形火箭块
       ctx.restore()
     },
@@ -121,7 +121,7 @@
       ctx.beginPath()
       ctx.translate(this.x, this.y) // 改变位置
       ctx.arc(0, 0, this.r, 0, Math.PI * 2) // 圆形颗粒
-      ctx.fillStyle = `hsl(${this.hue}, 100%, ${this.lightness}%);` // 填充颜色 hsl：色调、饱和度、亮度
+      ctx.fillStyle = `hsl(${this.hue}, 100%, ${this.lightness}%)` // 填充颜色 hsl：色调、饱和度、亮度
       ctx.globalAlpha = this.alpha // 透明度
       ctx.closePath()
       ctx.fill()

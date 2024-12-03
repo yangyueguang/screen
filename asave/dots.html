@@ -99,7 +99,7 @@
               y = (i / 4 - x) / shapeCan.width,
               index = i;
           if (imageData[i + 3] > 0) {
-              for (let p = 0 p < 4; p++) {
+              for (let p = 0; p < 4; p++) {
                   if (!this.shapeParts[index + p]) {
                       let particle = new Particle({
                           x: ((x * 2)) - 200,
@@ -111,7 +111,7 @@
                   }
               }
           } else {
-              for (let p = 0 p < 4; p++) {
+              for (let p = 0; p < 4; p++) {
                   if (this.shapeParts[index + p]) {
                       this.shapeParts[index + p].explode()
                       this.shapeParts[index + p] = undefined;
@@ -131,8 +131,8 @@
       for (let i = 0; i < partLen; i++) {
           let particle = this.particles[i]
           if (particle && particle.render && particle.xPos < width && particle.xPos > 0 && particle.yPos > 0 && particle.yPos < height) {
-              for (let w = 0 w < particle.size; w++) {
-                  for (let h = 0 h < particle.size; h++) {
+              for (let w = 0; w < particle.size; w++) {
+                  for (let h = 0; h < particle.size; h++) {
                       if (particle.xPos + w < width && particle.xPos + w > 0 && particle.yPos + h > 0 && particle.yPos + h < height) {
                           pData = (~~ (particle.xPos + w) + (~~ (particle.yPos + h) * width)) * 4;
                           data[pData] = settings.ClockColor.r;

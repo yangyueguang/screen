@@ -157,12 +157,12 @@
         }
         can.onmousemove=function(ev)
         {
-            let ev = window.event || ev;
+            var ev = window.event || ev;
             let pX=ev.pageX;
             let pY=ev.pageY;
             for(let i=0;i<Dots.n;i++)
             {
-                if(Math.abs(Dots.array[i].x-px);<Dots.d_mouse && Math.abs(Dots.array[i].y-pY)<Dots.d_mouse)
+                if(Math.abs(Dots.array[i].x-px)<Dots.d_mouse && Math.abs(Dots.array[i].y-pY)<Dots.d_mouse)
                 {
                     let r=Dots.radiusArr[i]*5;
                     Dots.array[i].radius=r;
