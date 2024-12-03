@@ -26,7 +26,7 @@
 	<audio src="boom.mp3" preload="auto"></audio>
 	<audio src="shotfire.mp3" preload="auto"></audio>
 	<audio src="shotfire.mp3" preload="auto"></audio>
-	<audio src="shotfire.mp3" preload="auto"></audio>
+	<audio src="shotfire.mp3" preload="auto" />
 	<script>
 		let canvas = document.getElementById("cas")
 		let ocas = document.createElement("canvas")
@@ -58,8 +58,7 @@
 				if(random){
 					let bigboom = new Boom(getRandom(canvas.width/3,canvas.width*2/3) ,2,"#FFF" , {x:x , y:y})
 					bigbooms.push(bigboom)
-				}
-				else {
+				} else {
 					let bigboom = new Boom(getRandom(canvas.width/3,canvas.width*2/3) ,2,"#FFF" , {x:canvas.width/2 , y:200} , document.querySelectorAll(".shape")[parseInt(getRandom(0, document.querySelectorAll(".shape").length))])
 					bigbooms.push(bigboom)
 				}
@@ -160,8 +159,7 @@
 					}
 					else this._boom()
 					this.dead = true;
-				}
-				else {
+				} else {
 					this._paint()
 				}
 			},

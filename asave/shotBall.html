@@ -51,14 +51,11 @@
 			 	})
 			 	if("requestAnimationFrame" in window){
 					requestAnimationFrame(animate)
-				}
-				else if("webkitRequestAnimationFrame" in window){
+				} else if("webkitRequestAnimationFrame" in window){
 					webkitRequestAnimationFrame(animate)
-				}
-				else if("msRequestAnimationFrame" in window){
+				} else if("msRequestAnimationFrame" in window){
 					msRequestAnimationFrame(animate)
-				}
-				else if("mozRequestAnimationFrame" in window){
+				} else if("mozRequestAnimationFrame" in window){
 					mozRequestAnimationFrame(animate)
 				}
 			}
