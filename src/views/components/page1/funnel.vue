@@ -3,7 +3,6 @@
 </template>
 <script>
 import echarts from 'echarts'
-
 export default {
   name: '',
   data() {
@@ -66,7 +65,7 @@ export default {
                 borderWidth: 0,
                 opacity: 0.7,
                 color: function(params) {
-                  var colorList = [
+                  let colorList = [
                     '#2c7afc', '#bd2229', '#a262f2', '#fe672c', '#27fcfe'
                   ]
                   return colorList[params.dataIndex]
@@ -106,7 +105,7 @@ export default {
                 opacity: 0.5,
                 borderWidth: 0,
                 color: function(params) {
-                  var colorList = [
+                  let colorList = [
                     'rgb(44,123,254)', 'rgb(194,35,42)', 'rgb(162,98,242)', 'rgb(254,103,44)', 'rgb(44,252,254)'
                   ]
                   return colorList[params.dataIndex]

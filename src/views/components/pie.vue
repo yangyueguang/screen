@@ -9,7 +9,6 @@
 </template>
 <script>
 import echarts from 'echarts'
-
 export default {
   name: '',
   props: {
@@ -74,16 +73,13 @@ export default {
 .webPie {
   width: 100%;
   height: 100%;
-
   .webPie-title {
     height: 20%;
     text-align: center;
-
     .subtitle {
       color: #68C6D6;
       position: relative;
       font-size: 12px;
-
       .leftCircle {
         display: block;
         width: 6px;
@@ -93,7 +89,6 @@ export default {
         left: -15px;
         top: 5px;
       }
-
       .rightCircle {
         display: block;
         width: 6px;
@@ -105,7 +100,6 @@ export default {
       }
     }
   }
-
   .webPie-content {
     height: 80%
   }

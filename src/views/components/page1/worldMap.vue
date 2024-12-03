@@ -4,7 +4,6 @@
 <script>
 import 'echarts/map/js/world.js'
 import echarts from 'echarts'
-
 export default {
   name: 'WorldMap',
   data() {
@@ -16,7 +15,7 @@ export default {
   methods: {
     // 通讯行为分析
     setChart() {
-      var geoCoordMap = {
+      let geoCoordMap = {
         '海门': [121.15, 31.89],
         '鄂尔多斯': [109.781327, 39.608266],
         '招远': [120.38, 37.35],
@@ -385,17 +384,17 @@ export default {
         '赞比亚': [27.849332, -13.133897],
         '津巴布韦': [29.154857, -19.015438]
       }
-      var BJData = [
+      let BJData = [
         [{name: '北京'}, {name: '阿根廷', value: 95}],
         [{name: '北京'}, {name: '美国', value: 90}],
         [{name: '北京'}, {name: '南昌', value: 80}]
       ]
-      var convertData = function(data) {
-        var res = []
-        for (var i = 0; i < data.length; i++) {
-          var dataItem = data[i]
-          var fromCoord = geoCoordMap[dataItem[0].name]
-          var toCoord = geoCoordMap[dataItem[1].name]
+      let convertData = function(data) {
+        let res = []
+        for (let i = 0; i < data.length; i++) {
+          let dataItem = data[i]
+          let fromCoord = geoCoordMap[dataItem[0].name]
+          let toCoord = geoCoordMap[dataItem[1].name]
           if (fromCoord && toCoord) {
             res.push({
               fromName: dataItem[0].name,

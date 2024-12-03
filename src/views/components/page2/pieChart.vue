@@ -3,7 +3,6 @@
 </template>
 <script>
 import echarts from 'echarts'
-
 export default {
   name: '',
   data() {
@@ -46,7 +45,7 @@ export default {
         ],
         tooltip: {
           trigger: 'item',
-          formatter: '{a} <br/>{b} : {c} ({d}%)'
+          formatter: '{a} <br/>{b} : {c} ({d}%);'
         },
         legend: {
           data: [
@@ -91,7 +90,7 @@ export default {
             },
             itemStyle: {
               color: function(params) {
-                var colorList = ['#F74F64', '#00CCFF', '#315371', '#142AFE', '#9814FE']
+                let colorList = ['#F74F64', '#00CCFF', '#315371', '#142AFE', '#9814FE']
                 return colorList[params.dataIndex]
               },
               emphasis: {
@@ -126,7 +125,7 @@ export default {
             },
             itemStyle: {
               color: function(params) {
-                var colorList = ['#F74F64', '#00CCFF', '#315371', '#142AFE', '#9814FE']
+                let colorList = ['#F74F64', '#00CCFF', '#315371', '#142AFE', '#9814FE']
                 return colorList[params.dataIndex]
               },
               emphasis: {
@@ -161,7 +160,7 @@ export default {
             },
             itemStyle: {
               color: function(params) {
-                var colorList = ['#F74F64', '#00CCFF', '#315371', '#142AFE', '#9814FE']
+                let colorList = ['#F74F64', '#00CCFF', '#315371', '#142AFE', '#9814FE']
                 return colorList[params.dataIndex]
               },
               emphasis: {

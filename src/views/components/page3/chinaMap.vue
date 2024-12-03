@@ -4,7 +4,6 @@
 <script>
 import 'echarts/map/js/china.js'
 import echarts from 'echarts'
-
 export default {
   name: '',
   data() {
@@ -15,7 +14,7 @@ export default {
   },
   methods: {
     setMap() {
-      var data = [
+      let data = [
         {name: '鄂尔多斯', value: 125},
         {name: '广州', value: 238},
         {name: '贵阳', value: 171},
@@ -27,7 +26,7 @@ export default {
         {name: '合肥', value: 229},
         {name: '大庆', value: 279}
       ]
-      var geoCoordMap = {
+      let geoCoordMap = {
         '海门': [121.15, 31.89],
         '鄂尔多斯': [109.781327, 39.608266],
         '招远': [120.38, 37.35],
@@ -219,10 +218,10 @@ export default {
         '武汉': [114.31, 30.52],
         '大庆': [125.03, 46.58]
       }
-      var convertData = function(data) {
-        var res = []
-        for (var i = 0; i < data.length; i++) {
-          var geoCoord = geoCoordMap[data[i].name]
+      let convertData = function(data) {
+        let res = []
+        for (let i = 0; i < data.length; i++) {
+          let geoCoord = geoCoordMap[data[i].name]
           if (geoCoord) {
             res.push({
               name: data[i].name,
@@ -523,7 +522,7 @@ export default {
             itemStyle: {
               normal: {
                 color: function(params) {
-                  var colorList = ['#FFA200', '#0006FF', '#D6FC01', '#00D8FF', '#FF00CC', '#FF1200']
+                  let colorList = ['#FFA200', '#0006FF', '#D6FC01', '#00D8FF', '#FF00CC', '#FF1200']
                   if (params.dataIndex <= 6) {
                     return colorList[params.dataIndex]
                   } else {

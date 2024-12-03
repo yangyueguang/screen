@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +7,6 @@
     <title>Weather Station</title>
     <link rel="stylesheet" href="./css/login.css">
 </head>
-
 <body>
     <div class="content">
         <div class="left">
@@ -24,7 +22,6 @@
                     <input type="password" placeholder="请输入密码" id="password" />
                 </div>
             </form>
-
         </div>
         <div class="right">
             <div id="btn" title="Login">
@@ -42,12 +39,12 @@
     <script src="js/echarts-gl.min.js"></script>
     <script src="js/world.js"></script>
     <script>
-        var earth = echarts.init(document.getElementById('earth'));
+        let earth = echarts.init(document.getElementById('earth'))
         //自制纹理贴图
-        var canvas = document.createElement('canvas');
-        var mapChart = echarts.init(canvas, null, {
+        let canvas = document.createElement('canvas')
+        let mapChart = echarts.init(canvas, null, {
             width: 4096, height: 2048
-        });
+        })
         mapChart.setOption({
             backgroundColor: 'rgba(64,75,93,.1)',
             series: [
@@ -69,8 +66,8 @@
                     }
                 }
             ]
-        });
-        var option = {
+        })
+        let option = {
             globe: {
                 baseTexture: mapChart,
                 viewControl: {
@@ -79,33 +76,32 @@
                     zoomSensitivity: 0
                 }
             }
-        };
-        earth.setOption(option);
+        }
+        earth.setOption(option)
         //登录
         $('#btn').on('click', function () {
-            var account = $('#account').val();
-            var password = $('#password').val();
+            let account = $('#account').val()
+            let password = $('#password').val()
             if (account == '' || password == '') {
-                //alert('用户名或密码不能为空！');
-                $('.warning').show().addClass('bounceIn');
+                //alert('用户名或密码不能为空！')
+                $('.warning').show().addClass('bounceIn')
                 return
             }
             if(account==='1234567'&&password==='1234567'){
-                window.location.href="bigdata.html";
+                window.location.href="bigdata.html"
             }
             /* $.ajax({
                 url: '@Url.Action("Login")',
                 type: 'post',
                 data: { account: account, password: password },
                 success: function (result) {
-                    result = handleError(result);
+                    result = handleError(result)
                     if (!result.IsError) {
-                        window.location = '@Url.Action("Index", "Home")';
+                        window.location = '@Url.Action("Index", "Home")'
                     }
                 }
             }) */
         })
     </script>
 </body>
-
 </html>

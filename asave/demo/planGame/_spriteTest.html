@@ -12,11 +12,11 @@
 	</style>
 	<script>
 		window.onload = function(){
-			canvas = document.getElementById("cas");
-			context = canvas.getContext('2d');
-			spritesheet = new Image();
-			spritesheet.src = "image/explosion.png";
-			var runnerCells = [
+			canvas = document.getElementById("cas")
+			context = canvas.getContext('2d')
+			spritesheet = new Image()
+			spritesheet.src = "image/explosion.png"
+			let runnerCells = [
 				{x:0 , y:0 , w:66 , h:64},
 				{x:64 , y:0 , w:68 , h:64},
 				{x:128 , y:0 , w:67 , h:64},
@@ -32,42 +32,39 @@
 				{x:765 , y:0 , w:67 , h:64},
 				{x:830 , y:0 , w:67 , h:64},
 			]
-			var sprite = new Sprite("runner" , new SpriteSheetPainter(runnerCells));
-			sprite.left = "200";
-			sprite.top = "50";
-			var startTime = 0;
+			let sprite = new Sprite("runner" , new SpriteSheetPainter(runnerCells))
+			sprite.left = "200"
+			sprite.top = "50"
+			let startTime = 0
 			startAnimate()
-
 			function startAnimate(){
-				startTime = +new Date();
-				animate();
+				startTime = +new Date()
+				animate()
 			}
-
 			function animate(){
-				context.clearRect(0,0,canvas.width,canvas.height);
-				var nowTime = +new Date();
+				context.clearRect(0,0,canvas.width,canvas.height)
+				let nowTime = +new Date()
 				if(nowTime - startTime > 40){
-					sprite.painter.advance();
+					sprite.painter.advance()
 					startTime = nowTime;
 				}
-				sprite.paint();
-				requestAnimationFrame(animate);
+				sprite.paint()
+				requestAnimationFrame(animate)
 			}
 		}
-
 		//精灵类
-		var Sprite = function(name , painter , behaviors){
+		let Sprite = function(name , painter , behaviors){
 			if(name !== undefined) this.name = name;
 			if(painter !== undefined) this.painter = painter;
-			this.top = 0;
-			this.left = 0;
-			this.width = 0;
-			this.height = 0;
-			this.velocityX = 0;
-			this.velocityY = 0;
+			this.top = 0
+			this.left = 0
+			this.width = 0
+			this.height = 0
+			this.velocityX = 0
+			this.velocityY = 0
 			this.visible = true;
 			this.animating = false;
-			this.behaviors = behaviors || [];
+			this.behaviors = behaviors || []
 		}
 		Sprite.prototype = {
 			paint:function(){
@@ -76,27 +73,26 @@
 				}
 			},
 			update:function(time){
-				for(var i=0;i<this.behaviors.length;i++){
-					this.behaviors[i].execute(this,time);
+				for(let i=0;i<this.behaviors.length;i++){
+					this.behaviors[i].execute(this,time)
 				}
 			}
 		}
-
 		// 精灵表绘制器
-		var SpriteSheetPainter = function(cells){
-			this.cells = cells || [];
-			this.cellIndex = 0;
+		let SpriteSheetPainter = function(cells){
+			this.cells = cells || []
+			this.cellIndex = 0
 		}
 		SpriteSheetPainter.prototype = {
 			advance:function(){
 				if(this.cellIndex === this.cells.length-1){
-					this.cellIndex = 0;
+					this.cellIndex = 0
 				}
 				else this.cellIndex++;
 			},
 			paint:function(sprite){
-				var cell = this.cells[this.cellIndex];
-				context.drawImage(spritesheet , cell.x , cell.y , cell.w , cell.h , sprite.left , sprite.top , cell.w , cell.h);
+				let cell = this.cells[this.cellIndex]
+				context.drawImage(spritesheet , cell.x , cell.y , cell.w , cell.h , sprite.left , sprite.top , cell.w , cell.h)
 			}
 		}
 	</script>

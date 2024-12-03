@@ -80,17 +80,17 @@
   </div>
 </template>
 <script>
-const chinaMap = () => import('./components/page3/chinaMap')
-const channelBar = () => import('./components/page3/channelBar')
-const distributionSolider = () => import('./components/page3/distributionSolider')
-const pie = () => import('./components/pie')
-const redPocket = () => import('./components/page3/redPocket')
-const radar = () => import('./components/radar')
-const doubleBar = () => import('./components/page3/doubleBar')
-const webcastsRisk = () => import('./components/page3/webcastsRisk')
-const deviceSafeRisk = () => import('./components/page3/deviceSafeRisk')
-const doubleRing = () => import('./components/page3/doubleRing')
-const hotWords = () => import('./components/page3/hotWords')
+let chinaMap = () => import('./components/page3/chinaMap')
+let channelBar = () => import('./components/page3/channelBar')
+let distributionSolider = () => import('./components/page3/distributionSolider')
+let pie = () => import('./components/pie')
+let redPocket = () => import('./components/page3/redPocket')
+let radar = () => import('./components/radar')
+let doubleBar = () => import('./components/page3/doubleBar')
+let webcastsRisk = () => import('./components/page3/webcastsRisk')
+let deviceSafeRisk = () => import('./components/page3/deviceSafeRisk')
+let doubleRing = () => import('./components/page3/doubleRing')
+let hotWords = () => import('./components/page3/hotWords')
 export default {
   name: 'Page3',
   components: {
@@ -584,7 +584,7 @@ export default {
       this.$refs.distributionSolider1.setChart()
       this.$refs.channelBar2.setChart()
       this.$refs.distributionSolider2.setChart()
-      // this.$refs.pies.setPies();
+      // this.$refs.pies.setPies()
       this.$refs.redPocket.setPocket()
       this.$refs.webcastsRisk.setWebcasts()
       this.$refs.deviceSafeRisk.setDeviceSafe()
@@ -609,9 +609,8 @@ export default {
   transform: translate(-50%, -50%);
   font-size: 15px;
   padding: 5px 14px;
-  background: radial-gradient(2.4rem 1rem ellipse, rgba(7, 9, 34, .8) 60%, rgb(21, 67, 145));
+  background: radial-gradient(2.4rem 1rem ellipse, rgba(7, 9, 34, .8) 60%, rgb(21, 67, 145))
 }
-
 .page3 {
   height: 100%;
   width: 100%;
@@ -620,35 +619,29 @@ export default {
   overflow: hidden;
   display: flex;
   flex-direction: row;
-
   .left {
     width: 26%;
     height: 100%;
   }
-
   .middle {
     width: 48%;
     height: 100%;
     padding: 0 1%;
-
     .center-top {
       height: 60%;
       width: 100%;
     }
-
     .center-bottom {
       height: 40%;
       width: 100%;
       display: flex;
       flex-direction: column;
-
       .bottom-radars {
         height: 55%;
         width: 100%;
         display: flex;
         flex-direction: row;
       }
-
       .bottom-bars {
         width: 100%;
         height: 45%;
@@ -657,31 +650,24 @@ export default {
       }
     }
   }
-
   .right {
     width: 26%;
     height: 100%;
-
     .right-1 {
       height: 30%;
-
       .right1-1 {
         height: 92%;
       }
     }
-
     .right-2 {
       height: 40%;
-
       .circular {
         height: 100%;
         width: 100%;
-
         .canvas {
           height: 100%;
           width: 30%;
           float: left;
-
           .subtitle {
             font-size: 12px;
             font-weight: bold;
@@ -690,7 +676,6 @@ export default {
             padding: 10px 0;
             text-align: center;
           }
-
           .canvasList {
             height: calc(100% - 25px);
             text-align: center
@@ -699,30 +684,25 @@ export default {
       }
     }
   }
-
   .left, .middle, .right {
     height: 100%;
     border: 1px solid #0D2451;
     position: relative;
     background: #151456;
-
     #left_5 {
       height: 100%;
       width: 45%;
       float: left;
     }
-
     #left_6 {
       height: 100%;
       width: 55%;
       float: left;
     }
-
     .left1 {
       border-bottom: 1px solid #0D2451;
       background: #151456;
     }
-
     .title {
       position: absolute;
       display: inline-block;
@@ -732,7 +712,6 @@ export default {
       padding: 0 2px;
       left: 50%;
       transform: translate(-50%, -50%);
-
       .title-text {
         position: relative;
         font-size: 16px;

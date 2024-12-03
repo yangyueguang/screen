@@ -141,116 +141,106 @@
                     [0,0,0,0],
                     [0,0,0,0]
                 ]//:
-            ];
-        var canvas_height=648;
-        var canvas_width=1224;
-        var R=4;
-        var margin_top=150;
-        var margin_left=300;
-        var pastTime=new Date();
-        var pastHour=pastTime.getHours();
-        var pastMin=pastTime.getMinutes();
-        var pastSecond=pastTime.getSeconds();
-        var ball=[];
-        var colors2=["#86CC27","#CBCC1C","#CC2517","#CC65C6","#AB12CC","#4C0FCC","#2F66CC","#1487CC","#0ACC60","#42CC14"];
-        var colors=["rgba(15,200,200,0.3)","rgba(15,100,225,0.3)","rgba(30,220,225,0.3)","rgba(0,210,225,0.3)","rgba(50,200,225,0.3)","rgba(70,190,225,0.3)","rgba(0,180,225,0.3)","rgba(15,170,225,0.3)","rgba(15,160,225,0.3)","rgba(50,150,225,0.3)"];
-
+            ]
+        let canvas_height=648;
+        let canvas_width=1224;
+        let R=4;
+        let margin_top=150;
+        let margin_left=300;
+        let pastTime=new Date()
+        let pastHour=pastTime.getHours()
+        let pastMin=pastTime.getMinutes()
+        let pastSecond=pastTime.getSeconds()
+        let ball=[]
+        let colors2=["#86CC27","#CBCC1C","#CC2517","#CC65C6","#AB12CC","#4C0FCC","#2F66CC","#1487CC","#0ACC60","#42CC14"]
+        let colors=["rgba(15,200,200,0.3)","rgba(15,100,225,0.3)","rgba(30,220,225,0.3)","rgba(0,210,225,0.3)","rgba(50,200,225,0.3)","rgba(70,190,225,0.3)","rgba(0,180,225,0.3)","rgba(15,170,225,0.3)","rgba(15,160,225,0.3)","rgba(50,150,225,0.3)"]
         window.onload=function(){
-            var canvas=document.getElementById("canvas");
-            var context=canvas.getContext("2d");
+            let canvas=document.getElementById("canvas")
+            let context=canvas.getContext("2d")
             canvas.width=canvas_width;
             canvas.height=canvas_height;
             setInterval(
                 function(){
-                    setTime(context);
-                    update(context);
+                    setTime(context)
+                    update(context)
                 },
                 50
-            );
-        };
+            )
+        }
         function drawCircle(context,x,y,R,color){   /*����СԲȦ����������Ͱ뾶����ɫ��*/
-
-            context.beginPath();
-            context.arc(x,y,R,0,2*Math.PI);
+            context.beginPath()
+            context.arc(x,y,R,0,2*Math.PI)
             context.fillStyle=color;
             context.fill()
         }
         function drawNumber(x,context,left,top){   /*�������֣��������֡����ֵ�λ�ã�*/
-            for(var i=0;i<digit[x].length;i++){
-                for(var j=0;j<digit[x][i].length;j++){
+            for(let i=0;i<digit[x].length;i++){
+                for(let j=0;j<digit[x][i].length;j++){
                     if(digit[x][i][j]) {
-                        drawCircle(context,left+j*2*(R+1),top+i*2*(R+1),R,"#6b4bff");
+                        drawCircle(context,left+j*2*(R+1),top+i*2*(R+1),R,"#6b4bff")
                     }
                 }
             }
         }
         function setTime(context)   /*���Ƶ�ǰʱ��͵���С��*/
         {
-            context.clearRect(0,0,canvas_width,canvas_height);
-            var now = new Date();
-            var hour = now.getHours();
-            var min = now.getMinutes();
-            var seconds = now.getSeconds();
-            drawNumber(parseInt(hour/10),context,margin_left,margin_top);
-            drawNumber(parseInt(hour%10),context,margin_left+15*(R+1),margin_top);
-            drawNumber(10,context,margin_left+30*(R+1),margin_top);
-            drawNumber(parseInt(min/10),context,margin_left+39*(R+1),margin_top);
-            drawNumber(parseInt(min%10),context,margin_left+54*(R+1),margin_top);
-            drawNumber(10,context,margin_left+69*(R+1),margin_top);
-            drawNumber(parseInt(seconds/10),context,margin_left+78*(R+1),margin_top);
-            drawNumber(parseInt(seconds%10),context,margin_left+93*(R+1),margin_top);
-            for(var i = 0 ; i < ball.length ; i++){
-                drawCircle(context,ball[i].x,ball[i].y,ball[i].R,ball[i].color);
+            context.clearRect(0,0,canvas_width,canvas_height)
+            let now = new Date()
+            let hour = now.getHours()
+            let min = now.getMinutes()
+            let seconds = now.getSeconds()
+            drawNumber(parseInt(hour/10),context,margin_left,margin_top)
+            drawNumber(parseInt(hour%10),context,margin_left+15*(R+1),margin_top)
+            drawNumber(10,context,margin_left+30*(R+1),margin_top)
+            drawNumber(parseInt(min/10),context,margin_left+39*(R+1),margin_top)
+            drawNumber(parseInt(min%10),context,margin_left+54*(R+1),margin_top)
+            drawNumber(10,context,margin_left+69*(R+1),margin_top)
+            drawNumber(parseInt(seconds/10),context,margin_left+78*(R+1),margin_top)
+            drawNumber(parseInt(seconds%10),context,margin_left+93*(R+1),margin_top)
+            for(let i = 0; ; i < ball.length ; i++){
+                drawCircle(context,ball[i].x,ball[i].y,ball[i].R,ball[i].color)
             }
         }
         function update(context){
-            var now=new Date();
-            var hour = now.getHours();
-            var min = now.getMinutes();
-            var seconds = now.getSeconds();
-
+            let now=new Date()
+            let hour = now.getHours()
+            let min = now.getMinutes()
+            let seconds = now.getSeconds()
             if(parseInt(hour/10)!=parseInt(pastHour/10)) {
-                addBall(parseInt(hour / 10), context, margin_left, margin_top);
-
+                addBall(parseInt(hour / 10), context, margin_left, margin_top)
             }
             if(parseInt(hour % 10)!=parseInt(pastHour%10)) {
-                addBall(parseInt(hour % 10), context, margin_left + 15 * (R + 1), margin_top);
+                addBall(parseInt(hour % 10), context, margin_left + 15 * (R + 1), margin_top)
                 pastHour=hour;
             }
-
             if(parseInt(min / 10)!=parseInt(pastMin/10)) {
-                addBall(parseInt(min / 10), context, margin_left + 39 * (R + 1), margin_top);
+                addBall(parseInt(min / 10), context, margin_left + 39 * (R + 1), margin_top)
             }
             if(parseInt(min % 10)!=parseInt(pastMin%10)) {
-                addBall(parseInt(min%10),context,margin_left+54*(R+1),margin_top);
+                addBall(parseInt(min%10),context,margin_left+54*(R+1),margin_top)
                 pastMin=min;
             }
             if(parseInt(seconds / 10)!=parseInt(pastSecond/10)) {
-                addBall(parseInt(seconds / 10), context, margin_left + 78 * (R + 1), margin_top);
+                addBall(parseInt(seconds / 10), context, margin_left + 78 * (R + 1), margin_top)
             }
             if(parseInt(seconds % 10)!=parseInt(pastSecond%10)) {
-                addBall(parseInt(seconds % 10), context, margin_left + 93 * (R + 1), margin_top);
+                addBall(parseInt(seconds % 10), context, margin_left + 93 * (R + 1), margin_top)
                 pastSecond=seconds;
-
-
-
-
             }
-            dropBall(ball);
+            dropBall(ball)
         }
-
         function addBall(x,context,left,top){   /*����С�������*/
-            var count=0;
-            for(var j=0;j<ball.length;j++)
+            let count=0;
+            for(let j=0;j<ball.length;j++)
                 if( ball[j].x + ball[j].R > 0 && ball[j].x -R < canvas_width ){
-                    ball[count++]=ball[j];
+                    ball[count++]=ball[j]
                 }
-            console.log(count);
+            console.log(count)
             while(ball.length>count){
-                ball.pop();
+                ball.pop()
             }
-            for(var i=0;i<digit[x].length;i++){
-                for(var j=0;j<digit[x][i].length;j++){
+            for(let i=0;i<digit[x].length;i++){
+                for(let j=0;j<digit[x][i].length;j++){
                     if(digit[x][i][j]) {
                         console.log(count)
                         aBall={
@@ -262,35 +252,26 @@
                             R:5*Math.random()+3,
                             color:colors[Math.ceil(Math.random()*10)]
                         }
-                        ball.push(aBall);
+                        ball.push(aBall)
                     }
                 }
             }
-
-
         }
-
         function dropBall(ball){
-            for(var i=0;i<ball.length;i++){
+            for(let i=0;i<ball.length;i++){
                 ball[i].x+=ball[i].vx;
                 ball[i].y+=ball[i].vy;
                 ball[i].vy+=ball[i].a;
-
-
                 if(ball[i].y>=canvas_height-R) {
                     ball[i].y = canvas_height - R;
                     ball[i].vy *= -0.6;
                     if(ball[i].R<100)
-                        ball[i].R += 10*Math.random();
+                        ball[i].R += 10*Math.random()
                     if(ball[i].vy<-5)
-                        ball[i].vx *= Math.pow(-1,Math.ceil(Math.random()*2));
-
+                        ball[i].vx *= Math.pow(-1,Math.ceil(Math.random()*2))
                 }
             }
         }
-
-
-
     </script>
 </head>
 <body>

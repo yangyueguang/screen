@@ -80,18 +80,18 @@ body{
 }
 @keyframes clockwise {
     0% {
-        transform:rotate(0deg);
+        transform:rotate(0deg)
     }
     100% {
-        transform:rotate(-360deg);
+        transform:rotate(-360deg)
     }
 }
 @keyframes anticlockwise {
     0% {
-        transform:rotate(0deg);
+        transform:rotate(0deg)
     }
     100% {
-        transform:rotate(360deg);
+        transform:rotate(360deg)
     }
 }
 #earth{
@@ -120,16 +120,14 @@ body{
 }
 @keyframes bounceIn {
     from, 20%, 40%, 60%, 80%, to {
-        animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000)
     }
-
     0% {
         opacity: 0;
-        transform: scale3d(.3, .3, .3);
+        transform: scale3d(.3, .3, .3)
     }
-
     100% {
-        transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1)
     }
 }
 .bounceIn{

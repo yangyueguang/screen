@@ -28,7 +28,6 @@
             -webkit-animation: rotate infinite linear 5s;
             -moz-animation: rotate infinite linear 5s;
         }
-
         .rect {
             width: 400px;
             height: 200px;
@@ -36,7 +35,6 @@
             /*border: 1px #d2d2d2 solid;*/
             border-bottom: none;
         }
-
         .inner_circle {
             width: 200px;
             height: 200px;
@@ -44,7 +42,6 @@
             position: absolute;
             z-index: 1;
         }
-
         .dot {
             width: 50px;
             height: 50px;
@@ -56,52 +53,43 @@
             margin: auto;
             border-radius: 50%;
         }
-
         .rect_one {
             border-radius: 200px 200px 0 0;
             background: white;
         }
-
         .rect_one_one {
             bottom: -100px;
             left: 0;
             background: black;
         }
-
         .rect_one_two {
             background: white;
         }
-
         .rect_two {
             border-radius: 0 0 200px 200px;
             background: black;
         }
-
         .rect_two_one {
             bottom: 100px;
             right: 0;
             background: white;
         }
-
         .rect_two_two {
             background: black;
         }
-
         @keyframes rotate {
             from {
                 transform: rotate(0deg);
-                -webkit-transform: rotate(0deg);
+                -webkit-transform: rotate(0deg)
             }
             to {
                 transform: rotate(360deg);
-                -webkit-transform: rotate(360deg);
+                -webkit-transform: rotate(360deg)
             }
         }
     </style>
 </head>
-
 <body>
-
 <div class="square">
     <div class="rect rect_one">
         <div class="inner_circle rect_one_one">
@@ -114,7 +102,5 @@
         </div>
     </div>
 </div>
-
 </body>
 </html>
-

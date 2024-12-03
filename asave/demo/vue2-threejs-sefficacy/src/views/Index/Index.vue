@@ -20,14 +20,13 @@
     <div class="footer"></div>
   </div>
 </template>
-
 <script>
 import { linkList } from '@/router/link.js'
 export default {
   data() {
     return {
       linkList: linkList
-    };
+    }
   },
   methods: {
     jumpHome() {
@@ -37,15 +36,13 @@ export default {
       window.location.href = 'https://github.com/lpya/vue2-threejs-sefficacy'
     }
   }
-};
+}
 </script>
-
 <style lang="scss">
 .index {
   height: 100vh;
   background: #202835;
   color: #919bb0;
-
   .header {
     display: flex;
     align-items: center;
@@ -55,16 +52,13 @@ export default {
     background: #323e52;
     border-bottom: 1px solid #202835;
   }
-
   .content {
     overflow-y: auto;
     overflow-x: hidden;
     height: calc(100vh - 70px);
-
     .list {
       padding: 20px;
       margin-top: 20px;
-
       .card {
         display: block;
         border-radius: 5px;
@@ -74,30 +68,23 @@ export default {
         text-decoration: none;
         color: #919bb0;
         transition: all 0.3s;
-
         &:hover {
-          transform: scale(1.01);
-
+          transform: scale(1.01)
           .title {
             color: #c5cfe3;
           }
         }
-
         .cover {
           padding-bottom: 60%;
           border-radius: 5px;
         }
-
         .title {
           margin-top: 10px;
           text-align: center;
           font-size: 18px;
         }
       }
-
     }
-
   }
-
 }
 </style>

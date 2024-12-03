@@ -3,7 +3,6 @@
 </template>
 <script>
 import echarts from 'echarts'
-
 export default {
   name: '',
   data() {
@@ -122,11 +121,11 @@ export default {
      * @returns {*} 格式化后的时分秒
      */
     formateData(s) {
-      var t
+      let t
       if (s > -1) {
-        var hour = Math.floor(s / 3600)
-        var min = Math.floor(s / 60) % 60
-        var sec = s % 60
+        let hour = Math.floor(s / 3600)
+        let min = Math.floor(s / 60) % 60
+        let sec = s % 60
         if (hour !== 0) {
           t = hour + '时'
         } else {

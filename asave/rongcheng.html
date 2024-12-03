@@ -111,7 +111,6 @@
       border-radius: 50%;
       padding: 10px;
     }
-
   </style>
 </head>
 <body>
@@ -154,7 +153,6 @@
 			    radius: 100
 		    },
 		    animation: null,
-
 		    plane: null,
 		    bgCamera: null,
 		    bgScene: null,
@@ -188,16 +186,16 @@
 			  console.log('login')
 		  },
 		  main() {
-			  const img = document.createElement('img')
+			  let img = document.createElement('img')
 			  img.src = '../images/earth/earth.jpg'
 			  img.onload = () => {
-				  const cvs = document.createElement('canvas')
-				  const ctx = cvs.getContext('2d')
-          const container = this.$refs.modelContainer
+				  let cvs = document.createElement('canvas')
+				  let ctx = cvs.getContext('2d')
+          let container = this.$refs.modelContainer
 				  cvs.width = img.width
 				  cvs.height = img.height
 				  ctx.drawImage(img, 0, 0, cvs.width, cvs.height)
-				  const imgData = ctx.getImageData(0, 0, cvs.width, cvs.height)
+				  let imgData = ctx.getImageData(0, 0, cvs.width, cvs.height)
 				  this.createBasicScene(container) // 基本渲染容器
 				  this.createEarthParticles(img, imgData) // 渲染地球粒子
 				  this.animate()
@@ -245,7 +243,7 @@
 				  mat.color = new Newthree.Color('#079cd1')
 				  let img = '../images/earth/dot.png'
 				  mat.map = new Newthree.TextureLoader().load(img)
-				  // const cvs = document.createElement('canvas')
+				  // let cvs = document.createElement('canvas')
 				  // mat.map = new Newthree.CanvasRenderer ().load('../../assets/images/dot.png')
 				  mat.depthWrite = false
 				  mat.transparent = true
@@ -260,9 +258,9 @@
 				  mat.opacity_coef_ = 1
 				  materials.push(mat)
 			  }
-			  const spherical = new Newthree.Spherical()
+			  let spherical = new Newthree.Spherical()
 			  spherical.radius = this.options.radius
-			  const step = 200
+			  let step = 200
 			  for (let i = 0; i < step; i++) {
 				  let vec = new Newthree.Vector3()
 				  let radians = step * (1 - Math.sin(i / step * Math.PI)) / step + 0.5
@@ -322,26 +320,26 @@
 			  this.render()
 		  },
 		  initBg() {
-			  var self = this
-			  var con = self.$refs.con
+			  let self = this
+			  let con = self.$refs.con
 			  function init() {
 				  self.bgCamera = new Newthree.Camera()
 				  self.bgScene = new Newthree.Scene()
-				  var geometry = new Newthree.PlaneBufferGeometry(2, 2)
-				  var material = new Newthree.ShaderMaterial({
+				  let geometry = new Newthree.PlaneBufferGeometry(2, 2)
+				  let material = new Newthree.ShaderMaterial({
 					  uniforms: self.uniforms,
-					  vertexShader: 'void main() { gl_Position = vec4( position, 1.0 ); }',
+					  vertexShader: 'void main() { gl_Position = vec4( position, 1.0 ) }',
 					  fragmentShader: `
 uniform vec2 iResolution;
 uniform float iTime;
 float grid(vec2 uv, float battery)
 {
     vec2 size = vec2(uv.y, uv.y * uv.y * 0.1) * 0.01;
-    uv += vec2(0.0, iTime * 2.0 * (battery + 0.1));
-    uv = abs(fract(uv) - 0.5);
-    vec2 lines = smoothstep(size, vec2(0.0), uv);
+    uv += vec2(0.0, iTime * 2.0 * (battery + 0.1))
+    uv = abs(fract(uv) - 0.5)
+    vec2 lines = smoothstep(size, vec2(0.0), uv)
     lines += smoothstep(size * 8.0, vec2(0.01), uv) * 0.4 * battery;
-    return clamp(lines.x + lines.y, 0.4, 3.0);
+    return clamp(lines.x + lines.y, 0.4, 3.0)
 }
 void main()
 {
@@ -349,22 +347,22 @@ void main()
     float battery = 0.7;
     {
         // Grid
-        float fog = smoothstep(0.6, -0.1, abs(uv.y + 0.6));
-        vec3 col = vec3(0.0, 0.1, 0.2);
+        float fog = smoothstep(0.6, -0.1, abs(uv.y + 0.6))
+        vec3 col = vec3(0.0, 0.1, 0.2)
         if (uv.y < -0.6)
         {
-            uv.y = 6.0 / (abs(uv.y + 0.4) + 0.4);
+            uv.y = 6.0 / (abs(uv.y + 0.4) + 0.4)
             uv.x *= (uv.y * 1.25 - 0.4) * 0.8;
-            float gridVal = grid(uv, battery);
-            col = mix(col, vec3(0.1, 0.8, 1.4), gridVal);
+            float gridVal = grid(uv, battery)
+            col = mix(col, vec3(0.1, 0.8, 1.4), gridVal)
         }
         else
         {
             uv.y -= battery * 1.2 - 0.6;
         }
         col += fog * fog * fog;
-        col = mix(vec3(col.r, col.r, col.r) * 0.8, col, battery * 0.8);
-        gl_FragColor = vec4(col, 0.2);
+        col = mix(vec3(col.r, col.r, col.r) * 0.8, col, battery * 0.8)
+        gl_FragColor = vec4(col, 0.2)
     }
 }
 `
@@ -373,7 +371,7 @@ void main()
 				  self.bgScene.add(this.plane)
 				  self.bgRenderer = new Newthree.WebGLRenderer({ alpha: true })
 				  self.bgRenderer.setPixelRatio(window.devicePixelRatio)
-				  var dom = self.bgRenderer.domElement
+				  let dom = self.bgRenderer.domElement
 				  con.appendChild(dom)
 				  onWindowResize()
 				  window.addEventListener('resize', onWindowResize, false)

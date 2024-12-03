@@ -3,8 +3,7 @@ var datas = [
 	"../planGame/image/plasma.png",
 	"../planGame/image/ship.png"
 ]
-
-var explosionCells = [
+let explosionCells = [
 	{x:0 , y:0 , w:66 , h:64},
 	{x:64 , y:0 , w:68 , h:64},
 	{x:128 , y:0 , w:67 , h:64},
@@ -20,8 +19,7 @@ var explosionCells = [
 	{x:765 , y:0 , w:67 , h:64},
 	{x:830 , y:0 , w:67 , h:64}
 ]
-
-var planCells = [
+let planCells = [
 	{x:0 , y:0 , w:24 , h:24},
 	{x:24 , y:0 , w:24 , h:24},
 	{x:48 , y:0 , w:24 , h:24},

@@ -3,7 +3,6 @@
 </template>
 <script>
 import echarts from 'echarts'
-
 export default {
   name: '',
   props: {
@@ -17,8 +16,8 @@ export default {
   },
   methods: {
     setData() {
-      var max = Math.max.apply(null, this.data.value)
-      var arr = []
+      let max = Math.max.apply(null, this.data.value)
+      let arr = []
       for (let i = 0; i < 6; i++) {
         arr.push(max / 10)
       }

@@ -19,8 +19,8 @@ export default {
   },
   methods: {
     drawRing() {
-      var canvas = document.getElementById(this.id)
-      var context = canvas.getContext('2d')
+      let canvas = document.getElementById(this.id)
+      let context = canvas.getContext('2d')
       canvas.width = this.$el.offsetWidth
       canvas.height = this.$el.offsetHeight
       context.lineWidth = 1
@@ -35,10 +35,10 @@ export default {
       context.arc(canvas.width / 2, canvas.height / 2, canvas.height / 2 - 12, 0, 2 * Math.PI, false)
       context.stroke()
       context.restore()
-      var percent1 = 60
-      var percent2 = 60
-      var angle1 = percent1 * 3.6 - 90
-      var angle2 = percent2 * 3.6 - 60
+      let percent1 = 60
+      let percent2 = 60
+      let angle1 = percent1 * 3.6 - 90
+      let angle2 = percent2 * 3.6 - 60
       context.lineWidth = 4
       context.lineCap = 'round'
       context.save()

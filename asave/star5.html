@@ -8,7 +8,6 @@
             background: #000;
             overflow: hidden;
         }
-
         canvas {
             display: block;
         }
@@ -25,8 +24,8 @@
     let windowWidth = canvas.width = window.innerWidth,
         windowHeight = canvas.height = window.innerHeight
     window.addEventListener('resize',function () {
-        windowWidth = canvas.width = window.innerWidth;
-        windowHeight = canvas.height = window.innerHeight;
+        windowWidth = canvas.width = window.innerWidth
+        windowHeight = canvas.height = window.innerHeight
     })
     let stars = [] //星星对象数组
     let starIndex = 0 // 星星索引
@@ -40,8 +39,8 @@
     //星星颜色
     let starColor = starCtx.createRadialGradient(starCanvasRadius, starCanvasRadius, 0, starCanvasRadius, starCanvasRadius, starCanvasRadius)
     starColor.addColorStop(0.025, '#fff')
-    starColor.addColorStop(0.1, `hsl(${hue},61%,33%)`)
-    starColor.addColorStop(0.25, `hsl(${hue},64%,6%)`)
+    starColor.addColorStop(0.1, `hsl(${hue},61%,33%);`)
+    starColor.addColorStop(0.25, `hsl(${hue},64%,6%);`)
     starColor.addColorStop(1, 'transparent')
     starCtx.fillStyle = starColor
     starCtx.beginPath()
@@ -57,11 +56,10 @@
         return Math.floor(Math.random() * (max - min + 1)) + min
     }
     let getMaxOrbitRadius = function (x, y) {
-        let max = Math.max(x, y);
+        let max = Math.max(x, y)
         let diameter = Math.round(Math.sqrt(max * max + max * max))//直径（窗口对角线）
-        return (diameter / 2);
+        return (diameter / 2)
     }
-
     class Star {
         constructor() {
             this.orbitRadius = random(getMaxOrbitRadius(windowWidth, windowHeight)) // 随机生成轨道半径
@@ -72,7 +70,6 @@
             stars[starIndex] = this
             starIndex++
         }
-
         draw() {
             let x = Math.sin(this.lifeTime) * this.orbitRadius + windowWidth / 2,
                 y = Math.cos(this.lifeTime) * this.orbitRadius + windowHeight / 2
@@ -87,7 +84,6 @@
             this.lifeTime += this.speed
         }
     }
-
     let main = function () {
         for (let i = 0; i < startAmount; i++) {
             new Star()
@@ -102,5 +98,4 @@
         play()
     }
     main()
-
 </script>

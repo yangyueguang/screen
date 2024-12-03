@@ -3,7 +3,6 @@
 </template>
 <script>
 import echarts from 'echarts'
-
 export default {
   name: '',
   props: {
@@ -31,7 +30,7 @@ export default {
         },
         tooltip: {
           trigger: 'item',
-          formatter: '{b} : {c} ({d}%)',
+          formatter: '{b} : {c} ({d}%);',
           backgroundColor: '#11367a',
           textStyle: {
             color: '#6dd0e3',

@@ -10,7 +10,6 @@
 </style>
 <script>
 import echarts from 'echarts'
-
 export default {
   name: '',
   props: {

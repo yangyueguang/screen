@@ -1,4 +1,4 @@
-export const linkList = [
+export let linkList = [
   {
     title: '地板【PlaneGeometry】',
     path: '/1-PlaneGeometry',

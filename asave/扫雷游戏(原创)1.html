@@ -47,39 +47,35 @@
 </style>
 </head>
 <body>
-
-
 <script>
-document.write('<div id="stage" class="map"></div>');
-var map = document.getElementById("stage");
-var mines = [];
-var rn = []; //-11,9,-1,-10,10,1,-9,11];
-var fc = ["", "#3866A4", "#067d16", "#980505", "#061b5a", "#5e0404"];
-var sn = 0;
-
-var lv1 = {
+document.write('<div id="stage" class="map"></div>')
+let map = document.getElementById("stage")
+let mines = []
+let rn = [] //-11,9,-1,-10,10,1,-9,11]
+let fc = ["", "#3866A4", "#067d16", "#980505", "#061b5a", "#5e0404"]
+let sn = 0
+let lv1 = {
     classname: "lv1",
     col: 10,
     row: 10,
     mns: 10,
     sum: 100
 }
-var lv2 = {
+let lv2 = {
     classname: "lv2",
     col: 16,
     row: 16,
     mns: 40,
     sum: 256
 }
-var lv3 = {
+let lv3 = {
     classname: "lv3",
     col: 16,
     row: 30,
     mns: 100,
     sum: 16 * 30
 }
-var lv;
-
+let lv;
 function setLevel(level) {
     switch (level) {
         case "2":
@@ -92,64 +88,61 @@ function setLevel(level) {
         default:
             lv = lv1;
     }
-    map.classList.add(lv.classname);
-    rn = [-lv.row - 1, lv.row - 1, -1, -lv.row, lv.row, 1, -lv.row + 1, lv.row + 1];
+    map.classList.add(lv.classname)
+    rn = [-lv.row - 1, lv.row - 1, -1, -lv.row, lv.row, 1, -lv.row + 1, lv.row + 1]
 }
-
 function newGame() {
-    sn = 0;
-    var ms = []
-    for (var i = 0; i < lv.sum; i++) {
-        mines[i] = 0;
+    sn = 0
+    let ms = []
+    for (let i = 0; i < lv.sum; i++) {
+        mines[i] = 0
         ms[i] = i;
     }
-    for (var i = 0; i < lv.mns; i++) {
-        var r = parseInt(Math.random() * ms.length);
-        mr = ms[r];
-        ms.splice(r, 1);
+    for (let i = 0; i < lv.mns; i++) {
+        let r = parseInt(Math.random() * ms.length)
+        mr = ms[r]
+        ms.splice(r, 1)
         mines[mr] = -1;
-        for (var j = 0; j < rn.length; j++) {
-            var n = mr + rn[j]
+        for (let j = 0; j < rn.length; j++) {
+            let n = mr + rn[j]
             if (mines[n] != -1 && n >= 0 && n < lv.sum && !((mr % lv.row == 0) && (j < 3) || (mr % lv.row == lv.row - 1) && (j > 4))) mines[n]++;
         }
     }
-    for (var i = 0; i < lv.sum; i++) mines[i] = mines[i] == 0 ? "" : mines[i];
+    for (let i = 0; i < lv.sum; i++) mines[i] = mines[i] == 0 ? "" : mines[i]
 }
 // 绘制地图
 function paintMap() {
-    var str = "";
-    for (var i = 0; i < lv.sum; i++)
-        //str += '<div id="mine'+i+'" onclick="sweepe('+i+')" class="wait">'+mines[i]+'</div>';
-        str += '<div id="mine' + i + '" onclick="sweepe(' + i + ')" class="wait"></div>';
+    let str = ""
+    for (let i = 0; i < lv.sum; i++)
+        //str += '<div id="mine'+i+'" onclick="sweepe('+i+')" class="wait">'+mines[i]+'</div>'
+        str += '<div id="mine' + i + '" onclick="sweepe(' + i + ')" class="wait"></div>'
     map.innerHTML += str;
 }
-
 function sweepe(i) {
-    var m = document.getElementById("mine" + i);
+    let m = document.getElementById("mine" + i)
     if (!m || m.className == "clear") return;
-    m.className = "clear";
-    m.innerHTML = mines[i];
-    m.style.color = fc[mines[i]];
+    m.className = "clear"
+    m.innerHTML = mines[i]
+    m.style.color = fc[mines[i]]
     sn++;
-    if (mines[i] == -1) alert("Lose!!");
+    if (mines[i] == -1) alert("Lose!!")
     else if (mines[i] == 0)
-        for (var j = 0; j < 8; j++) {
-            var n = i + rn[j];
-            if (n >= 0 && n < lv.sum && (!((i % lv.row == 0) && (j < 3) || (i % lv.row == lv.row - 1) && (j > 4)))) sweepe(n);
+        for (let j = 0; j < 8; j++) {
+            let n = i + rn[j]
+            if (n >= 0 && n < lv.sum && (!((i % lv.row == 0) && (j < 3) || (i % lv.row == lv.row - 1) && (j > 4)))) sweepe(n)
         }
     else {
-        for (var j = 0; j < 8; j++) {
-            var n = i + rn[j];
+        for (let j = 0; j < 8; j++) {
+            let n = i + rn[j]
             if (n >= 0 && n < lv.sum && (!((i % lv.row == 0) && (j < 3) || (i % lv.row == lv.row - 1) && (j > 4))))
-                if (mines[n] == 0) sweepe(n);
+                if (mines[n] == 0) sweepe(n)
         }
     }
-    if (sn == lv.sum - lv.mns) alert("Win!!");
+    if (sn == lv.sum - lv.mns) alert("Win!!")
 }
-setLevel(prompt("请输入等级（1-3）："));
-newGame();
-paintMap();
+setLevel(prompt("请输入等级（1-3）："))
+newGame()
+paintMap()
 </script>
-
 </body>
 </html>

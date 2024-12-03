@@ -84,18 +84,18 @@
   </div>
 </template>
 <script>
-const doubleArea = () => import('./components/page1/doubleArea.vue')
-const webBar = () => import('./components/page1/webBar.vue')
-const pie = () => import('./components/pie')
-const worldMap = () => import('./components/page1/worldMap')
-const ring = () => import('./components/page1/ring')
-const popularBar = () => import('./components/page1/popularBar')
-const lines = () => import('./components/page1/lines')
-const pieRing = () => import('./components/page1/pieRing')
-const colorsBar = () => import('./components/page1/colorsBar')
-const funnel = () => import('./components/page1/funnel')
-const lineBar = () => import('./components/page1/lineBar')
-const areaChart = () => import('./components/areaChart')
+let doubleArea = () => import('./components/page1/doubleArea.vue')
+let webBar = () => import('./components/page1/webBar.vue')
+let pie = () => import('./components/pie')
+let worldMap = () => import('./components/page1/worldMap')
+let ring = () => import('./components/page1/ring')
+let popularBar = () => import('./components/page1/popularBar')
+let lines = () => import('./components/page1/lines')
+let pieRing = () => import('./components/page1/pieRing')
+let colorsBar = () => import('./components/page1/colorsBar')
+let funnel = () => import('./components/page1/funnel')
+let lineBar = () => import('./components/page1/lineBar')
+let areaChart = () => import('./components/areaChart')
 export default {
   name: 'Page1',
   components: {
@@ -509,9 +509,8 @@ export default {
   transform: translate(-50%, -50%);
   font-size: 15px;
   padding: 5px 14px;
-  background: radial-gradient(2.4rem 1rem ellipse, rgba(7, 9, 34, .8) 60%, rgb(21, 67, 145));
+  background: radial-gradient(2.4rem 1rem ellipse, rgba(7, 9, 34, .8) 60%, rgb(21, 67, 145))
 }
-
 .page1 {
   height: 100%;
   width: 100%;
@@ -520,62 +519,51 @@ export default {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-
   .listTop {
     height: 60%;
     display: flex;
     flex-direction: row;
-
     .leftTop {
       width: 30%;
       height: 100%;
       border: 1px solid #0D2451;
       position: relative;
-
       .left1 {
         width: 100%;
         height: 40%;
       }
-
       .left2, .left3 {
         width: 100%;
         height: 30%;
         padding: 10px 0;
       }
     }
-
     .midleTop {
       width: 40%;
       height: 100%;
     }
-
     .rightTop {
       width: 30%;
       height: 100%;
-
       .rightTop-1 {
         width: 100%;
         height: 55%;
         border: 1px solid #0D2451;
         position: relative;
       }
-
       .rightTop-2 {
         width: 100%;
         margin-top: 5%;
         height: 40%;
         border: 1px solid #0D2451;
         position: relative;
-
         .rightTop-list {
           width: 100%;
           height: 100%;
-
           .list {
             width: 30%;
             height: 100%;
             float: left;
-
             &:first-child {
               width: 40%;
             }
@@ -584,70 +572,57 @@ export default {
       }
     }
   }
-
   .listBottom {
     height: 40%;
     display: flex;
     flex-direction: row;
-
     .bottom1 {
       width: 34%;
       height: 100%;
     }
-
     .bottom2 {
       width: 18%;
       height: 100%;
     }
-
     .bottom3 {
       width: 18%;
       height: 100%;
     }
-
     .bottom4 {
       width: 30%;
       height: 100%;
     }
-
     .bottom1, .bottom2, .bottom3, .bottom4 {
       height: 100%;
-
       .content {
         margin-top: 30px;
         height: calc(100% - 30px);
         border: 1px solid #0D2451;
         position: relative;
-
         .analize {
           display: flex;
           width: 100%;
           height: 100%;
           flex-direction: column;
-
           .topLine {
             height: 55%;
             width: 100%;
           }
-
           .bottomPie {
             height: 45%;
             display: flex;
             width: 100%;
             flex-direction: row;
-
             .pieMain {
               width: 50%;
               height: 100%;
             }
           }
         }
-
         .behavior {
           width: 100%;
           height: 100%;
         }
-
         .appUse {
           width: 100%;
           height: 100%;

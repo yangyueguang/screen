@@ -1,26 +1,22 @@
 html, body {
-	margin: 0;	
+	margin: 0;
 	padding: 0;
 }
-
 body {
 	background: #171717;
 	color: #999;
 	font: 100%/18px helvetica, arial, sans-serif;
 }
-
 a {
 	color: #2fa1d6;
 	font-weight: bold;
 	text-decoration: none;
 }
-
 a:hover {
-	color: #fff;	
+	color: #fff;
 }
-
 #canvas-container {
-	background: #000 url(http://jackrugile.com/lab/fireworks-v2/images/bg.jpg);
+	background: #000 url(http://jackrugile.com/lab/fireworks-v2/images/bg.jpg)
   height: 400px;
 	left: 50%;
 	margin: -200px 0 0 -300px;
@@ -29,18 +25,15 @@ a:hover {
   width: 600px;
 	z-index: 2;
 }
-		
 canvas {
 	cursor: crosshair;
 	display: block;
 	position: relative;
 	z-index: 3;
 }
-
 canvas:active {
 	cursor: crosshair;
 }
-
 #skyline {
 	background: url(http://jackrugile.com/lab/fireworks-v2/images/skyline.png) repeat-x 50% 0;
 	bottom: 0;
@@ -48,9 +41,8 @@ canvas:active {
 	left: 0;
 	position: absolute;
 	width: 100%;
-	z-index: 1;	
+	z-index: 1;
 }
-
 #mountains1 {
 	background: url(http://jackrugile.com/lab/fireworks-v2/images/mountains1.png) repeat-x 40% 0;
 	bottom: 0;
@@ -58,9 +50,8 @@ canvas:active {
 	left: 0;
 	position: absolute;
 	width: 100%;
-	z-index: 1;	
+	z-index: 1;
 }
-
 #mountains2 {
 	background: url(http://jackrugile.com/lab/fireworks-v2/images/mountains2.png) repeat-x 30% 0;
 	bottom: 0;
@@ -68,9 +59,8 @@ canvas:active {
 	left: 0;
 	position: absolute;
 	width: 100%;
-	z-index: 1;	
+	z-index: 1;
 }
-
 #gui {
 	right: 0;
 	position: fixed;

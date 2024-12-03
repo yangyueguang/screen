@@ -39,14 +39,12 @@ export default {
   background: #03044A;
   justify-content: space-between;
   flex-direction: row;
-
   span {
     width: 100px;
     color: white;
     margin: 0 20px;
   }
 }
-
 .page {
   height: calc(100vh - 80px);
 }

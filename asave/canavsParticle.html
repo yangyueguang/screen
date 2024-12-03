@@ -13,12 +13,10 @@
             background: black;
             background: linear-gradient(to bottom, #dcdcdc 0%, palevioletred 100%);
         }
-
         #main-canvas {
             width: 100%;
             height: 100%;
         }
-
         .filter {
             width: 100%;
             height: 100%;
@@ -30,7 +28,6 @@
             animation-fill-mode: both;
             mix-blend-mode: overlay;
         }
-
         @keyframes colorChange {
             0%, 100% {
                 opacity: 0;
@@ -42,13 +39,10 @@
     </style>
 </head>
 <body>
-
 	<canvas id="canvas"></canvas>
-
        <script>(function (undefined) {
-           "use strict";
-           var _global;
-
+           "use strict"
+           let _global;
            /*
             * @var star_r：star半径系数，系数越大，半径越大
             * @var star_alpha：生成star的透明度，star_alpha越大，透明度越低
@@ -62,7 +56,7 @@
             * @var maxDistFromCursor：dot最大距离
             *
             * */
-           var config = {
+           let config = {
                star_r: 3,
                star_alpha: 5,
                initStarsPopulation: 150,
@@ -73,8 +67,8 @@
                dot_aReduction: 0.01,
                dotsMinDist: 5,
                maxDistFromCursor: 50,
-           };
-           var stars = [],
+           }
+           let stars = [],
                dots = [],
                canvas = document.getElementById('canvas'),
                ctx = canvas.getContext('2d'),
@@ -85,229 +79,201 @@
                mouseX,
                mouseY;
            function CanvasStar() { }
-
-           var initConfig = function (conf) {
+           let initConfig = function (conf) {
                if (conf instanceof Object)
-                   for (var item in conf) {
-                       config[item] = conf[item];
+                   for (let item in conf) {
+                       config[item] = conf[item]
                    }
-           };
-
+           }
            CanvasStar.prototype.init = function (conf) {
-               initConfig(conf);//初始化设置
-
-               ctx.strokeStyle = "white";
-               ctx.shadowColor = "white";
-               ctx.globalCompositeOperation = "source-over";
-               for (var i = 0; i < config.initStarsPopulation; i++) {
-                   stars[i] = new Star(i, Math.floor(Math.random() * WIDTH), Math.floor(Math.random() * HEIGHT), true);
-                   //stars[i].draw();
+               initConfig(conf)//初始化设置
+               ctx.strokeStyle = "white"
+               ctx.shadowColor = "white"
+               ctx.globalCompositeOperation = "source-over"
+               for (let i = 0; i < config.initStarsPopulation; i++) {
+                   stars[i] = new Star(i, Math.floor(Math.random() * WIDTH), Math.floor(Math.random() * HEIGHT), true)
+                   //stars[i].draw()
                }
-               ctx.shadowBlur = 0;
-               animate();
-           };
-
-
-
+               ctx.shadowBlur = 0
+               animate()
+           }
            function Star(id, x, y, useCache) {
                this.id = id;
-               this.x = x;
-               this.y = y;
+               this.x = x
+               this.y = y
                this.useCacha = useCache;
-               this.cacheCanvas = document.createElement("canvas");
-               this.cacheCtx = this.cacheCanvas.getContext("2d");
+               this.cacheCanvas = document.createElement("canvas")
+               this.cacheCtx = this.cacheCanvas.getContext("2d")
                this.r = Math.floor(Math.random() * config.star_r) + 1;
                this.cacheCtx.width = 6 * this.r;
                this.cacheCtx.height = 6 * this.r;
-               var alpha = (Math.floor(Math.random() * 10) + 1) / config.star_alpha;
-               this.color = "rgba(255,255,255," + alpha + ")";
+               let alpha = (Math.floor(Math.random() * 10) + 1) / config.star_alpha;
+               this.color = "rgba(255,255,255," + alpha + ")"
                if (useCache) {
                    this.cache()
                }
            }
-
            Star.prototype = {
                draw: function () {
                    if (!this.useCacha) {
-                       ctx.save();
+                       ctx.save()
                        ctx.fillStyle = this.color;
                        ctx.shadowBlur = this.r * 2;
-                       ctx.beginPath();
-                       ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI, false);
-                       ctx.closePath();
-                       ctx.fill();
-                       ctx.restore();
+                       ctx.beginPath()
+                       ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI, false)
+                       ctx.closePath()
+                       ctx.fill()
+                       ctx.restore()
                    } else {
-                       ctx.drawImage(this.cacheCanvas, this.x - this.r, this.y - this.r);
+                       ctx.drawImage(this.cacheCanvas, this.x - this.r, this.y - this.r)
                    }
                },
-
                cache: function () {
-                   this.cacheCtx.save();
+                   this.cacheCtx.save()
                    this.cacheCtx.fillStyle = this.color;
-                   this.cacheCtx.shadowColor = "white";
+                   this.cacheCtx.shadowColor = "white"
                    this.cacheCtx.shadowBlur = this.r * 2;
-                   this.cacheCtx.beginPath();
-                   this.cacheCtx.arc(this.r * 3, this.r * 3, this.r, 0, 2 * Math.PI);
-                   this.cacheCtx.closePath();
-                   this.cacheCtx.fill();
-                   this.cacheCtx.restore();
+                   this.cacheCtx.beginPath()
+                   this.cacheCtx.arc(this.r * 3, this.r * 3, this.r, 0, 2 * Math.PI)
+                   this.cacheCtx.closePath()
+                   this.cacheCtx.fill()
+                   this.cacheCtx.restore()
                },
-
                move: function () {
                    this.y -= config.move_distance;
                    if (this.y <= -10) {
                        this.y += HEIGHT + 10;
                    }
-                   this.draw();
+                   this.draw()
                },
-
                die: function () {
                    stars[this.id] = null;
                    delete stars[this.id]
                }
-           };
-
+           }
            function Dot(id, x, y, useCache) {
                this.id = id;
-               this.x = x;
-               this.y = y;
+               this.x = x
+               this.y = y
                this.r = Math.floor(Math.random() * config.dot_r) + 1;
                this.speed = config.dot_speeds;
                this.a = config.dot_alpha;
                this.aReduction = config.dot_aReduction;
                this.useCache = useCache;
-               this.dotCanvas = document.createElement("canvas");
-               this.dotCtx = this.dotCanvas.getContext("2d");
+               this.dotCanvas = document.createElement("canvas")
+               this.dotCtx = this.dotCanvas.getContext("2d")
                this.dotCtx.width = 6 * this.r;
                this.dotCtx.height = 6 * this.r;
                this.dotCtx.a = 0.5;
-               this.color = "rgba(255,255,255," + this.a + ")";
-               this.dotCtx.color = "rgba(255,255,255," + this.dotCtx.a + ")";
-               this.linkColor = "rgba(255,255,255," + this.a / 4 + ")";
+               this.color = "rgba(255,255,255," + this.a + ")"
+               this.dotCtx.color = "rgba(255,255,255," + this.dotCtx.a + ")"
+               this.linkColor = "rgba(255,255,255," + this.a / 4 + ")"
                this.dir = Math.floor(Math.random() * 140) + 200;
-
                if (useCache) {
                    this.cache()
                }
            }
-
            Dot.prototype = {
                draw: function () {
                    if (!this.useCache) {
-                       ctx.save();
+                       ctx.save()
                        ctx.fillStyle = this.color;
-                       ctx.shadowColor = "white";
+                       ctx.shadowColor = "white"
                        ctx.shadowBlur = this.r * 2;
-                       ctx.beginPath();
-                       ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI, false);
-                       ctx.closePath();
-                       ctx.fill();
-                       ctx.restore();
+                       ctx.beginPath()
+                       ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI, false)
+                       ctx.closePath()
+                       ctx.fill()
+                       ctx.restore()
                    } else {
-                       ctx.drawImage(this.dotCanvas, this.x - this.r * 3, this.y - this.r * 3);
+                       ctx.drawImage(this.dotCanvas, this.x - this.r * 3, this.y - this.r * 3)
                    }
                },
-
                cache: function () {
-                   this.dotCtx.save();
+                   this.dotCtx.save()
                    this.dotCtx.a -= this.aReduction;
-                   this.dotCtx.color = "rgba(255,255,255," + this.dotCtx.a + ")";
+                   this.dotCtx.color = "rgba(255,255,255," + this.dotCtx.a + ")"
                    this.dotCtx.fillStyle = this.dotCtx.color;
-                   this.dotCtx.shadowColor = "white";
+                   this.dotCtx.shadowColor = "white"
                    this.dotCtx.shadowBlur = this.r * 2;
-                   this.dotCtx.beginPath();
-                   this.dotCtx.arc(this.r * 3, this.r * 3, this.r, 0, 2 * Math.PI, false);
-                   this.dotCtx.closePath();
-                   this.dotCtx.fill();
-                   this.dotCtx.restore();
+                   this.dotCtx.beginPath()
+                   this.dotCtx.arc(this.r * 3, this.r * 3, this.r, 0, 2 * Math.PI, false)
+                   this.dotCtx.closePath()
+                   this.dotCtx.fill()
+                   this.dotCtx.restore()
                },
                link: function () {
                    if (this.id == 0) return;
-                   var previousDot1 = getPreviousDot(this.id, 1);
-                   var previousDot2 = getPreviousDot(this.id, 2);
-                   var previousDot3 = getPreviousDot(this.id, 3);
-                   var previousDot4 = getPreviousDot(this.id, 4);
-
+                   let previousDot1 = getPreviousDot(this.id, 1)
+                   let previousDot2 = getPreviousDot(this.id, 2)
+                   let previousDot3 = getPreviousDot(this.id, 3)
+                   let previousDot4 = getPreviousDot(this.id, 4)
                    if (!previousDot1) return;
                    ctx.strokeStyle = this.linkColor;
-                   ctx.moveTo(previousDot1.x, previousDot1.y);
-                   ctx.beginPath();
-                   ctx.lineTo(this.x, this.y);
-                   if (previousDot2 != false) ctx.lineTo(previousDot2.x, previousDot2.y);
-                   if (previousDot3 != false) ctx.lineTo(previousDot3.x, previousDot3.y);
-                   if (previousDot4 != false) ctx.lineTo(previousDot4.x, previousDot4.y);
-
-                   ctx.stroke();
-                   ctx.closePath();
+                   ctx.moveTo(previousDot1.x, previousDot1.y)
+                   ctx.beginPath()
+                   ctx.lineTo(this.x, this.y)
+                   if (previousDot2 != false) ctx.lineTo(previousDot2.x, previousDot2.y)
+                   if (previousDot3 != false) ctx.lineTo(previousDot3.x, previousDot3.y)
+                   if (previousDot4 != false) ctx.lineTo(previousDot4.x, previousDot4.y)
+                   ctx.stroke()
+                   ctx.closePath()
                },
-
                move: function () {
                    this.a -= this.aReduction;
                    if (this.a <= 0) {
-                       this.die();
+                       this.die()
                        return
                    }
                    this.dotCtx.a -= this.aReduction;
-                   this.dotCtx.color = "rgba(255,255,255," + this.dotCtx.a + ")";
-                   this.color = "rgba(255,255,255," + this.a + ")";
-                   this.linkColor = "rgba(255,255,255," + this.a / 4 + ")";
+                   this.dotCtx.color = "rgba(255,255,255," + this.dotCtx.a + ")"
+                   this.color = "rgba(255,255,255," + this.a + ")"
+                   this.linkColor = "rgba(255,255,255," + this.a / 4 + ")"
                    this.x = this.x + Math.cos(degToRad(this.dir)) * this.speed;
                    this.y = this.y + Math.sin(degToRad(this.dir)) * this.speed;
-
-                   this.draw();
-                   this.link();
+                   this.draw()
+                   this.link()
                },
-
                die: function () {
                    dots[this.id] = null;
-                   delete dots[this.id];
+                   delete dots[this.id]
                }
-           };
-
+           }
            window.onmousemove = function (e) {
-               var e = event || window.event;
-               var scrollX = document.documentElement.scrollLeft || document.body.scrollLeft;
-               var scrollY = document.documentElement.scrollTop || document.body.scrollTop;
-               var x = e.pageX || e.clientX + scrollX;
-               var y = e.pageY || e.clientY + scrollY;
+               let e = event || window.event;
+               let scrollX = document.documentElement.scrollLeft || document.body.scrollLeft;
+               let scrollY = document.documentElement.scrollTop || document.body.scrollTop;
+               let x = e.pageX || e.clientX + scrollX;
+               let y = e.pageY || e.clientY + scrollY;
                mouseMoving = true;
-               mouseX = x;
-               mouseY = y;
-               clearInterval(mouseMoveChecker);
+               mouseX = x
+               mouseY = y
+               clearInterval(mouseMoveChecker)
                mouseMoveChecker = setInterval(function () {
                    mouseMoving = false
                }, 1000)
-
-           };
-
+           }
            function drawIfMouseMoving() {
                if (!mouseMoving) return;
-
                if (dots.length == 0) {
-                   dots[0] = new Dot(0, mouseX, mouseY, true);
-                   dots[0].draw();
+                   dots[0] = new Dot(0, mouseX, mouseY, true)
+                   dots[0].draw()
                    return;
                }
-
-               var previousDot = getPreviousDot(dots.length, 1);
-               var prevX = previousDot.x;
-               var prevY = previousDot.y;
-
-               var diffX = Math.abs(prevX - mouseX);
-               var diffY = Math.abs(prevY - mouseY);
-
+               let previousDot = getPreviousDot(dots.length, 1)
+               let prevX = previousDot.x
+               let prevY = previousDot.y
+               let diffX = Math.abs(prevX - mouseX)
+               let diffY = Math.abs(prevY - mouseY)
                if (diffX < config.dotsMinDist || diffY < config.dotsMinDist) return;
-
-               var xVariation = Math.random() > .5 ? -1 : 1;
+               let xVariation = Math.random() > .5 ? -1 : 1;
                xVariation = xVariation * Math.floor(Math.random() * config.maxDistFromCursor) + 1;
-               var yVariation = Math.random() > .5 ? -1 : 1;
+               let yVariation = Math.random() > .5 ? -1 : 1;
                yVariation = yVariation * Math.floor(Math.random() * config.maxDistFromCursor) + 1;
-               dots[dots.length] = new Dot(dots.length, mouseX + xVariation, mouseY + yVariation, true);
-               dots[dots.length - 1].draw();
-               dots[dots.length - 1].link();
+               dots[dots.length] = new Dot(dots.length, mouseX + xVariation, mouseY + yVariation, true)
+               dots[dots.length - 1].draw()
+               dots[dots.length - 1].link()
            }
-
            function getPreviousDot(id, stepback) {
                if (id == 0 || id - stepback < 0) {
                    return false
@@ -318,50 +284,41 @@
                    return false
                }
            }
-
            function setCanvasSize() {
                WIDTH = document.documentElement.clientWidth;
                HEIGHT = document.documentElement.clientHeight;
-               canvas.setAttribute("width", WIDTH);
-               canvas.setAttribute("height", HEIGHT);
-
+               canvas.setAttribute("width", WIDTH)
+               canvas.setAttribute("height", HEIGHT)
            }
-
            function animate() {
-               ctx.clearRect(0, 0, WIDTH, HEIGHT);
-
-               for (var i in stars) {
-                   stars[i].move();
+               ctx.clearRect(0, 0, WIDTH, HEIGHT)
+               for (let i in stars) {
+                   stars[i].move()
                }
-               for (var i in dots) {
-                   dots[i].move();
+               for (let i in dots) {
+                   dots[i].move()
                }
-               drawIfMouseMoving();
-               requestAnimationFrame(animate);
+               drawIfMouseMoving()
+               requestAnimationFrame(animate)
            }
-
            function degToRad(deg) {
-               return deg * (Math.PI / 180);
+               return deg * (Math.PI / 180)
            }
-
-           setCanvasSize();
-
+           setCanvasSize()
            // 最后将插件对象暴露给全局对象
-           _global = (function () { return this || (0, eval)('this'); }());
+           _global = (function () { return this || (0, eval)('this') }())
            if (typeof module !== "undefined" && module.exports) {
                module.exports = CanvasStar;
            } else if (typeof define === "function" && define.amd) {
-               define(function () { return CanvasStar; });
+               define(function () { return CanvasStar; })
            } else {
-
-               !('CanvasStar' in _global) && (_global.CanvasStar = CanvasStar);
+               !('CanvasStar' in _global) && (_global.CanvasStar = CanvasStar)
            }
-
-       })();
+       })()
        </script>
        <script>
-           var CanvasStar = new CanvasStar;
-           CanvasStar.init();
+           let CanvasStar = new CanvasStar;
+           CanvasStar.init()
        </script>
 </body>
 </html>

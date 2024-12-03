@@ -86,15 +86,15 @@
   </div>
 </template>
 <script>
-const areaChart = () => import('./components/areaChart')
-const radarChart = () => import('./components/radar')
-const barChart = () => import('./components/page2/barChart')
-const doubleBarChart = () => import('./components/page2/doubleBarChart')
-const singleAreaChart = () => import('./components/page2/singleAreaChart')
-const doubleLine = () => import('./components/page2/doubleLine')
-const threeBarChart = () => import('./components/page2/threeBarChart')
-const pieChart = () => import('./components/page2/pieChart')
-const doubleBars = () => import('./components/page2/doubleBars')
+let areaChart = () => import('./components/areaChart')
+let radarChart = () => import('./components/radar')
+let barChart = () => import('./components/page2/barChart')
+let doubleBarChart = () => import('./components/page2/doubleBarChart')
+let singleAreaChart = () => import('./components/page2/singleAreaChart')
+let doubleLine = () => import('./components/page2/doubleLine')
+let threeBarChart = () => import('./components/page2/threeBarChart')
+let pieChart = () => import('./components/page2/pieChart')
+let doubleBars = () => import('./components/page2/doubleBars')
 export default {
   name: 'Page2',
   components: {
@@ -335,10 +335,10 @@ export default {
     },
     act() {
       // 清空画布
-      const canvas = document.querySelector('#main')
+      let canvas = document.querySelector('#main')
       canvas.style.width = this.centerBox.height + 'px'
       canvas.style.height = this.centerBox.height + 'px'
-      const context = canvas.getContext('2d')
+      let context = canvas.getContext('2d')
       context.clearRect(0, 0, canvas.width, canvas.height)
       this.drawPie(this.everyPer, context)
       this.animationFrame2 = window.requestAnimationFrame(this.act)
@@ -544,9 +544,8 @@ export default {
   transform: translate(-50%, -50%);
   font-size: 15px;
   padding: 5px 14px;
-  background: radial-gradient(2.4rem 1rem ellipse, rgba(7, 9, 34, .8) 60%, rgb(21, 67, 145));
+  background: radial-gradient(2.4rem 1rem ellipse, rgba(7, 9, 34, .8) 60%, rgb(21, 67, 145))
 }
-
 .page2 {
   height: 100%;
   width: 100%;
@@ -555,70 +554,57 @@ export default {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-
   .content {
     display: flex;
     flex-direction: row;
     height: 65%;
     width: 100%;
-
     .topleft {
       width: 34%;
       height: 100%;
     }
-
     .circlePie {
       width: 32%;
       height: 100%;
       padding: 0 0 40px;
       text-align: center;
       position: relative;
-
       canvas {
         position: absolute;
         left: 50%;
         top: 0;
-        transform: translate(-50%, 0);
+        transform: translate(-50%, 0)
       }
-
       #dot {
-        background: rgba(0, 0, 0, 0);
+        background: rgba(0, 0, 0, 0)
       }
     }
-
     .topright {
       width: 34%;
       height: 100%;
     }
-
     .topleft, .topright {
       display: flex;
       flex-direction: column;
-
       .list {
         height: 48%;
         width: 100%;
-
         .left, .right {
           background: #0D1341;
         }
-
         .left, .right, .center {
           width: 100%;
           height: 90%;
           border: 1px solid #0D2451;
           position: relative;
-
           #left1, #left2, #left3, #right1, #right2, #right3, #center2 {
             height: 100%;
           }
-
           .chart-68 {
             width: 68%;
             height: 100%;
             float: left;
           }
-
           .chart-32 {
             width: 32%;
             height: 100%;
@@ -628,29 +614,24 @@ export default {
       }
     }
   }
-
   .bottom-list {
     height: 35%;
     width: 100%;
     display: flex;
     flex-direction: row;
-
     .bottomleft {
       height: 100%;
       width: 66%;
       display: flex;
       flex-direction: row;
-
       .list {
         height: 100%;
         width: 33.3333%;
         padding-right: 1.5%;
         float: left;
-
         #bottom_4 {
           padding: 0 20px;
         }
-
         .bottom {
           width: 100%;
           height: 100%;
@@ -659,11 +640,9 @@ export default {
         }
       }
     }
-
     .bottomright {
       height: 100%;
       width: 32%;
-
       .list {
         width: 100%;
         height: 100%;

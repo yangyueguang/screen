@@ -9,7 +9,6 @@
 </template>
 <script>
 import echarts from 'echarts'
-
 export default {
   name: '',
   data() {
@@ -23,7 +22,7 @@ export default {
   },
   mounted() {
     this.handleSelect(this.value)
-    // this.setChart ();
+    // this.setChart ()
   },
   methods: {
     handleSelect(val) {
@@ -386,14 +385,11 @@ export default {
 .lines {
   height: 100%;
   width: 100%;
-
   #bottom_1 {
     height: 100%;
     width: 100%;
   }
-
   position: relative;
-
   .switchButton {
     position: absolute;
     z-index: 5;
@@ -402,11 +398,9 @@ export default {
     border: 1px solid #028bff;
     border-radius: 5px;
     padding: 0;
-
     .active {
       background: #0454a1;
     }
-
     a {
       display: inline-block;
       color: #fff;

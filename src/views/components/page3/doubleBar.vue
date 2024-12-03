@@ -9,7 +9,6 @@
 </style>
 <script>
 import echarts from 'echarts'
-
 export default {
   name: '',
   props: {
@@ -84,7 +83,6 @@ export default {
             },
             data: ['TOP1', 'TOP2', 'TOP3', 'TOP4', 'TOP5', 'TOP6']
           },
-
         yAxis:
           {
             type: 'value',
