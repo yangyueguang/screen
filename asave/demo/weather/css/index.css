@@ -15,8 +15,8 @@ body{
     height: 100%;
 }
 @font-face {
-    font-family: "numfont"
-    src: url('../fonts/num.otf') format('truetype')
+    font-family: "numfont";
+    src: url('../fonts/num.otf') format('truetype');
 }
 .numfont {
     font-family:"numfont" !important;

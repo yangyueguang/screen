@@ -16,7 +16,7 @@ a:hover {
 	color: #fff;
 }
 #canvas-container {
-	background: #000 url(http://jackrugile.com/lab/fireworks-v2/images/bg.jpg)
+	background: #000 url(http://jackrugile.com/lab/fireworks-v2/images/bg.jpg);
   height: 400px;
 	left: 50%;
 	margin: -200px 0 0 -300px;
