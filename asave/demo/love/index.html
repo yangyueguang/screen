@@ -1,5 +1,4 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<!-- saved from url=(0027)http://itzoo.info/love.html -->
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Love</title>
         <link type="text/css" rel="stylesheet" href="./Love_files/default.css">
@@ -103,7 +102,7 @@
         let foot = tree.footer;
         let hold = 1
         canvas.click(function(e) {
-            let offset = canvas.offset(), x, y
+            var offset = canvas.offset(), x, y
             x = e.pageX - offset.left;
             y = e.pageY - offset.top;
             if (seed.hover(x, y)) {
@@ -160,7 +159,7 @@
             canvas.css("background", "none")
         }))
         let jumpAnimate = eval(Jscex.compile("async", function () {
-            let ctx = tree.ctx;
+            var ctx = tree.ctx;
             while (true) {
                 tree.ctx.clearRect(0, 0, width, height)
                 tree.jump()
@@ -169,7 +168,7 @@
             }
         }))
         let textAnimate = eval(Jscex.compile("async", function () {
-            let together = new Date()
+            var together = new Date()
             together.setFullYear(2010, 5, 8)
             together.setHours(20)
             together.setMinutes(20)
