@@ -44,7 +44,8 @@ function getRandom(min, max) {
 }
 function initSpot() {
   let r = getRandom(0.1, 0.9)
-  let x = y = 1
+  var x = 1
+  var y = 1
   let speed = getRandom(1, width / 2)
   let color = 'white'
   let alp = getRandom(0.1, 0.9)
@@ -68,10 +69,10 @@ cirle_canvas.onmouseup = function() {
   keyDown = false
 }
 cirle_canvas.onmousemove = function(e) {
-  let x = e.offsetX
-  let y = e.offsetY
+  var x = e.offsetX
+  var y = e.offsetY
   for (let i = 0; i < spotArr.length; i++) {
-    if (keyDown == true) {
+    if (keyDown === true) {
       spotArr[i].sOffset -= 2
       if (Math.abs(spotArr[i].x - x) < 100 &&
 				Math.abs(spotArr[i].y - y) < 100) {
@@ -99,8 +100,8 @@ setInterval(function() {
     }
   }
   if (keyDown === true) {
-	  cirle_ctx.fillStyle = 'rgba(0, 0, 0, 0.1)'
-	  cirle_ctx.rect(-width / 2, -height / 2, width, height)
-	  cirle_ctx.fill()
+    cirle_ctx.fillStyle = 'rgba(0, 0, 0, 0.1)'
+    cirle_ctx.rect(-width / 2, -height / 2, width, height)
+    cirle_ctx.fill()
   }
 }, 30)

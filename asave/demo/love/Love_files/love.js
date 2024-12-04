@@ -172,7 +172,7 @@
     hover: function(x, y) {
       let ctx = this.tree.ctx
       let pixel = ctx.getImageData(x, y, 1, 1)
-      return pixel.data[3] == 255
+      return pixel.data[3] === 255
     }
   }
   let Footer = function(tree, width, height, speed) {

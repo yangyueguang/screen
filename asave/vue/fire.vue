@@ -3,46 +3,49 @@
 </template>
 <script>
 export default {
-  name: "index",
-  methods:{
-    show(){
-      let canvasWidth = 600;
-      let maxParticles = 200;
+  name: 'Index',
+  mounted() {
+    this.show()
+  },
+  methods: {
+    show() {
+      let canvasWidth = 600
+      let maxParticles = 200
       let canvas;
       (function flameOfLove() {
         let particles = []
         canvas = document.querySelector('canvas')
-        canvas.width = canvasWidth;
-        canvas.height = canvasWidth;
+        canvas.width = canvasWidth
+        canvas.height = canvasWidth
         let context = canvas.getContext('2d')
         function init() {
           loop()
         }
         function addParticle() {
           let particle = new Particle(context)
-          particle.init(canvasWidth/2 - 30, canvasWidth/1.5)
+          particle.init(canvasWidth / 2 - 30, canvasWidth / 1.5)
           particles.push(particle)
         }
         function updateParticles() {
-          if( particles.length < maxParticles ) {
+          if (particles.length < maxParticles) {
             addParticle(context)
           }
-          for( let i = 0 i < particles.length; i++ ) {
+          for (let i = 0; i < particles.length; i++) {
             particles[i].update()
           }
-          for( let i = particles.length - 1; i >= 0 i-- ) {
-            if( particles[i].lifeSpan <= 0 ) {
+          for (let i = particles.length - 1; i >= 0; i--) {
+            if (particles[i].lifeSpan <= 0) {
               particles.splice(i, 1)
             }
           }
         }
         function clearCanvas() {
-          context.globalCompositeOperation = "source-over"
-          context.fillStyle = "rgba( 10, 2, 2, 1 )"
-          context.fillRect( 0, 0, canvasWidth, canvasWidth )
+          context.globalCompositeOperation = 'source-over'
+          context.fillStyle = 'rgba( 10, 2, 2, 1 )'
+          context.fillRect(0, 0, canvasWidth, canvasWidth)
         }
         function loop() {
-          if( particles.length < maxParticles){
+          if (particles.length < maxParticles) {
             addParticle(context)
           }
           requestAnimationFrame(loop)
@@ -50,12 +53,12 @@ export default {
           updateParticles()
         }
         function Particle() {
-          this.lifeSpan = 100; //ms
-          this.radius = 120;
-          this.alpha = 0.6;
+          this.lifeSpan = 100 // ms
+          this.radius = 120
+          this.alpha = 0.6
           this.init = function(x, y) {
             this.velocity = {
-              x:  (Math.random() < 0.5 ? -1 : 1) * (Math.random() * 1.2),
+              x: (Math.random() < 0.5 ? -1 : 1) * (Math.random() * 1.2),
               y: (-2 + (Math.random() * -3))
             }
             this.position = {x: x, y: y}
@@ -64,19 +67,19 @@ export default {
           this.update = function() {
             this.position.x += this.velocity.x
             this.position.y += this.velocity.y
-            this.velocity.x += (Math.random() < 0.5 ? -1 : 1) * 2 / 75;
-            this.velocity.y -= Math.random() / 600;
-            this.lifeSpan--;
-            if( this.lifeSpan < 50 ) {
-              this.alpha -= 0.01;
+            this.velocity.x += (Math.random() < 0.5 ? -1 : 1) * 2 / 75
+            this.velocity.y -= Math.random() / 600
+            this.lifeSpan--
+            if (this.lifeSpan < 50) {
+              this.alpha -= 0.01
             }
-            if( this.lifeSpan < 0) {
+            if (this.lifeSpan < 0) {
               this.lifeSpan = 0
             }
             this.draw()
           }
           this.draw = function() {
-            context.globalCompositeOperation = "overlay"
+            context.globalCompositeOperation = 'overlay'
             context.fillStyle = 'rgba(255, 230, 200,' + this.alpha + ')'
             context.font = this.radius * this.lifeSpan / 100 + 'px Arial'
             context.fillText('♥', this.position.x, this.position.y)
@@ -85,9 +88,6 @@ export default {
         init()
       })()
     }
-  },
-  mounted() {
-    this.show()
   }
 }
 </script>

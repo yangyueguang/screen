@@ -64,7 +64,7 @@ export default {
       })
       this.renderer.setClearColor(0xeeeeee, 1.0)
       this.renderer.setSize(window.innerWidth, window.innerHeight)
-      this.renderer.shadowMap.enabled = true;
+      this.renderer.shadowMap.enabled = true
       el.appendChild(this.renderer.domElement)
     },
     // 缩放
@@ -87,9 +87,9 @@ export default {
       let mesh = new THREE.Mesh(geometry, material)
       mesh.position.set(0, 0, 0)
       // 沿着X轴旋转
-      mesh.rotation.x = -Math.PI * 0.5;
+      mesh.rotation.x = -Math.PI * 0.5
       // 接受阴影
-      mesh.receiveShadow = true;
+      mesh.receiveShadow = true
       this.scene.add(mesh)
     },
     initAmbientLight() {
@@ -123,13 +123,13 @@ export default {
           }
         )
       })
-      model.traverse(function (object) {
-        if (object.isMesh) object.castShadow = true;
+      model.traverse(function(object) {
+        if (object.isMesh) object.castShadow = true
       })
       this.lamp1 = model.getObjectByName('Mesh_1')// 灯1
       this.lamp2 = model.getObjectByName('Mesh_2')// 灯2
       model.castShadow = true
-      model.receiveShadow = true;
+      model.receiveShadow = true
       // console.log(model)
       this.lamp1.material.emissive = 0xff0000
       this.lamp1.material.emissiveIntensity = 0.5
@@ -141,7 +141,7 @@ export default {
       this.scene.add(target1)
       let light1 = this.getSpotLight()
       light1.position.set(5, 16.382, 0)
-      light1.target = target1;
+      light1.target = target1
       this.scene.add(light1)
     },
     getSpotLight() {
@@ -166,7 +166,7 @@ export default {
         0.4,
         0.85
       )
-      bloomPass.renderToScreen = true;
+      bloomPass.renderToScreen = true
       bloomPass.threshold = 0
       bloomPass.strength = 1
       bloomPass.radius = 0

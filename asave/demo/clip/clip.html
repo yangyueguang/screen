@@ -99,8 +99,8 @@
 				timeout = setTimeout(function () {
 					let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height)
 					let dd = 0
-					for (let x = 0 x < imgData.width; x += distance) {
-						for (let y = 0 y < imgData.height; y += distance) {
+					for (let x = 0; x < imgData.width; x += distance) {
+						for (let y = 0; y < imgData.height; y += distance) {
 							let i = (y * imgData.width + x) * 4;
 							if (imgData.data[i + 3] > 0) { dd++ }
 						}
@@ -177,8 +177,8 @@
 				timeout = setTimeout(function () {
 					let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height)
 					let dd = 0
-					for (let x = 0 x < imgData.width; x += distance) {
-						for (let y = 0 y < imgData.height; y += distance) {
+					for (let x = 0; x < imgData.width; x += distance) {
+						for (let y = 0; y < imgData.height; y += distance) {
 							let i = (y * imgData.width + x) * 4;
 							if (imgData.data[i + 3] > 0) {
 								dd++

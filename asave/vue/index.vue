@@ -3,13 +3,16 @@
 </template>
 <script>
 export default {
-  name: "index",
-  methods:{
-    show(){
+  name: 'Index',
+  mounted() {
+    this.show()
+  },
+  methods: {
+    show() {
       (function bubblesCursor() {
         let width = window.innerWidth
         let height = window.innerHeight
-        let cursor = {x: width/2, y: width/2}
+        let cursor = {x: width / 2, y: width / 2}
         let particles = []
         function init() {
           bindEvents()
@@ -25,16 +28,16 @@ export default {
           height = window.innerHeight
         }
         function onTouchMove(e) {
-          if( e.touches.length > 0 ) {
-            for( let i = 0 i < e.touches.length; i++ ) {
+          if (e.touches.length > 0) {
+            for (let i = 0; i < e.touches.length; i++) {
               addParticle(e.touches[i].clientX, e.touches[i].clientY)
             }
           }
         }
         function onMouseMove(e) {
-          cursor.x = e.clientX;
-          cursor.y = e.clientY;
-          addParticle( cursor.x, cursor.y)
+          cursor.x = e.clientX
+          cursor.y = e.clientY
+          addParticle(cursor.x, cursor.y)
         }
         function addParticle(x, y) {
           let particle = new Particle()
@@ -43,12 +46,12 @@ export default {
         }
         function updateParticles() {
           // Update
-          for( let i = 0 i < particles.length; i++ ) {
+          for (let i = 0; i < particles.length; i++) {
             particles[i].update()
           }
           // Remove dead particles
-          for( let i = particles.length - 1; i >= 0 i-- ) {
-            if( particles[i].lifeSpan < 0 ) {
+          for (let i = particles.length - 1; i >= 0; i--) {
+            if (particles[i].lifeSpan < 0) {
               particles[i].die()
               particles.splice(i, 1)
             }
@@ -62,24 +65,24 @@ export default {
          * Particles
          */
         function Particle() {
-          this.lifeSpan = 250; //ms
-          this.initialStyles ={
-            "position": "absolute",
-            "display": "block",
-            "pointerEvents": "none",
-            "z-index": "10000000",
-            "width": "5px",
-            "height": "5px",
-            "background": "#e6f1f7",
-            "box-shadow": "-1px 0px #6badd3, 0px -1px #6badd3, 1px 0px #3a92c5, 0px 1px #3a92c5",
-            "border-radius": "1px",
-            "will-change": "transform"
+          this.lifeSpan = 250 // ms
+          this.initialStyles = {
+            'position': 'absolute',
+            'display': 'block',
+            'pointerEvents': 'none',
+            'z-index': '10000000',
+            'width': '5px',
+            'height': '5px',
+            'background': '#e6f1f7',
+            'box-shadow': '-1px 0px #6badd3, 0px -1px #6badd3, 1px 0px #3a92c5, 0px 1px #3a92c5',
+            'border-radius': '1px',
+            'will-change': 'transform'
           }
           // Init, and set properties
           this.init = function(x, y) {
             this.velocity = {
-              x:  (Math.random() < 0.5 ? -1 : 1) * (Math.random() / 10),
-              y: (-.4 + (Math.random() * -1))
+              x: (Math.random() < 0.5 ? -1 : 1) * (Math.random() / 10),
+              y: (-0.4 + (Math.random() * -1))
             }
             this.position = {x: x - 10, y: y - 10}
             this.element = document.createElement('span')
@@ -91,10 +94,10 @@ export default {
             this.position.x += this.velocity.x
             this.position.y += this.velocity.y
             // Update velocities
-            this.velocity.x += (Math.random() < 0.5 ? -1 : 1) * 2 / 75;
-            this.velocity.y -= Math.random() / 600;
-            this.lifeSpan--;
-            this.element.style.transform = "translate3d(" + this.position.x + "px," + this.position.y + "px,0) scale(" + ( 0.2 + (250 - this.lifeSpan) / 250) + ")"
+            this.velocity.x += (Math.random() < 0.5 ? -1 : 1) * 2 / 75
+            this.velocity.y -= Math.random() / 600
+            this.lifeSpan--
+            this.element.style.transform = 'translate3d(' + this.position.x + 'px,' + this.position.y + 'px,0) scale(' + (0.2 + (250 - this.lifeSpan) / 250) + ')'
           }
           this.die = function() {
             this.element.parentNode.removeChild(this.element)
@@ -104,17 +107,14 @@ export default {
          * Utils
          */
         // Applies css `properties` to an element.
-        function applyProperties( target, properties ) {
-          for( let key in properties ) {
+        function applyProperties(target, properties) {
+          for (let key in properties) {
             target.style[ key ] = properties[ key ]
           }
         }
         init()
       })()
     }
-  },
-  mounted() {
-    this.show()
   }
 }
 </script>

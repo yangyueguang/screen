@@ -509,7 +509,7 @@ export default {
   transform: translate(-50%, -50%);
   font-size: 15px;
   padding: 5px 14px;
-  background: radial-gradient(2.4rem 1rem ellipse, rgba(7, 9, 34, .8) 60%, rgb(21, 67, 145))
+  background: radial-gradient(2.4rem 1rem ellipse, rgba(7, 9, 34, .8) 60%, rgb(21, 67, 145));
 }
 .page1 {
   height: 100%;

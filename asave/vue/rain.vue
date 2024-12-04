@@ -1,19 +1,19 @@
 <template>
   <div class="home">
-    <canvas id="canvas" />
+    <canvas id="canvas"></canvas>
     <!-- 下雨 -->
   </div>
 </template>
 <script>
 // 画笔
-let ctx;
+let ctx
 // 画布的宽高
 let w = window.innerWidth
 let h = window.innerWidth
 // 存放雨滴的数组
 let arr = []
 // 雨滴的数量
-let size = 150;
+let size = 150
 // 雨滴的构造函数
 class Rain {
   x = random(w)
@@ -27,13 +27,13 @@ class Rain {
       this.y = 0
       this.x = random(w)
     }
-    this.y = this.y + this.ySpeed;
+    this.y = this.y + this.ySpeed
   }
 }
 // 画线（雨滴）
 function drawLine(x1, y1) {
   ctx.beginPath()
-  ctx.strokeStyle = "#cccccc"
+  ctx.strokeStyle = '#cccccc'
   ctx.moveTo(x1, y1)
   // 雨长度为30
   ctx.lineTo(x1, y1 + 30)
@@ -41,7 +41,7 @@ function drawLine(x1, y1) {
 }
 // 生成随机数
 function random(num) {
-  return Math.random() * num;
+  return Math.random() * num
 }
 // 开始
 function start() {
@@ -60,15 +60,15 @@ function start() {
 }
 // 初始化
 function init(ctx1) {
-  ctx = ctx1;
+  ctx = ctx1
   start()
 }
 // 导出初始化函数
 export default {
-  name: "index",
+  name: 'Index',
   data() {
     return {
-      ctx: {},
+      ctx: {}
     }
   },
   mounted() {
@@ -76,13 +76,13 @@ export default {
   },
   methods: {
     initCanvas() {
-      let canvas = document.querySelector("#canvas")
-      this.ctx = canvas.getContext("2d")
+      let canvas = document.querySelector('#canvas')
+      this.ctx = canvas.getContext('2d')
       canvas.width = window.innerWidth
       canvas.height = window.innerHeight
       init(this.ctx)
-    },
-  },
+    }
+  }
 }
 </script>
 <style scoped>
