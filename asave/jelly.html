@@ -158,8 +158,8 @@ App.draw = function() {
   for (let armIndex = 0; armIndex < this.arms.length; armIndex++) {
     let arm = this.arms[armIndex]
     for (let i = 0; i < arm.length; i++) {
-      let particle = arm[i]
-      if (i !== 0) { let particleLead = arm[i-1] }
+      var particle = arm[i]
+      if (i !== 0) { var particleLead = arm[i-1] }
       // Draw particle
       this.ctx.beginPath()
       this.ctx.arc(particle.x, particle.y, 0.3 * (arm.length - i), 0, 2 * Math.PI, false)

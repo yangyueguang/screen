@@ -3,90 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <title>罗盘</title>
-<style>
-    .square {
-        /*width: 50px;*/
-        /*height: 50px;*/
-        position: absolute;
-        transform: translate(-50%, -50%); rotate(45deg)
-        -webkit-transform: translate(-50%, -50%); rotate(45deg)
-        -moz-transform: translate(-50%, -50%); rotate(45deg)
-        top: 50%;
-        left: 50%;
-        animation: rotate infinite linear 5s;
-        -webkit-animation: rotate infinite linear 5s;
-        -moz-animation: rotate infinite linear 5s;
-    }
-    .rect {
-        width: 100%;
-        height: 50%;
-        position: relative;
-        border-bottom: none;
-    }
-    .inner_circle {
-        width: calc(50%);
-        height: 100%;
-        border-radius: 50%;
-        position: absolute;
-        z-index: 1;
-    }
-    .dot {
-        width: 20%;
-        height: 20%;
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        margin: auto;
-        border-radius: 50%;
-    }
-    .rect_one {
-        border-radius: 200px 200px 0 0;
-        background: white;
-    }
-    .rect_one_one {
-        bottom: -50%;
-        left: 0;
-        background: black;
-    }
-    .rect_one_two {
-        background: white;
-    }
-    .rect_two {
-        border-radius: 0 0 200px 200px;
-        background: black;
-    }
-    .rect_two_one {
-        bottom: 50%;
-        right: 0;
-        background: white;
-    }
-    .rect_two_two {
-        background: black;
-    }
-    @keyframes rotate {
-        from {
-            transform: translate(-50%, -50%); rotate(0deg)
-            -webkit-transform: translate(-50%, -50%); rotate(0deg)
-            -moz-transform: translate(-50%, -50%); rotate(0deg)
+    <style>
+        .square {
+            /*width: 50px;*/
+            /*height: 50px;*/
+            position: absolute;
+            transform: translate(-50%, -50%) rotate(45deg);
+            -webkit-transform: translate(-50%, -50%) rotate(45deg);
+            -moz-transform: translate(-50%, -50%) rotate(45deg);
+            top: 50%;
+            left: 50%;
+            animation: rotate infinite linear 5s;
+            -webkit-animation: rotate infinite linear 5s;
+            -moz-animation: rotate infinite linear 5s;
         }
-        to {
-            transform: translate(-50%, -50%); rotate(360deg)
-            -webkit-transform: translate(-50%, -50%); rotate(360deg)
-            -moz-transform: translate(-50%, -50%); rotate(360deg)
+
+        .rect {
+            width: 100%;
+            height: 50%;
+            position: relative;
+            border-bottom: none;
         }
-    }
-</style>
+
+        .inner_circle {
+            width: calc(50%);
+            height: 100%;
+            border-radius: 50%;
+            position: absolute;
+            z-index: 1;
+        }
+
+        .dot {
+            width: 20%;
+            height: 20%;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            border-radius: 50%;
+        }
+
+        .rect_one {
+            border-radius: 200px 200px 0 0;
+            background: white;
+        }
+
+        .rect_one_one {
+            bottom: -50%;
+            left: 0;
+            background: black;
+        }
+
+        .rect_one_two {
+            background: white;
+        }
+
+        .rect_two {
+            border-radius: 0 0 200px 200px;
+            background: black;
+        }
+
+        .rect_two_one {
+            bottom: 50%;
+            right: 0;
+            background: white;
+        }
+
+        .rect_two_two {
+            background: black;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: translate(-50%, -50%) rotate(0deg);
+                -webkit-transform: translate(-50%, -50%) rotate(0deg);
+                -moz-transform: translate(-50%, -50%) rotate(0deg);
+            }
+            to {
+                transform: translate(-50%, -50%) rotate(360deg);
+                -webkit-transform: translate(-50%, -50%) rotate(360deg);
+                -moz-transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+    </style>
     <style>
         *, body {
             margin: 0px;
             padding: 0px;
         }
+
         #space{
             z-index: -1;
             position: absolute;
         }
+
         .container {
             width: 100%;
             height: 100vh;
@@ -99,6 +112,7 @@
             align-items: center; /* 垂直居中 */
             box-sizing: border-box; /* 防止内边距和边框影响尺寸 */
         }
+
         .main {
             width: 900px;
             height: 900px;
@@ -109,10 +123,12 @@
             position: relative; /* 保持相对定位 */
             /*font-weight: bold;*/
         }
+
         .center {
             width: 50px;
             height: 50px;
         }
+
         .level {
             position: absolute;
             transition: all 3s;
@@ -121,42 +137,52 @@
             border: 1px solid #fff;
             border-radius: 50%;
         }
+
         .floor1 {
             width: 110px;
             height: 110px;
         }
+
         .floor2 {
             width: 170px;
             height: 170px;
         }
+
         .floor3 {
             width: 230px;
             height: 230px;
         }
+
         .bold{
             font-weight: bold;
         }
+
         .mountain-item:nth-child(odd) {
             color: red;
             /*color: #fff;*/
         }
+
         .mountain-item:is(:nth-child(2), :nth-child(6), :nth-child(8), :nth-child(12)
         , :nth-child(14), :nth-child(18), :nth-child(20), :nth-child(24)) {
             color: blue;
             /*color: #fff;*/
         }
+
         .floor4 {
             width: 290px;
             height: 290px;
         }
+
         .floor5 {
             width: 350px;
             height: 350px;
         }
+
         .floor6 {
             width: 410px;
             height: 410px;
         }
+
         .floor7 {
             width: 470px;
             height: 470px;
@@ -173,18 +199,22 @@
             width: 650px;
             height: 650px;
         }
+
         .floor11 {
             width: 750px;
             height: 750px;
         }
+
         .floor12 {
             width: 810px;
             height: 810px;
         }
+
         .floor99 {
             width: 830px;
             height: 830px;
         }
+
         .time_black {
             position: absolute;
             width: 40px;
@@ -193,6 +223,7 @@
             top: 50%;
             left: 50%;
             padding: 10px 0px;
+
         }
         .time_black2{
             position: absolute;
@@ -200,11 +231,13 @@
             top: 50%;
             left: 50%;
         }
+
         .time_black span,.time_black2 span {
             display: inline-block;
             transform: rotate(-90deg);
             transform-origin: 50% 50%;
         }
+
         .time_black .vertical {
             writing-mode: vertical-lr;
             font-size: 10px;
@@ -214,15 +247,19 @@
             font-size: 10px;
             margin-top: 10px;
         }
+
+
         .circle{
             position: absolute;
             border-radius: 50%;
             width: 100%;
             height: 100%;
         }
+
         .one{
             z-index: -1;
         }
+
         .position-box{
             position: relative;
             width: 100%;
@@ -239,6 +276,7 @@
             left: 50%;
             top: 50%;
         }
+
         /* 只要部分边框 */
         .other-item::before {
             content: '';
@@ -251,18 +289,22 @@
             border-left: 1px solid #fff;
             overflow: hidden;
         }
+
         /* 只要部分边框 */
         .other-item2::before {
-            top: calc(100% - 50px); !important;
+            top: calc(100% - 50px) !important;
         }
+
         /* 只要部分边框 */
         .other-item-last::before {
-            top: calc(100% - 10px); !important;
+            top: calc(100% - 10px) !important;
         }
+
     </style>
 </head>
 <body>
 <canvas id="space"></canvas>
+
 <div class="container" id="app">
     <div class="main">
         <div class="center square">
@@ -277,11 +319,12 @@
                 </div>
             </div>
         </div>
-        <div class="floor1 level" v-bind:style="{transform:'translate(-50%, -50%); rotate('+floor1Rotate+'deg)'}">
+        <div class="floor1 level" v-bind:style="{transform:'translate(-50%, -50%) rotate('+floor1Rotate+'deg)'}">
             <div class="time_black" v-for="(e,index) of floor1"
                  :class="{'active': e.active}"
-                 v-bind:style="{transform: 'translate(-50%, -50%); translateX('+e.translateX+'px); translateY('+e.translateY+'px); rotate('+e.rotate+'deg)'}">
+                 v-bind:style="{transform: 'translate(-50%, -50%) translateX('+e.translateX+'px) translateY('+e.translateY+'px) rotate('+e.rotate+'deg)'}">
                 <span v-text="e.content"></span></div>
+
             <!-- 这个是为了画圆的等分边框 -->
             <div class="circle">
                 <div class="position-box" v-bind:style="{transform:'rotate('+divideCircles8.initAngle+'deg)', '-webkit-transition-duration': times}">
@@ -290,13 +333,15 @@
                     </div>
                 </div>
             </div>
+
         </div>
         <div class="floor2 level"
-             v-bind:style="{transform:'translate(-50%, -50%); rotate('+floor2Rotate+'deg)'}">
+             v-bind:style="{transform:'translate(-50%, -50%) rotate('+floor2Rotate+'deg)'}">
             <div class="time_black bold" v-for="(e,index) of floor2"
                  :class="{'active': e.active}"
-                 v-bind:style="{transform: 'translate(-50%, -50%); translateX('+e.translateX+'px); translateY('+e.translateY+'px); rotate('+e.rotate+'deg)'}">
+                 v-bind:style="{transform: 'translate(-50%, -50%) translateX('+e.translateX+'px) translateY('+e.translateY+'px) rotate('+e.rotate+'deg)'}">
                 <span v-text="e.content"></span></div>
+
             <div class="circle">
                 <div class="position-box" v-bind:style="{transform:'rotate('+divideCircles8.initAngle+'deg)', '-webkit-transition-duration': times}">
                     <div v-for="(item, index) in divideCircles8.number" class="other-item"
@@ -304,12 +349,15 @@
                     </div>
                 </div>
             </div>
+
         </div>
-        <div class="floor3 level" v-bind:style="{transform:'translate(-50%, -50%); rotate('+floor3Rotate+'deg)'}">
+
+        <div class="floor3 level" v-bind:style="{transform:'translate(-50%, -50%) rotate('+floor3Rotate+'deg)'}">
             <div class="time_black mountain-item" v-for="(e,index) of floor3"
                  :class="{'active': e.active}"
-                 v-bind:style="{transform: 'translate(-50%, -50%); translateX('+e.translateX+'px); translateY('+e.translateY+'px); rotate('+e.rotate+'deg)'}">
+                 v-bind:style="{transform: 'translate(-50%, -50%) translateX('+e.translateX+'px) translateY('+e.translateY+'px) rotate('+e.rotate+'deg)'}">
                 <span v-text="e.content"></span></div>
+
             <div class="circle">
                 <div class="position-box" v-bind:style="{transform:'rotate('+divideCircles24.initAngle+'deg)', '-webkit-transition-duration': times}">
                     <div v-for="(item, index) in divideCircles24.number" class="other-item"
@@ -317,12 +365,15 @@
                     </div>
                 </div>
             </div>
+
         </div>
-        <div class="floor4 level" v-bind:style="{transform:'translate(-50%, -50%); rotate('+floor4Rotate+'deg)'}">
+
+        <div class="floor4 level" v-bind:style="{transform:'translate(-50%, -50%) rotate('+floor4Rotate+'deg)'}">
             <div class="time_black" v-for="(e,index) of floor4"
                  :class="{'active': e.active}"
-                 v-bind:style="{transform: 'translate(-50%, -50%); translateX('+e.translateX+'px); translateY('+e.translateY+'px); rotate('+e.rotate+'deg)'}">
+                 v-bind:style="{transform: 'translate(-50%, -50%) translateX('+e.translateX+'px) translateY('+e.translateY+'px) rotate('+e.rotate+'deg)'}">
                 <span v-text="e.content"></span></div>
+
             <div class="circle">
                 <div class="position-box" v-bind:style="{transform:'rotate('+divideCircles8.initAngle+'deg)', '-webkit-transition-duration': times}">
                     <div v-for="(item, index) in divideCircles8.number" class="other-item"
@@ -331,11 +382,13 @@
                 </div>
             </div>
         </div>
-        <div class="floor5 level" v-bind:style="{transform:'translate(-50%, -50%); rotate('+floor5Rotate+'deg)'}">
+
+        <div class="floor5 level" v-bind:style="{transform:'translate(-50%, -50%) rotate('+floor5Rotate+'deg)'}">
             <div class="time_black" v-for="(e,index) of floor5"
                  :class="{'active': e.active}"
-                 v-bind:style="{transform: 'translate(-50%, -50%); translateX('+e.translateX+'px); translateY('+e.translateY+'px); rotate('+e.rotate+'deg)'}">
+                 v-bind:style="{transform: 'translate(-50%, -50%) translateX('+e.translateX+'px) translateY('+e.translateY+'px) rotate('+e.rotate+'deg)'}">
                 <span v-text="e.content"></span></div>
+
             <div class="circle">
                 <div class="position-box" v-bind:style="{transform:'rotate('+divideCircles24.initAngle+'deg)', '-webkit-transition-duration': times}">
                     <div v-for="(item, index) in divideCircles24.number" class="other-item"
@@ -344,11 +397,13 @@
                 </div>
             </div>
         </div>
-        <div class="floor6 level" v-bind:style="{transform:'translate(-50%, -50%); rotate('+floor6Rotate+'deg)'}">
+
+        <div class="floor6 level" v-bind:style="{transform:'translate(-50%, -50%) rotate('+floor6Rotate+'deg)'}">
             <div class="time_black" v-for="(e,index) of floor6"
                  :class="{'active': e.active}"
-                 v-bind:style="{transform: 'translate(-50%, -50%); translateX('+e.translateX+'px); translateY('+e.translateY+'px); rotate('+e.rotate+'deg)'}">
+                 v-bind:style="{transform: 'translate(-50%, -50%) translateX('+e.translateX+'px) translateY('+e.translateY+'px) rotate('+e.rotate+'deg)'}">
                 <span v-text="e.content"></span></div>
+
             <div class="circle">
                 <div class="position-box" v-bind:style="{transform:'rotate('+divideCircles24.initAngle+'deg)', '-webkit-transition-duration': times}">
                     <div v-for="(item, index) in divideCircles24.number" class="other-item"
@@ -357,11 +412,13 @@
                 </div>
             </div>
         </div>
-        <div class="floor7 level" v-bind:style="{transform:'translate(-50%, -50%); rotate('+floor7Rotate+'deg)'}">
+
+        <div class="floor7 level" v-bind:style="{transform:'translate(-50%, -50%) rotate('+floor7Rotate+'deg)'}">
             <div class="time_black" v-for="(e,index) of floor7"
                  :class="{'active': e.active}"
-                 v-bind:style="{transform: 'translate(-50%, -50%); translateX('+e.translateX+'px); translateY('+e.translateY+'px); rotate('+e.rotate+'deg)'}">
+                 v-bind:style="{transform: 'translate(-50%, -50%) translateX('+e.translateX+'px) translateY('+e.translateY+'px) rotate('+e.rotate+'deg)'}">
                 <span v-text="e.content"></span></div>
+
             <div class="circle">
                 <div class="position-box" v-bind:style="{transform:'rotate('+divideCircles24.initAngle+'deg)', '-webkit-transition-duration': times}">
                     <div v-for="(item, index) in divideCircles24.number" class="other-item"
@@ -370,11 +427,14 @@
                 </div>
             </div>
         </div>
-        <div class="floor8 level" v-bind:style="{transform:'translate(-50%, -50%); rotate('+floor8Rotate+'deg)'}">
+
+
+        <div class="floor8 level" v-bind:style="{transform:'translate(-50%, -50%) rotate('+floor8Rotate+'deg)'}">
             <div class="time_black" v-for="(e,index) of floor8"
                  :class="{'active': e.active}"
-                 v-bind:style="{transform: 'translate(-50%, -50%); translateX('+e.translateX+'px); translateY('+e.translateY+'px); rotate('+e.rotate+'deg)'}">
+                 v-bind:style="{transform: 'translate(-50%, -50%) translateX('+e.translateX+'px) translateY('+e.translateY+'px) rotate('+e.rotate+'deg)'}">
                 <span v-text="e.content"></span></div>
+
             <div class="circle">
                 <div class="position-box" v-bind:style="{transform:'rotate('+divideCircles24.initAngle+'deg)', '-webkit-transition-duration': times}">
                     <div v-for="(item, index) in divideCircles24.number" class="other-item"
@@ -383,11 +443,14 @@
                 </div>
             </div>
         </div>
-        <div class="floor9 level" v-bind:style="{transform:'translate(-50%, -50%); rotate('+floor9Rotate+'deg)'}">
+
+
+        <div class="floor9 level" v-bind:style="{transform:'translate(-50%, -50%) rotate('+floor9Rotate+'deg)'}">
             <div class="time_black" v-for="(e,index) of floor9"
                  :class="{'active': e.active}"
-                 v-bind:style="{transform: 'translate(-50%, -50%); translateX('+e.translateX+'px); translateY('+e.translateY+'px); rotate('+e.rotate+'deg)'}">
+                 v-bind:style="{transform: 'translate(-50%, -50%) translateX('+e.translateX+'px) translateY('+e.translateY+'px) rotate('+e.rotate+'deg)'}">
                 <span class="vertical" v-text="e.content"></span></div>
+
             <div class="circle">
                 <div class="position-box" v-bind:style="{transform:'rotate('+divideCircles72.initAngle+'deg)', '-webkit-transition-duration': times}">
                     <div v-for="(item, index) in divideCircles72.number" class="other-item"
@@ -396,11 +459,13 @@
                 </div>
             </div>
         </div>
-        <div class="floor10 level" v-bind:style="{transform:'translate(-50%, -50%); rotate('+floor10Rotate+'deg)'}">
+
+        <div class="floor10 level" v-bind:style="{transform:'translate(-50%, -50%) rotate('+floor10Rotate+'deg)'}">
             <div class="time_black" v-for="(e,index) of floor10"
                  :class="{'active': e.active}"
-                 v-bind:style="{transform: 'translate(-50%, -50%); translateX('+e.translateX+'px); translateY('+e.translateY+'px); rotate('+e.rotate+'deg)'}">
+                 v-bind:style="{transform: 'translate(-50%, -50%) translateX('+e.translateX+'px) translateY('+e.translateY+'px) rotate('+e.rotate+'deg)'}">
                 <span class="vertical" v-text="e.content"></span></div>
+
             <div class="circle">
                 <div class="position-box" v-bind:style="{transform:'rotate('+divideCircles120.initAngle+'deg)', '-webkit-transition-duration': times}">
                     <div v-for="(item, index) in divideCircles120.number" class="other-item"
@@ -409,12 +474,15 @@
                 </div>
             </div>
         </div>
-        <div class="floor11 level" v-bind:style="{transform:'translate(-50%, -50%); rotate('+floor11Rotate+'deg)'}">
+
+
+        <div class="floor11 level" v-bind:style="{transform:'translate(-50%, -50%) rotate('+floor11Rotate+'deg)'}">
             <div class="time_black2" v-for="(e,index) of floor11"
                  :class="{'active': e.active}"
-                 v-bind:style="{transform: 'translate(-50%, -50%); translateX('+e.translateX+'px); translateY('+e.translateY+'px); rotate('+e.rotate+'deg)'}">
+                 v-bind:style="{transform: 'translate(-50%, -50%) translateX('+e.translateX+'px) translateY('+e.translateY+'px) rotate('+e.rotate+'deg)'}">
                 <span class="vertical" v-text="e.content"></span>
             </div>
+
             <div class="circle">
                 <div class="position-box" v-bind:style="{transform:'rotate('+divideCircles60.initAngle+'deg)', '-webkit-transition-duration': times}">
                     <div v-for="(item, index) in divideCircles60.number" class="other-item other-item2"
@@ -423,10 +491,10 @@
                 </div>
             </div>
         </div>
-        <div class="floor12 level" v-bind:style="{transform:'translate(-50%, -50%); rotate('+floor12Rotate+'deg)'}">
+        <div class="floor12 level" v-bind:style="{transform:'translate(-50%, -50%) rotate('+floor12Rotate+'deg)'}">
             <div class="time_black" v-for="(e,index) of floor12"
                  :class="{'active': e.active}"
-                 v-bind:style="{transform: 'translate(-50%, -50%); translateX('+e.translateX+'px); translateY('+e.translateY+'px); rotate('+e.rotate+'deg)'}">
+                 v-bind:style="{transform: 'translate(-50%, -50%) translateX('+e.translateX+'px) translateY('+e.translateY+'px) rotate('+e.rotate+'deg)'}">
                 <span v-text="e.content"></span></div>
             <div class="circle">
                 <div class="position-box" v-bind:style="{transform:'rotate('+divideCircles60.initAngle+'deg)', '-webkit-transition-duration': times}">
@@ -435,11 +503,14 @@
                     </div>
                 </div>
             </div>
+
         </div>
-        <div class="floor99 level" v-bind:style="{transform:'translate(-50%, -50%); rotate('+floor99Rotate+'deg)'}">
+
+        <div class="floor99 level" v-bind:style="{transform:'translate(-50%, -50%) rotate('+floor99Rotate+'deg)'}">
             <div class="time_black" v-for="(e,index) of floor99"
-                 v-bind:style="{transform: 'translate(-50%, -50%); translateX('+e.translateX+'px); translateY('+e.translateY+'px); rotate('+e.rotate+'deg)'}">
+                 v-bind:style="{transform: 'translate(-50%, -50%) translateX('+e.translateX+'px) translateY('+e.translateY+'px) rotate('+e.rotate+'deg)'}">
                 <span v-text="e.content"></span></div>
+
             <div class="circle">
                 <div class="position-box" v-bind:style="{transform:'rotate(1deg)', '-webkit-transition-duration': times}">
                     <div v-for="(item, index) in 360" class="other-item other-item-last"
@@ -447,84 +518,106 @@
                     </div>
                 </div>
             </div>
+
         </div>
+
+
     </div>
 </div>
+
+
 <script>//based on an Example by @curran
-window.requestAnimFrame = (function(){   return  window.requestAnimationFrame})()
-let canvas = document.getElementById("space")
-let c = canvas.getContext("2d")
-let numStars = 1900;
-let radius = '0.'+Math.floor(Math.random() * 9) + 1  ;
-let focalLength = canvas.width *2;
-let warp = 0
-let centerX, centerY;
-let stars = [], star;
-let i;
-let animate = true;
+window.requestAnimFrame = (function(){   return  window.requestAnimationFrame})();
+var canvas = document.getElementById("space");
+var c = canvas.getContext("2d");
+
+var numStars = 1900;
+var radius = '0.'+Math.floor(Math.random() * 9) + 1  ;
+var focalLength = canvas.width *2;
+var warp = 0;
+var centerX, centerY;
+
+var stars = [], star;
+var i;
+
+var animate = true;
+
+
+
 function executeFrame(){
+
     if(animate)
-        requestAnimFrame(executeFrame)
-    moveStars()
-    drawStars()
+        requestAnimFrame(executeFrame);
+    moveStars();
+    drawStars();
 }
+
 function initializeStars(){
     centerX = canvas.width / 2;
     centerY = canvas.height / 2;
-    stars = []
+
+    stars = [];
     for(i = 0; i < numStars; i++){
         star = {
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height,
             z: Math.random() * canvas.width,
             o: '0.'+Math.floor(Math.random() * 99) + 1
-        }
-        stars.push(star)
+        };
+        stars.push(star);
     }
 }
+
 function moveStars(){
     for(i = 0; i < numStars; i++){
-        star = stars[i]
+        star = stars[i];
         star.z--;
+
         if(star.z <= 0){
             star.z = canvas.width;
         }
     }
 }
+
 function drawStars(){
-    let pixelX, pixelY, pixelRadius;
+    var pixelX, pixelY, pixelRadius;
+
     // Resize to the screen
     if(canvas.width != window.innerWidth || canvas.width != window.innerWidth){
-        canvas.width = window.innerWidth
-        canvas.height = window.innerHeight
-        initializeStars()
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        initializeStars();
     }
     if(warp==0)
-    {c.fillStyle = "rgba(0,10,20,1)"
-        c.fillRect(0,0, canvas.width, canvas.height)}
-    c.fillStyle = "rgba(209, 255, 255, "+radius+")"
+    {c.fillStyle = "rgba(0,10,20,1)";
+        c.fillRect(0,0, canvas.width, canvas.height);}
+    c.fillStyle = "rgba(209, 255, 255, "+radius+")";
     for(i = 0; i < numStars; i++){
-        star = stars[i]
-        pixelX = (star.x - centerX) * (focalLength / star.z)
+        star = stars[i];
+
+        pixelX = (star.x - centerX) * (focalLength / star.z);
         pixelX += centerX;
-        pixelY = (star.y - centerY) * (focalLength / star.z)
+        pixelY = (star.y - centerY) * (focalLength / star.z);
         pixelY += centerY;
-        pixelRadius = 1 * (focalLength / star.z)
-        c.fillRect(pixelX, pixelY, pixelRadius, pixelRadius)
-        c.fillStyle = "rgba(209, 255, 255, "+star.o+")"
-        //c.fill()
+        pixelRadius = 1 * (focalLength / star.z);
+
+        c.fillRect(pixelX, pixelY, pixelRadius, pixelRadius);
+        c.fillStyle = "rgba(209, 255, 255, "+star.o+")";
+        //c.fill();
     }
 }
+
 document.getElementById('warp').addEventListener("click",function(e){
-    window.c.beginPath()
-    window.c.clearRect(0, 0, window.canvas.width, window.canvas.height)
+    window.c.beginPath();
+    window.c.clearRect(0, 0, window.canvas.width, window.canvas.height);
     window.warp = warp ? 0 : 1;
-    executeFrame()
-})
+    executeFrame();
+});
+
 </script>
 <script>
-    initializeStars()
-    executeFrame()
+    initializeStars();
+    executeFrame();
     window.onload = function () {
         let vue = new Vue({
             el: '#app',
@@ -1339,25 +1432,27 @@ document.getElementById('warp').addEventListener("click",function(e){
                 times:'1.5s',
             },
             created: function () {
-                this.initClock()
-                this.start()
+                this.initClock();
+                this.start();
             },
             methods: {
                 initClock: function () {
                     // 初始化先天八卦
-                    this.initLocation(this.floor1, 360 / 8, 40)
-                    this.initLocation(this.floor2, 360 / 8, 70)
-                    this.initLocation(this.floor3, 360 / 24, 100)
-                    this.initLocation(this.floor4, 360 / 8, 130)
-                    this.initLocation(this.floor5, 360 / 24, 160)
-                    this.initLocation(this.floor6, 360 / 24, 190)
-                    this.initLocation(this.floor7, 360 / 24, 220)
-                    this.initLocation(this.floor8, 360 / 24, 250)
-                    this.initLocation(this.floor9, 360 / 72, 280)
-                    this.initLocation(this.floor10, 360 / 120, 310)
-                    this.initLocation(this.floor11, 360 / 60, 350)
-                    this.initLocation(this.floor12, 360 / 60, 390)
-                    this.initLocation(this.floor99, 1, 430)
+                    this.initLocation(this.floor1, 360 / 8, 40);
+                    this.initLocation(this.floor2, 360 / 8, 70);
+                    this.initLocation(this.floor3, 360 / 24, 100);
+                    this.initLocation(this.floor4, 360 / 8, 130);
+                    this.initLocation(this.floor5, 360 / 24, 160);
+                    this.initLocation(this.floor6, 360 / 24, 190);
+                    this.initLocation(this.floor7, 360 / 24, 220);
+                    this.initLocation(this.floor8, 360 / 24, 250);
+                    this.initLocation(this.floor9, 360 / 72, 280);
+                    this.initLocation(this.floor10, 360 / 120, 310);
+                    this.initLocation(this.floor11, 360 / 60, 350);
+                    this.initLocation(this.floor12, 360 / 60, 390);
+
+                    this.initLocation(this.floor99, 1, 430);
+
                 },
                 // 初始化位置
                 initLocation: function (arr, deg, r) {
@@ -1372,18 +1467,18 @@ document.getElementById('warp').addEventListener("click",function(e){
                     }
                 },
                 getRandomInt: function (min, max) {
-                    min = Math.ceil(min)
-                    max = Math.floor(max)
+                    min = Math.ceil(min);
+                    max = Math.floor(max);
                     return Math.floor(Math.random() * (max - min + 1)) + min;
                 },
                 rotateClock: function () {
-                    this.floor1Rotate = this.getRandomInt(1, 24) * (360 / 8)
-                    this.floor2Rotate = this.getRandomInt(1, 24) * (360 / 8)
-                    this.floor3Rotate = this.getRandomInt(1, 24) * (360 / 24)
-                    this.floor4Rotate = this.getRandomInt(1, 24) * (360 / 8)
-                    this.floor5Rotate = this.getRandomInt(1, 24) * (360 / 24)
-                    this.floor6Rotate = this.getRandomInt(1, 24) * (360 / 24)
-                    this.floor7Rotate = this.getRandomInt(1, 24) * (360 / 24)
+                    this.floor1Rotate = this.getRandomInt(1, 24) * (360 / 8);
+                    this.floor2Rotate = this.getRandomInt(1, 24) * (360 / 8);
+                    this.floor3Rotate = this.getRandomInt(1, 24) * (360 / 24);
+                    this.floor4Rotate = this.getRandomInt(1, 24) * (360 / 8);
+                    this.floor5Rotate = this.getRandomInt(1, 24) * (360 / 24);
+                    this.floor6Rotate = this.getRandomInt(1, 24) * (360 / 24);
+                    this.floor7Rotate = this.getRandomInt(1, 24) * (360 / 24);
                     this.floor8Rotate = (this.getRandomInt(1, 24) * (360 / 24))+7.5;
                     this.floor9Rotate = (this.getRandomInt(1, 24) * (360 / 72))+2.5;
                     this.floor10Rotate = (this.getRandomInt(1, 24) * (360 / 120))+1.5;
@@ -1392,12 +1487,13 @@ document.getElementById('warp').addEventListener("click",function(e){
                 },
                 start: function () {
                     let task;
-                    clearInterval(task)
+                    clearInterval(task);
                     let _this = this;
                     task = setInterval(function () {
-                        _this.rotateClock()
-                    }, 3000)
+                        _this.rotateClock();
+                    }, 3000);
                 }
+
             }
         })
     }

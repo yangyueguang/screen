@@ -195,7 +195,7 @@
 </div>
 <canvas id="canvas" width="949" height="780"></canvas>
 <script>var Stats = function() {
-    let e = Date.now(),
+    var e = Date.now(),
         t = e,
         n = 0,
         i = 1 / 0,
@@ -205,7 +205,7 @@
         o = 0,
         s = 0,
         r = 0,
-        c = document.createElement("div")
+        c = document.createElement("div");
     c.id = "stats",
         c.addEventListener("mousedown",
             function(e) {
@@ -213,39 +213,39 @@
                     g(++r % 2)
             },
             !1),
-        c.style.cssText = "width:80px;opacity:0.9;cursor:pointer"
-    let p = document.createElement("div")
+        c.style.cssText = "width:80px;opacity:0.9;cursor:pointer";
+    var p = document.createElement("div");
     p.id = "fps",
         p.style.cssText = "padding:0 0 3px 3px;text-align:left;background-color:#002",
-        c.appendChild(p)
-    let h = document.createElement("div")
+        c.appendChild(p);
+    var h = document.createElement("div");
     h.id = "fpsText",
         h.style.cssText = "color:#0ff;font-family:Helvetica,Arial,sans-serif;font-size:9px;font-weight:bold;line-height:15px",
         h.innerHTML = "FPS",
-        p.appendChild(h)
-    let f = document.createElement("div")
+        p.appendChild(h);
+    var f = document.createElement("div");
     for (f.id = "fpsGraph", f.style.cssText = "position:relative;width:74px;height:30px;background-color:#0ff", p.appendChild(f); 74 > f.children.length;)(v = document.createElement("span")).style.cssText = "width:1px;height:30px;float:left;background-color:#113",
-        f.appendChild(v)
-    let x = document.createElement("div")
+        f.appendChild(v);
+    var x = document.createElement("div");
     x.id = "ms",
         x.style.cssText = "padding:0 0 3px 3px;text-align:left;background-color:#020;display:none",
-        c.appendChild(x)
-    let m = document.createElement("div")
+        c.appendChild(x);
+    var m = document.createElement("div");
     m.id = "msText",
         m.style.cssText = "color:#0f0;font-family:Helvetica,Arial,sans-serif;font-size:9px;font-weight:bold;line-height:15px",
         m.innerHTML = "MS",
-        x.appendChild(m)
-    let u = document.createElement("div")
+        x.appendChild(m);
+    var u = document.createElement("div");
     for (u.id = "msGraph", u.style.cssText = "position:relative;width:74px;height:30px;background-color:#0f0", x.appendChild(u); 74 > u.children.length;) {
-        let v = document.createElement("span")
+        var v = document.createElement("span");
         v.style.cssText = "width:1px;height:30px;float:left;background-color:#131",
             u.appendChild(v)
     }
-    let g = function(e) {
+    var g = function(e) {
             switch (r = e) {
                 case 0:
                     p.style.display = "block",
-                        x.style.display = "none"
+                        x.style.display = "none";
                     break;
                 case 1:
                     p.style.display = "none",
@@ -254,7 +254,7 @@
         },
         y = function(e, t) {
             e.appendChild(e.firstChild).style.height = t + "px"
-        }
+        };
     return {
         REVISION: 11,
         domElement: c,
@@ -263,7 +263,7 @@
             e = Date.now()
         },
         end: function() {
-            let r = Date.now()
+            var r = Date.now();
             return n = r - e,
                 i = Math.min(i, n),
                 a = Math.max(a, n),
@@ -277,7 +277,7 @@
             e = this.end()
         }
     }
-}
+};
 </script>
 <script>!
     function(t) {
@@ -298,8 +298,8 @@
                 o()
         }
         function a() {
-            w = []
-            for (let t = 0; t < E.trails; t++) w.push(new n({
+            w = [];
+            for (var t = 0; t < E.trails; t++) w.push(new n({
                 spring: .45 + t / E.trails * .025
             }))
         }
@@ -311,9 +311,9 @@
                     // f.globalCompositeOperation = "lighter",
                     f.strokeStyle = "hsla(" + Math.round(l.update()) + ",90%,50%,0.25)",
                     f.lineWidth = 1,
-                f.frame % 60 === 0 && console.log(l.update(), Math.round(l.update()), l.phase, l.offset, l.frequency, l.amplitude)
-                for (let t, e = 0; e < E.trails; e++)(t = w[e]).update(),
-                    t.draw()
+                f.frame % 60 == 0 && console.log(l.update(), Math.round(l.update()), l.phase, l.offset, l.frequency, l.amplitude);
+                for (var t, e = 0; e < E.trails; e++)(t = w[e]).update(),
+                    t.draw();
                 f.frame++,
                     f.stats.update(),
                     requestAnimFrame(o)
@@ -343,7 +343,7 @@
             }
         }
         function m(t) {
-            for (let e, n = document.getElementById(t), i = n.innerHTML.replace("&amp", "&").split(""), a = "", o = 0, s = i.length; o < s; o++) a += (e = i[o].replace("&", "&amp")).trim() ? '<span class="letter-' + o + '">' + e + "</span>": "&nbsp"
+            for (var e, n = document.getElementById(t), i = n.innerHTML.replace("&amp;", "&").split(""), a = "", o = 0, s = i.length; o < s; o++) a += (e = i[o].replace("&", "&amp")).trim() ? '<span class="letter-' + o + '">' + e + "</span>": "&nbsp;";
             n.innerHTML = a,
                 setTimeout(function() {
                         n.className = "transition-in"
@@ -358,9 +358,9 @@
                 y.ctx.drawImage(g, Math.round(y.width / 2 - g.width / 4), Math.round(y.height / 2 - g.height / 4), g.width / 2, g.height / 2),
                 t.open(y.toDataURL(), "wallpaper", "top=0,left=0,width=" + y.width + ",height=" + y.height)
         }
-        let f, l, g, v, y, x = {},
+        var f, l, g, v, y, x = {},
             w = [],
-            E = {}
+            E = {};
         E.debug = !0,
             E.friction = .5,
             E.trails = 20,
@@ -369,7 +369,7 @@
             E.tension = .98,
             Math.TWO_PI = 2 * Math.PI,
             e.prototype = function() {
-                let t = 0
+                var t = 0;
                 return {
                     init: function(t) {
                         this.phase = t.phase || 0,
@@ -397,17 +397,17 @@
                     init: function(e) {
                         this.spring = e.spring + .1 * Math.random() - .05,
                             this.friction = E.friction + .01 * Math.random() - .005,
-                            this.nodes = []
-                        for (let n, i = 0 ;i < E.size; i++)(n = new t).x = x.x,
+                            this.nodes = [];
+                        for (var n, i = 0; i < E.size; i++)(n = new t).x = x.x,
                             n.y = x.y,
                             this.nodes.push(n)
                     },
                     update: function() {
-                        let t = this.spring,
-                            e = this.nodes[0]
+                        var t = this.spring,
+                            e = this.nodes[0];
                         e.vx += (x.x - e.x) * t,
                             e.vy += (x.y - e.y) * t;
-                        for (let n, i = 0,
+                        for (var n, i = 0,
                                  a = this.nodes.length; i < a; i++) e = this.nodes[i],
                         i > 0 && (n = this.nodes[i - 1], e.vx += (n.x - e.x) * t, e.vy += (n.y - e.y) * t, e.vx += n.vx * E.dampening, e.vy += n.vy * E.dampening),
                             e.vx *= this.friction,
@@ -417,16 +417,16 @@
                             t *= E.tension
                     },
                     draw: function() {
-                        let t, e, n = this.nodes[0].x,
-                            i = this.nodes[0].y
+                        var t, e, n = this.nodes[0].x,
+                            i = this.nodes[0].y;
                         f.beginPath(),
-                            f.moveTo(n, i)
-                        for (let a = 1,
+                            f.moveTo(n, i);
+                        for (var a = 1,
                                  o = this.nodes.length - 2; a < o; a++) t = this.nodes[a],
                             e = this.nodes[a + 1],
                             n = .5 * (t.x + e.x),
                             i = .5 * (t.y + e.y),
-                            f.quadraticCurveTo(t.x, t.y, n, i)
+                            f.quadraticCurveTo(t.x, t.y, n, i);
                         t = this.nodes[a],
                             e = this.nodes[a + 1],
                             f.quadraticCurveTo(t.x, t.y, e.x, e.y),
