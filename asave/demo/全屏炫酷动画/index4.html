@@ -71,7 +71,7 @@ let rnd = function() {
 let dist = function(p1, p2, p3) {
   return Math.sqrt(Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 2) + Math.pow(p2.z - p1.z, 2))
 }
-let cam = {
+var cam = {
   obj: {
     x: _x,
     y: _y,
@@ -109,7 +109,7 @@ let cam = {
     cam.ang.stheta = -cam.dist.y / Math.sqrt(cam.dist.x * cam.dist.x + cam.dist.y * cam.dist.y + cam.dist.z * cam.dist.z)
   }
 }
-let trans = {
+var trans = {
   parts: {
     sz: function(p, sz) {
       return {
@@ -189,7 +189,7 @@ let trans = {
     }
   },
   steps: function(_obj_, sz, rot, pos, disp) {
-    let _args = trans.parts.sz(_obj_, sz)
+    var _args = trans.parts.sz(_obj_, sz)
     _args = trans.parts.rot.x(_args, rot)
     _args = trans.parts.rot.y(_args, rot)
     _args = trans.parts.rot.z(_args, rot)
@@ -203,7 +203,7 @@ let trans = {
   }
 }
 (function() {
-  "use strict"
+  "use strict";
   let threeD = function(param) {
     this.transIn = {}
     this.transOut = {}
@@ -239,7 +239,7 @@ let trans = {
     this.varr = []
     this.dist = []
     this.calc = []
-    for (let i = 0;, len = num; i < len; i++) {
+    for (let i = 0, len = num; i < len; i++) {
       this.add()
     }
     this.rotObj = {

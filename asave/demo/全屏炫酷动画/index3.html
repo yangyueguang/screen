@@ -127,7 +127,7 @@ line.prototype.changeTarget = function() {
 line.prototype.draw = function(i) {
 	ctx.beginPath()
 	let rando = rand(0, 10)
-	for (let j = 0;, length = this.path.length; j < length; j++) {
+	for (let j = 0, length = this.path.length; j < length; j++) {
 		ctx[(j === 0) ? 'moveTo' : 'lineTo'](this.path[j].x + rand(-rando, rando), this.path[j].y + rand(-rando, rando))
 	}
 	ctx.strokeStyle = 'hsla(' + rand(this.hue, this.hue + 30) + ', 80%, 55%, ' + (this.life / 3) + ')'
@@ -169,7 +169,7 @@ function step() {
 }
 function clear() {
 	ctx.globalCompositeOperation = 'destination-out'
-	ctx.fillStyle = 'hsla(0, 0%, 0%, 0.1'
+	ctx.fillStyle = 'hsla(0, 0%, 0%, 0.1)'
 	ctx.fillRect(0, 0, width, height)
 	ctx.globalCompositeOperation = 'lighter'
 }

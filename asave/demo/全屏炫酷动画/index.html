@@ -79,7 +79,8 @@ baseRad = Math.PI * 2 / 6;
 ctx.fillStyle = 'black'
 ctx.fillRect(0, 0, w, h)
 function loop() {
-	window.requestAnimationFrame(loop) ++tick;
+	window.requestAnimationFrame(loop)
+    ++tick;
 	ctx.globalCompositeOperation = 'source-over'
 	ctx.shadowBlur = 0
 	ctx.fillStyle = 'rgba(0,0,0,alp)'.replace('alp', opts.repaintAlpha)

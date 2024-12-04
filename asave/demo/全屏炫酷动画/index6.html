@@ -106,12 +106,12 @@ $(function(){
     }
   }
   function createDots(){
-    for(i = 0 i < dots.nb; i++){
+    for(i = 0; i < dots.nb; i++){
       dots.array.push(new Dot())
     }
   }
   function moveDots() {
-    for(i = 0 i < dots.nb; i++){
+    for(i = 0; i < dots.nb; i++){
       let dot = dots.array[i]
       if(dot.y < 0 || dot.y > canvas.height){
         dot.vx = dot.vx;
@@ -126,8 +126,8 @@ $(function(){
     }
   }
   function connectDots() {
-    for(i = 0 i < dots.nb; i++){
-      for(j = 0 j < dots.nb; j++){
+    for(i = 0; i < dots.nb; i++){
+      for(j = 0; j < dots.nb; j++){
         i_dot = dots.array[i]
         j_dot = dots.array[j]
         if((i_dot.x - j_dot.x) < dots.distance && (i_dot.y - j_dot.y) < dots.distance && (i_dot.x - j_dot.x) > - dots.distance && (i_dot.y - j_dot.y) > - dots.distance){
@@ -144,7 +144,7 @@ $(function(){
     }
   }
   function drawDots() {
-    for(i = 0 i < dots.nb; i++){
+    for(i = 0; i < dots.nb; i++){
       let dot = dots.array[i]
       dot.draw()
     }

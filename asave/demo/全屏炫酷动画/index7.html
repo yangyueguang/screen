@@ -122,7 +122,7 @@ function animation() {
     ctx.fillStyle = 'hsla(' + hue + ', 64%, 6%, 1)'
     ctx.fillRect(0, 0, w, h)
   ctx.globalCompositeOperation = 'lighter'
-  for (let i = 1;, l = stars.length; i < l; i++) {
+  for (let i = 1, l = stars.length; i < l; i++) {
     stars[i].draw()
   }
   window.requestAnimationFrame(animation)
