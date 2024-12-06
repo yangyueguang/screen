@@ -1,11 +1,5 @@
 !function () {
     "use strict"
-    let stats = new Stats()
-    stats.setMode(0)
-    stats.domElement.style.position = 'absolute'
-    stats.domElement.style.right = '0px'
-    stats.domElement.style.top = '0px'
-    document.body.appendChild( stats.domElement )
     //是否显示点的checkbox
     let dotChoose = document.getElementById("dot")
     //是否显示方格的checkbox
@@ -157,7 +151,6 @@
             d.y = (d.ay || ay) + (d.iy - (d.ay || ay)) / scale;
         }
         render()
-        stats.update()
         RAF(animate)
     }
     /**

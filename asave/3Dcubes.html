@@ -27,14 +27,7 @@
 <div class="view">
     <canvas id="cas" width="700" height="600"></canvas>
 </div>
-<script src="js/stats.min.js"></script>
 <script>
-	let stats = new Stats()
-	stats.setMode(0)
-	stats.domElement.style.position = 'absolute'
-	stats.domElement.style.right = '0px'
-	stats.domElement.style.top = '0px'
-	document.body.appendChild( stats.domElement )
 	let canvas = document.getElementById("cas")
     canvas.width = document.body.offsetWidth;
     canvas.height = document.body.offsetHeight;
@@ -260,7 +253,6 @@
 		cubeFace.forEach(function(face){
 			drawFace(face)
 		})
-		stats.update()
 		RAF(animate)
 	}
 	function getRandom(a, b) {
