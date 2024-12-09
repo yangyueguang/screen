@@ -23,7 +23,7 @@
 			top:0;
 			width: 100%;
 			height: 100%;
-			background:#000 url("pic1.jpg") no-repeat center center;
+			background:#000 url("js/pic1.jpg") no-repeat center center;
 			background-size: auto 100%;
 			backface-visibility: hidden;
 			overflow: hidden;
@@ -53,7 +53,7 @@
 	canvas.width = canvasBox.clientWidth;
 	canvas.height = canvasBox.clientHeight;
 	let img = new Image()
-	img.src = "pic2.jpg"
+	img.src = "js/pic2.jpg"
 	img.onload = function () {
 		let w = canvas.height*img.width/img.height;
 		ctx.drawImage(img, (canvas.width-w)/2, 0, w, canvas.height)
