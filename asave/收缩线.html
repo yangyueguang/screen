@@ -320,14 +320,14 @@ h2 {
 <h2>长按任意键</h2>
 <script>
 console.clear()
-let renderer = new Newthree.WebGLRenderer({
+let renderer = new THREE.WebGLRenderer({
   canvas: document.querySelector("canvas"),
   antialias: true
 })
 renderer.setPixelRatio(window.devicePixelRatio > 1 ? 2 : 1)
 renderer.setSize(window.innerWidth, window.innerHeight)
-let scene = new Newthree.Scene()
-let camera = new Newthree.PerspectiveCamera(
+let scene = new THREE.Scene()
+let camera = new THREE.PerspectiveCamera(
   45,
   window.innerWidth / window.innerHeight,
   1,
@@ -341,20 +341,20 @@ let mouseJump = {
 }
 let offset = 0
 function Spline() {
-  this.geometry = new Newthree.Geometry()
+  this.geometry = new THREE.Geometry()
   this.color = Math.floor(Math.random() * 80 + 180)
   for (let j = 0; j < 180; j++) {
     this.geometry.vertices.push(
-      new Newthree.Vector3(j / 180 * length * 2 - length, 0, 0)
+      new THREE.Vector3(j / 180 * length * 2 - length, 0, 0)
     )
-    this.geometry.colors[j] = new Newthree.Color(
+    this.geometry.colors[j] = new THREE.Color(
       "hsl(" + (j * 0.6 + this.color) + ",70%,70%)"
     )
   }
-  this.material = new Newthree.LineBasicMaterial({
-    vertexColors: Newthree.VertexColors
+  this.material = new THREE.LineBasicMaterial({
+    vertexColors: THREE.VertexColors
   })
-  this.mesh = new Newthree.Line(this.geometry, this.material)
+  this.mesh = new THREE.Line(this.geometry, this.material)
   this.speed = (Math.random() + 0.1) * 0.0002;
   scene.add(this.mesh)
 }
@@ -398,7 +398,7 @@ function updateColor() {
   for (let i = 0; i < splines.length; i++) {
     let color = Math.abs((splines[i].color - offset * 10) % 360)
     for (let j = 0; j < splines[i].geometry.vertices.length; j++) {
-      splines[i].mesh.geometry.colors[j] = new Newthree.Color(
+      splines[i].mesh.geometry.colors[j] = new THREE.Color(
         "hsl(" + (j * 0.6 + color) + ",70%,70%)"
       )
     }

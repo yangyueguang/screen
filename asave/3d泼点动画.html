@@ -10,7 +10,7 @@ a{color:#0078ff;}
 </style>
 </head>
 <body>
-<script type="text/javascript" src="js/newthree.js"></script>
+<script type="text/javascript" src="three.min.js"></script>
 <script type="text/javascript">
 let SEPARATION = 100, AMOUNTX = 50, AMOUNTY = 50;
 let container;
@@ -24,12 +24,12 @@ animate()
 function init() {
 	container = document.createElement('div')
 	document.body.appendChild( container )
-	camera = new Newthree.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 10000 )
+	camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 10000 )
 	camera.position.z = 1000;
-	scene = new Newthree.Scene()
+	scene = new THREE.Scene()
 	particles = new Array()
 	let PI2 = Math.PI * 2;
-	let material = new Newthree.ParticleCanvasMaterial( {
+	let material = new THREE.ParticleCanvasMaterial( {
 		color: 0xffffff,
 		program: function ( context ) {
 			context.beginPath()
@@ -40,13 +40,13 @@ function init() {
 	let i = 0
 	for ( let ix = 0; ix < AMOUNTX; ix ++ ) {
 		for ( let iy = 0; iy < AMOUNTY; iy ++ ) {
-			particle = particles[ i ++ ] = new Newthree.Particle( material )
+			particle = particles[ i ++ ] = new THREE.Particle( material )
 			particle.position.x = ix * SEPARATION - ( ( AMOUNTX * SEPARATION ) / 2 )
 			particle.position.z = iy * SEPARATION - ( ( AMOUNTY * SEPARATION ) / 2 )
 			scene.add( particle )
 		}
 	}
-	renderer = new Newthree.CanvasRenderer()
+	renderer = new THREE.CanvasRenderer()
 	renderer.setSize( window.innerWidth, window.innerHeight )
 	container.appendChild( renderer.domElement )
 	document.addEventListener( 'mousemove', onDocumentMouseMove, false )

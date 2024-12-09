@@ -79,8 +79,7 @@
 			} )()
 		}
 		</script>
-		<script src="Stats.js"></script>
-		<script src="Three.js"></script>
+		<script src="dThree.js"></script>
 		<script>
 			let size = 10, res = 32, sizeres = size * res, halfsizeres = sizeres / 2;
 			let buffer1 = [], buffer2 = [], temp;
@@ -88,7 +87,6 @@
 			let scene, camera, light, renderer;
 			let geometry, material;
 			let mouse, projector, ray, intersects = []
-			let stats;
 			if ( Detector.webgl ) {
 				init()
 				animate()
@@ -98,10 +96,6 @@
 			function init() {
 				let container = document.createElement( 'div' )
 				document.body.appendChild( container )
-				stats = new Stats()
-				stats.domElement.style.position = 'absolute'
-				stats.domElement.style.top = '0px'
-				// container.appendChild( stats.domElement )
 				for ( let i = 0, l = res * res; i < l; i ++ ) {
 					buffer1[ i ] = 0
 					buffer2[ i ] = 0
@@ -168,7 +162,6 @@
 			function animate() {
 				requestAnimationFrame( animate )
 				render()
-				stats.update()
 			}
 			function render() {
 				if ( intersects.length ) {
