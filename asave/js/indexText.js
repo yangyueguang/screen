@@ -1,18 +1,6 @@
 (() => {
-  // 可视化窗口 Size 改变时触发 resizeCanvas 函数
-  window.addEventListener('resize', resizeCanvas, false)
   // 当 DOM 解析完成后触发 onLoad 函数
   window.addEventListener('DOMContentLoaded', onLoad, false)
-  // requestAnimationFrame 兼容
-  window.requestAnimationFrame =
-        window.requestAnimationFrame ||
-        window.webkitRequestAnimationFrame ||
-        window.mozRequestAnimationFrame ||
-        window.oRequestAnimationFrame ||
-        window.msRequestAnimationFrame ||
-        function(callback) {
-          window.setTimeout(callback, 1000 / 60)
-        }
   // 初始化变量
   let c1 // 烟花画布
   let ctx1
@@ -35,18 +23,11 @@
   function onLoad() {
     [c1, c2, c3] = document.querySelectorAll('canvas');
     [ctx1, ctx2, ctx3] = [c1, c2, c3].map(c => c.getContext('2d'))
-    resizeCanvas()
+    w = c1.width = c3.width = window.innerWidth
+    h = c1.height = c3.height = window.innerHeight
     layoutText()
     computeImgTarget()
-    // 渲染动画
     window.requestAnimationFrame(loop)
-  }
-  // 改变 Canvas 可视窗口 Size 函数
-  function resizeCanvas() {
-    if (c1) {
-      w = c1.width = c3.width = window.innerWidth
-      h = c1.height = c3.height = window.innerHeight
-    }
   }
   function layoutText() {
     let text = 'RoundTable'
@@ -150,7 +131,10 @@
     let vbase = 1 + Math.random() * 6
     this.vx = Math.cos(angle) * vbase
     this.vy = Math.sin(angle) * vbase
-    this.target = getTarget()
+    let idx = Math.floor(Math.random() * targets.length)
+    let p = targets[idx]
+    targets.splice(idx, 1)
+    this.target = { x: p.x + c1.width / 2 - textWidth / 2, y: p.y += c1.height / 2 - fontSize / 2 }
   }
   Particle.prototype = {
     gravity: 0.05, // 烟花颗粒坠落速度
@@ -206,14 +190,4 @@
   }
   // 用于平滑跟随效果的插值函数
   let lerp = (from, to, t) => Math.abs(to - from) > 0.1 ? from + t * (to - from) : to
-  function getTarget() {
-    if (targets.length > 0) {
-      let idx = Math.floor(Math.random() * targets.length)
-      let { x, y } = targets[idx]
-      targets.splice(idx, 1)
-      x += c1.width / 2 - textWidth / 2
-      y += c1.height / 2 - fontSize / 2
-      return { x, y }
-    }
-  }
 })()
