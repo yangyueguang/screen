@@ -16,8 +16,8 @@ export default {
       let option = {
         tooltip: {
           trigger: 'axis',
-          axisPointer: { // 坐标轴指示器，坐标轴触发有效
-            type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+          axisPointer: {
+            type: 'shadow'
           },
           backgroundColor: '#11367a',
           textStyle: {
@@ -109,15 +109,15 @@ export default {
                 x2: 0,
                 y2: 1,
                 colorStops: [{
-                  offset: 0, color: '#FC9386' // 0% 处的颜色
+                  offset: 0, color: '#FC9386'
                 },
                 {
-                  offset: 0.4, color: '#F87B86' // 40% 处的颜色
+                  offset: 0.4, color: '#F87B86'
                 }, {
-                  offset: 1, color: '#F36087' // 100% 处的颜色
+                  offset: 1, color: '#F36087'
                 }],
-                global: false // 缺省为 false
-              }, // 背景渐变色
+                global: false
+              },
               barBorderRadius: [3.5, 3.5, 0, 0]
             },
             data: [120, 102, 101, 134, 190, 130, 120, 190, 130, 120]

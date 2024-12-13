@@ -321,8 +321,8 @@
 
     Frag.prototype = {
         paint:function(){
-            // ctx.beginPath()
-            // ctx.arc(this.x , this.y , this.radius , 0 , 2*Math.PI)
+
+
             ctx.fillStyle = "rgba("+this.color.a+","+this.color.b+","+this.color.c+",1)"
             ctx.fillRect(this.x-this.radius , this.y-this.radius , this.radius*2 , this.radius*2)
         },

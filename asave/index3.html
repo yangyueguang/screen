@@ -105,16 +105,16 @@ line.prototype.updateAngle = function() {
 line.prototype.changeTarget = function() {
 	let randStart = randInt(0, 3)
 	switch (randStart) {
-		case 0: // up
+		case 0:
 			this.target.y = this.y - size;
 			break;
-		case 1: // right
+		case 1:
 			this.target.x = this.x + size;
 			break;
-		case 2: // down
+		case 2:
 			this.target.y = this.y + size;
 			break;
-		case 3: // left
+		case 3:
 			this.target.x = this.x - size;
 	}
 	this.updateAngle()

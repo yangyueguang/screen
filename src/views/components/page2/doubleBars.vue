@@ -69,7 +69,7 @@ export default {
         }
         ],
         yAxis: [
-          // 左边的标尺
+
           {
             type: 'category',
             inverse: true,
@@ -78,7 +78,7 @@ export default {
             axisTick: {show: false},
             axisLabel: {show: false}
           },
-          // 中间的标尺
+
           {
             gridIndex: 1,
             type: 'category',
@@ -96,7 +96,7 @@ export default {
             },
             data: ['1部', '2部', '3部', '4部', '5部', '6部', '7部', '8部', '9部', '10部', '11部']
           },
-          // 右边的标尺
+
           {
             gridIndex: 2,
             type: 'category',
@@ -125,7 +125,7 @@ export default {
                   {offset: 0, color: 'rgba(1,176,223,1)'},
                   {offset: 1, color: 'rgba(1,176,223,0)'}
                 ],
-                global: false // 缺省为 false
+                global: false
               },
               barBorderRadius: 5
             },
@@ -153,7 +153,7 @@ export default {
                   {offset: 0, color: 'rgba(126,19,212,0)'},
                   {offset: 1, color: 'rgba(126,19,212,1)'}
                 ],
-                global: false // 缺省为 false
+                global: false
               },
               barBorderRadius: 5
             },

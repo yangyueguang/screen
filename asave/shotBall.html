@@ -19,7 +19,7 @@
             canvas.width = window.innerWidth
             canvas.height = window.innerHeight
 			ballRadius =10, g = 9.8 , mocali = 0.5,balls = [],collarg = 0.8;
-			pxpm = canvas.width/20;   //px/m
+			pxpm = canvas.width/20;
 			for(let i=0;i<100;i++){
 				let ball = new Ball(getRandom(ballRadius , canvas.width-ballRadius) , getRandom(ballRadius , canvas.height-ballRadius) , ballRadius , "rgba("+parseInt(Math.random()*255)+","+parseInt(Math.random()*255)+","+parseInt(Math.random()*255)+" , 1)")
 				balls.push(ball)
@@ -31,7 +31,7 @@
 				let x = event.clientX + document.body.scrollLeft + document.documentElement.scrollLeft - canvas.offsetLeft;
 				let y= event.clientY + document.body.scrollTop + document.documentElement.scrollTop - canvas.offsetTop;
 				balls.forEach(function(){
-					this.vx = (x - this.x)/40; //初速度 m/s
+					this.vx = (x - this.x)/40;
 					this.vy = (y - this.y)/40;
 				})
 			}

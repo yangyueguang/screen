@@ -54,7 +54,7 @@ export default {
         }
         function Particle() {
           this.character = '*'
-          this.lifeSpan = 120 // ms
+          this.lifeSpan = 120
           this.initialStyles = {
             'position': 'fixed',
             'display': 'inline-block',
@@ -66,7 +66,7 @@ export default {
             'fontSize': '25px',
             'will-change': 'transform'
           }
-          // Init, and set properties
+
           this.init = function(x, y, color) {
             this.velocity = {
               x: (Math.random() < 0.5 ? -1 : 1) * (Math.random() / 2),

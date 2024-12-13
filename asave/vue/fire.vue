@@ -53,7 +53,7 @@ export default {
           updateParticles()
         }
         function Particle() {
-          this.lifeSpan = 100 // ms
+          this.lifeSpan = 100
           this.radius = 120
           this.alpha = 0.6
           this.init = function(x, y) {

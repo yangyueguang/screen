@@ -10,18 +10,18 @@ export default {
   methods: {
     show() {
       'use strict'
-      // Initial Setup
+
       let canvas = document.querySelector('canvas')
       let c = canvas.getContext('2d')
       canvas.width = innerWidth
       canvas.height = innerHeight
-      // Variables
+
       let mouse = {
         x: innerWidth / 2,
         y: innerHeight / 2 - 80
       }
       let colors = ['#00bdff', '#4d39ce', '#088eff']
-      // Event Listeners
+
       addEventListener('mousemove', function(event) {
         mouse.x = event.clientX
         mouse.y = event.clientY
@@ -31,14 +31,14 @@ export default {
         canvas.height = innerHeight
         init()
       })
-      // Utility Functions
+
       function randomIntFromRange(min, max) {
         return Math.floor(Math.random() * (max - min + 1) + min)
       }
       function randomColor(colors) {
         return colors[Math.floor(Math.random() * colors.length)]
       }
-      // Objects
+
       function Particle(x, y, radius, color) {
         let _this = this
         let distance = randomIntFromRange(50, 120)
@@ -59,12 +59,12 @@ export default {
         this.lastMouse = { x: x, y: y }
         this.update = function() {
           let lastPoint = { x: _this.x, y: _this.y }
-          // Move points over time
+
           _this.radians += _this.velocity
-          // Drag effect
+
           _this.lastMouse.x += (mouse.x - _this.lastMouse.x) * 0.05
           _this.lastMouse.y += (mouse.y - _this.lastMouse.y) * 0.05
-          // Circular Motion
+
           _this.distanceFromCenter.x =
               _this.prevDistanceFromCenter.x + Math.sin(_this.radians) * 100
           _this.distanceFromCenter.y =
@@ -87,7 +87,7 @@ export default {
           c.closePath()
         }
       }
-      // Implementation
+
       let particles
       function init() {
         particles = []
@@ -103,7 +103,7 @@ export default {
           )
         }
       }
-      // Animation Loop
+
       function animate() {
         requestAnimationFrame(animate)
         c.fillStyle = 'rgba(255, 255, 255, 0.05)'

@@ -18,7 +18,7 @@ export default {
           bindEvents()
           loop()
         }
-        // Bind events that are needed
+
         function bindEvents() {
           document.addEventListener('mousemove', onMouseMove)
           window.addEventListener('resize', onWindowResize)
@@ -45,11 +45,11 @@ export default {
           particles.push(particle)
         }
         function updateParticles() {
-          // Update
+
           for (let i = 0; i < particles.length; i++) {
             particles[i].update()
           }
-          // Remove dead particles
+
           for (let i = particles.length - 1; i >= 0; i--) {
             if (particles[i].lifeSpan < 0) {
               particles[i].die()
@@ -65,7 +65,7 @@ export default {
          * Particles
          */
         function Particle() {
-          this.lifeSpan = 250 // ms
+          this.lifeSpan = 250
           this.initialStyles = {
             'position': 'absolute',
             'display': 'block',
@@ -78,7 +78,7 @@ export default {
             'border-radius': '1px',
             'will-change': 'transform'
           }
-          // Init, and set properties
+
           this.init = function(x, y) {
             this.velocity = {
               x: (Math.random() < 0.5 ? -1 : 1) * (Math.random() / 10),
@@ -93,7 +93,7 @@ export default {
           this.update = function() {
             this.position.x += this.velocity.x
             this.position.y += this.velocity.y
-            // Update velocities
+
             this.velocity.x += (Math.random() < 0.5 ? -1 : 1) * 2 / 75
             this.velocity.y -= Math.random() / 600
             this.lifeSpan--
@@ -106,7 +106,7 @@ export default {
         /**
          * Utils
          */
-        // Applies css `properties` to an element.
+
         function applyProperties(target, properties) {
           for (let key in properties) {
             target.style[ key ] = properties[ key ]

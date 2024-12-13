@@ -118,12 +118,12 @@
         function draw() {
             setTimeout(function() {
                 calcMovement()
-                //if($.state.speed > 0) {
+
                 $.state.bgpos += ($.state.currentCurve * 0.02) * ($.state.speed * 0.2)
                 $.state.bgpos = $.state.bgpos % $.canvas.width;
                 $.ctx.putImageData($.storage.bg, $.state.bgpos, 5)
                 $.ctx.putImageData($.storage.bg, $.state.bgpos > 0 ? $.state.bgpos - $.canvas.width : $.state.bgpos + $.canvas.width, 5)
-                //}
+
                 $.state.offset += $.state.speed * 0.05;
                 if($.state.offset > $.settings.ground.min) {
                     $.state.offset = $.settings.ground.min - $.state.offset;
@@ -152,7 +152,7 @@
             for (let i = 0; i < tigs.length; i++) {
                 drawTig(ctx, centerX, centerY, radius, tigs[i], 7)
             }
-            // draw pointer
+
             angle = map($.state.speed, 0, $.state.car.maxSpeed, 90, 360)
             drawPointer(ctx, color, 50, centerX, centerY, angle)
         }
@@ -200,7 +200,7 @@
             if($.state.keypress.down && $.state.speed > 0) {
                 $.state.speed -= 1
             }
-            // Left and right
+
             $.state.xpos -= ($.state.currentCurve * $.state.speed) * 0.005;
             if($.state.speed) {
                 if($.state.keypress.left) {
@@ -217,7 +217,7 @@
             }
             $.state.turn = clamp($.state.turn, -5, 5)
             $.state.speed = clamp($.state.speed, 0, $.state.car.maxSpeed)
-            // section
+
             $.state.section -= $.state.speed;
             if($.state.section < 0) {
                 $.state.section = randomRange(1000, 9000)
@@ -317,9 +317,9 @@
                 carHeight = 50,
                 carX = ($.canvas.width / 2) - (carWidth / 2),
                 carY = 320;
-            // shadow
+
             roundedRect($.ctx, "rgba(0, 0, 0, 0.35)", carX - 1 + $.state.turn, carY + (carHeight - 35), carWidth + 10, carHeight, 9)
-            // tires
+
             roundedRect($.ctx, "#111", carX, carY + (carHeight - 30), 30, 40, 6)
             roundedRect($.ctx, "#111", (carX - 22) + carWidth, carY + (carHeight - 30), 30, 40, 6)
             drawCarBody($.ctx)
@@ -383,19 +383,19 @@
             ctx.fillStyle = color;
             ctx.beginPath()
             ctx.moveTo(x + radius, y - skew)
-            // top right
+
             ctx.lineTo(x + width - radius, y + skew)
             ctx.arcTo(x + width, y + skew, x + width, y + radius + skew, radius)
             ctx.lineTo(x + width, y + radius + skew)
-            // down right
+
             ctx.lineTo(x + width, (y + height + skew) - radius)
             ctx.arcTo(x + width, y + height + skew, (x + width) - radius, y + height + skew, radius)
             ctx.lineTo((x + width) - radius, y + height + skew)
-            // down left
+
             ctx.lineTo(x + radius, y + height - skew)
             ctx.arcTo(x, y + height - skew, x, (y + height - skew) - radius, radius)
             ctx.lineTo(x, (y + height - skew) - radius)
-            // top left
+
             ctx.lineTo(x, y + radius - skew)
             ctx.arcTo(x, y - skew, x + radius, y - skew, radius)
             ctx.lineTo(x + radius, y - skew)

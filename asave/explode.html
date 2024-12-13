@@ -108,7 +108,7 @@
                 this.$ = this.canvas.getContext('2d')
                 this.canvasData()
                 this.createRandomPoint()
-                // this.createPoint(100, 100)
+
                 this.render()
             }
             canvasData() {
@@ -284,13 +284,13 @@
                 let k = (y2 - y1) / (x2 - x1)
                 return (a - y1) / k + x1;
             }
-            // 输入参数：点1的坐标(x1, y1)，点2的坐标(x2, y2)，目标点到点1的距离d
+
             findEndpoint(x1, y1, x2, y2, d) {
-                // 计算向量v的长度
+
                 let len = Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)
-                // 计算归一化向量u
+
                 let u = [(x2 - x1) / len, (y2 - y1) / len]
-                // 计算目标点的坐标
+
                 let x = Math.abs(x2 + u[0] * d)
                 let y = Math.abs(y2 + u[1] * d)
                 return { x, y }

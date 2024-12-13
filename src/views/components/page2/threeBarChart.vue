@@ -164,13 +164,13 @@ export default {
                 y2: 0,
                 colorStops: [
                   {
-                    offset: 0, color: 'rgba(252,145,134,1)' // 0% 处的颜色
+                    offset: 0, color: 'rgba(252,145,134,1)'
                   }, {
-                    offset: 1, color: 'rgba(241,88,135,1)' // 100% 处的颜色
+                    offset: 1, color: 'rgba(241,88,135,1)'
                   }
                 ],
-                global: false // 缺省为 false
-              } // 背景渐变色
+                global: false
+              }
             }
           },
           {
@@ -189,13 +189,13 @@ export default {
                 y2: 0,
                 colorStops: [
                   {
-                    offset: 0, color: 'rgba(144,20,238,1)' // 0% 处的颜色
+                    offset: 0, color: 'rgba(144,20,238,1)'
                   }, {
-                    offset: 1, color: 'rgba(74,8,211,1)' // 100% 处的颜色
+                    offset: 1, color: 'rgba(74,8,211,1)'
                   }
                 ],
-                global: false // 缺省为 false
-              } // 背景渐变色
+                global: false
+              }
             }
           },
           {
@@ -214,13 +214,13 @@ export default {
                 y2: 0,
                 colorStops: [
                   {
-                    offset: 0, color: 'rgba(0,204,255,1)' // 0% 处的颜色
+                    offset: 0, color: 'rgba(0,204,255,1)'
                   }, {
-                    offset: 1, color: 'rgba(8,59,126,1)' // 100% 处的颜色
+                    offset: 1, color: 'rgba(8,59,126,1)'
                   }
                 ],
-                global: false // 缺省为 false
-              } // 背景渐变色
+                global: false
+              }
             }
           }
         ]

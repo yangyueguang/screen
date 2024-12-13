@@ -1,9 +1,9 @@
 (() => {
-  // 可视化窗口 Size 改变时触发 resizeCanvas 函数
+ 
   window.addEventListener('resize', resizeCanvas, false)
-  // 当 DOM 解析完成后触发 onLoad 函数
+ 
   window.addEventListener('DOMContentLoaded', onLoad, false)
-  // requestAnimationFrame 兼容
+ 
   window.requestAnimationFrame =
         window.requestAnimationFrame ||
         window.webkitRequestAnimationFrame ||
@@ -13,35 +13,35 @@
         function(callback) {
           window.setTimeout(callback, 1000 / 60)
         }
-  // 初始化变量
+ 
   let canvas
   let ctx
-  let w // canvas宽度
+  let w
   let h
   let rockets = []
   let particles = []
   let counter = 0
-  // 初始化 Canvas
+ 
   function onLoad() {
     canvas = document.querySelector('canvas')
     ctx = canvas.getContext('2d')
     resizeCanvas()
-    // 渲染动画
+   
     window.requestAnimationFrame(loop)
   }
-  // 改变 Canvas 可视窗口 Size 函数
+ 
   function resizeCanvas() {
     if (canvas) {
       w = canvas.width = window.innerWidth
       h = canvas.height = window.innerHeight
     }
   }
-  // 更新函数
+ 
   function loop() {
-    ctx.globalCompositeOperation = 'source-over' // 默认合成：新覆盖旧
-    ctx.fillStyle = 'rgba(0,0,0,0.1)' // 用背景的半透明，实现拖尾
+    ctx.globalCompositeOperation = 'source-over'
+    ctx.fillStyle = 'rgba(0,0,0,0.1)'
     ctx.fillRect(0, 0, w, h)
-    ctx.globalCompositeOperation = 'lighter' // 加色合成
+    ctx.globalCompositeOperation = 'lighter'
     counter += 1
     !(counter % 30) && rockets.push(new Rocket())
     rockets.forEach((r, i) => {
@@ -59,7 +59,7 @@
     })
     window.requestAnimationFrame(loop)
   }
-  // 火箭函数
+ 
   function Rocket() {
     this.x = Math.random() * (w - 200) + 100
     this.y = h
@@ -74,8 +74,8 @@
       ctx.save()
       ctx.translate(this.x, this.y)
       ctx.rotate(Math.atan2(this.vy, this.vx) + Math.PI / 2)
-      ctx.fillStyle = `hsl(${this.hue}, 100%, 50%)` // 原生矩形非path绘制，fillReact要在选颜色之后，否则会用默认黑色绘制
-      ctx.fillRect(0, 0, 5, 10) // 长方形火箭块
+      ctx.fillStyle = `hsl(${this.hue}, 100%, 50%)`
+      ctx.fillRect(0, 0, 5, 10)
       ctx.restore()
     },
     update: function() {
@@ -91,22 +91,22 @@
       }
     }
   }
-  // 颗粒函数
+ 
   function Particle(x, y, hue) {
     this.x = x
     this.y = y
     this.hue = hue
     this.alpha = Math.random() * 0.5 + 0.5
-    this.r = Math.random() * 4 + 1 // 颗粒半径
+    this.r = Math.random() * 4 + 1
     let angle = Math.random() * 2 * Math.PI
     let vbase = 1 + Math.random() * 6
     this.vx = Math.cos(angle) * vbase
     this.vy = Math.sin(angle) * vbase
   }
   Particle.prototype = {
-    gravity: 0.05, // 烟花颗粒坠落速度
+    gravity: 0.05,
     lightness: 50,
-    move: function() { // 改变烟花颗粒位置
+    move: function() {
       this.x += this.vx
       this.vy += this.gravity
       this.y += this.vy
@@ -116,13 +116,13 @@
       }
       return true
     },
-    draw: function() { // 渲染烟花颗粒
+    draw: function() {
       ctx.save()
       ctx.beginPath()
-      ctx.translate(this.x, this.y) // 改变位置
-      ctx.arc(0, 0, this.r, 0, Math.PI * 2) // 圆形颗粒
-      ctx.fillStyle = `hsl(${this.hue}, 100%, ${this.lightness}%)` // 填充颜色 hsl：色调、饱和度、亮度
-      ctx.globalAlpha = this.alpha // 透明度
+      ctx.translate(this.x, this.y)
+      ctx.arc(0, 0, this.r, 0, Math.PI * 2)
+      ctx.fillStyle = `hsl(${this.hue}, 100%, ${this.lightness}%)`
+      ctx.globalAlpha = this.alpha
       ctx.closePath()
       ctx.fill()
       ctx.restore()

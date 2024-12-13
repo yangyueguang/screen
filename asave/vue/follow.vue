@@ -19,7 +19,7 @@ export default {
           bindEvents()
           loop()
         }
-        // Bind events that are needed
+
         function bindEvents() {
           document.addEventListener('mousemove', onMouseMove)
           document.addEventListener('touchmove', onTouchMove)
@@ -48,11 +48,11 @@ export default {
           particles.push(particle)
         }
         function updateParticles() {
-          // Updated
+
           for (let i = 0; i < particles.length; i++) {
             particles[i].update()
           }
-          // Remove dead particles
+
           for (let i = particles.length - 1; i >= 0; i--) {
             if (particles[i].lifeSpan < 0) {
               particles[i].die()
@@ -68,7 +68,7 @@ export default {
          * Particles
          */
         function Particle() {
-          this.lifeSpan = 120 // ms
+          this.lifeSpan = 120
           this.initialStyles = {
             'position': 'fixed',
             'top': '0',
@@ -78,7 +78,7 @@ export default {
             'fontSize': '24px',
             'will-change': 'transform'
           }
-          // Init, and set properties
+
           this.init = function(x, y, character) {
             this.velocity = {
               x: (Math.random() < 0.5 ? -1 : 1) * (Math.random() / 2),
@@ -104,7 +104,7 @@ export default {
         /**
          * Utils
          */
-        // Applies css `properties` to an element.
+
         function applyProperties(target, properties) {
           for (let key in properties) {
             target.style[ key ] = properties[ key ]

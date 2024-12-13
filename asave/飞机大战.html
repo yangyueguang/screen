@@ -236,7 +236,7 @@
             let maxX2 = obj2.x + obj2.bw;
             let minY2 = obj2.y
             let maxY2 = obj2.y + obj2.bh;
-            //相交矩形的最值
+
             let minX = Math.max(minX1, minX2)
             let maxX = Math.min(maxX1, maxX2)
             let minY = Math.max(minY1, minY2)
@@ -319,7 +319,7 @@
                         deleteArr.push(i)
                     }
                     if (this.isObjInsect(ArrEnemy[i], this.role)) {
-                        // alert('失败')
+
                         console.log('失败')
                     }
                 }
@@ -332,7 +332,7 @@
             return ae >= this.canvas.height;
         }
         isObjInsect(obj1, obj2) {
-            //分别获取2个矩形的最值
+
             let minX1 = obj1.x
             let maxX1 = obj1.x + obj1.w;
             let minY1 = obj1.y
@@ -341,7 +341,7 @@
             let maxX2 = obj2.cx + obj2.rW;
             let minY2 = obj2.by;
             let maxY2 = obj2.by + obj2.rH;
-            //相交矩形的最值
+
             let minX = Math.max(minX1, minX2)
             let maxX = Math.min(maxX1, maxX2)
             let minY = Math.max(minY1, minY2)

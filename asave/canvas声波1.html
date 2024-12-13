@@ -92,7 +92,7 @@ function init() {
     loop()
 }
 function onResize() {
-    //元素的大小不能加单位, 单位默认就是像素, 而style中的长度要加单位
+
     canvasWidth = canvas.width = window.innerWidth - horizontalMargin;
 }
 //设K=attenuationCoefficient, 计算信号衰减 (4K/(4K+x^4))^2K<=1 (x belong [-K,K])
@@ -109,9 +109,9 @@ function drawAcousticWave(heightPercentage, alpha, lineWidth) {
     ctx.moveTo(0, halfCanvasHeight)
     let x, y
     for (let i = -attenuationCoefficient; i <= attenuationCoefficient; i += 0.01) {
-        //i是当前位置相对于整个长度的比率( x=width*(i+K)/(2*K))
+
         x = canvasWidth * (i + attenuationCoefficient) / (2 * attenuationCoefficient)
-        //加offset相当于把sin曲线向右平移
+
         y = halfCanvasHeight + halfCanvasHeight * amplitudePercentage * calcAttenuation(i) * heightPercentage *
             Math.sin(halfWaveCount * i + radianOffset)
         ctx.lineTo(x, y)

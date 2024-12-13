@@ -87,9 +87,9 @@ span:hover{
         addListener(window,"resize",resize)
         canvas.onmousedown=function(e)
         {
-            //div.innerHTML=e.clientX+":"+e.clientY;
-            //var mx = document.getElementById("mx")
-            //alert(1)
+
+
+
             let mouseX,mouseY;
             if (e) {
                 mouseX = e.pageX;
@@ -99,7 +99,7 @@ span:hover{
                 mouseY = event.y + document.body.scrollTop;
             }
             if(window.innerHeight/2 - mouseY < 50 && window.innerHeight/2 - mouseY> -50)
-                //diffPt[150] = autoDiff;
+
             {
                 autoDiff = 1000;
                 if(mouseX<canvas.width-2){
@@ -120,28 +120,28 @@ span:hover{
     let xx = 150;
     let dd = 15;
     function update(){
-        //ctx.rect(50,20,280,620)
-        //ctx.stroke()
-        //ctx.clip()
+
+
+
         ctx.clearRect(0, 0, canvas.width, canvas.height)
         autoDiff -= autoDiff*0.9;
         diffPt[xx] = autoDiff;
-        //左侧
-        //差分，使得每个点都是上一个点的下一次的解，由于差分函数出来的解是一个曲线，且每次迭代后，曲线相加的结果形成了不断地波浪
+
+
         for(let i=xx-1;i>0;i--)
         {
             let d = xx-i;
             if(d > dd)d=dd;
             diffPt[i] -= (diffPt[i]-diffPt[i+1])*(1-0.01*d)
         }
-        //右侧
+
         for(let i=xx+1;i<verNum;i++)
         {
             let d = i-xx;
             if(d > dd)d=dd;
             diffPt[i] -= (diffPt[i]-diffPt[i-1])*(1-0.01*d)
         }
-        //更新点Y坐标
+
         for(let i = 0;i < vertexes.length;i++){
             vertexes[i].updateY(diffPt[i])
         }

@@ -67,33 +67,33 @@
     <button id="restart">重玩</button>
 </body>
 <script>
-    // Extend the base functionality of JavaScript
+
     Array.prototype.last = function () {
         return this[this.length - 1]
     }
-    // A sinus function that acceps degrees instead of radians
+
     Math.sinus = function (degree) {
         return Math.sin((degree / 180) * Math.PI)
     }
-    // Game data
-    let phase = "waiting" // waiting | stretching | turning | walking | transitioning | falling
-    let lastTimestamp; // The timestamp of the previous requestAnimationFrame cycle
-    let heroX; // Changes when moving forward
-    let heroY; // Only changes when falling
-    let sceneOffset; // Moves the whole game
+
+    let phase = "waiting"
+    let lastTimestamp;
+    let heroX;
+    let heroY;
+    let sceneOffset;
     let platforms = []
     let sticks = []
     let trees = []
-    // Todo: Save high score to localStorage (?)
+
     let score = 0
-    // Configuration
+
     let canvasWidth = 375;
     let canvasHeight = 375;
     let platformHeight = 100;
-    let heroDistanceFromEdge = 10; // While waiting
-    let paddingX = 100; // The waiting position of the hero in from the original canvas size
+    let heroDistanceFromEdge = 10;
+    let paddingX = 100;
     let perfectAreaSize = 10;
-    // The background moves slower than the hero
+
     let backgroundSpeedMultiplier = 0.2;
     let hill1BaseHeight = 100;
     let hill1Amplitude = 10;
@@ -101,26 +101,26 @@
     let hill2BaseHeight = 70;
     let hill2Amplitude = 20;
     let hill2Stretch = 0.5;
-    let stretchingSpeed = 4 // Milliseconds it takes to draw a pixel
-    let turningSpeed = 4 // Milliseconds it takes to turn a degree
+    let stretchingSpeed = 4
+    let turningSpeed = 4
     let walkingSpeed = 4
     let transitioningSpeed = 2
     let fallingSpeed = 2
-    let heroWidth = 17; // 24
-    let heroHeight = 30; // 40
+    let heroWidth = 17;
+    let heroHeight = 30;
     let canvas = document.getElementById("game")
-    canvas.width = window.innerWidth // Make the Canvas full screen
+    canvas.width = window.innerWidth
     canvas.height = window.innerHeight
     let ctx = canvas.getContext("2d")
     let introductionElement = document.getElementById("introduction")
     let perfectElement = document.getElementById("perfect")
     let restartButton = document.getElementById("restart")
     let scoreElement = document.getElementById("score")
-    // Initialize layout
+
     resetGame()
-    // Resets game variables and layouts but does not start the game (game starts on keypress)
+
     function resetGame() {
-        // Reset game progress
+
         phase = "waiting"
         lastTimestamp = undefined;
         sceneOffset = 0
@@ -129,8 +129,8 @@
         perfectElement.style.opacity = 0
         restartButton.style.display = "none"
         scoreElement.innerText = score;
-        // The first platform is always the same
-        // x + w has to match paddingX
+
+
         platforms = [{
             x: 50,
             w: 50
@@ -162,7 +162,7 @@
     function generateTree() {
         let minimumGap = 30;
         let maximumGap = 150;
-        // X coordinate of the right edge of the furthest tree
+
         let lastTree = trees[trees.length - 1]
         let furthestX = lastTree ? lastTree.x : 0;
         let x = furthestX + minimumGap + Math.floor(Math.random() * (maximumGap - minimumGap))
@@ -178,7 +178,7 @@
         let maximumGap = 200;
         let minimumWidth = 20;
         let maximumWidth = 100;
-        // X coordinate of the right edge of the furthest platform
+
         let lastPlatform = platforms[platforms.length - 1]
         let furthestX = lastPlatform.x + lastPlatform.w;
         let x = furthestX + minimumGap + Math.floor(Math.random() * (maximumGap - minimumGap))
@@ -189,7 +189,7 @@
         })
     }
     resetGame()
-    // If space was pressed restart the game
+
     window.addEventListener("keydown", function (event) {
         if (event.key == " ") {
             event.preventDefault()
@@ -216,7 +216,7 @@
         draw()
     })
     window.requestAnimationFrame(animate)
-    // The main game loop
+
     function animate(timestamp) {
         if (!lastTimestamp) {
             lastTimestamp = timestamp;
@@ -225,7 +225,7 @@
         }
         switch (phase) {
             case "waiting":
-                return; // Stop the loop
+                return;
             case "stretching": {
                 sticks.last().length += (timestamp - lastTimestamp) / stretchingSpeed;
                 break;
@@ -236,7 +236,7 @@
                     sticks.last().rotation = 90;
                     let [nextPlatform, perfectHit] = thePlatformTheStickHits()
                     if (nextPlatform) {
-                        // Increase score
+
                         score += perfectHit ? 2 : 1;
                         scoreElement.innerText = score;
                         if (perfectHit) {
@@ -255,14 +255,14 @@
                 heroX += (timestamp - lastTimestamp) / walkingSpeed;
                 let [nextPlatform] = thePlatformTheStickHits()
                 if (nextPlatform) {
-                    // If hero will reach another platform then limit it's position at it's edge
+
                     let maxHeroX = nextPlatform.x + nextPlatform.w - heroDistanceFromEdge;
                     if (heroX > maxHeroX) {
                         heroX = maxHeroX;
                         phase = "transitioning"
                     }
                 } else {
-                    // If hero won't reach another platform then limit it's position at the end of the pole
+
                     let maxHeroX = sticks.last().x + sticks.last().length + heroWidth;
                     if (heroX > maxHeroX) {
                         heroX = maxHeroX;
@@ -275,7 +275,7 @@
                 sceneOffset += (timestamp - lastTimestamp) / transitioningSpeed;
                 let [nextPlatform] = thePlatformTheStickHits()
                 if (sceneOffset > nextPlatform.x + nextPlatform.w - paddingX) {
-                    // Add the next step
+
                     sticks.push({
                         x: nextPlatform.x + nextPlatform.w,
                         length: 0,
@@ -302,13 +302,13 @@
         window.requestAnimationFrame(animate)
         lastTimestamp = timestamp;
     }
-    // Returns the platform the stick hit (if it didn't hit any stick then return undefined)
+
     function thePlatformTheStickHits() {
         if (sticks.last().rotation != 90) throw Error(`Stick is ${sticks.last().rotation}°`)
         let stickFarX = sticks.last().x + sticks.last().length;
         let platformTheStickHits = platforms.find(
             (platform) => platform.x < stickFarX && stickFarX < platform.x + platform.w)
-        // If the stick hits the perfect area
+
         if (platformTheStickHits && platformTheStickHits.x + platformTheStickHits.w / 2 - perfectAreaSize / 2 < stickFarX && stickFarX < platformTheStickHits.x + platformTheStickHits.w / 2 + perfectAreaSize / 2) return [platformTheStickHits, true]
         return [platformTheStickHits, false]
     }
@@ -316,15 +316,15 @@
         ctx.save()
         ctx.clearRect(0, 0, window.innerWidth, window.innerHeight)
         drawBackground()
-        // Center main canvas area to the middle of the screen
+
         ctx.translate(
             (window.innerWidth - canvasWidth) / 2 - sceneOffset,
             (window.innerHeight - canvasHeight) / 2)
-        // Draw scene
+
         drawPlatforms()
         drawHero()
         drawSticks()
-        // Restore transformation
+
         ctx.restore()
     }
     restartButton.addEventListener("click", function (event) {
@@ -337,10 +337,10 @@
             x,
             w
         }) => {
-            // Draw platform
+
             ctx.fillStyle = "black"
             ctx.fillRect(x, canvasHeight - platformHeight, w, platformHeight + (window.innerHeight - canvasHeight) / 2)
-            // Draw perfect area only if hero did not yet reach the platform
+
             if (sticks.last().x < x) {
                 ctx.fillStyle = "red"
                 ctx.fillRect(x + w / 2 - perfectAreaSize / 2, canvasHeight - platformHeight, perfectAreaSize, perfectAreaSize)
@@ -351,9 +351,9 @@
         ctx.save()
         ctx.fillStyle = "black"
         ctx.translate(heroX - heroWidth / 2, heroY + canvasHeight - platformHeight - heroHeight / 2)
-        // Body
+
         drawRoundedRect(-heroWidth / 2, -heroHeight / 2, heroWidth, heroHeight - 4, 5)
-        // Legs
+
         let legDistance = 5;
         ctx.beginPath()
         ctx.arc(legDistance, 11.5, 3, 0, Math.PI * 2, false)
@@ -361,12 +361,12 @@
         ctx.beginPath()
         ctx.arc(-legDistance, 11.5, 3, 0, Math.PI * 2, false)
         ctx.fill()
-        // Eye
+
         ctx.beginPath()
         ctx.fillStyle = "white"
         ctx.arc(5, -7, 3, 0, Math.PI * 2, false)
         ctx.fill()
-        // Band
+
         ctx.fillStyle = "red"
         ctx.fillRect(-heroWidth / 2 - 1, -12, heroWidth + 2, 4.5)
         ctx.beginPath()
@@ -397,33 +397,33 @@
     function drawSticks() {
         sticks.forEach((stick) => {
             ctx.save()
-            // Move the anchor point to the start of the stick and rotate
+
             ctx.translate(stick.x, canvasHeight - platformHeight)
             ctx.rotate((Math.PI / 180) * stick.rotation)
-            // Draw stick
+
             ctx.beginPath()
             ctx.lineWidth = 2
             ctx.moveTo(0, 0)
             ctx.lineTo(0, -stick.length)
             ctx.stroke()
-            // Restore transformations
+
             ctx.restore()
         })
     }
     function drawBackground() {
-        // Draw sky
+
         let gradient = ctx.createLinearGradient(0, 0, 0, window.innerHeight)
         gradient.addColorStop(0, "#BBD691")
         gradient.addColorStop(1, "#FEF1E1")
         ctx.fillStyle = gradient;
         ctx.fillRect(0, 0, window.innerWidth, window.innerHeight)
-        // Draw hills
+
         drawHill(hill1BaseHeight, hill1Amplitude, hill1Stretch, "#95C629")
         drawHill(hill2BaseHeight, hill2Amplitude, hill2Stretch, "#659F1C")
-        // Draw trees
+
         trees.forEach((tree) => drawTree(tree.x, tree.color))
     }
-    // A hill is a shape under a stretched out sinus wave
+
     function drawHill(baseHeight, amplitude, stretch, color) {
         ctx.beginPath()
         ctx.moveTo(0, window.innerHeight)
@@ -443,10 +443,10 @@
         let treeTrunkWidth = 2
         let treeCrownHeight = 25;
         let treeCrownWidth = 10;
-        // Draw trunk
+
         ctx.fillStyle = "#7D833C"
         ctx.fillRect(-treeTrunkWidth / 2, -treeTrunkHeight, treeTrunkWidth, treeTrunkHeight)
-        // Draw crown
+
         ctx.beginPath()
         ctx.moveTo(-treeCrownWidth / 2, -treeTrunkHeight)
         ctx.lineTo(0, -(treeTrunkHeight + treeCrownHeight))

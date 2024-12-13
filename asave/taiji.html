@@ -582,7 +582,7 @@ function moveStars(){
 function drawStars(){
     var pixelX, pixelY, pixelRadius;
 
-    // Resize to the screen
+
     if(canvas.width != window.innerWidth || canvas.width != window.innerWidth){
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
@@ -603,7 +603,7 @@ function drawStars(){
 
         c.fillRect(pixelX, pixelY, pixelRadius, pixelRadius);
         c.fillStyle = "rgba(209, 255, 255, "+star.o+")";
-        //c.fill();
+
     }
 }
 
@@ -1437,7 +1437,7 @@ document.getElementById('warp').addEventListener("click",function(e){
             },
             methods: {
                 initClock: function () {
-                    // 初始化先天八卦
+
                     this.initLocation(this.floor1, 360 / 8, 40);
                     this.initLocation(this.floor2, 360 / 8, 70);
                     this.initLocation(this.floor3, 360 / 24, 100);
@@ -1454,7 +1454,7 @@ document.getElementById('warp').addEventListener("click",function(e){
                     this.initLocation(this.floor99, 1, 430);
 
                 },
-                // 初始化位置
+
                 initLocation: function (arr, deg, r) {
                     for (let i = 0; i < arr.length; i++) {
                         let rotateDeg = i * deg;

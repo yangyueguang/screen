@@ -1,25 +1,25 @@
 (() => {
-  // 当 DOM 解析完成后触发 onLoad 函数
+ 
   window.addEventListener('DOMContentLoaded', onLoad, false)
-  // 初始化变量
-  let c1 // 烟花画布
+ 
+  let c1
   let ctx1
-  let c2 // 文字原有画布
+  let c2
   let ctx2
-  let c3 // 文字显示画布
+  let c3
   let ctx3
-  let w // canvas宽度
+  let w
   let h
   let rockets = []
   let particles = []
-  let targets = [] // text目标点集合
+  let targets = []
   let textWidth
   let fontSize
-  let fidelity = 3 // 保真度
+  let fidelity = 3
   let firePoint = 30
-  let fireNum = Math.random() * 70 + 80 // 烟花数量
+  let fireNum = Math.random() * 70 + 80
   let counter = 0
-  // 初始化 Canvas
+ 
   function onLoad() {
     [c1, c2, c3] = document.querySelectorAll('canvas');
     [ctx1, ctx2, ctx3] = [c1, c2, c3].map(c => c.getContext('2d'))
@@ -31,7 +31,7 @@
   }
   function layoutText() {
     let text = 'RoundTable'
-    // let text = 'FE'
+   
     fontSize = 200
     textWidth = 99999999
     while (textWidth > window.innerWidth) {
@@ -57,15 +57,15 @@
         targets.push({ x, y })
       }
     }
-    ctx2.clearRect(0, 0, c2.width, c2.height) // 清空c2画布
+    ctx2.clearRect(0, 0, c2.width, c2.height)
   }
-  // 更新函数
+ 
   function loop() {
-    ctx1.globalCompositeOperation = 'source-over' // 默认合成：新覆盖旧
-    ctx1.fillStyle = 'rgba(0,0,0,0.1)' // 用背景的半透明，实现拖尾
+    ctx1.globalCompositeOperation = 'source-over'
+    ctx1.fillStyle = 'rgba(0,0,0,0.1)'
     ctx1.fillRect(0, 0, w, h)
-    // ctx1.clearRect(0, 0, w, h)
-    ctx1.globalCompositeOperation = 'lighter' // 加色合成
+   
+    ctx1.globalCompositeOperation = 'lighter'
     counter += 1
     !(counter % firePoint) && rockets.push(new Rocket())
     rockets.forEach((r, i) => {
@@ -76,7 +76,7 @@
         rockets.splice(i, 1)
       }
     })
-    // console.log(particles.length)
+   
     particles.forEach((p, i) => {
       p.draw()
       p.move()
@@ -87,7 +87,7 @@
     })
     window.requestAnimationFrame(loop)
   }
-  // 火箭函数
+ 
   function Rocket() {
     this.x = Math.random() * (w - 200) + 100
     this.y = h
@@ -102,8 +102,8 @@
       ctx1.save()
       ctx1.translate(this.x, this.y)
       ctx1.rotate(Math.atan2(this.vy, this.vx) + Math.PI / 2)
-      ctx1.fillStyle = `hsl(${this.hue}, 100%, 50%)` // 原生矩形非path绘制，fillReact要在选颜色之后，否则会用默认黑色绘制
-      ctx1.fillRect(0, 0, 5, 10) // 长方形火箭块
+      ctx1.fillStyle = `hsl(${this.hue}, 100%, 50%)`
+      ctx1.fillRect(0, 0, 5, 10)
       ctx1.restore()
     },
     update: function() {
@@ -118,15 +118,15 @@
       }
     }
   }
-  // 颗粒函数
+ 
   function Particle(x, y, hue) {
     this.x = x
     this.y = y
     this.hue = hue
-    this.lightness = 50 // 亮度一致，所以是单色烟花
-    // this.lightness = Math.random() * 70 + 30; // 因为亮度是不一致的，所以烟花不是单色的
-    // this.alpha = Math.random() * .5 + .5;
-    this.r = Math.random() * 4 + 1 // 颗粒半径
+    this.lightness = 50
+   
+   
+    this.r = Math.random() * 4 + 1
     let angle = Math.random() * 2 * Math.PI
     let vbase = 1 + Math.random() * 6
     this.vx = Math.cos(angle) * vbase
@@ -137,8 +137,8 @@
     this.target = { x: p.x + c1.width / 2 - textWidth / 2, y: p.y += c1.height / 2 - fontSize / 2 }
   }
   Particle.prototype = {
-    gravity: 0.05, // 烟花颗粒坠落速度
-    move: function() { // 改变烟花颗粒位置
+    gravity: 0.05,
+    move: function() {
       if (this.target) {
         this.arriveTarget()
       } else {
@@ -153,12 +153,12 @@
       this.x += this.vx
       this.y += this.vy
     },
-    draw: function() { // 渲染烟花颗粒
+    draw: function() {
       ctx1.save()
       ctx1.beginPath()
-      ctx1.arc(this.x, this.y, this.r, 0, Math.PI * 2) // 圆形颗粒
-      ctx1.fillStyle = `hsl(${this.hue}, 100%, ${this.lightness}%)` // 填充颜色 hsl：色调、饱和度、亮度
-      // ctx1.globalAlpha = this.alpha;                         //透明度
+      ctx1.arc(this.x, this.y, this.r, 0, Math.PI * 2)
+      ctx1.fillStyle = `hsl(${this.hue}, 100%, ${this.lightness}%)`
+     
       ctx1.closePath()
       ctx1.fill()
       ctx1.restore()
@@ -188,6 +188,6 @@
       }
     }
   }
-  // 用于平滑跟随效果的插值函数
+ 
   let lerp = (from, to, t) => Math.abs(to - from) > 0.1 ? from + t * (to - from) : to
 })()

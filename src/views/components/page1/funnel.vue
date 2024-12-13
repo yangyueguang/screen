@@ -12,7 +12,7 @@ export default {
     this.setChart()
   },
   methods: {
-    // 手机安全分析
+
     setChart() {
       let option = {
         tooltip: {

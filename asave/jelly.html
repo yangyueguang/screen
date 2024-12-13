@@ -17,9 +17,9 @@ canvas {
 <script>
 let App = {}
 jQuery(document).ready(function() {
-  // Setup canvas and app
+
   App.setup()
-  // Launch animation loop
+
   App.frame = function() {
     App.update()
     window.requestAnimationFrame(App.frame)
@@ -34,7 +34,7 @@ jQuery(document).ready(function() {
   })
 })
 App.setup = function() {
-  // Setup canvas and get canvas context
+
   let canvas = document.createElement('canvas')
   canvas.height = window.innerHeight
   canvas.width = window.innerWidth
@@ -43,7 +43,7 @@ App.setup = function() {
   this.ctx = canvas.getContext('2d')
   this.width = canvas.width;
   this.height = canvas.height;
-  // Define a few useful elements
+
   this.stepCount = 0
   this.hasUserClicked = false;
   this.xC = canvas.width / 2;
@@ -55,14 +55,14 @@ App.setup = function() {
   }
   this.armsPop = 20;
   this.particlesPerArm = 15;
-  // Create initial targets and arms
+
   this.arms = []
   for (let i = 0; i < this.armsPop; i++) {
     this.arms.push([])
   }
-  // Fill initial arms
+
   this.initialBirth()
-  // Some forces
+
   this.gravity = -1;
   this.springStiffness = 0.5;
   this.viscosity = 0.1;
@@ -90,11 +90,11 @@ App.initialBirth = function() {
   }
 }
 App.update = function() {
-  // Evolve system
+
   this.evolve()
-  // Move particles
+
   this.move()
-  // Draw particles
+
   this.draw()
 }
 App.evolve = function() {
@@ -102,13 +102,13 @@ App.evolve = function() {
   this.target.radius = 50 + 30 * Math.sin(this.stepCount / 10)
 }
 App.move = function() {
-  // This is inverse kinematics, the particles form an arm with N joints, and its shape adapts with a target contraint
-  // Move target point
+
+
   if (!this.hasUserClicked) {
     this.target.x = this.xC + 150 * Math.cos(this.stepCount / 50)
     this.target.y = this.yC + 150 * Math.sin(this.stepCount / 20)
   }
-  // Move particles accordingly on (each arm)
+
   for (let armIndex = 0; armIndex < this.arms.length; armIndex++) {
     let arm = this.arms[armIndex]
     let ownTargetAngle = 2 * Math.PI * armIndex / this.arms.length;
@@ -144,28 +144,28 @@ App.move = function() {
   }
 }
 App.draw = function() {
-  // Add transparent layer for trace effect
+
   this.ctx.beginPath()
   this.ctx.rect(0, 0, this.width, this.height)
   this.ctx.fillStyle = 'rgba(0, 0, 0, 0.3)'
   this.ctx.fill()
-  // Draw target
+
   this.ctx.beginPath()
     this.ctx.arc(this.target.x, this.target.y, 15, 0, 2 * Math.PI, false)
     this.ctx.fillStyle = 'rgba(255, 255, 255, 0.1)'
     this.ctx.fill()
-  // Draw particles
+
   for (let armIndex = 0; armIndex < this.arms.length; armIndex++) {
     let arm = this.arms[armIndex]
     for (let i = 0; i < arm.length; i++) {
       var particle = arm[i]
       if (i !== 0) { var particleLead = arm[i-1] }
-      // Draw particle
+
       this.ctx.beginPath()
       this.ctx.arc(particle.x, particle.y, 0.3 * (arm.length - i), 0, 2 * Math.PI, false)
       this.ctx.strokeStyle = 'hsla(' + (200 + i * 4) + ', 90%, 50%, 0.7)'
       this.ctx.stroke()
-      // Draw its stick
+
       this.ctx.beginPath()
       this.ctx.lineWidth = 1
       this.ctx.strokeStyle = 'hsla(' + (180 + i * 4) + ', 80%, 50%, 0.7)'

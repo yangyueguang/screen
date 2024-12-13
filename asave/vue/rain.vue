@@ -35,7 +35,7 @@ function drawLine(x1, y1) {
   ctx.beginPath()
   ctx.strokeStyle = '#cccccc'
   ctx.moveTo(x1, y1)
-  // 雨长度为30
+
   ctx.lineTo(x1, y1 + 30)
   ctx.stroke()
 }

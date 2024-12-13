@@ -15,7 +15,7 @@ export default {
     this.setChart()
   },
   methods: {
-    // 交易支出 饼图
+
     setChart() {
       let option = {
         title: {
