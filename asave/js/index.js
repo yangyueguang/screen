@@ -1,9 +1,8 @@
 (() => {
- 
   window.addEventListener('resize', resizeCanvas, false)
- 
+
   window.addEventListener('DOMContentLoaded', onLoad, false)
- 
+
   window.requestAnimationFrame =
         window.requestAnimationFrame ||
         window.webkitRequestAnimationFrame ||
@@ -13,7 +12,7 @@
         function(callback) {
           window.setTimeout(callback, 1000 / 60)
         }
- 
+
   let canvas
   let ctx
   let w
@@ -21,22 +20,22 @@
   let rockets = []
   let particles = []
   let counter = 0
- 
+
   function onLoad() {
     canvas = document.querySelector('canvas')
     ctx = canvas.getContext('2d')
     resizeCanvas()
-   
+
     window.requestAnimationFrame(loop)
   }
- 
+
   function resizeCanvas() {
     if (canvas) {
       w = canvas.width = window.innerWidth
       h = canvas.height = window.innerHeight
     }
   }
- 
+
   function loop() {
     ctx.globalCompositeOperation = 'source-over'
     ctx.fillStyle = 'rgba(0,0,0,0.1)'
@@ -59,7 +58,7 @@
     })
     window.requestAnimationFrame(loop)
   }
- 
+
   function Rocket() {
     this.x = Math.random() * (w - 200) + 100
     this.y = h
@@ -91,7 +90,7 @@
       }
     }
   }
- 
+
   function Particle(x, y, hue) {
     this.x = x
     this.y = y
