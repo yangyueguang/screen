@@ -33,47 +33,6 @@
                 transform: rotateX(360deg) rotateY(360deg);
             }
         }
-        .square{
-            position: relative;
-            width: 100px;
-            height: 100px;
-            transform:translateX(50px) translateY(300px) translateZ(50px);
-            transform-style: preserve-3d;
-        }
-        .square div{
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100px;
-            height: 100px;
-        }
-        .square div:nth-child(1){
-            top: 100px;
-            transform-origin: top;
-            transform:rotateX(-90deg);
-        }
-        .square div:nth-child(2){
-            left: 100px;
-            transform-origin: left;
-            transform:rotateY(90deg);
-        }
-        .square div:nth-child(3){
-            left: -100px;
-            transform-origin: right;
-            transform:rotateY(-90deg);
-        }
-        .square div:nth-child(4){
-            top: -100px;
-            transform-origin: bottom;
-            transform:rotateX(90deg);
-        }
-        .square div:nth-child(6){
-            top:0;
-            transform:translateZ(-100px);
-        }
-        .square div:nth-child(5){
-
-        }
         .heart{
             position: absolute;
             top:0;
@@ -94,14 +53,6 @@
 </head>
 <body>
     <div class="container">
-        <div class="square">
-            <div><img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2357603137,1241349919&fm=11&gp=0.jpg"></div>
-            <div><img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1159492965,921099419&fm=11&gp=0.jpg"></div>
-            <div><img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=4029723352,728038049&fm=11&gp=0.jpg"></div>
-            <div><img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=372622898,1869298557&fm=11&gp=0.jpg"></div>
-            <div><img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1401173118,4074859557&fm=11&gp=0.jpg"></div>
-            <div><img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2759417456,1615828422&fm=11&gp=0.jpg"></div>
-        </div>
     </div>
     <script  type="text/javascript">
         var container = document.getElementsByClassName("container")[0];
