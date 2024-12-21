@@ -136,13 +136,12 @@ export default {
       }
       return t
     },
-    // 应用使用行为
     setChart() {
       let option = {
         tooltip: {
           trigger: 'item',
-          axisPointer: { // 坐标轴指示器，坐标轴触发有效
-            type: 'none' // 默认为直线，可选为：'line' | 'shadow'
+          axisPointer: {
+            type: 'none'
           },
           backgroundColor: '#11367a',
           textStyle: {

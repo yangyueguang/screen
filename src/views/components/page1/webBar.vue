@@ -23,13 +23,12 @@ export default {
       }
       return arr
     },
-    // 网站
     setChart() {
       let option = {
         tooltip: {
           trigger: 'axis',
-          axisPointer: { // 坐标轴指示器，坐标轴触发有效
-            type: 'none' // 默认为直线，可选为：'line' | 'shadow'
+          axisPointer: {
+            type: 'none'
           },
           backgroundColor: '#11367a',
           textStyle: {
@@ -107,18 +106,18 @@ export default {
             barWidth: 8,
             itemStyle: {
               normal: {
-                color: { // 颜色线性渐变
+                color: {
                   type: 'linear',
                   x: 0,
                   y: 0,
                   x2: 1,
                   y2: 0,
                   colorStops: [{
-                    offset: 0, color: 'rgb(' + this.data.color + ',0.1)' // 0% 处的颜色
+                    offset: 0, color: 'rgb(' + this.data.color + ',0.1)'
                   }, {
-                    offset: 1, color: 'rgb(' + this.data.color + ',1)' // 100% 处的颜色
+                    offset: 1, color: 'rgb(' + this.data.color + ',1)'
                   }],
-                  globalCoord: false // 缺省为 false
+                  globalCoord: false
                 },
                 barBorderRadius: 5
               }

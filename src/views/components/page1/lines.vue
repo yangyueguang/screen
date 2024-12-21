@@ -22,7 +22,6 @@ export default {
   },
   mounted() {
     this.handleSelect(this.value)
-    // this.setChart ()
   },
   methods: {
     handleSelect(val) {
@@ -130,7 +129,6 @@ export default {
       }
       this.setChart()
     },
-    // 金钱交易分析
     setChart() {
       let option = {
         title: [
@@ -372,7 +370,6 @@ export default {
           })
           myChart.dispatchAction({
             type: 'legendUnSelect',
-            // 图例名称
             name: params.name
           })
         }

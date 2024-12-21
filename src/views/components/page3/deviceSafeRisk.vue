@@ -12,7 +12,6 @@ export default {
     this.setDeviceSafe()
   },
   methods: {
-    // 设备安全性风险
     setDeviceSafe() {
       let option = {
         title: [
@@ -37,8 +36,8 @@ export default {
         ],
         tooltip: {
           trigger: 'axis',
-          axisPointer: { // 坐标轴指示器，坐标轴触发有效
-            type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+          axisPointer: {
+            type: 'shadow'
           }
         },
         legend: {
@@ -219,18 +218,18 @@ export default {
             coordinateSystem: 'polar',
             name: '人数',
             itemStyle: {
-              color: { // 颜色线性渐变
+              color: {
                 type: 'linear',
                 x: 0,
                 y: 1,
                 x2: 0,
                 y2: 0,
                 colorStops: [{
-                  offset: 0, color: 'rgba(104,18,147,1)' // 0% 处的颜色
+                  offset: 0, color: 'rgba(104,18,147,1)'
                 }, {
-                  offset: 1, color: '#1D2584' // 100% 处的颜色
+                  offset: 1, color: '#1D2584'
                 }],
-                globalCoord: false // 缺省为 false
+                globalCoord: false
               }
             },
             stack: 'a'

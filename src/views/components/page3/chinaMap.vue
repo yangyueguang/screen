@@ -508,9 +508,6 @@ export default {
               return val[2] / 15
             },
             showEffectOn: 'render',
-            // rippleEffect: { // 效果
-            //     brushType: 'stroke'
-            // },
             hoverAnimation: true,
             label: {
               normal: {
@@ -549,14 +546,13 @@ export default {
                 x2: 0,
                 y2: 1,
                 colorStops: [{
-                  offset: 0, color: 'rgba(161,23,128,1)' // 0% 处的颜色
+                  offset: 0, color: 'rgba(161,23,128,1)'
                 }, {
-                  offset: 1, color: 'rgba(161,23,128,0)' // 100% 处的颜色
+                  offset: 1, color: 'rgba(161,23,128,0)'
                 }],
-                globalCoord: false // 缺省为 false
+                globalCoord: false
               }
             },
-            // 4,5,3,9,2,4,8,3,4,5
             data: [
               {
                 value: 4, symbol: 'circle',
@@ -596,11 +592,11 @@ export default {
                 x2: 0,
                 y2: 1,
                 colorStops: [{
-                  offset: 0, color: 'rgba(196,103,20,1)' // 0% 处的颜色
+                  offset: 0, color: 'rgba(196,103,20,1)'
                 }, {
-                  offset: 1, color: 'rgba(196,103,20,0)' // 100% 处的颜色
+                  offset: 1, color: 'rgba(196,103,20,0)'
                 }],
-                globalCoord: false // 缺省为 false
+                globalCoord: false
               }
             },
             data: [
@@ -641,14 +637,13 @@ export default {
                 x2: 0,
                 y2: 1,
                 colorStops: [{
-                  offset: 0, color: 'rgba(181,174,28,1)' // 0% 处的颜色
+                  offset: 0, color: 'rgba(181,174,28,1)'
                 }, {
-                  offset: 1, color: 'rgba(181,174,28,0)' // 100% 处的颜色
+                  offset: 1, color: 'rgba(181,174,28,0)'
                 }],
-                globalCoord: false // 缺省为 false
+                globalCoord: false
               }
             },
-            // 4,5,3,9,2,4,8,3,4,5
             data: [
               {
                 value: 4, symbol: 'circle',
@@ -688,11 +683,11 @@ export default {
                 x2: 0,
                 y2: 1,
                 colorStops: [{
-                  offset: 0, color: 'rgba(165,15,71,1)' // 0% 处的颜色
+                  offset: 0, color: 'rgba(165,15,71,1)'
                 }, {
-                  offset: 1, color: 'rgba(165,15,71,0)' // 100% 处的颜色
+                  offset: 1, color: 'rgba(165,15,71,0)'
                 }],
-                globalCoord: false // 缺省为 false
+                globalCoord: false
               }
             },
             data: [
@@ -733,14 +728,13 @@ export default {
                 x2: 0,
                 y2: 1,
                 colorStops: [{
-                  offset: 0, color: 'rgba(16,182,165,1)' // 0% 处的颜色
+                  offset: 0, color: 'rgba(16,182,165,1)'
                 }, {
-                  offset: 1, color: 'rgba(16,182,165,0)' // 100% 处的颜色
+                  offset: 1, color: 'rgba(16,182,165,0)'
                 }],
-                globalCoord: false // 缺省为 false
+                globalCoord: false
               }
             },
-            // 4,5,3,9,2,4,8,3,4,5
             data: [
               {
                 value: 4, symbol: 'circle',
@@ -780,11 +774,11 @@ export default {
                 x2: 0,
                 y2: 1,
                 colorStops: [{
-                  offset: 0, color: 'rgba(9,83,176,1)' // 0% 处的颜色
+                  offset: 0, color: 'rgba(9,83,176,1)'
                 }, {
-                  offset: 1, color: 'rgba(9,83,176,0)' // 100% 处的颜色
+                  offset: 1, color: 'rgba(9,83,176,0)'
                 }],
-                globalCoord: false // 缺省为 false
+                globalCoord: false
               }
             },
             data: [

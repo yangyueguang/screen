@@ -37,8 +37,8 @@ export default {
       let option = {
         tooltip: {
           trigger: 'axis',
-          axisPointer: { // 坐标轴指示器，坐标轴触发有效
-            type: 'line' // 默认为直线，可选为：'line' | 'shadow'
+          axisPointer: {
+            type: 'line'
           },
           backgroundColor: '#11367a',
           textStyle: {
@@ -129,15 +129,15 @@ export default {
               x2: 0,
               y2: 1,
               colorStops: [{
-                offset: 0, color: '#B21356' // 0% 处的颜色
+                offset: 0, color: '#B21356'
               },
               {
-                offset: 0.5, color: '#B21356' // 40% 处的颜色
+                offset: 0.5, color: '#B21356'
               }, {
-                offset: 1, color: '#F59111' // 100% 处的颜色
+                offset: 1, color: '#F59111'
               }],
-              global: false // 缺省为 false
-            } // 背景渐变色
+              global: false
+            }
           },
           itemStyle: {
             color: 'rgb(212,37,43)'
@@ -150,15 +150,15 @@ export default {
               x2: 0,
               y2: 1,
               colorStops: [{
-                offset: 0, color: '#A41B68' // 0% 处的颜色
+                offset: 0, color: '#A41B68'
               },
               {
-                offset: 0.5, color: 'rgba(112,20,82,1)' // 40% 处的颜色
+                offset: 0.5, color: 'rgba(112,20,82,1)'
               }, {
-                offset: 1, color: 'rgba(112,20,82,0)' // 100% 处的颜色
+                offset: 1, color: 'rgba(112,20,82,0)'
               }],
-              global: false // 缺省为 false
-            }, // 背景渐变色
+              global: false
+            },
             origin: 'start'
           }
         }

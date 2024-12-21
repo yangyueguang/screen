@@ -29,11 +29,11 @@ export default {
               x2: 1,
               y2: 0,
               colorStops: [{
-                offset: 0, color: colorList[i] // 0% 处的颜色
+                offset: 0, color: colorList[i]
               }, {
-                offset: 1, color: '#922aea' // 100% 处的颜色
+                offset: 1, color: '#922aea'
               }],
-              globalCoord: false // 缺省为 false
+              globalCoord: false
             }
           }
         }
@@ -58,8 +58,8 @@ export default {
         ],
         tooltip: {
           trigger: 'axis',
-          axisPointer: { // 坐标轴指示器，坐标轴触发有效
-            type: 'none' // 默认为直线，可选为：'line' | 'shadow'
+          axisPointer: {
+            type: 'none'
           },
           backgroundColor: '#11367a',
           textStyle: {
@@ -211,7 +211,7 @@ export default {
             stack: 'a',
             silent: true,
             barWidth: 5,
-            barGap: '-100%', // Make series be overlap
+            barGap: '-100%',
             data: [50, 50, 50, 50, 50, 50, 50],
             itemStyle: {
               color: '#242346'
@@ -293,7 +293,7 @@ export default {
             stack: 'c',
             silent: true,
             barWidth: 5,
-            barGap: '-100%', // Make series be overlap
+            barGap: '-100%',
             data: [50, 50, 50, 50, 50, 50, 50],
             itemStyle: {
               color: '#242346'

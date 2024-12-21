@@ -13,7 +13,6 @@ export default {
     this.setChart()
   },
   methods: {
-    // 通讯行为分析
     setChart() {
       let geoCoordMap = {
         '海门': [121.15, 31.89],
@@ -408,8 +407,8 @@ export default {
       let option = {
         tooltip: {
           trigger: 'item',
-          axisPointer: { // 坐标轴指示器，坐标轴触发有效
-            type: 'none' // 默认为直线，可选为：'line' | 'shadow'
+          axisPointer: {
+            type: 'none'
           },
           backgroundColor: '#11367a',
           textStyle: {
@@ -582,7 +581,7 @@ export default {
             },
             areaStyle: {
               normal: {
-                color: { // 颜色线性渐变
+                color: {
                   type: 'linear',
                   x: 0,
                   y: 0,
@@ -593,7 +592,7 @@ export default {
                     {offset: 0.5, color: 'rgba(228,234,40,.5)'},
                     {offset: 1, color: 'rgba(228,234,40,.1)'}
                   ],
-                  globalCoord: false // 缺省为 false
+                  globalCoord: false
                 }
               }
             }

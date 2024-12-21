@@ -18,10 +18,10 @@ export default {
   },
   mounted() {
     let arr = []
-    for (let i = -30; i < 0; i++) { // 循环添加天数
+    for (let i = -30; i < 0; i++) {
       let today = new Date()// 获取今天
       let targetday_milliseconds = today.getTime() + 1000 * 60 * 60 * 24 * i
-      today.setTime(targetday_milliseconds) // 设置i天前的时间
+      today.setTime(targetday_milliseconds)
       let tYear = today.getFullYear()
       let tMonth = today.getMonth()
       let tDate = today.getDate()

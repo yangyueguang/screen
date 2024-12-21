@@ -23,7 +23,7 @@ export default {
     this.setChart()
   },
   methods: {
-    setTrenchData(type) { // 数据
+    setTrenchData(type) {
       let arr = []
       let obj = {}
       for (let i = 0; i < this.data.length; i++) {
@@ -63,13 +63,12 @@ export default {
       }
       return arr
     },
-    // 渠道分析
     setChart() {
       let option = {
         tooltip: {
           trigger: 'item',
-          axisPointer: { // 坐标轴指示器，坐标轴触发有效
-            type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+          axisPointer: {
+            type: 'shadow'
           }
         },
         title: this.setTrenchData('t'),
@@ -95,7 +94,7 @@ export default {
           type: 'bar',
           silent: true,
           barWidth: 15,
-          barGap: '-100%', // Make series be overlap
+          barGap: '-100%',
           itemStyle: {
             color: '#1F1E4E'
           },

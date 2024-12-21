@@ -152,7 +152,7 @@ export default {
           data: {name: '使用炒股应用', value: 12, color: '#7F05FD'}
         }
       ],
-      data2: [ // 网赌用户排名数据
+      data2: [
         {
           top: '16%',
           color: '14,73,245',
@@ -579,12 +579,10 @@ export default {
   },
   mounted() {
     setTimeout(() => {
-      // 通过捕获系统的onresize事件触发我们需要执行的事件
       this.$refs.channelBar1.setChart()
       this.$refs.distributionSolider1.setChart()
       this.$refs.channelBar2.setChart()
       this.$refs.distributionSolider2.setChart()
-      // this.$refs.pies.setPies()
       this.$refs.redPocket.setPocket()
       this.$refs.webcastsRisk.setWebcasts()
       this.$refs.deviceSafeRisk.setDeviceSafe()

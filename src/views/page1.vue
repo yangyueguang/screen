@@ -99,25 +99,25 @@ let areaChart = () => import('./components/areaChart')
 export default {
   name: 'Page1',
   components: {
-    doubleArea, // 面积图
-    webBar, // 柱图
-    pie, // 饼图
-    worldMap, // 世界地图
-    ring, // 圆环
-    popularBar, // 柱图
-    lines, // 折线图
-    pieRing, // 饼环图
-    colorsBar, // 柱图
-    funnel, // 漏斗图
-    lineBar, // 柱图
-    areaChart // 面积图
+    doubleArea,
+    webBar,
+    pie,
+    worldMap,
+    ring,
+    popularBar,
+    lines,
+    pieRing,
+    colorsBar,
+    funnel,
+    lineBar,
+    areaChart
   },
   props: {
     selectRangeDate: Array
   },
   data() {
     return {
-      data1: { // 柱图数据1
+      data1: {
         name: '柱图数据1',
         number: '100次',
         data: ['排行1', '排行2', '排行3', '排行4', '排行5'],
@@ -179,14 +179,13 @@ export default {
           }
         ]
       },
-      data3: { // 柱图数据2
+      data3: {
         name: '柱图数据2',
         number: '100次',
         data: ['排行1', '排行2', '排行3', '排行4', '排行5'],
         color: '40,112,232',
         value: [6, 5, 4, 3, 2]
       },
-      // 饼图数据2
       data4: {
         title: '饼图数据2分类占比',
         color: '#2C7BFE',
@@ -228,7 +227,6 @@ export default {
           }
         ]
       },
-      // 环形图数据
       data5: {
         title: '环形图数据1',
         data: [
@@ -269,7 +267,6 @@ export default {
           }
         ]
       },
-      // 环形数据2
       data6: {
         title: '热词传播次数',
         data: [
@@ -401,7 +398,6 @@ export default {
           }
         ]
       },
-      // 交友分析面积图
       configData9: {
         title: '【交友分析】',
         color: '#75deef',
@@ -429,7 +425,6 @@ export default {
           }
         ]
       },
-      // 交友方式柱图
       colorsData: [
         {
           itemStyle: {

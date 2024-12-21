@@ -12,13 +12,12 @@ export default {
     this.setChart()
   },
   methods: {
-    // 舆论、心里风险分析
     setChart() {
       let option = {
         tooltip: {
           trigger: 'item',
-          axisPointer: { // 坐标轴指示器，坐标轴触发有效
-            type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+          axisPointer: {
+            type: 'shadow'
           }
         },
         legend: {
@@ -316,18 +315,18 @@ export default {
               color: '#6EDDF2'
             },
             itemStyle: {
-              color: { // 颜色线性渐变
+              color: {
                 type: 'linear',
                 x: 0,
                 y: 0,
                 x2: 1,
                 y2: 0,
                 colorStops: [{
-                  offset: 0, color: 'rgba(4,85,229,1)' // 0% 处的颜色
+                  offset: 0, color: 'rgba(4,85,229,1)'
                 }, {
-                  offset: 1, color: 'rgba(4,85,229,0)' // 100% 处的颜色
+                  offset: 1, color: 'rgba(4,85,229,0)'
                 }],
-                globalCoord: false // 缺省为 false
+                globalCoord: false
               },
               barBorderRadius: 5
             },
@@ -367,18 +366,18 @@ export default {
               color: '#6EDDF2'
             },
             itemStyle: {
-              color: { // 颜色线性渐变
+              color: {
                 type: 'linear',
                 x: 0,
                 y: 0,
                 x2: 1,
                 y2: 0,
                 colorStops: [{
-                  offset: 0, color: 'rgba(1,176,223,0)' // 0% 处的颜色
+                  offset: 0, color: 'rgba(1,176,223,0)'
                 }, {
-                  offset: 1, color: 'rgba(1,176,223,1)' // 100% 处的颜色
+                  offset: 1, color: 'rgba(1,176,223,1)'
                 }],
-                globalCoord: false // 缺省为 false
+                globalCoord: false
               },
               barBorderRadius: 5
             },
@@ -418,18 +417,18 @@ export default {
               color: '#6EDDF2'
             },
             itemStyle: {
-              color: { // 颜色线性渐变
+              color: {
                 type: 'linear',
                 x: 0,
                 y: 0,
                 x2: 1,
                 y2: 0,
                 colorStops: [{
-                  offset: 0, color: 'rgba(4,85,229,1)' // 0% 处的颜色
+                  offset: 0, color: 'rgba(4,85,229,1)'
                 }, {
-                  offset: 1, color: 'rgba(4,85,229,0)' // 100% 处的颜色
+                  offset: 1, color: 'rgba(4,85,229,0)'
                 }],
-                globalCoord: false // 缺省为 false
+                globalCoord: false
               },
               barBorderRadius: 5
             },
@@ -469,18 +468,18 @@ export default {
               color: '#6EDDF2'
             },
             itemStyle: {
-              color: { // 颜色线性渐变
+              color: {
                 type: 'linear',
                 x: 0,
                 y: 0,
                 x2: 1,
                 y2: 0,
                 colorStops: [{
-                  offset: 0, color: 'rgba(1,176,223,0)' // 0% 处的颜色
+                  offset: 0, color: 'rgba(1,176,223,0)'
                 }, {
-                  offset: 1, color: 'rgba(1,176,223,1)' // 100% 处的颜色
+                  offset: 1, color: 'rgba(1,176,223,1)'
                 }],
-                globalCoord: false // 缺省为 false
+                globalCoord: false
               },
               barBorderRadius: 5
             },
@@ -520,18 +519,18 @@ export default {
               color: '#6EDDF2'
             },
             itemStyle: {
-              color: { // 颜色线性渐变
+              color: {
                 type: 'linear',
                 x: 0,
                 y: 0,
                 x2: 1,
                 y2: 0,
                 colorStops: [{
-                  offset: 0, color: 'rgba(4,85,229,1)' // 0% 处的颜色
+                  offset: 0, color: 'rgba(4,85,229,1)'
                 }, {
-                  offset: 1, color: 'rgba(4,85,229,0)' // 100% 处的颜色
+                  offset: 1, color: 'rgba(4,85,229,0)'
                 }],
-                globalCoord: false // 缺省为 false
+                globalCoord: false
               },
               barBorderRadius: 5
             },
@@ -571,18 +570,18 @@ export default {
               color: '#6EDDF2'
             },
             itemStyle: {
-              color: { // 颜色线性渐变
+              color: {
                 type: 'linear',
                 x: 0,
                 y: 0,
                 x2: 1,
                 y2: 0,
                 colorStops: [{
-                  offset: 0, color: 'rgba(1,176,223,0)' // 0% 处的颜色
+                  offset: 0, color: 'rgba(1,176,223,0)'
                 }, {
-                  offset: 1, color: 'rgba(1,176,223,1)' // 100% 处的颜色
+                  offset: 1, color: 'rgba(1,176,223,1)'
                 }],
-                globalCoord: false // 缺省为 false
+                globalCoord: false
               },
               barBorderRadius: 5
             },

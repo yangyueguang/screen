@@ -57,24 +57,15 @@ export default {
               x2: 0,
               y2: 1,
               colorStops: [{
-                offset: 0, color: item.color[0] // 0% 处的颜色
+                offset: 0, color: item.color[0]
               },
               {
-                offset: 0.4, color: item.color[0] // 40% 处的颜色
+                offset: 0.4, color: item.color[0]
               }, {
-                offset: 1, color: item.color[1] // 100% 处的颜色
+                offset: 1, color: item.color[1]
               }],
-              global: false // 缺省为 false
+              global: false
             }
-            // color: new this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-            //     offset: 0, color: item.color[0] // 0% 处的颜色
-            // },
-            //     {
-            //         offset: 0.4, color: item.color[0] // 0% 处的颜色
-            //     }, {
-            //         offset: 1, color: item.color[1] // 100% 处的颜色
-            //     }]), //背景渐变色
-            // origin: 'start'
           },
           lineStyle: {
             width: 0
@@ -103,8 +94,8 @@ export default {
         },
         tooltip: {
           trigger: 'axis',
-          axisPointer: { // 坐标轴指示器，坐标轴触发有效
-            type: 'none' // 默认为直线，可选为：'line' | 'shadow'
+          axisPointer: {
+            type: 'none'
           },
           backgroundColor: '#11367a',
           textStyle: {

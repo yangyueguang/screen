@@ -67,7 +67,6 @@ export default {
                 lineHeight: 9,
                 rich: {
                   a: {
-                    // 没有设置 `verticalAlign`，则 `verticalAlign` 为 bottom
                   }
                 },
                 formatter: function(data) {
@@ -79,18 +78,18 @@ export default {
                 }
               },
               itemStyle: {
-                color: { // 颜色线性渐变
+                color: {
                   type: 'linear',
                   x: 0,
                   y: 0,
                   x2: 0,
                   y2: 1,
                   colorStops: [{
-                    offset: 0, color: 'rgba(' + this.data[i].color + ',1)' // 0% 处的颜色
+                    offset: 0, color: 'rgba(' + this.data[i].color + ',1)'
                   }, {
-                    offset: 1, color: 'rgba(' + this.data[i].color + ',0)' // 100% 处的颜色
+                    offset: 1, color: 'rgba(' + this.data[i].color + ',0)'
                   }],
-                  globalCoord: false // 缺省为 false
+                  globalCoord: false
                 }
               },
               xAxisIndex: i,
@@ -104,13 +103,12 @@ export default {
       }
       return arr
     },
-    // 用户排名
     setChart() {
       let option = {
         tooltip: {
           trigger: 'axis',
-          axisPointer: { // 坐标轴指示器，坐标轴触发有效
-            type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+          axisPointer: {
+            type: 'shadow'
           },
           formatter: '{b}:{c}'
         },

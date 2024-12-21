@@ -12,7 +12,6 @@ export default {
     this.setWebcasts()
   },
   methods: {
-    // 网播风险分析
     setWebcasts() {
       let option = {
         title: {
@@ -26,8 +25,8 @@ export default {
         },
         tooltip: {
           trigger: 'axis',
-          axisPointer: { // 坐标轴指示器，坐标轴触发有效
-            type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+          axisPointer: {
+            type: 'shadow'
           }
         },
         legend: {
@@ -182,7 +181,6 @@ export default {
               show: true,
               length2: 30,
               lineStyle: {
-                // color:["#408BE8",'#FE405C',"#3E3E7F","#FFC740"]
               }
             },
             itemStyle: {
